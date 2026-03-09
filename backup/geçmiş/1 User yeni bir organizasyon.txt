@@ -1,0 +1,6 @@
+1- User yeni bir organizasyon olusturdugunda ne olması gerek -> ?
+
+- organizasyon tablosundaki created_by uuid ve deleted_by kolonları user id gelmeli 
+- organizasyon evrakları tablosundakı uploaded by uuid deleted_by kolonları  user_id alması gerekir
+- organizasyon üyeleri tablosundakı invited_by kısmında user_friendship_code otomatık o olsun 
+- organizasyon üyeleri tablosunu olusturan ve oranın ılk uyesı olan kısıde owner rolu verılecek otomatık 

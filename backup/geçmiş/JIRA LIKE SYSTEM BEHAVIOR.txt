@@ -1,0 +1,189 @@
+=========================================================
+JIRA-LIKE SYSTEM BEHAVIOR BLUEPRINT (ARCHITECTURE PLAN)
+=========================================================
+
+GENEL AKIŞ
+---------------------------------------------------------
+1) Organization oluşturulur.
+2) Organization’a kullanıcılar eklenir.
+3) Organization’a bağlı project oluşturulur.
+4) Project’e default workflow atanır.
+5) Project altında issue’lar oluşturulur.
+6) Issue lifecycle workflow transition’ları ile ilerler.
+7) Terminal state → solved mantığı tetiklenir.
+8) Project archived olduğunda yeni issue engellenir.
+
+=========================================================
+1) ZORUNLULUKLAR (MUST HAVE RULES)
+=========================================================
+
+MULTI-TENANT ZORUNLULUK
+- Her tabloda org_id zinciri korunmalı.
+- Bir user başka organization’a ait veriyi göremez.
+- FK zinciri: issue → project → organization kırılmamalı.
+
+ISSUE OLUŞTURMA ZORUNLULUKLARI
+- Project deleted_at NULL olmalı.
+- Project archived değil olmalı.
+- Project’in default workflow’u olmalı.
+- Workflow’da 1 adet initial status olmalı.
+- issue_no concurrency-safe artmalı.
+- issue_key unique olmalı.
+
+WORKFLOW ZORUNLULUKLARI
+- Status değişimi sadece workflow_transitions ile yapılmalı.
+- Geçersiz transition exception üretmeli.
+- Terminal status tanımı olmalı (is_terminal = true).
+
+HISTORY ZORUNLULUĞU
+- Status değişimi history yazmalı.
+- Priority değişimi history yazmalı.
+- Title değişimi history yazmalı.
+- History immutable olmalı (UPDATE yasak).
+
+AUDIT ZORUNLULUĞU
+- INSERT/UPDATE/DELETE loglanmalı.
+- actor_id context üzerinden alınmalı.
+
+SOFT DELETE ZORUNLULUĞU
+- deleted_at dolarsa deleted_by otomatik dolmalı.
+- Hard DELETE yasaklanmalı.
+- deleted_at NULL olmayan kayıtlar aktif sayılmamalı.
+
+=========================================================
+2) KISITLAMALAR (CONSTRAINT BEHAVIOR RULES)
+=========================================================
+
+ORGANIZATION
+- İçinde aktif project varsa silinemez.
+- Soft delete only.
+
+PROJECT
+- İçinde open issue varsa silinemez.
+- Önce archived yapılmalı.
+- Archived project’e yeni issue açılamaz.
+
+ISSUE
+- Hard delete yasak.
+- Sadece archived veya terminal state olabilir.
+- Terminal state’e gelen issue tekrar non-terminal’a dönemez (isteğe bağlı rule).
+
+WORKFLOW
+- Default workflow silinemez.
+- Aktif project’e bağlı workflow silinemez.
+
+ROLE
+- System role silinemez.
+
+=========================================================
+3) PROJECT COMPLETION LOGIC
+=========================================================
+
+PROJECT ARCHIVE FLOW
+- projects.status = archived
+- deleted_at değil, business status değişmeli.
+- Yeni issue INSERT engellenmeli.
+- Update sadece admin yetkili olmalı.
+- Analytics snapshot alınabilir (opsiyonel).
+
+ARCHIVED PROJECT BEHAVIOR
+- Read-only mode.
+- Sprint create yasak.
+- Workflow modify yasak.
+
+=========================================================
+4) ISSUE SOLVED / RESOLUTION MANTIĞI
+=========================================================
+
+SOLVED TANIMI
+- Workflow_statuses.is_terminal = true
+
+STATUS → TERMINAL OLDUĞUNDA
+- solved_at = now()
+- resolved_by = actor_id
+- resolution_type (fixed / wont_fix / duplicate) zorunlu olabilir.
+- History kaydı oluşturulmalı.
+- Notification gönderilmeli.
+- Eğer sprint aktifse velocity hesaplamasına dahil edilmeli.
+
+TERMINAL'DAN GERİ DÖNÜŞ
+- İzin verilecek mi?
+    Eğer evet:
+        history yazılmalı.
+    Eğer hayır:
+        transition engellenmeli.
+
+=========================================================
+5) PERMISSION MATRIX DAVRANIŞI
+=========================================================
+
+ISSUE CREATE
+- project_member olmalı.
+- issue.create permission olmalı.
+
+ISSUE UPDATE
+- issue.update permission olmalı.
+- Eğer assignee ise ek yetki olabilir.
+
+ISSUE TRANSITION
+- workflow transition permission kontrolü yapılmalı.
+
+PROJECT MANAGE
+- project.manage permission olmalı.
+
+WORKFLOW MANAGE
+- workflow.manage permission olmalı.
+
+=========================================================
+6) SİSTEM TEPKİLERİ (EVENT BEHAVIOR)
+=========================================================
+
+ISSUE CREATE
+- issue_key üret
+- initial status ata
+- history yaz
+- notification (opsiyonel)
+
+ISSUE STATUS CHANGE
+- transition validate
+- history yaz
+- notification gönder
+- terminal ise solved mantığı tetikle
+
+SOFT DELETE
+- deleted_by doldur
+- audit yaz
+
+PROJECT ARCHIVE
+- insert issue engelle
+- sprint create engelle
+
+=========================================================
+7) TASARIM KARARLARI (YARIN ÇÖZECEĞİZ)
+=========================================================
+
+- Workflow validation DB’de mi olacak?
+- Soft delete cascade gerekli mi?
+- Sprint auto-close olacak mı?
+- Terminal status geri dönüş açık mı?
+- RLS tenant izolasyonu ekleyecek miyiz?
+- Analytics realtime mı hesaplanacak yoksa batch mi?
+
+=========================================================
+SONUÇ
+=========================================================
+
+Database = state storage + integrity enforcement
+Application = permission + orchestration layer
+Workflow = state machine
+Issue = event-driven entity
+Project = bounded context
+Organization = tenant boundary
+
+
+
+
+
+
+
+

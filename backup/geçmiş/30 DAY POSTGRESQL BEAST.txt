@@ -1,0 +1,135 @@
+============================================================
+30 DAY POSTGRESQL BEAST MODE – JIRA DB HARDENING PLAN
+============================================================
+
+MISSION:
+30 gün boyunca PostgreSQL derinliği kazanmak.
+Amaç: Enterprise seviyeye yaklaşan bir Jira-like DB sistemi üretmek.
+Odak: Schema → Permission → Workflow → Performance → Senior Touch
+
+------------------------------------------------------------
+WORKING PRINCIPLES
+------------------------------------------------------------
+
+1. Her gün minimum 1 commit.
+2. Her gün engineering_log.md güncellenecek.
+3. Rastgele kod yok – bilinçli constraint.
+4. Performans test edilmeden index atılmayacak.
+5. “Çalışıyor” yetmez – “neden böyle?” bilinecek.
+
+------------------------------------------------------------
+PHASE 1 – SCHEMA HARDENING (DAY 1–4)
+------------------------------------------------------------
+
+DAY 1:
+- users table review
+- NOT NULL kontrol
+- UNIQUE (email, friendship_code)
+- deleted_at / deleted_by standard
+- FK davranışları kontrol
+
+DAY 2:
+- organizations
+- org_memberships
+- UNIQUE (org_id, user_id)
+- role enum kontrol
+- ON DELETE davranışları netleştirme
+
+DAY 3:
+- projects
+- issues
+- composite unique gerekli mi?
+- status CHECK constraint
+- illegal state engelleme
+
+DAY 4:
+- Index plan çıkarma
+- Hangi sorgular yoğun?
+- Partial index ekleme
+- EXPLAIN ANALYZE test
+- Basit data generate script
+
+------------------------------------------------------------
+PHASE 2 – PERMISSION ENGINE (DAY 5–10)
+------------------------------------------------------------
+
+- org_role hierarchy
+- project_role hierarchy
+- permission_check(user_id, action, resource_id)
+- Trigger ile illegal insert engelleme
+- Role escalation engelleme
+- Action-based authorization mantığı
+
+------------------------------------------------------------
+PHASE 3 – WORKFLOW ENGINE (DAY 11–17)
+------------------------------------------------------------
+
+- issue_status transition map
+- illegal transition kontrol
+- reviewer-only close rule
+- status history log table
+- trigger ile transition validation
+
+------------------------------------------------------------
+PHASE 4 – AUDIT + PERFORMANCE (DAY 18–24)
+------------------------------------------------------------
+
+- generic audit table
+- dynamic audit trigger function
+- soft delete enforce
+- 500k–1M fake data generate
+- heavy query test
+- index tuning
+- EXPLAIN ANALYZE before/after comparison
+
+------------------------------------------------------------
+PHASE 5 – SENIOR TOUCH (DAY 25–30)
+------------------------------------------------------------
+
+- Row Level Security (RLS)
+- Transaction isolation demo
+- Deadlock simulation script
+- Benchmark test
+- Docker compose
+- README professional write-up
+
+------------------------------------------------------------
+TABLE REVIEW CHECKLIST (FOR EVERY TABLE)
+------------------------------------------------------------
+
+1. Duplicate veri alabilir mi?
+2. Illegal state mümkün mü?
+3. Orphan record oluşabilir mi?
+4. Soft delete gerekli mi?
+5. En çok hangi kolonla sorgulanır?
+
+------------------------------------------------------------
+DAILY ENGINEERING LOG TEMPLATE
+------------------------------------------------------------
+
+## Day X – Topic
+
+Today:
+- 
+
+Learned:
+- 
+
+Problems:
+- 
+
+Tomorrow:
+- 
+
+------------------------------------------------------------
+GOAL AFTER 30 DAYS
+------------------------------------------------------------
+
+- PostgreSQL constraint mastery
+- Permission engine logic
+- Workflow state control
+- Performance tuning awareness
+- Concurrency understanding
+- Proud-worthy GitHub repo
+
+END.
