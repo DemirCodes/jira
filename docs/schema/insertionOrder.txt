@@ -1,0 +1,15 @@
+users
+organizations
+sites
+projects
+issues
+platform_users
+issue_assets
+issue_memberships
+organization_assets
+project_assets
+organization_memberships
+project_memberships
+project_requirements
+application_bugs
+system_audit_logs
