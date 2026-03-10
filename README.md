@@ -1,151 +1,279 @@
-# Jira Database Architecture (PostgreSQL)
+# Jira Clone – Issue & Project Management System
 
-This repository contains the database architecture for a **Jira-like project management system** built with **PostgreSQL**.
-The goal of this project is to design a **scalable, secure, and production-grade multi-tenant database system**.
+## 📌 Project Overview
 
-## Overview
+This project is a **Jira-style issue tracking and project management application** designed to help teams organize development tasks, track bugs, and manage project progress.
 
-The database is designed with the following principles:
+In software development, projects usually contain many work items such as:
 
-* **Multi-tenant architecture**
-* **Role-based access control (RBAC)**
-* **Row Level Security (RLS)**
-* **Domain-based database structure**
-* **Helper authorization functions**
-* **Soft delete support**
-* **Extensible SaaS-ready design**
+* Feature requests
+* Bug reports
+* Improvements
+* Technical tasks
 
-This project focuses on **security, maintainability, and scalability**, similar to the database architecture used in large SaaS platforms.
+As a project grows, managing these tasks manually becomes difficult. This application provides a **centralized system where tasks can be created, tracked, and managed efficiently.**
+
+The project simulates the core logic used in real-world project management tools like Jira, allowing teams to collaborate and track progress visually.
 
 ---
 
-# Core Concepts
+# 🧠 Project Logic
 
-## Multi-Tenant Design
+The core concept of the system is **issue tracking and workflow management**.
 
-The system supports multiple organizations where each organization can contain:
+Each task (called an **issue**) moves through a workflow that represents its current state in the development process.
 
-* Projects
-* Issues
-* Members
-* Permissions
+Typical workflow:
 
-Each user can belong to multiple organizations and have different roles.
+```
+Todo → In Progress → Done
+```
 
----
+This workflow allows teams to clearly understand:
 
-## Role Based Access Control
+* What tasks still need to be done
+* What tasks are currently being worked on
+* What tasks have already been completed
 
-Permissions are managed through role hierarchies.
+Every issue can include:
 
-### Organization Roles
+* Title
+* Description
+* Status
+* Assigned user
+* Creation time
 
-* `owner`
-* `admin`
-* `member`
-* `viewer`
-
-### Project Roles
-
-* `project_admin`
-* `contributor`
-* `reviewer`
-* `viewer`
-
-### Issue Roles
-
-* `contributor`
-* `reviewer`
-* `watcher`
+Using a board-style interface, users can visually manage tasks and move them between workflow stages.
 
 ---
 
-## Row Level Security (RLS)
+# 🚀 Features
 
-PostgreSQL **Row Level Security** is used to enforce access control at the database level.
-
-Policies ensure that users can only access rows they are authorized to see.
-
-Example policy usage:
-
-* Organization membership validation
-* Project access control
-* Issue visibility restrictions
+* Create and manage issues
+* Assign tasks to users
+* Update task status
+* Track project progress
+* Issue descriptions
+* Simple workflow system
+* Board-style task management
 
 ---
 
-# Helper Authorization Functions
+# 🛠 Tech Stack
 
-Authorization logic is centralized using helper functions.
+Update this section depending on the technologies used in your project.
 
-Examples:
+**Frontend**
 
-* `auth_current_user_id()`
-* `auth_is_org_member()`
-* `auth_is_org_admin()`
-* `auth_is_project_admin()`
-* `auth_is_project_contributor()`
-* `auth_is_issue_contributor()`
+* React / HTML / CSS / JavaScript
 
-These functions are used inside **RLS policies** to enforce access control.
+**Backend**
+
+* Node.js
+* Express
+
+**Database**
+
+* MongoDB / PostgreSQL / MySQL
+
+**Version Control**
+
+* Git
+* GitHub
 
 ---
 
-# Project Structure
+# 📂 Project Architecture
+
+The application follows a common **client-server architecture**.
+
+```
+Frontend (UI)
+      ↓
+API Requests
+      ↓
+Backend Server
+      ↓
+Database
+```
+
+### Frontend
+
+Responsible for:
+
+* displaying tasks
+* interacting with the board
+* sending requests to the backend API
+
+### Backend
+
+Responsible for:
+
+* handling API requests
+* managing business logic
+* storing and retrieving data from the database
+
+### Database
+
+Stores:
+
+* issues
+* projects
+* users
+* issue status
+
+---
+
+# 🗂 Project Structure
+
+Example folder structure:
 
 ```
 jira/
-│
-├── functions
-│   ├── organization_helper_functions.sql
-│   ├── project_helper_functions.sql
-│   └── issue_helper_functions.sql
-│
-├── policies
-│
-├── schema
-│
-├── triggers
-│
-├── views
-│
-└── backup
+ ├── frontend/
+ ├── backend/
+ ├── models/
+ ├── routes/
+ ├── controllers/
+ ├── config/
+ └── README.md
+```
+
+Explanation:
+
+* **frontend/** – user interface
+* **backend/** – server logic
+* **models/** – database models
+* **routes/** – API routes
+* **controllers/** – request handling logic
+
+---
+
+# 📡 API Endpoints (Example)
+
+```
+GET    /issues
+POST   /issues
+PUT    /issues/:id
+DELETE /issues/:id
+```
+
+These endpoints allow the system to:
+
+* retrieve tasks
+* create new tasks
+* update task status
+* delete tasks
+
+---
+
+# ⚙️ Installation
+
+## 1️⃣ Clone the repository
+
+```
+git clone https://github.com/DemirCodes/jira.git
+cd jira
+```
+
+## 2️⃣ Install dependencies
+
+```
+npm install
+```
+
+## 3️⃣ Run the project
+
+```
+npm start
 ```
 
 ---
 
-# Technologies
+# 📌 Usage
 
-* PostgreSQL
-* SQL
-* Row Level Security (RLS)
-* Role Based Access Control (RBAC)
+1. Create a project
+2. Add issues or tasks
+3. Assign tasks to team members
+4. Move tasks between workflow stages
+5. Track project progress
 
----
+Example workflow:
 
-# Goals of This Project
-
-This repository aims to demonstrate how to design a **secure and scalable database architecture for SaaS applications**, similar to systems used by modern project management tools.
-
-Key goals include:
-
-* Secure multi-tenant isolation
-* Clean role-based permission models
-* Maintainable database structure
-* Production-ready authorization patterns
+```
+Todo → In Progress → Done
+```
 
 ---
 
-# Author
+# 🧩 Database Schema (Example)
 
-**DemirCodes**
+Example Issue Model:
 
-GitHub:
-https://github.com/DemirCodes
+```
+Issue
+ ├── id
+ ├── title
+ ├── description
+ ├── status
+ ├── assignedUser
+ └── createdAt
+```
 
 ---
 
-# License
+# 📷 Screenshots
 
-This project is open-source and intended for educational and architectural reference purposes.
+Add screenshots or GIFs of your application here.
 
+Example:
+
+* Project board
+* Issue creation
+* Task workflow
+
+---
+
+# 🧑‍💻 Developer Guide
+
+To contribute to the project:
+
+1. Fork the repository
+2. Create a new branch
+
+```
+git checkout -b feature/new-feature
+```
+
+3. Make your changes
+4. Commit your work
+
+```
+git commit -m "Add new feature"
+```
+
+5. Push to your branch
+
+```
+git push origin feature/new-feature
+```
+
+6. Open a Pull Request
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome.
+
+If you would like to improve the project, feel free to submit a pull request or open an issue.
+
+---
+
+# 📄 License
+
+MIT License
+
+---
+
+⭐ If you like this project, consider giving it a star on GitHub.
