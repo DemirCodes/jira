@@ -1,279 +1,219 @@
-# Jira Clone – Issue & Project Management System
+# Jira-Like Issue Tracking System — PostgreSQL Database Architecture
 
 ## 📌 Project Overview
 
-This project is a **Jira-style issue tracking and project management application** designed to help teams organize development tasks, track bugs, and manage project progress.
+This project focuses on designing the **database architecture of a Jira-like issue tracking system**.
 
-In software development, projects usually contain many work items such as:
+Instead of building the application interface, the goal of this project is to implement a **production-grade PostgreSQL schema** that can support a modern multi-tenant project management platform.
 
-* Feature requests
-* Bug reports
-* Improvements
-* Technical tasks
+The database structure models the core concepts used in real-world tools such as **Jira, Linear, or GitHub Issues**, including organizations, projects, issues, and role-based access control.
 
-As a project grows, managing these tasks manually becomes difficult. This application provides a **centralized system where tasks can be created, tracked, and managed efficiently.**
-
-The project simulates the core logic used in real-world project management tools like Jira, allowing teams to collaborate and track progress visually.
+The system is designed with **security, scalability, and data isolation** in mind.
 
 ---
 
-# 🧠 Project Logic
+# 🧠 Core Concepts
 
-The core concept of the system is **issue tracking and workflow management**.
-
-Each task (called an **issue**) moves through a workflow that represents its current state in the development process.
-
-Typical workflow:
+The database models a hierarchical structure commonly used in SaaS project management systems.
 
 ```
-Todo → In Progress → Done
+Organization
+     ↓
+Projects
+     ↓
+Issues
 ```
 
-This workflow allows teams to clearly understand:
+Each layer introduces different access rules and relationships between users and resources.
 
-* What tasks still need to be done
-* What tasks are currently being worked on
-* What tasks have already been completed
-
-Every issue can include:
-
-* Title
-* Description
-* Status
-* Assigned user
-* Creation time
-
-Using a board-style interface, users can visually manage tasks and move them between workflow stages.
+Users can belong to organizations and receive different permission levels that control what they can view or modify.
 
 ---
 
-# 🚀 Features
+# 🏢 Multi-Tenant Architecture
 
-* Create and manage issues
-* Assign tasks to users
-* Update task status
-* Track project progress
-* Issue descriptions
-* Simple workflow system
-* Board-style task management
+This system is designed as a **multi-tenant database**.
 
----
-
-# 🛠 Tech Stack
-
-Update this section depending on the technologies used in your project.
-
-**Frontend**
-
-* React / HTML / CSS / JavaScript
-
-**Backend**
-
-* Node.js
-* Express
-
-**Database**
-
-* MongoDB / PostgreSQL / MySQL
-
-**Version Control**
-
-* Git
-* GitHub
-
----
-
-# 📂 Project Architecture
-
-The application follows a common **client-server architecture**.
+Multiple organizations can exist in the same database while remaining completely isolated from each other.
 
 ```
-Frontend (UI)
-      ↓
-API Requests
-      ↓
-Backend Server
-      ↓
+Organization A
+   ├── Project 1
+   ├── Project 2
+   └── Issues
+
+Organization B
+   ├── Project X
+   └── Issues
+```
+
+Data isolation is enforced using **PostgreSQL Row Level Security (RLS)**.
+
+---
+
+# 🔐 Access Control System
+
+Access permissions are implemented using a **role-based authorization model**.
+
+## Organization Roles
+
+```
+owner
+admin
+member
+viewer
+```
+
+## Project Roles
+
+```
+project_admin
+contributor
+reviewer
+viewer
+```
+
+## Issue Roles
+
+```
+contributor
+reviewer
+watcher
+```
+
+These roles determine what actions a user can perform within the system.
+
+---
+
+# 🛡 Row Level Security (RLS)
+
+The database uses **PostgreSQL Row Level Security** to enforce access control directly at the database level.
+
+This ensures that users can only access data they are authorized to see.
+
+Example concept:
+
+```
+User → Organization Membership → Project Access → Issue Access
+```
+
+Security checks are implemented through **RLS policies and helper functions**.
+
+---
+
+# 🗂 Database Architecture
+
+The database schema includes the following core entities:
+
+```
+users
+organizations
+organization_memberships
+
+projects
+project_memberships
+
+issues
+issue_memberships
+```
+
+Hierarchy:
+
+```
+organizations
+     ↓
+projects
+     ↓
+issues
+```
+
+Membership tables define user roles and permissions within each level.
+
+---
+
+# ⚙️ Technologies
+
+This project focuses entirely on **database design and security architecture**.
+
 Database
-```
 
-### Frontend
+- PostgreSQL
 
-Responsible for:
+Concepts Used
 
-* displaying tasks
-* interacting with the board
-* sending requests to the backend API
-
-### Backend
-
-Responsible for:
-
-* handling API requests
-* managing business logic
-* storing and retrieving data from the database
-
-### Database
-
-Stores:
-
-* issues
-* projects
-* users
-* issue status
+- Multi-tenant database design
+- Role-based access control (RBAC)
+- PostgreSQL Row Level Security (RLS)
+- ENUM-based role systems
+- Soft-delete patterns
+- Helper authorization functions
 
 ---
 
-# 🗂 Project Structure
-
-Example folder structure:
+# 📂 Project Structure
 
 ```
-jira/
- ├── frontend/
- ├── backend/
- ├── models/
- ├── routes/
- ├── controllers/
- ├── config/
- └── README.md
+database/
+
+├── enums/
+├── tables/
+├── functions/
+│   ├── auth/
+│   └── helper/
+├── policies/
+│   ├── organizations/
+│   ├── projects/
+│   └── issues/
+└── migrations/
 ```
 
 Explanation:
 
-* **frontend/** – user interface
-* **backend/** – server logic
-* **models/** – database models
-* **routes/** – API routes
-* **controllers/** – request handling logic
+- **enums/** → role and status definitions  
+- **tables/** → schema definitions  
+- **functions/** → authorization helper functions  
+- **policies/** → RLS policies  
+- **migrations/** → database versioning  
 
 ---
 
-# 📡 API Endpoints (Example)
+# 🧩 Example Schema Design
+
+Example relationship structure:
 
 ```
-GET    /issues
-POST   /issues
-PUT    /issues/:id
-DELETE /issues/:id
+users
+   ↓
+organization_memberships
+   ↓
+organizations
+   ↓
+projects
+   ↓
+issues
 ```
 
-These endpoints allow the system to:
-
-* retrieve tasks
-* create new tasks
-* update task status
-* delete tasks
+This structure allows flexible permission management across multiple levels.
 
 ---
 
-# ⚙️ Installation
+# 🎯 Project Goal
 
-## 1️⃣ Clone the repository
+The goal of this project is to design a **secure, scalable PostgreSQL schema** capable of supporting a full-featured issue tracking system.
 
-```
-git clone https://github.com/DemirCodes/jira.git
-cd jira
-```
+The focus is on:
 
-## 2️⃣ Install dependencies
-
-```
-npm install
-```
-
-## 3️⃣ Run the project
-
-```
-npm start
-```
+- Data isolation
+- Permission management
+- Query performance
+- Maintainable schema design
 
 ---
 
-# 📌 Usage
+# 🧑‍💻 Author
 
-1. Create a project
-2. Add issues or tasks
-3. Assign tasks to team members
-4. Move tasks between workflow stages
-5. Track project progress
-
-Example workflow:
-
-```
-Todo → In Progress → Done
-```
+Database architecture and design by **DemirCodes**.
 
 ---
 
-# 🧩 Database Schema (Example)
-
-Example Issue Model:
-
-```
-Issue
- ├── id
- ├── title
- ├── description
- ├── status
- ├── assignedUser
- └── createdAt
-```
-
----
-
-# 📷 Screenshots
-
-Add screenshots or GIFs of your application here.
-
-Example:
-
-* Project board
-* Issue creation
-* Task workflow
-
----
-
-# 🧑‍💻 Developer Guide
-
-To contribute to the project:
-
-1. Fork the repository
-2. Create a new branch
-
-```
-git checkout -b feature/new-feature
-```
-
-3. Make your changes
-4. Commit your work
-
-```
-git commit -m "Add new feature"
-```
-
-5. Push to your branch
-
-```
-git push origin feature/new-feature
-```
-
-6. Open a Pull Request
-
----
-
-# 🤝 Contributing
-
-Contributions are welcome.
-
-If you would like to improve the project, feel free to submit a pull request or open an issue.
-
----
-
-# 📄 License
-
-MIT License
-
----
-
-⭐ If you like this project, consider giving it a star on GitHub.
+⭐ If you find this database architecture useful, consider giving the repository a star.
