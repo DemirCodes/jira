@@ -34,6 +34,19 @@ USING (
 
 
 -- ========================
+-- INSERT
+-- ========================
+
+CREATE POLICY organizations_insert_policy
+ON organizations
+FOR INSERT
+WITH CHECK (
+    created_by = auth_current_user_id()
+);
+
+
+/*
+-- ========================
 -- UPDATE
 -- ========================
 
@@ -63,14 +76,4 @@ USING (
     auth_is_org_owner(org_id)
 );
 
-
--- ========================
--- INSERT
--- ========================
-
-CREATE POLICY organizations_insert_policy
-ON organizations
-FOR INSERT
-WITH CHECK (
-    created_by = auth_current_user_id()
-);
+*/
