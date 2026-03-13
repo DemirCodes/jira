@@ -36,14 +36,14 @@ USING (
 -- ========================
 -- INSERT
 -- ========================
-
+/*
 CREATE POLICY organizations_insert_policy
 ON organizations
 FOR INSERT
 WITH CHECK (
     created_by = auth_current_user_id()
 );
-
+*/
 
 /*
 -- ========================
