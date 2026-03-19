@@ -23,11 +23,11 @@ BEGIN
 
     -- member ve viewer update yapamaz
     if not auth_is_org_owner(p_org_id)
-        and out auth_is_org_admin(p_org_id) THEN
+        and not auth_is_org_admin(p_org_id) THEN
         raise exception 'permission denied';
     end if;
 
-    if p_org_name is null  then 
+    if p_org_name is null and length(trim(p_org_name)) = 0 then 
         raise exception 'organization name cannot be empty';
     end if;
     

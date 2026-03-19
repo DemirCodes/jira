@@ -22,7 +22,7 @@ begin
     v_org_name := trim(org_name);
 
     -- user check
-    v_user_id := current_setting('app.current_user_id')::uuid;
+    v_user_id := auth_current_useR_id();
 
     if v_user_id is null then 
         raise exception 'user not authenticated';
@@ -65,3 +65,12 @@ end;
 $$;
 
 select * from organizations;
+
+SELECT 
+    routine_name
+FROM 
+    information_schema.routines
+WHERE 
+    routine_schema = 'public'
+AND 
+    routine_definition ILIKE '%organizations%';

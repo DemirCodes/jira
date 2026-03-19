@@ -40,7 +40,7 @@ BEGIN
     end if;
 
     -- soft delete
-    update organizations
+    update organizations    
     set deleted_at = now()
     where org_id = p_org_id;
 
