@@ -3,7 +3,7 @@ create or replace function update_orgzanization(
     p_org_name text DEFAULT NULL,
     p_org_description text default null,
     p_slug text default NULL,
-    p_org_status org_status default null
+    p_org_status text default null
 )
 returns void
 language plpgsql
@@ -32,7 +32,7 @@ BEGIN
     end if;
     
     if p_org_status is not null 
-        and out auth_is_org_owner(p_org_id) THEN
+        and not auth_is_org_owner(p_org_id) THEN
         raise exception 'only owner can update organization status';
     end if;
 
