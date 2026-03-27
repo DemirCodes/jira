@@ -359,9 +359,67 @@
             <column ascending="true" name="project_name"/>
          </index>
       </table>
+      <table name="site_assets" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="site_asset_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="site_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="site_id" foreignKey="site_assets_site_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="sites"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="uploaded_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="site_assets_uploaded_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="asset_type" nullable="false" remarks="" size="2147483647" type="asset_type" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="file_name" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="mime_type" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="byte_size" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="storage_key" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="checksum" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'{}'::jsonb" digits="0" id="9" name="metadata" nullable="true" remarks="" size="2147483647" type="jsonb" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="10" name="is_active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="11" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="12" name="updated_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="13" name="deleted_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="deleted_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="site_assets_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <primaryKey column="site_asset_id" sequenceNumberInPK="1"/>
+         <index name="site_assets_pkey" unique="true">
+            <column ascending="true" name="site_asset_id"/>
+         </index>
+      </table>
+      <table name="site_memberships" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="site_membership_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="site_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="site_id" foreignKey="site_memberships_site_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="sites"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="site_memberships_user_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="role" nullable="false" remarks="" size="2147483647" type="site_role" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="invited_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="site_memberships_invited_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="5" name="membership_is_active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="6" name="joined_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="7" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="8" name="updated_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="9" name="deleted_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="deleted_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="site_memberships_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <primaryKey column="site_membership_id" sequenceNumberInPK="1"/>
+         <index name="site_memberships_pkey" unique="true">
+            <column ascending="true" name="site_membership_id"/>
+         </index>
+         <index name="site_memberships_site_id_user_id_key" unique="true">
+            <column ascending="true" name="site_id"/>
+            <column ascending="true" name="user_id"/>
+         </index>
+      </table>
       <table name="sites" remarks="" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="site_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
             <child column="site_id" foreignKey="projects_site_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="projects"/>
+            <child column="site_id" foreignKey="site_assets_site_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="site_assets"/>
+            <child column="site_id" foreignKey="site_memberships_site_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="site_memberships"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="org_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
             <parent column="org_id" foreignKey="sites_org_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="organizations"/>
@@ -430,6 +488,11 @@
             <child column="completed_by" foreignKey="projects_completed_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="projects"/>
             <child column="created_by" foreignKey="projects_created_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="projects"/>
             <child column="deleted_by" foreignKey="projects_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="projects"/>
+            <child column="deleted_by" foreignKey="site_assets_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="site_assets"/>
+            <child column="uploaded_by" foreignKey="site_assets_uploaded_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="site_assets"/>
+            <child column="deleted_by" foreignKey="site_memberships_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="site_memberships"/>
+            <child column="invited_by" foreignKey="site_memberships_invited_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="site_memberships"/>
+            <child column="user_id" foreignKey="site_memberships_user_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="site_memberships"/>
             <child column="created_by" foreignKey="sites_created_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="sites"/>
             <child column="deleted_by" foreignKey="sites_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="sites"/>
             <child column="deleted_by" foreignKey="users_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>

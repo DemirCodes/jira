@@ -8,8 +8,10 @@ issue_assets
 issue_memberships
 organization_assets
 project_assets
+site_assets
 organization_memberships
 project_memberships
 project_requirements
+site_memberships
 application_bugs
 system_audit_logs

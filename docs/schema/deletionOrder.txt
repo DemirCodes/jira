@@ -1,8 +1,10 @@
 system_audit_logs
 application_bugs
+site_memberships
 project_requirements
 project_memberships
 organization_memberships
+site_assets
 project_assets
 organization_assets
 issue_memberships
