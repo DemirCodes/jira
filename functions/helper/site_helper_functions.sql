@@ -36,9 +36,8 @@ as $$
 
 $$;
 
-contrubitor
 
-create or replace function auth_is_site_contrubitor(p_site_id uuid)
+create or replace function auth_is_site_contributor(p_site_id uuid)
 returns BOOLEAN
 language SQL
 STABLE
@@ -55,7 +54,7 @@ as $$
                 AND
                 sm.user_id = auth_current_user_id()
                 AND
-                sm.role = 'contrubitor'
+                sm.role = 'contributor'
                 AND
                 sm.deleted_at is null
         )
@@ -88,5 +87,3 @@ as $$
         )
 
 $$;
-
-
