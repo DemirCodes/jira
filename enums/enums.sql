@@ -43,3 +43,11 @@ EXCEPTION WHEN duplicate_object THEN NULL; END $$;
 DO $$ BEGIN
   CREATE TYPE site_status AS ENUM ('active','archived','suspended');
 EXCEPTION WHEN duplicate_object THEN NULL; END $$;
+
+DO $$ BEGIN
+CREATE TYPE public.org_status AS ENUM (
+    'active',
+    'completed',
+    'archived'
+);
+EXCEPTION when duplicate_object then null; end $$;

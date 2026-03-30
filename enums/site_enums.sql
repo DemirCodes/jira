@@ -1,8 +1,9 @@
 create type public.site_role as ENUM 
 (
-    'site_admin',
+    'admin',
     'contrubitor',
     'viewer'
 );
+
 
 

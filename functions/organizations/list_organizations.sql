@@ -27,7 +27,7 @@ BEGIN
             o.org_name,
             o.slug,
             o.org_status,
-            om.joined_at,
+            om.joined_at, 
             om.role
         FROM
             organizations as o

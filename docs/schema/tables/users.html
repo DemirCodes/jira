@@ -118,9 +118,19 @@
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
+                                                <td title="api_keys.user_id references users.user_id via api_keys_user_id_fkey"><a href='api_keys.html'>api_keys</a><span class='relatedKey'>.user_id</span></td>
+                                                <td class="constraint detail">api_keys_user_id_fkey</td>
+                                                <td class="constraint detail"><span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
+                                            </tr>
+                                            <tr>
                                                 <td title="application_bugs.reported_by references users.user_id via application_bugs_reported_by_fkey"><a href='application_bugs.html'>application_bugs</a><span class='relatedKey'>.reported_by</span></td>
                                                 <td class="constraint detail">application_bugs_reported_by_fkey</td>
                                                 <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="email_verifications.user_id references users.user_id via email_verifications_user_id_fkey"><a href='email_verifications.html'>email_verifications</a><span class='relatedKey'>.user_id</span></td>
+                                                <td class="constraint detail">email_verifications_user_id_fkey</td>
+                                                <td class="constraint detail"><span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
                                             </tr>
                                             <tr>
                                                 <td title="issue_assets.deleted_by references users.user_id via issue_assets_deleted_by_fkey"><a href='issue_assets.html'>issue_assets</a><span class='relatedKey'>.deleted_by</span></td>
@@ -191,6 +201,11 @@
                                                 <td title="organizations.deleted_by references users.user_id via organizations_deleted_by_fkey"><a href='organizations.html'>organizations</a><span class='relatedKey'>.deleted_by</span></td>
                                                 <td class="constraint detail">organizations_deleted_by_fkey</td>
                                                 <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="password_reset_tokens.user_id references users.user_id via password_reset_tokens_user_id_fkey"><a href='password_reset_tokens.html'>password_reset_tokens</a><span class='relatedKey'>.user_id</span></td>
+                                                <td class="constraint detail">password_reset_tokens_user_id_fkey</td>
+                                                <td class="constraint detail"><span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
                                             </tr>
                                             <tr>
                                                 <td title="project_assets.deleted_by references users.user_id via project_assets_deleted_by_fkey"><a href='project_assets.html'>project_assets</a><span class='relatedKey'>.deleted_by</span></td>
@@ -281,6 +296,11 @@
                                                 <td title="sites.deleted_by references users.user_id via sites_deleted_by_fkey"><a href='sites.html'>sites</a><span class='relatedKey'>.deleted_by</span></td>
                                                 <td class="constraint detail">sites_deleted_by_fkey</td>
                                                 <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="user_sessions.user_id references users.user_id via user_sessions_user_id_fkey"><a href='user_sessions.html'>user_sessions</a><span class='relatedKey'>.user_id</span></td>
+                                                <td class="constraint detail">user_sessions_user_id_fkey</td>
+                                                <td class="constraint detail"><span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
                                             </tr>
                                             <tr>
                                                 <td title="users.deleted_by references users.user_id via users_deleted_by_fkey"><a href='users.html'>users</a><span class='relatedKey'>.deleted_by</span></td>
@@ -521,6 +541,125 @@
                                     </td>
                                     <td></td>
                                 </tr>
+                                <tr>
+                                    <td><span id="email_verified_at">email_verified_at</span></td>
+                                    <td>timestamptz</td>
+                                    <td>35,6</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="email_verification_token">email_verification_token</span></td>
+                                    <td>text</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="password_reset_token">password_reset_token</span></td>
+                                    <td>text</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="password_reset_expires_at">password_reset_expires_at</span></td>
+                                    <td>timestamptz</td>
+                                    <td>35,6</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="two_factor_secret">two_factor_secret</span></td>
+                                    <td>text</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="two_factor_enabled">two_factor_enabled</span></td>
+                                    <td>bool</td>
+                                    <td>1</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>false</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="last_password_change_at">last_password_change_at</span></td>
+                                    <td>timestamptz</td>
+                                    <td>35,6</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>now()</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -592,42 +731,50 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="application_bugs.html" target="_top" title="application_bugs" alt="" coords="1484,201,1732,465">
-<area shape="rect" id="node2" href="organizations.html" target="_top" title="organizations" alt="" coords="503,388,720,623">
-<area shape="rect" id="node3" href="projects.html" target="_top" title="projects" alt="" coords="1168,895,1404,1188">
-<area shape="rect" id="node4" href="users.html" target="_top" title="users" alt="" coords="45,1039,459,1519">
-<area shape="rect" id="node13" href="sites.html" target="_top" title="sites" alt="" coords="858,1493,1017,1728">
-<area shape="rect" id="node5" href="issue_assets.html" target="_top" title="issue_assets" alt="" coords="1833,5,2039,211">
-<area shape="rect" id="node6" href="issues.html" target="_top" title="issues" alt="" coords="1499,483,1717,805">
-<area shape="rect" id="node7" href="issue_memberships.html" target="_top" title="issue_memberships" alt="" coords="1799,724,2073,929">
-<area shape="rect" id="node8" href="organization_assets.html" target="_top" title="organization_assets" alt="" coords="799,169,1076,375">
-<area shape="rect" id="node9" href="organization_memberships.html" target="_top" title="organization_memberships" alt="" coords="764,532,1111,767">
-<area shape="rect" id="node10" href="project_assets.html" target="_top" title="project_assets" alt="" coords="1496,895,1720,1100">
-<area shape="rect" id="node11" href="project_memberships.html" target="_top" title="project_memberships" alt="" coords="1461,1117,1755,1352">
-<area shape="rect" id="node12" href="project_requirements.html" target="_top" title="project_requirements" alt="" coords="1461,1369,1755,1604">
-<area shape="rect" id="node14" href="site_assets.html" target="_top" title="site_assets" alt="" coords="1191,1503,1381,1708">
-<area shape="rect" id="node15" href="site_memberships.html" target="_top" title="site_memberships" alt="" coords="1155,1725,1417,1960">
+<area shape="rect" id="node1" href="api_keys.html" target="_top" title="api_keys" alt="" coords="641,5,810,181">
+<area shape="rect" id="node2" href="users.html" target="_top" title="users" alt="" coords="57,1155,526,1840">
+<area shape="rect" id="node3" href="application_bugs.html" target="_top" title="application_bugs" alt="" coords="1645,271,1893,535">
+<area shape="rect" id="node4" href="organizations.html" target="_top" title="organizations" alt="" coords="617,657,834,892">
+<area shape="rect" id="node5" href="projects.html" target="_top" title="projects" alt="" coords="1329,964,1565,1257">
+<area shape="rect" id="node16" href="sites.html" target="_top" title="sites" alt="" coords="1019,1563,1177,1797">
+<area shape="rect" id="node6" href="email_verifications.html" target="_top" title="email_verifications" alt="" coords="592,1995,859,2171">
+<area shape="rect" id="node7" href="issue_assets.html" target="_top" title="issue_assets" alt="" coords="1994,107,2199,312">
+<area shape="rect" id="node8" href="issues.html" target="_top" title="issues" alt="" coords="1659,552,1878,875">
+<area shape="rect" id="node9" href="issue_memberships.html" target="_top" title="issue_memberships" alt="" coords="1959,793,2234,999">
+<area shape="rect" id="node10" href="organization_assets.html" target="_top" title="organization_assets" alt="" coords="959,451,1237,656">
+<area shape="rect" id="node11" href="organization_memberships.html" target="_top" title="organization_memberships" alt="" coords="925,765,1271,1000">
+<area shape="rect" id="node12" href="password_reset_tokens.html" target="_top" title="password_reset_tokens" alt="" coords="570,2188,881,2364">
+<area shape="rect" id="node13" href="project_assets.html" target="_top" title="project_assets" alt="" coords="1657,964,1881,1169">
+<area shape="rect" id="node14" href="project_memberships.html" target="_top" title="project_memberships" alt="" coords="1622,1187,1915,1421">
+<area shape="rect" id="node15" href="project_requirements.html" target="_top" title="project_requirements" alt="" coords="1622,1439,1915,1673">
+<area shape="rect" id="node17" href="site_assets.html" target="_top" title="site_assets" alt="" coords="1351,1572,1542,1777">
+<area shape="rect" id="node18" href="site_memberships.html" target="_top" title="site_memberships" alt="" coords="1315,1795,1578,2029">
+<area shape="rect" id="node19" href="user_sessions.html" target="_top" title="user_sessions" alt="" coords="616,2381,835,2557">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/users.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="application_bugs.html" target="_top" title="application_bugs" alt="" coords="1481,41,1729,129">
-<area shape="rect" id="node2" href="platform_users.html" target="_top" title="platform_users" alt="" coords="1170,5,1399,93">
-<area shape="rect" id="node3" href="organizations.html" target="_top" title="organizations" alt="" coords="503,272,720,360">
-<area shape="rect" id="node4" href="projects.html" target="_top" title="projects" alt="" coords="1203,565,1366,653">
-<area shape="rect" id="node5" href="users.html" target="_top" title="users" alt="" coords="45,539,459,1019">
-<area shape="rect" id="node14" href="sites.html" target="_top" title="sites" alt="" coords="873,633,1002,721">
-<area shape="rect" id="node6" href="issue_assets.html" target="_top" title="issue_assets" alt="" coords="1831,120,2036,208">
-<area shape="rect" id="node7" href="issues.html" target="_top" title="issues" alt="" coords="1533,321,1677,409">
-<area shape="rect" id="node8" href="issue_memberships.html" target="_top" title="issue_memberships" alt="" coords="1796,487,2071,575">
-<area shape="rect" id="node9" href="organization_assets.html" target="_top" title="organization_assets" alt="" coords="799,199,1076,287">
-<area shape="rect" id="node10" href="organization_memberships.html" target="_top" title="organization_memberships" alt="" coords="764,408,1111,496">
-<area shape="rect" id="node11" href="project_assets.html" target="_top" title="project_assets" alt="" coords="1493,629,1717,717">
-<area shape="rect" id="node12" href="project_memberships.html" target="_top" title="project_memberships" alt="" coords="1459,735,1752,823">
-<area shape="rect" id="node13" href="project_requirements.html" target="_top" title="project_requirements" alt="" coords="1459,840,1752,928">
-<area shape="rect" id="node15" href="site_assets.html" target="_top" title="site_assets" alt="" coords="1189,927,1380,1015">
-<area shape="rect" id="node16" href="site_memberships.html" target="_top" title="site_memberships" alt="" coords="1155,1032,1415,1120">
+<area shape="rect" id="node1" href="api_keys.html" target="_top" title="api_keys" alt="" coords="641,5,810,181">
+<area shape="rect" id="node2" href="users.html" target="_top" title="users" alt="" coords="57,791,526,1476">
+<area shape="rect" id="node3" href="application_bugs.html" target="_top" title="application_bugs" alt="" coords="1642,461,1890,549">
+<area shape="rect" id="node4" href="platform_users.html" target="_top" title="platform_users" alt="" coords="1331,459,1560,547">
+<area shape="rect" id="node5" href="organizations.html" target="_top" title="organizations" alt="" coords="617,532,834,620">
+<area shape="rect" id="node6" href="projects.html" target="_top" title="projects" alt="" coords="1364,1101,1527,1189">
+<area shape="rect" id="node17" href="sites.html" target="_top" title="sites" alt="" coords="1033,773,1163,861">
+<area shape="rect" id="node7" href="email_verifications.html" target="_top" title="email_verifications" alt="" coords="592,339,859,515">
+<area shape="rect" id="node8" href="issue_assets.html" target="_top" title="issue_assets" alt="" coords="1991,852,2197,940">
+<area shape="rect" id="node9" href="issues.html" target="_top" title="issues" alt="" coords="1694,1015,1838,1103">
+<area shape="rect" id="node10" href="issue_memberships.html" target="_top" title="issue_memberships" alt="" coords="1957,1108,2231,1196">
+<area shape="rect" id="node11" href="organization_assets.html" target="_top" title="organization_assets" alt="" coords="959,287,1237,375">
+<area shape="rect" id="node12" href="organization_memberships.html" target="_top" title="organization_memberships" alt="" coords="925,600,1271,688">
+<area shape="rect" id="node13" href="password_reset_tokens.html" target="_top" title="password_reset_tokens" alt="" coords="570,877,881,1053">
+<area shape="rect" id="node14" href="project_assets.html" target="_top" title="project_assets" alt="" coords="1654,1187,1878,1275">
+<area shape="rect" id="node15" href="project_memberships.html" target="_top" title="project_memberships" alt="" coords="1619,1292,1913,1380">
+<area shape="rect" id="node16" href="project_requirements.html" target="_top" title="project_requirements" alt="" coords="1619,1397,1913,1485">
+<area shape="rect" id="node18" href="site_assets.html" target="_top" title="site_assets" alt="" coords="1350,235,1541,323">
+<area shape="rect" id="node19" href="site_memberships.html" target="_top" title="site_memberships" alt="" coords="1315,687,1575,775">
+<area shape="rect" id="node20" href="user_sessions.html" target="_top" title="user_sessions" alt="" coords="616,1447,835,1623">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/users.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>

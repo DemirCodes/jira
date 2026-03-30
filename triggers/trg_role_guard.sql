@@ -18,7 +18,7 @@ BEGIN
             from 
                 organizations as o
             where
-                o.org_id = v_org_id;   
+                o.org_id = v_org_id   
         )
         THEN
             RAISE EXCEPTION 'Its not already organization %',v_org_id;
