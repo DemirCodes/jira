@@ -1,73 +1,92 @@
 # Jira-Like Multi-Tenant Issue Tracking Platform
 
-## Project Overview
+A production-grade **multi-tenant issue tracking system architecture** inspired by modern tools such as:
 
-This project is an experimental Jira-like issue tracking system focused primarily on database architecture and scalable SaaS design.
+- Jira
+- Linear
+- GitHub Issues
 
-The goal of this project is to design a production-grade PostgreSQL schema capable of supporting a modern issue tracking platform similar to Jira, Linear or GitHub Issues.
+This project focuses on designing a **secure, scalable and production-ready PostgreSQL database architecture** that can support a modern SaaS issue tracking platform.
 
-The system is designed as a multi-tenant SaaS architecture where multiple organizations can manage their own projects, sites and issues while sharing the same infrastructure.
-
-At the moment the main focus of the project is the database architecture. Backend services and a web interface will be added later.
-
----
-
-## Planned System Architecture
-
-Due to budget limitations the system is implemented using containerized services instead of a large distributed infrastructure.
-
-The system will run using three main containers.
-
-System flow:
-
-NGINX Reverse Proxy  
-        │  
-        │  
- ┌───────────────┬───────────────┬───────────────┐  
- │               │               │  
-DATABASE       BACKEND         FRONTEND  
-PostgreSQL     Node.js API     React App  
-Container      Container       Container  
+The system is designed using **containerized services** and follows **multi-tenant SaaS principles** to support multiple organizations within the same infrastructure.
 
 ---
 
-## Container Responsibilities
+# System Architecture
 
-Database Container
+Due to budget limitations the platform is designed using a **container based architecture** where each major component runs in its own container.
 
-PostgreSQL is responsible for:
+System architecture overview:
 
-- multi-tenant schema design
-- role based authorization logic
-- stored procedures
-- triggers
-- audit logging
-- relational data integrity
 
-Backend Container
+                 ┌───────────────┐
+                 │     NGINX     │
+                 │ Reverse Proxy │
+                 └───────┬───────┘
+                         │
+    ┌────────────────────┼────────────────────┐
+    │                    │                    │
+    ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
+    │ DATABASE     │ │ BACKEND      │ │ FRONTEND     │
+    │ PostgreSQL   │ │ Node.js API  │ │ React App    │
+    │ Container    │ │ Container    │ │ Container    │
+    └──────────────┘ └──────────────┘ └──────────────┘
 
-The backend service will handle:
+    
+---
 
+# Container Responsibilities
+
+## Database Container
+
+The database layer is implemented using **PostgreSQL** and contains the core business logic of the platform.
+
+Responsibilities:
+
+- Multi-tenant relational schema
+- Role-based access control
+- Stored procedures
+- Trigger based role validation
+- Data integrity constraints
+- Audit logging
+- Soft delete patterns
+
+The database is designed to support **production scale SaaS systems**.
+
+---
+
+## Backend / API Container
+
+The backend service provides the application API and business logic.
+
+Responsibilities:
+
+- Authentication
+- Authorization
 - API endpoints
-- authentication
-- authorization
-- business logic
-- database communication
+- Business logic
+- Database communication
 
-Technologies planned:
+Technology stack:
 
 - Node.js
 - TypeScript
+- REST API architecture
 
-Frontend Container
+---
 
-The user interface will provide:
+## Frontend Container
 
-- organization management
-- project dashboards
-- issue tracking UI
+The frontend provides the user interface for interacting with the platform.
 
-Technologies planned:
+Features planned:
+
+- Organization management
+- Project dashboards
+- Issue tracking interface
+- Team collaboration tools
+
+Technology stack:
 
 - React.js
 - HTML
@@ -75,21 +94,11 @@ Technologies planned:
 
 ---
 
-## Technology Stack
+# Infrastructure & DevOps Stack
 
-Backend
+The infrastructure layer is designed with scalability and observability in mind.
 
-- Node.js
-- TypeScript
-- PostgreSQL
-
-Frontend
-
-- React.js
-- HTML
-- CSS
-
-Infrastructure
+Technologies used:
 
 - Docker
 - Kubernetes
@@ -97,164 +106,215 @@ Infrastructure
 - Prometheus
 - Grafana
 
+Responsibilities:
+
+Docker  
+Containerization of services.
+
+Kubernetes  
+Container orchestration and horizontal scaling.
+
+NGINX  
+Reverse proxy and request routing.
+
+Prometheus  
+System metrics and monitoring.
+
+Grafana  
+Monitoring dashboards and observability.
+
 ---
 
-## Core Concepts
+# Core Domain Model
 
-The database models the hierarchical structure commonly used in SaaS project management platforms.
+The database models the hierarchical structure commonly used in modern project management platforms.
 
-Organization  
-↓  
-Site  
-↓  
-Project  
-↓  
-Issue  
+     Organization
+          ↓
+        Site
+          ↓
+       Project
+          ↓
+        Issue
 
-Each level introduces its own membership model and permission system.
+
+Each level introduces its own **membership system and permission model**.
 
 Users can belong to multiple organizations and receive different permissions depending on their role.
 
 ---
 
-## Multi-Tenant Architecture
+# Multi-Tenant Architecture
 
-The platform is designed as a multi-tenant SaaS system.
+The platform is designed as a **multi-tenant SaaS system**.
 
-Multiple organizations share the same infrastructure while their data remains logically isolated.
+Multiple organizations share the same infrastructure while remaining logically isolated.
 
 Example structure:
 
-Organization A  
- ├── Site 1  
- │   ├── Project A  
- │   └── Issues  
- └── Site 2  
+    Organization A
+    ├── Site 1
+    │ ├── Project A
+    │ │ ├── Issue 1
+    │ │ └── Issue 2
+    │ └── Project B
+    └── Site 2
 
-Organization B  
- └── Project X  
-     └── Issues  
+    Organization B
+    └── Site X
+    └── Project X
+    └── Issues
 
-Tenant isolation is enforced through:
+
+
+Tenant isolation is implemented using:
 
 - membership relationships
 - authorization helper functions
-- role validation triggers
-- relational constraints
+- database constraints
+- trigger-based permission validation
 
 ---
 
-## Access Control Model
+# Access Control Model
 
-Permissions are implemented using a role-based authorization model.
+Permissions are implemented using **Role Based Access Control (RBAC)**.
 
-Organization Roles
+## Organization Roles
+owner
+admin
+member
+viewer
 
-- owner
-- admin
-- member
-- viewer
 
-Site Roles
+Owner  
+Full administrative access to the organization.
 
-- admin
-- contrubitor
-- viewer
+Admin  
+Manage members, projects and resources.
 
-Project Roles
+Member  
+Participate in projects and issues.
 
-- project_admin
-- contributor
-- reviewer
-- viewer
-
-Issue Roles
-
-- contributor
-- reviewer
-- watcher
-
-Each role defines what actions a user can perform inside the system.
+Viewer  
+Read-only access.
 
 ---
 
-## Database Entities
+## Site Roles
+admin
+contrubitor
+viewer
 
-The PostgreSQL schema includes the following core entities.
 
-Users
 
-Stores platform users and authentication data.
+Site roles define permissions within organizational workspaces.
 
-Organizations
+---
 
+## Project Roles
+project_admin
+contributor
+reviewer
+viewer
+
+
+
+Project roles determine how users interact with project tasks and issues.
+
+---
+
+## Issue Roles
+contributor
+reviewer
+watcher
+
+
+These roles define participation at the issue level.
+
+---
+
+# Database Entities
+
+The PostgreSQL schema contains the following core entities.
+
+Users  
+Stores application users and authentication data.
+
+Organizations  
 Represents tenants within the platform.
 
-Organization Memberships
+Organization Memberships  
+Defines user roles within organizations.
 
-Defines which users belong to an organization and their role.
+Sites  
+Logical workspaces inside organizations.
 
-Sites
-
-Logical workspaces inside an organization.
-
-Projects
-
+Projects  
 Projects belong to sites and contain issues.
 
-Issues
+Issues  
+Represents tasks, bugs, stories or epics.
 
-Issues represent tasks, bugs, stories or epics.
+Issue Memberships  
+Defines contributors and reviewers for issues.
 
-Issue Memberships
+Assets  
+Files attached to organizations, sites, projects or issues.
 
-Defines issue level participation such as contributors or reviewers.
-
-Assets
-
-Files can be attached to:
-
-- organizations
-- sites
-- projects
-- issues
-
-Audit Logs
-
-The system records important actions in an audit log table.
+Audit Logs  
+Tracks system actions for security and traceability.
 
 ---
 
-## Database Features
+# Database Design Features
 
-The database architecture includes advanced PostgreSQL patterns such as:
+The database architecture includes advanced PostgreSQL patterns used in production systems.
 
+Key features:
+
+- Multi-tenant schema design
+- Role Based Access Control (RBAC)
 - ENUM based role systems
-- multi-tenant schema design
-- role based access control
-- trigger based permission validation
-- helper authorization functions
-- soft delete patterns
-- audit logging
+- Trigger based role validation
+- Authorization helper functions
+- Soft delete architecture
+- Audit logging
+- Data integrity constraints
 
 ---
 
-## Project Goal
+# Project Goal
 
-The goal of this project is to design a secure and scalable PostgreSQL schema capable of supporting a full issue tracking platform.
+The main objective of this project is to design a **secure, scalable and production-ready PostgreSQL database architecture** capable of supporting a full SaaS issue tracking platform.
 
-The focus of this project includes:
+The focus areas include:
 
-- database security
-- tenant isolation
-- scalable schema design
-- maintainable relational structure
-- real-world SaaS database architecture
+- Tenant isolation
+- Security
+- Database integrity
+- Performance
+- Maintainable schema design
 
 ---
 
-## Author
+# Future Improvements
 
-Database architecture and design by DemirCodes.
+Planned improvements include:
 
-If you find this project useful consider giving the repository a star.
+- Full backend implementation
+- Authentication service
+- CI/CD pipelines
+- Kubernetes production deployment
+- Event driven architecture
+- Distributed logging and tracing
+
+---
+
+# Author
+
+Database architecture and design by **DemirCodes**
+
+---
+
+If you find this project useful, consider giving the repository a ⭐.
