@@ -1,219 +1,260 @@
-# Jira-Like Issue Tracking System — PostgreSQL Database Architecture
+# Jira-Like Multi-Tenant Issue Tracking Platform
 
-## 📌 Project Overview
+## Project Overview
 
-This project focuses on designing the **database architecture of a Jira-like issue tracking system**.
+This project is an experimental Jira-like issue tracking system focused primarily on database architecture and scalable SaaS design.
 
-Instead of building the application interface, the goal of this project is to implement a **production-grade PostgreSQL schema** that can support a modern multi-tenant project management platform.
+The goal of this project is to design a production-grade PostgreSQL schema capable of supporting a modern issue tracking platform similar to Jira, Linear or GitHub Issues.
 
-The database structure models the core concepts used in real-world tools such as **Jira, Linear, or GitHub Issues**, including organizations, projects, issues, and role-based access control.
+The system is designed as a multi-tenant SaaS architecture where multiple organizations can manage their own projects, sites and issues while sharing the same infrastructure.
 
-The system is designed with **security, scalability, and data isolation** in mind.
-
----
-
-# 🧠 Core Concepts
-
-The database models a hierarchical structure commonly used in SaaS project management systems.
-
-```
-Organization
-     ↓
-Projects
-     ↓
-Issues
-```
-
-Each layer introduces different access rules and relationships between users and resources.
-
-Users can belong to organizations and receive different permission levels that control what they can view or modify.
+At the moment the main focus of the project is the database architecture. Backend services and a web interface will be added later.
 
 ---
 
-# 🏢 Multi-Tenant Architecture
+## Planned System Architecture
 
-This system is designed as a **multi-tenant database**.
+Due to budget limitations the system is implemented using containerized services instead of a large distributed infrastructure.
 
-Multiple organizations can exist in the same database while remaining completely isolated from each other.
+The system will run using three main containers.
 
-```
-Organization A
-   ├── Project 1
-   ├── Project 2
-   └── Issues
+System flow:
 
-Organization B
-   ├── Project X
-   └── Issues
-```
-
-Data isolation is enforced using **PostgreSQL Row Level Security (RLS)**.
+NGINX Reverse Proxy  
+        │  
+        │  
+ ┌───────────────┬───────────────┬───────────────┐  
+ │               │               │  
+DATABASE       BACKEND         FRONTEND  
+PostgreSQL     Node.js API     React App  
+Container      Container       Container  
 
 ---
 
-# 🔐 Access Control System
+## Container Responsibilities
 
-Access permissions are implemented using a **role-based authorization model**.
+Database Container
 
-## Organization Roles
+PostgreSQL is responsible for:
 
-```
-owner
-admin
-member
-viewer
-```
+- multi-tenant schema design
+- role based authorization logic
+- stored procedures
+- triggers
+- audit logging
+- relational data integrity
 
-## Project Roles
+Backend Container
 
-```
-project_admin
-contributor
-reviewer
-viewer
-```
+The backend service will handle:
 
-## Issue Roles
+- API endpoints
+- authentication
+- authorization
+- business logic
+- database communication
 
-```
-contributor
-reviewer
-watcher
-```
+Technologies planned:
 
-These roles determine what actions a user can perform within the system.
+- Node.js
+- TypeScript
 
----
+Frontend Container
 
-# 🛡 Row Level Security (RLS)
+The user interface will provide:
 
-The database uses **PostgreSQL Row Level Security** to enforce access control directly at the database level.
+- organization management
+- project dashboards
+- issue tracking UI
 
-This ensures that users can only access data they are authorized to see.
+Technologies planned:
 
-Example concept:
-
-```
-User → Organization Membership → Project Access → Issue Access
-```
-
-Security checks are implemented through **RLS policies and helper functions**.
+- React.js
+- HTML
+- CSS
 
 ---
 
-# 🗂 Database Architecture
+## Technology Stack
 
-The database schema includes the following core entities:
+Backend
 
-```
-users
-organizations
-organization_memberships
-
-projects
-project_memberships
-
-issues
-issue_memberships
-```
-
-Hierarchy:
-
-```
-organizations
-     ↓
-projects
-     ↓
-issues
-```
-
-Membership tables define user roles and permissions within each level.
-
----
-
-# ⚙️ Technologies
-
-This project focuses entirely on **database design and security architecture**.
-
-Database
-
+- Node.js
+- TypeScript
 - PostgreSQL
 
-Concepts Used
+Frontend
 
-- Multi-tenant database design
-- Role-based access control (RBAC)
-- PostgreSQL Row Level Security (RLS)
-- ENUM-based role systems
-- Soft-delete patterns
-- Helper authorization functions
+- React.js
+- HTML
+- CSS
 
----
+Infrastructure
 
-# 📂 Project Structure
-
-```
-database/
-
-├── enums/
-├── tables/
-├── functions/
-│   ├── auth/
-│   └── helper/
-├── policies/
-│   ├── organizations/
-│   ├── projects/
-│   └── issues/
-└── migrations/
-```
-
-Explanation:
-
-- **enums/** → role and status definitions  
-- **tables/** → schema definitions  
-- **functions/** → authorization helper functions  
-- **policies/** → RLS policies  
-- **migrations/** → database versioning  
+- Docker
+- Kubernetes
+- NGINX
+- Prometheus
+- Grafana
 
 ---
 
-# 🧩 Example Schema Design
+## Core Concepts
 
-Example relationship structure:
+The database models the hierarchical structure commonly used in SaaS project management platforms.
 
-```
-users
-   ↓
-organization_memberships
-   ↓
-organizations
-   ↓
-projects
-   ↓
-issues
-```
+Organization  
+↓  
+Site  
+↓  
+Project  
+↓  
+Issue  
 
-This structure allows flexible permission management across multiple levels.
+Each level introduces its own membership model and permission system.
+
+Users can belong to multiple organizations and receive different permissions depending on their role.
 
 ---
 
-# 🎯 Project Goal
+## Multi-Tenant Architecture
 
-The goal of this project is to design a **secure, scalable PostgreSQL schema** capable of supporting a full-featured issue tracking system.
+The platform is designed as a multi-tenant SaaS system.
 
-The focus is on:
+Multiple organizations share the same infrastructure while their data remains logically isolated.
 
-- Data isolation
-- Permission management
-- Query performance
-- Maintainable schema design
+Example structure:
+
+Organization A  
+ ├── Site 1  
+ │   ├── Project A  
+ │   └── Issues  
+ └── Site 2  
+
+Organization B  
+ └── Project X  
+     └── Issues  
+
+Tenant isolation is enforced through:
+
+- membership relationships
+- authorization helper functions
+- role validation triggers
+- relational constraints
 
 ---
 
-# 🧑‍💻 Author
+## Access Control Model
 
-Database architecture and design by **DemirCodes**.
+Permissions are implemented using a role-based authorization model.
+
+Organization Roles
+
+- owner
+- admin
+- member
+- viewer
+
+Site Roles
+
+- admin
+- contrubitor
+- viewer
+
+Project Roles
+
+- project_admin
+- contributor
+- reviewer
+- viewer
+
+Issue Roles
+
+- contributor
+- reviewer
+- watcher
+
+Each role defines what actions a user can perform inside the system.
 
 ---
 
-⭐ If you find this database architecture useful, consider giving the repository a star.
+## Database Entities
+
+The PostgreSQL schema includes the following core entities.
+
+Users
+
+Stores platform users and authentication data.
+
+Organizations
+
+Represents tenants within the platform.
+
+Organization Memberships
+
+Defines which users belong to an organization and their role.
+
+Sites
+
+Logical workspaces inside an organization.
+
+Projects
+
+Projects belong to sites and contain issues.
+
+Issues
+
+Issues represent tasks, bugs, stories or epics.
+
+Issue Memberships
+
+Defines issue level participation such as contributors or reviewers.
+
+Assets
+
+Files can be attached to:
+
+- organizations
+- sites
+- projects
+- issues
+
+Audit Logs
+
+The system records important actions in an audit log table.
+
+---
+
+## Database Features
+
+The database architecture includes advanced PostgreSQL patterns such as:
+
+- ENUM based role systems
+- multi-tenant schema design
+- role based access control
+- trigger based permission validation
+- helper authorization functions
+- soft delete patterns
+- audit logging
+
+---
+
+## Project Goal
+
+The goal of this project is to design a secure and scalable PostgreSQL schema capable of supporting a full issue tracking platform.
+
+The focus of this project includes:
+
+- database security
+- tenant isolation
+- scalable schema design
+- maintainable relational structure
+- real-world SaaS database architecture
+
+---
+
+## Author
+
+Database architecture and design by DemirCodes.
+
+If you find this project useful consider giving the repository a star.
