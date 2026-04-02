@@ -503,6 +503,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="deleted_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
             <parent column="user_id" foreignKey="sites_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
          </column>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="10" name="is_private" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
          <primaryKey column="site_id" sequenceNumberInPK="1"/>
          <index name="sites_pkey" unique="true">
             <column ascending="true" name="site_id"/>
