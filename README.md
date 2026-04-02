@@ -1,219 +1,320 @@
-# Jira-Like Issue Tracking System — PostgreSQL Database Architecture
+# Jira-Like Multi-Tenant Issue Tracking Platform
 
-## 📌 Project Overview
+A production-grade **multi-tenant issue tracking system architecture** inspired by modern tools such as:
 
-This project focuses on designing the **database architecture of a Jira-like issue tracking system**.
+- Jira
+- Linear
+- GitHub Issues
 
-Instead of building the application interface, the goal of this project is to implement a **production-grade PostgreSQL schema** that can support a modern multi-tenant project management platform.
+This project focuses on designing a **secure, scalable and production-ready PostgreSQL database architecture** that can support a modern SaaS issue tracking platform.
 
-The database structure models the core concepts used in real-world tools such as **Jira, Linear, or GitHub Issues**, including organizations, projects, issues, and role-based access control.
-
-The system is designed with **security, scalability, and data isolation** in mind.
-
----
-
-# 🧠 Core Concepts
-
-The database models a hierarchical structure commonly used in SaaS project management systems.
-
-```
-Organization
-     ↓
-Projects
-     ↓
-Issues
-```
-
-Each layer introduces different access rules and relationships between users and resources.
-
-Users can belong to organizations and receive different permission levels that control what they can view or modify.
+The system is designed using **containerized services** and follows **multi-tenant SaaS principles** to support multiple organizations within the same infrastructure.
 
 ---
 
-# 🏢 Multi-Tenant Architecture
+# System Architecture
 
-This system is designed as a **multi-tenant database**.
+Due to budget limitations the platform is designed using a **container based architecture** where each major component runs in its own container.
 
-Multiple organizations can exist in the same database while remaining completely isolated from each other.
+System architecture overview:
 
-```
-Organization A
-   ├── Project 1
-   ├── Project 2
-   └── Issues
 
-Organization B
-   ├── Project X
-   └── Issues
-```
+                 ┌───────────────┐
+                 │     NGINX     │
+                 │ Reverse Proxy │
+                 └───────┬───────┘
+                         │
+    ┌────────────────────┼────────────────────┐
+    │                    │                    │
+    ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
+    │ DATABASE     │ │ BACKEND      │ │ FRONTEND     │
+    │ PostgreSQL   │ │ Node.js API  │ │ React App    │
+    │ Container    │ │ Container    │ │ Container    │
+    └──────────────┘ └──────────────┘ └──────────────┘
 
-Data isolation is enforced using **PostgreSQL Row Level Security (RLS)**.
+    
+---
+
+# Container Responsibilities
+
+## Database Container
+
+The database layer is implemented using **PostgreSQL** and contains the core business logic of the platform.
+
+Responsibilities:
+
+- Multi-tenant relational schema
+- Role-based access control
+- Stored procedures
+- Trigger based role validation
+- Data integrity constraints
+- Audit logging
+- Soft delete patterns
+
+The database is designed to support **production scale SaaS systems**.
 
 ---
 
-# 🔐 Access Control System
+## Backend / API Container
 
-Access permissions are implemented using a **role-based authorization model**.
+The backend service provides the application API and business logic.
+
+Responsibilities:
+
+- Authentication
+- Authorization
+- API endpoints
+- Business logic
+- Database communication
+
+Technology stack:
+
+- Node.js
+- TypeScript
+- REST API architecture
+
+---
+
+## Frontend Container
+
+The frontend provides the user interface for interacting with the platform.
+
+Features planned:
+
+- Organization management
+- Project dashboards
+- Issue tracking interface
+- Team collaboration tools
+
+Technology stack:
+
+- React.js
+- HTML
+- CSS
+
+---
+
+# Infrastructure & DevOps Stack
+
+The infrastructure layer is designed with scalability and observability in mind.
+
+Technologies used:
+
+- Docker
+- Kubernetes
+- NGINX
+- Prometheus
+- Grafana
+
+Responsibilities:
+
+Docker  
+Containerization of services.
+
+Kubernetes  
+Container orchestration and horizontal scaling.
+
+NGINX  
+Reverse proxy and request routing.
+
+Prometheus  
+System metrics and monitoring.
+
+Grafana  
+Monitoring dashboards and observability.
+
+---
+
+# Core Domain Model
+
+The database models the hierarchical structure commonly used in modern project management platforms.
+
+     Organization
+          ↓
+        Site
+          ↓
+       Project
+          ↓
+        Issue
+
+
+Each level introduces its own **membership system and permission model**.
+
+Users can belong to multiple organizations and receive different permissions depending on their role.
+
+---
+
+# Multi-Tenant Architecture
+
+The platform is designed as a **multi-tenant SaaS system**.
+
+Multiple organizations share the same infrastructure while remaining logically isolated.
+
+Example structure:
+
+    Organization A
+    ├── Site 1
+    │ ├── Project A
+    │ │ ├── Issue 1
+    │ │ └── Issue 2
+    │ └── Project B
+    └── Site 2
+
+    Organization B
+    └── Site X
+    └── Project X
+    └── Issues
+
+
+
+Tenant isolation is implemented using:
+
+- membership relationships
+- authorization helper functions
+- database constraints
+- trigger-based permission validation
+
+---
+
+# Access Control Model
+
+Permissions are implemented using **Role Based Access Control (RBAC)**.
 
 ## Organization Roles
-
-```
 owner
 admin
 member
 viewer
-```
+
+
+Owner  
+Full administrative access to the organization.
+
+Admin  
+Manage members, projects and resources.
+
+Member  
+Participate in projects and issues.
+
+Viewer  
+Read-only access.
+
+---
+
+## Site Roles
+admin
+contrubitor
+viewer
+
+
+
+Site roles define permissions within organizational workspaces.
+
+---
 
 ## Project Roles
-
-```
 project_admin
 contributor
 reviewer
 viewer
-```
+
+
+
+Project roles determine how users interact with project tasks and issues.
+
+---
 
 ## Issue Roles
-
-```
 contributor
 reviewer
 watcher
-```
 
-These roles determine what actions a user can perform within the system.
 
----
-
-# 🛡 Row Level Security (RLS)
-
-The database uses **PostgreSQL Row Level Security** to enforce access control directly at the database level.
-
-This ensures that users can only access data they are authorized to see.
-
-Example concept:
-
-```
-User → Organization Membership → Project Access → Issue Access
-```
-
-Security checks are implemented through **RLS policies and helper functions**.
+These roles define participation at the issue level.
 
 ---
 
-# 🗂 Database Architecture
+# Database Entities
 
-The database schema includes the following core entities:
+The PostgreSQL schema contains the following core entities.
 
-```
-users
-organizations
-organization_memberships
+Users  
+Stores application users and authentication data.
 
-projects
-project_memberships
+Organizations  
+Represents tenants within the platform.
 
-issues
-issue_memberships
-```
+Organization Memberships  
+Defines user roles within organizations.
 
-Hierarchy:
+Sites  
+Logical workspaces inside organizations.
 
-```
-organizations
-     ↓
-projects
-     ↓
-issues
-```
+Projects  
+Projects belong to sites and contain issues.
 
-Membership tables define user roles and permissions within each level.
+Issues  
+Represents tasks, bugs, stories or epics.
 
----
+Issue Memberships  
+Defines contributors and reviewers for issues.
 
-# ⚙️ Technologies
+Assets  
+Files attached to organizations, sites, projects or issues.
 
-This project focuses entirely on **database design and security architecture**.
-
-Database
-
-- PostgreSQL
-
-Concepts Used
-
-- Multi-tenant database design
-- Role-based access control (RBAC)
-- PostgreSQL Row Level Security (RLS)
-- ENUM-based role systems
-- Soft-delete patterns
-- Helper authorization functions
+Audit Logs  
+Tracks system actions for security and traceability.
 
 ---
 
-# 📂 Project Structure
+# Database Design Features
 
-```
-database/
+The database architecture includes advanced PostgreSQL patterns used in production systems.
 
-├── enums/
-├── tables/
-├── functions/
-│   ├── auth/
-│   └── helper/
-├── policies/
-│   ├── organizations/
-│   ├── projects/
-│   └── issues/
-└── migrations/
-```
+Key features:
 
-Explanation:
-
-- **enums/** → role and status definitions  
-- **tables/** → schema definitions  
-- **functions/** → authorization helper functions  
-- **policies/** → RLS policies  
-- **migrations/** → database versioning  
+- Multi-tenant schema design
+- Role Based Access Control (RBAC)
+- ENUM based role systems
+- Trigger based role validation
+- Authorization helper functions
+- Soft delete architecture
+- Audit logging
+- Data integrity constraints
 
 ---
 
-# 🧩 Example Schema Design
+# Project Goal
 
-Example relationship structure:
+The main objective of this project is to design a **secure, scalable and production-ready PostgreSQL database architecture** capable of supporting a full SaaS issue tracking platform.
 
-```
-users
-   ↓
-organization_memberships
-   ↓
-organizations
-   ↓
-projects
-   ↓
-issues
-```
+The focus areas include:
 
-This structure allows flexible permission management across multiple levels.
-
----
-
-# 🎯 Project Goal
-
-The goal of this project is to design a **secure, scalable PostgreSQL schema** capable of supporting a full-featured issue tracking system.
-
-The focus is on:
-
-- Data isolation
-- Permission management
-- Query performance
+- Tenant isolation
+- Security
+- Database integrity
+- Performance
 - Maintainable schema design
 
 ---
 
-# 🧑‍💻 Author
+# Future Improvements
 
-Database architecture and design by **DemirCodes**.
+Planned improvements include:
+
+- Full backend implementation
+- Authentication service
+- CI/CD pipelines
+- Kubernetes production deployment
+- Event driven architecture
+- Distributed logging and tracing
 
 ---
 
-⭐ If you find this database architecture useful, consider giving the repository a star.
+# Author
+
+Database architecture and design by **DemirCodes**
+
+---
+
+If you find this project useful, consider giving the repository a ⭐.
