@@ -2,7 +2,8 @@ create or replace function invite_user_to_organization
 (
     p_user_id uuid,
     p_org_id uuid,
-    p_role org_role
+    p_role org_role,
+    p_user_friendship_code uuid
 )
 returns void
 language plpgsql
@@ -30,6 +31,8 @@ begin
             'permisson denied';
     end if;
 
+    
+
     if exists 
     (
         select
@@ -39,7 +42,7 @@ begin
         where
             org_id = p_org_id
             AND
-            user_id = p_user_id
+            user_friendship_code = p_user_friendship_code
             AND
             membership_is_active = TRUE
             AND
@@ -65,7 +68,9 @@ begin
             true,
             v_actor
         );
-
-    
 end;
 $$;
+
+
+
+select * from users;
