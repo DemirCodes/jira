@@ -1,0 +1,1 @@
+Yapısı henuz olusuturulmadı olusturulacaktır.
