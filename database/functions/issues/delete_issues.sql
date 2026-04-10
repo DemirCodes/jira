@@ -1,18 +1,3 @@
-
-SELECT 
-    t.typname AS enum_name,
-    e.enumlabel AS enum_value,
-    e.enumsortorder AS enum_order
-FROM 
-    pg_type t
-    JOIN pg_enum e ON t.oid = e.enumtypid
-WHERE 
-    t.typname = 'issue_status'
-ORDER BY 
-    e.enumsortorder;
-
-
-
 -- delete issues.sql
 
 -- when deleted issues this functions will be started
@@ -50,6 +35,7 @@ declare
     v_site_id uuid;
     v_issue_title text;
     v_issue_status issue_status;
+    v_project_name text;           -- 👈 EKSİK OLAN SATIR
     v_is_org_owner boolean;
     v_is_org_admin boolean;
     v_is_site_admin boolean;
@@ -77,7 +63,7 @@ BEGIN
         v_issue_title,
         v_issue_status,
         v_site_id,
-        v_project_name,
+        v_project_name,            -- 👈 ARTIK TANIMLI
         v_is_project_private,
         v_org_id,
         v_is_site_private
