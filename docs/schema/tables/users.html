@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>users - jira.public</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
+        <!-- Bootstrap 3.3.5 -->
+        <link rel="stylesheet" href="../bower/admin-lte/bootstrap/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="../bower/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="../bower/ionicons/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="../bower/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="../bower/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
+        <!-- Code Mirror -->
+        <link rel="stylesheet" href="../bower/codemirror/codemirror.css">
+        <!-- Fonts -->
+        <link href='../fonts/indieflower/indie-flower.css' rel='stylesheet' type='text/css'>
+        <link href='../fonts/source-sans-pro/source-sans-pro.css' rel='stylesheet' type='text/css'>
+
+        <!-- Theme style -->
+        <link rel="stylesheet" href="../bower/admin-lte/dist/css/AdminLTE.min.css">
+        <!-- Salvattore -->
+        <link rel="stylesheet" href="../bower/salvattore/salvattore.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+           folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="../bower/admin-lte/dist/css/skins/_all-skins.min.css">
+        <!-- SchemaSpy -->
+        <link rel="stylesheet" href="../schemaSpy.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="../bower/html5shiv/html5shiv.min.js"></script>
+        <script src="../bower/respond/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+    <body class="hold-transition skin-blue layout-top-nav">
+        <div class="wrapper">
+            <header class="main-header">
+                <nav class="navbar navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a href="../index.html" class="navbar-brand"><b>jira</b></a><span class="navbar-brand" style="padding-left: 0">.public</span>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="../index.html">Tables <span class="sr-only">(current)</span></a></li>
+                                <li><a href="../columns.html" title="All of the columns in the schema">Columns</a></li>
+                                <li><a href="../constraints.html" title="Useful for diagnosing error messages that just give constraint name or number">Constraints</a></li>
+                                <li><a href="../relationships.html" title="Diagram of table relationships">Relationships</a></li>
+                                <li><a href="../orphans.html" title="View of tables with neither parents nor children">Orphan&nbsp;Tables</a></li>
+                                <li><a href="../anomalies.html" title="Things that might not be quite right">Anomalies</a></li>
+                                <li><a href="../routines.html" title="Procedures and functions">Routines</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                        <!-- Navbar Right Menu -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </header>
+            <!-- Main content -->
+            <!-- Full Width Column -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>users</h1><p><span id="recordNumber">-1</span> rows</p><br />
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                            <h3 id="Columns" class="box-title">Columns</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <table
+                                    id="standard_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
+                                <thead align='left'>
+                                <tr>
+                                    <th>Column</th>
+                                    <th>Type</th>
+                                    <th>Size</th>
+                                    <th title='Are nulls allowed?'>Nulls</th>
+                                    <th title='Is column automatically updated?'>Auto</th>
+                                    <th title='Default value'>Default</th>
+                                    <th title='Columns in tables that reference this column'>Children</th>
+                                    <th title='Columns in tables that are referenced by this column'>Parents</th>
+                                    <th title='Comments' class="toggle"><span>Comments</span></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="user_id">user_id</span></td>
+                                    <td>uuid</td>
+                                    <td>2147483647</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>gen_random_uuid()</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="api_keys.user_id references users.user_id via api_keys_user_id_fkey"><a href='api_keys.html'>api_keys</a><span class='relatedKey'>.user_id</span></td>
+                                                <td class="constraint detail">api_keys_user_id_fkey</td>
+                                                <td class="constraint detail"><span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="application_bugs.reported_by references users.user_id via application_bugs_reported_by_fkey"><a href='application_bugs.html'>application_bugs</a><span class='relatedKey'>.reported_by</span></td>
+                                                <td class="constraint detail">application_bugs_reported_by_fkey</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="email_verifications.user_id references users.user_id via email_verifications_user_id_fkey"><a href='email_verifications.html'>email_verifications</a><span class='relatedKey'>.user_id</span></td>
+                                                <td class="constraint detail">email_verifications_user_id_fkey</td>
+                                                <td class="constraint detail"><span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="issue_activity.user_id references users.user_id via issue_activity_user_id_fkey"><a href='issue_activity.html'>issue_activity</a><span class='relatedKey'>.user_id</span></td>
+                                                <td class="constraint detail">issue_activity_user_id_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="issue_assets.deleted_by references users.user_id via issue_assets_deleted_by_fkey"><a href='issue_assets.html'>issue_assets</a><span class='relatedKey'>.deleted_by</span></td>
+                                                <td class="constraint detail">issue_assets_deleted_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="issue_assets.uploaded_by references users.user_id via issue_assets_uploaded_by_fkey"><a href='issue_assets.html'>issue_assets</a><span class='relatedKey'>.uploaded_by</span></td>
+                                                <td class="constraint detail">issue_assets_uploaded_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="issue_memberships.deleted_by references users.user_id via issue_memberships_deleted_by_fkey"><a href='issue_memberships.html'>issue_memberships</a><span class='relatedKey'>.deleted_by</span></td>
+                                                <td class="constraint detail">issue_memberships_deleted_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="issue_memberships.user_id references users.user_id via issue_memberships_user_id_fkey"><a href='issue_memberships.html'>issue_memberships</a><span class='relatedKey'>.user_id</span></td>
+                                                <td class="constraint detail">issue_memberships_user_id_fkey</td>
+                                                <td class="constraint detail"><span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="issues.assignee_id references users.user_id via issues_assignee_id_fkey"><a href='issues.html'>issues</a><span class='relatedKey'>.assignee_id</span></td>
+                                                <td class="constraint detail">issues_assignee_id_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="issues.deleted_by references users.user_id via issues_deleted_by_fkey"><a href='issues.html'>issues</a><span class='relatedKey'>.deleted_by</span></td>
+                                                <td class="constraint detail">issues_deleted_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="issues.reporter_id references users.user_id via issues_reporter_id_fkey"><a href='issues.html'>issues</a><span class='relatedKey'>.reporter_id</span></td>
+                                                <td class="constraint detail">issues_reporter_id_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="organization_assets.deleted_by references users.user_id via organization_assets_deleted_by_fkey"><a href='organization_assets.html'>organization_assets</a><span class='relatedKey'>.deleted_by</span></td>
+                                                <td class="constraint detail">organization_assets_deleted_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="organization_assets.uploaded_by references users.user_id via organization_assets_uploaded_by_fkey"><a href='organization_assets.html'>organization_assets</a><span class='relatedKey'>.uploaded_by</span></td>
+                                                <td class="constraint detail">organization_assets_uploaded_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="organization_memberships.deleted_by references users.user_id via organization_memberships_deleted_by_fkey"><a href='organization_memberships.html'>organization_memberships</a><span class='relatedKey'>.deleted_by</span></td>
+                                                <td class="constraint detail">organization_memberships_deleted_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="organization_memberships.invited_by references users.user_id via organization_memberships_invited_by_fkey"><a href='organization_memberships.html'>organization_memberships</a><span class='relatedKey'>.invited_by</span></td>
+                                                <td class="constraint detail">organization_memberships_invited_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="organization_memberships.user_id references users.user_id via organization_memberships_user_id_fkey"><a href='organization_memberships.html'>organization_memberships</a><span class='relatedKey'>.user_id</span></td>
+                                                <td class="constraint detail">organization_memberships_user_id_fkey</td>
+                                                <td class="constraint detail"><span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="organizations.created_by references users.user_id via organizations_created_by_fkey"><a href='organizations.html'>organizations</a><span class='relatedKey'>.created_by</span></td>
+                                                <td class="constraint detail">organizations_created_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="organizations.deleted_by references users.user_id via organizations_deleted_by_fkey"><a href='organizations.html'>organizations</a><span class='relatedKey'>.deleted_by</span></td>
+                                                <td class="constraint detail">organizations_deleted_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="password_reset_tokens.user_id references users.user_id via password_reset_tokens_user_id_fkey"><a href='password_reset_tokens.html'>password_reset_tokens</a><span class='relatedKey'>.user_id</span></td>
+                                                <td class="constraint detail">password_reset_tokens_user_id_fkey</td>
+                                                <td class="constraint detail"><span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="project_assets.deleted_by references users.user_id via project_assets_deleted_by_fkey"><a href='project_assets.html'>project_assets</a><span class='relatedKey'>.deleted_by</span></td>
+                                                <td class="constraint detail">project_assets_deleted_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="project_assets.uploaded_by references users.user_id via project_assets_uploaded_by_fkey"><a href='project_assets.html'>project_assets</a><span class='relatedKey'>.uploaded_by</span></td>
+                                                <td class="constraint detail">project_assets_uploaded_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="project_memberships.deleted_by references users.user_id via project_memberships_deleted_by_fkey"><a href='project_memberships.html'>project_memberships</a><span class='relatedKey'>.deleted_by</span></td>
+                                                <td class="constraint detail">project_memberships_deleted_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="project_memberships.invited_by references users.user_id via project_memberships_invited_by_fkey"><a href='project_memberships.html'>project_memberships</a><span class='relatedKey'>.invited_by</span></td>
+                                                <td class="constraint detail">project_memberships_invited_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="project_memberships.user_id references users.user_id via project_memberships_user_id_fkey"><a href='project_memberships.html'>project_memberships</a><span class='relatedKey'>.user_id</span></td>
+                                                <td class="constraint detail">project_memberships_user_id_fkey</td>
+                                                <td class="constraint detail"><span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="project_requirements.created_by references users.user_id via project_requirements_created_by_fkey"><a href='project_requirements.html'>project_requirements</a><span class='relatedKey'>.created_by</span></td>
+                                                <td class="constraint detail">project_requirements_created_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="project_requirements.deleted_by references users.user_id via project_requirements_deleted_by_fkey"><a href='project_requirements.html'>project_requirements</a><span class='relatedKey'>.deleted_by</span></td>
+                                                <td class="constraint detail">project_requirements_deleted_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="project_requirements.done_by references users.user_id via project_requirements_done_by_fkey"><a href='project_requirements.html'>project_requirements</a><span class='relatedKey'>.done_by</span></td>
+                                                <td class="constraint detail">project_requirements_done_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="projects.completed_by references users.user_id via projects_completed_by_fkey"><a href='projects.html'>projects</a><span class='relatedKey'>.completed_by</span></td>
+                                                <td class="constraint detail">projects_completed_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="projects.created_by references users.user_id via projects_created_by_fkey"><a href='projects.html'>projects</a><span class='relatedKey'>.created_by</span></td>
+                                                <td class="constraint detail">projects_created_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="projects.deleted_by references users.user_id via projects_deleted_by_fkey"><a href='projects.html'>projects</a><span class='relatedKey'>.deleted_by</span></td>
+                                                <td class="constraint detail">projects_deleted_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="site_assets.deleted_by references users.user_id via site_assets_deleted_by_fkey"><a href='site_assets.html'>site_assets</a><span class='relatedKey'>.deleted_by</span></td>
+                                                <td class="constraint detail">site_assets_deleted_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="site_assets.uploaded_by references users.user_id via site_assets_uploaded_by_fkey"><a href='site_assets.html'>site_assets</a><span class='relatedKey'>.uploaded_by</span></td>
+                                                <td class="constraint detail">site_assets_uploaded_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="site_memberships.deleted_by references users.user_id via site_memberships_deleted_by_fkey"><a href='site_memberships.html'>site_memberships</a><span class='relatedKey'>.deleted_by</span></td>
+                                                <td class="constraint detail">site_memberships_deleted_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="site_memberships.invited_by references users.user_id via site_memberships_invited_by_fkey"><a href='site_memberships.html'>site_memberships</a><span class='relatedKey'>.invited_by</span></td>
+                                                <td class="constraint detail">site_memberships_invited_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="site_memberships.user_id references users.user_id via site_memberships_user_id_fkey"><a href='site_memberships.html'>site_memberships</a><span class='relatedKey'>.user_id</span></td>
+                                                <td class="constraint detail">site_memberships_user_id_fkey</td>
+                                                <td class="constraint detail"><span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="sites.created_by references users.user_id via sites_created_by_fkey"><a href='sites.html'>sites</a><span class='relatedKey'>.created_by</span></td>
+                                                <td class="constraint detail">sites_created_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="sites.deleted_by references users.user_id via sites_deleted_by_fkey"><a href='sites.html'>sites</a><span class='relatedKey'>.deleted_by</span></td>
+                                                <td class="constraint detail">sites_deleted_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="user_sessions.user_id references users.user_id via user_sessions_user_id_fkey"><a href='user_sessions.html'>user_sessions</a><span class='relatedKey'>.user_id</span></td>
+                                                <td class="constraint detail">user_sessions_user_id_fkey</td>
+                                                <td class="constraint detail"><span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="users.deleted_by references users.user_id via users_deleted_by_fkey"><a href='users.html'>users</a><span class='relatedKey'>.deleted_by</span></td>
+                                                <td class="constraint detail">users_deleted_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="user_name">user_name</span></td>
+                                    <td>text</td>
+                                    <td>2147483647</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="user_last_name">user_last_name</span></td>
+                                    <td>text</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="user_display_name">user_display_name</span></td>
+                                    <td>text</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="user_email">user_email</span></td>
+                                    <td>citext</td>
+                                    <td>2147483647</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="user_password">user_password</span></td>
+                                    <td>text</td>
+                                    <td>2147483647</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="user_is_active">user_is_active</span></td>
+                                    <td>bool</td>
+                                    <td>1</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>true</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="last_login_at">last_login_at</span></td>
+                                    <td>timestamptz</td>
+                                    <td>35,6</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="user_friendship_code">user_friendship_code</span></td>
+                                    <td>uuid</td>
+                                    <td>2147483647</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>gen_random_uuid()</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="metadata">metadata</span></td>
+                                    <td>jsonb</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>&#39;{}&#39;::jsonb</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="created_at">created_at</span></td>
+                                    <td>timestamptz</td>
+                                    <td>35,6</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>now()</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="updated_at">updated_at</span></td>
+                                    <td>timestamptz</td>
+                                    <td>35,6</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>now()</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="deleted_at">deleted_at</span></td>
+                                    <td>timestamptz</td>
+                                    <td>35,6</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="deleted_by">deleted_by</span></td>
+                                    <td>uuid</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="users.deleted_by references users.user_id via users_deleted_by_fkey"><a href='users.html'>users</a><span class='relatedKey'>.user_id</span></td>
+                                                <td class="constraint detail">users_deleted_by_fkey</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="email_verified_at">email_verified_at</span></td>
+                                    <td>timestamptz</td>
+                                    <td>35,6</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="email_verification_token">email_verification_token</span></td>
+                                    <td>text</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="password_reset_token">password_reset_token</span></td>
+                                    <td>text</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="password_reset_expires_at">password_reset_expires_at</span></td>
+                                    <td>timestamptz</td>
+                                    <td>35,6</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="two_factor_secret">two_factor_secret</span></td>
+                                    <td>text</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="two_factor_enabled">two_factor_enabled</span></td>
+                                    <td>bool</td>
+                                    <td>1</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>false</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="last_password_change_at">last_password_change_at</span></td>
+                                    <td>timestamptz</td>
+                                    <td>35,6</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>now()</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-sitemap"></i>
+                            <h3 id="Indexes" class="box-title">Indexes</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <table
+                                    id="indexes_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
+                                <thead>
+                                <tr>
+                                    <th>Constraint Name</th>
+                                    <th>Type</th>
+                                    <th>Sort</th>
+                                    <th>Column(s)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey'></i> users_pkey</td>
+                                    <td>Primary key</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>user_id</td>
+                                </tr>
+                                <tr>
+                                    <td class='uniqueKey' title='Unique Key'><i class='icon ion-key iconkey'></i> users_user_email_key</td>
+                                    <td>Must be unique</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>user_email</td>
+                                </tr>
+                                <tr>
+                                    <td class='uniqueKey' title='Unique Key'><i class='icon ion-key iconkey'></i> users_user_friendship_code_key</td>
+                                    <td>Must be unique</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>user_friendship_code</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-code-fork"></i>
+                            <h3 id="Relationships" class="box-title">Relationships</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="nav-tabs-custom"><!-- Tabs within a box -->
+                                <h5>Close relationships within degrees of separation</h5>
+                                <ul class="nav nav-tabs pull-left ui-sortable-handle">
+                                    <li class="active"><a href="#oneDegreeImg-chart" data-toggle="tab" aria-expanded="true">One</a></li>
+                                    <li class=""><a href="#twodegreesDegreeImg-chart" data-toggle="tab" aria-expanded="true">Two degrees</a></li>
+                                </ul>
+                                <div class="tab-content no-padding">
+                                    <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
+<area shape="rect" id="node1" href="api_keys.html" target="_top" title="api_keys" alt="" coords="641,5,810,181">
+<area shape="rect" id="node2" href="users.html" target="_top" title="users" alt="" coords="57,1169,526,1855">
+<area shape="rect" id="node3" href="application_bugs.html" target="_top" title="application_bugs" alt="" coords="1645,575,1893,839">
+<area shape="rect" id="node4" href="organizations.html" target="_top" title="organizations" alt="" coords="617,653,834,888">
+<area shape="rect" id="node5" href="projects.html" target="_top" title="projects" alt="" coords="1329,1000,1565,1293">
+<area shape="rect" id="node17" href="sites.html" target="_top" title="sites" alt="" coords="1019,1599,1177,1833">
+<area shape="rect" id="node6" href="email_verifications.html" target="_top" title="email_verifications" alt="" coords="592,2031,859,2207">
+<area shape="rect" id="node7" href="issue_activity.html" target="_top" title="issue_activity" alt="" coords="1989,153,2205,329">
+<area shape="rect" id="node8" href="issues.html" target="_top" title="issues" alt="" coords="1659,235,1878,557">
+<area shape="rect" id="node9" href="issue_assets.html" target="_top" title="issue_assets" alt="" coords="1994,611,2199,816">
+<area shape="rect" id="node10" href="issue_memberships.html" target="_top" title="issue_memberships" alt="" coords="1959,833,2234,1039">
+<area shape="rect" id="node11" href="organization_assets.html" target="_top" title="organization_assets" alt="" coords="959,503,1237,708">
+<area shape="rect" id="node12" href="organization_memberships.html" target="_top" title="organization_memberships" alt="" coords="925,761,1271,996">
+<area shape="rect" id="node13" href="password_reset_tokens.html" target="_top" title="password_reset_tokens" alt="" coords="570,2224,881,2400">
+<area shape="rect" id="node14" href="project_assets.html" target="_top" title="project_assets" alt="" coords="1657,1000,1881,1205">
+<area shape="rect" id="node15" href="project_memberships.html" target="_top" title="project_memberships" alt="" coords="1622,1223,1915,1457">
+<area shape="rect" id="node16" href="project_requirements.html" target="_top" title="project_requirements" alt="" coords="1622,1475,1915,1709">
+<area shape="rect" id="node18" href="site_assets.html" target="_top" title="site_assets" alt="" coords="1351,1608,1542,1813">
+<area shape="rect" id="node19" href="site_memberships.html" target="_top" title="site_memberships" alt="" coords="1315,1831,1578,2065">
+<area shape="rect" id="node20" href="user_sessions.html" target="_top" title="user_sessions" alt="" coords="616,2417,835,2593">
+</map>
+                                        <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/users.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
+<area shape="rect" id="node1" href="api_keys.html" target="_top" title="api_keys" alt="" coords="641,5,810,181">
+<area shape="rect" id="node2" href="users.html" target="_top" title="users" alt="" coords="57,835,526,1520">
+<area shape="rect" id="node3" href="application_bugs.html" target="_top" title="application_bugs" alt="" coords="1642,164,1890,252">
+<area shape="rect" id="node4" href="platform_users.html" target="_top" title="platform_users" alt="" coords="1331,93,1560,181">
+<area shape="rect" id="node5" href="organizations.html" target="_top" title="organizations" alt="" coords="617,532,834,620">
+<area shape="rect" id="node6" href="projects.html" target="_top" title="projects" alt="" coords="1364,1189,1527,1277">
+<area shape="rect" id="node18" href="sites.html" target="_top" title="sites" alt="" coords="1033,652,1163,740">
+<area shape="rect" id="node7" href="email_verifications.html" target="_top" title="email_verifications" alt="" coords="592,339,859,515">
+<area shape="rect" id="node8" href="issue_activity.html" target="_top" title="issue_activity" alt="" coords="1986,827,2202,915">
+<area shape="rect" id="node9" href="issues.html" target="_top" title="issues" alt="" coords="1694,861,1838,949">
+<area shape="rect" id="node10" href="issue_assets.html" target="_top" title="issue_assets" alt="" coords="1991,1005,2197,1093">
+<area shape="rect" id="node11" href="issue_memberships.html" target="_top" title="issue_memberships" alt="" coords="1957,1111,2231,1199">
+<area shape="rect" id="node12" href="organization_assets.html" target="_top" title="organization_assets" alt="" coords="959,287,1237,375">
+<area shape="rect" id="node13" href="organization_memberships.html" target="_top" title="organization_memberships" alt="" coords="925,547,1271,635">
+<area shape="rect" id="node14" href="password_reset_tokens.html" target="_top" title="password_reset_tokens" alt="" coords="570,929,881,1105">
+<area shape="rect" id="node15" href="project_assets.html" target="_top" title="project_assets" alt="" coords="1654,1189,1878,1277">
+<area shape="rect" id="node16" href="project_memberships.html" target="_top" title="project_memberships" alt="" coords="1619,1295,1913,1383">
+<area shape="rect" id="node17" href="project_requirements.html" target="_top" title="project_requirements" alt="" coords="1619,1400,1913,1488">
+<area shape="rect" id="node19" href="site_assets.html" target="_top" title="site_assets" alt="" coords="1350,235,1541,323">
+<area shape="rect" id="node20" href="site_memberships.html" target="_top" title="site_memberships" alt="" coords="1315,720,1575,808">
+<area shape="rect" id="node21" href="user_sessions.html" target="_top" title="user_sessions" alt="" coords="616,1483,835,1659">
+</map>
+                                        <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/users.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div>
+                </section>
+                <script>
+                    var config = {
+                        pagination: true
+                    }
+                </script>
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div>
+                    <div class="pull-right hidden-xs">
+                        <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
+                        <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
+                    </div>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 7.0.2</a></strong>
+                </div>
+                <!-- /.container -->
+            </footer>
+        </div>
+        <!-- ./wrapper -->
+
+        <!-- jQuery 2.2.3 -->
+        <script src="../bower/admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="../bower/admin-lte/plugins/jQueryUI/jquery-ui.min.js"></script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="../bower/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="../bower/datatables.net/jquery.dataTables.min.js"></script>
+        <script src="../bower/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="../bower/datatables.net-buttons/dataTables.buttons.min.js"></script>
+        <script src="../bower/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.html5.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.print.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.colVis.min.js"></script>
+        <!-- SheetJS -->
+        <script src="../bower/js-xlsx/xlsx.full.min.js"></script>
+        <!-- pdfmake -->
+        <script src="../bower/pdfmake/pdfmake.min.js"></script>
+        <script src="../bower/pdfmake/vfs_fonts.js"></script>
+        <!-- SlimScroll -->
+        <script src="../bower/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="../bower/admin-lte/plugins/fastclick/fastclick.js"></script>
+        <!-- Salvattore -->
+        <script src="../bower/salvattore/salvattore.min.js"></script>
+        <!-- AnchorJS -->
+        <script src="../bower/anchor-js/anchor.min.js"></script>
+        <!-- CodeMirror -->
+        <script src="../bower/codemirror/codemirror.js"></script>
+        <script src="../bower/codemirror/sql.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../bower/admin-lte/dist/js/app.min.js"></script>
+        <script src="table.js"></script>
+        <script src="../schemaSpy.js"></script>
+    </body>
+</html>
