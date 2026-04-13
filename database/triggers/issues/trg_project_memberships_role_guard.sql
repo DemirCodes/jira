@@ -9,6 +9,7 @@ as $$
 declare
     v_org_id uuid;
     v_project_id uuid;
+    v_site_id uuid;           -- 👈 EKSİK OLAN SATIR
     v_org_role org_role;
     v_project_role project_role;
 begin
