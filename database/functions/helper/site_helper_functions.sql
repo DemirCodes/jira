@@ -36,32 +36,28 @@ as $$
 
 $$;
 
-
 create or replace function auth_is_site_contributor(p_site_id uuid)
-returns BOOLEAN
-language SQL
-STABLE
+returns boolean
+language sql
+stable
 as $$
-    SELECT
-        EXISTS
+    select
+        exists
         (
-            SELECT
+            select
                 1
             from
                 site_memberships as sm
-            WHERE
+            where
                 sm.site_id = p_site_id
-                AND
+                and
                 sm.user_id = auth_current_user_id()
-                AND
-                sm.role = 'contributor'
-                AND
+                and
+                sm.role = 'contrubitor'
+                and
                 sm.deleted_at is null
         )
-
 $$;
-
-
 
 
 create or replace function auth_is_site_viewer(p_site_id uuid)

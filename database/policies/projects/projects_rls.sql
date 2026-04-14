@@ -1,40 +1,26 @@
 alter table projects enable row level security;
 
 
-create POLICY projects_select_policy
-on projects
-for SELECT
-USING   
-    (
-        auth_is_org_owner(org_id)
-        OR
-        --
-        (
-            is_private = FALSE
-            AND
-            auth_is_org_admin(org_id)
-        )
-        OR
+ALTER TABLE projects ENABLE ROW LEVEL SECURITY;
 
-        auth_is_project_admin(project_id)
-        OR
-        auth_is_project_contributor(project_id)
-        OR
-        auth_is_project_reviewer(project_id)
-        OR
-        auth_is_project_viewer(project_id)
-    );
+CREATE POLICY projects_select_policy ON projects
+FOR SELECT USING (
+    auth_is_org_owner((SELECT org_id FROM sites WHERE site_id = projects.site_id))
+    OR (
+        is_private = false
+        AND auth_is_org_admin((SELECT org_id FROM sites WHERE site_id = projects.site_id))
+    )
+    OR auth_is_project_admin(project_id)
+    OR auth_is_project_contributor(project_id)
+    OR auth_is_project_reviewer(project_id)
+    OR auth_is_project_viewer(project_id)
+);
 
-
-create policy project_insert_policy
-on projects
-for INSERT
-USING   
-    (
-        auth_is_org_owner(org_id)
-        OR
-        auth_is_org_admin(org_id)
-    );
+CREATE POLICY project_insert_policy ON projects
+FOR INSERT WITH CHECK (
+    auth_is_org_owner((SELECT org_id FROM sites WHERE site_id = projects.site_id))
+    OR auth_is_org_admin((SELECT org_id FROM sites WHERE site_id = projects.site_id))
+);
 
 
 /*

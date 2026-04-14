@@ -6,7 +6,7 @@ create POLICY site_memberships_select_policy on public.site_memberships
     USING
     (
         auth_is_site_viewer(site_id) OR
-        auth_is_org_member((select org_id from sites where site_id = site_memberhips.site_id))
+        auth_is_org_member((select org_id from sites where site_id = site_memberships.site_id))
     );
 
 
