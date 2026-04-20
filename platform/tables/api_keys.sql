@@ -1,6 +1,10 @@
 -- 1. Database'e bağlan
 \c jira_platform_db
 
+
+CREATE EXTENSION IF NOT EXISTS citext;
+
+
 -- 2. Önce platform_users tablosunu oluştur (foreign key yok)
 CREATE TABLE IF NOT EXISTS platform_users (
     platform_user_id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -35,3 +39,5 @@ CREATE TABLE IF NOT EXISTS api_keys (
     is_active boolean DEFAULT true,
     created_at timestamptz DEFAULT now()
 );
+
+
