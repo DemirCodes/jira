@@ -8,7 +8,7 @@ as $$
 		from	
 			platform_users
 		where
-			platform_user_id = auth_is_platform_user_id()
+			platform_user_id = auth_current_platform_user_id()
 			and
 			role = 'support_admin'
 			and

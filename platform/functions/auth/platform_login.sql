@@ -32,4 +32,4 @@ BEGIN
     
     RETURN QUERY SELECT v_token, v_user.platform_user_id, v_user.role;
 END;
-$$);
+$$;

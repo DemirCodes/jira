@@ -31,4 +31,4 @@ BEGIN
     
     RETURN v_new_token;
 END;
-$$);
+$$;

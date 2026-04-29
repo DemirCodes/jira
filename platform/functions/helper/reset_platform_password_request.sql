@@ -28,4 +28,4 @@ BEGIN
     
     RETURN v_token;
 END;
-$$);
+$$;
