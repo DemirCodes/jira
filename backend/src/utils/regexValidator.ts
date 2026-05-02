@@ -8,6 +8,28 @@
  * - Mümkünse regex yerine string method'ları kullanılır
  */
 
+// ============ TİP TANIMLARI ============
+
+export type ValidationRule = (value: unknown) => boolean;
+
+export interface ValidationResult {
+    valid: boolean;
+    errors: Record<string, string>;
+}
+
+export interface ValidationOptions {
+    requiredFields?: string[];      // Zorunlu alanlar
+    optionalFields?: string[];      // Opsiyonel alanlar (bunlar eksikse hata vermez)
+    errorMessages?: Record<string, string>;  // Özel hata mesajları
+    maxErrors?: number;              // Maksimum hata sayısı
+    abortEarly?: boolean;            // İlk hatada dur
+    allowEmptyStrings?: boolean;     // Boş string'e izin ver
+}
+
+// ============ GÜVENLİK KONSTANTLARI ============
+const MAX_INPUT_LENGTH = 10000;
+const SQL_PATTERN_MAX_LENGTH = 1000;
+
 // ============ BAZI TEMEL VALIDATORLER ============
 
 // Email - Basit ve güvenli (aşırı karmaşık regex yok)
@@ -22,6 +44,22 @@ export const isValidEmail = (email: string): boolean => {
     if (localPart.length === 0 || localPart.length > 64) return false;
     if (domain.length === 0 || domain.length > 255) return false;
     if (domain.includes('..')) return false;
+    if (domain.startsWith('.') || domain.endsWith('.')) return false;
+    
+    // Domain'de geçersiz karakter kontrolü
+    const domainParts = domain.split('.');
+    for (const part of domainParts) {
+        if (part.length === 0) return false;
+        // Her bir parça alfanumerik ve tire içerebilir
+        for (let i = 0; i < part.length; i++) {
+            const code = part.charCodeAt(i);
+            const isValid = (code >= 48 && code <= 57) || // 0-9
+                           (code >= 65 && code <= 90) || // A-Z
+                           (code >= 97 && code <= 122) || // a-z
+                           code === 45; // -
+            if (!isValid) return false;
+        }
+    }
     
     return true;
 };
@@ -99,19 +137,55 @@ export const isValidUsername = (username: string, min: number = 3, max: number =
     return usernameRegex.test(username);
 };
 
-// Telefon numarası
+// Telefon numarası (Geliştirilmiş)
 export const isValidPhoneNumber = (phone: string): boolean => {
-    if (!phone) return false;
-    const cleaned = phone.replace(/\s/g, '');
-    const phoneRegex = /^(05|\+905)[0-9]{9}$/;
-    return phoneRegex.test(cleaned);
+    if (!phone || phone.length > 20) return false;
+    
+    // Önce temizlik
+    const cleaned = phone.replace(/[\s\-\(\)\+]/g, '');
+    
+    // Uzunluk kontrolü
+    if (cleaned.length < 10 || cleaned.length > 15) return false;
+    
+    // Rakam kontrolü (döngü ile, regex yok)
+    for (let i = 0; i < cleaned.length; i++) {
+        const code = cleaned.charCodeAt(i);
+        if (code < 48 || code > 57) return false;
+    }
+    
+    // Format kontrolü (basit)
+    const isValidFormat = 
+        cleaned.startsWith('05') && cleaned.length === 11 || // TR cep
+        cleaned.startsWith('905') && cleaned.length === 12 || // Uluslararası
+        cleaned.length === 10; // Sabit hat
+    
+    return isValidFormat;
 };
 
-// URL - try-catch ile
+// URL - try-catch ile (Geliştirilmiş)
 export const isValidUrl = (url: string): boolean => {
     if (!url || url.length > 2000) return false;
+    
+    // Protocol kontrolü
+    const lowerUrl = url.toLowerCase();
+    if (!lowerUrl.startsWith('http://') && 
+        !lowerUrl.startsWith('https://')) {
+        return false;
+    }
+    
     try {
-        new URL(url);
+        const parsedUrl = new URL(url);
+        
+        // Sadece HTTP/HTTPS protokolleri
+        if (parsedUrl.protocol !== 'http:' && parsedUrl.protocol !== 'https:') {
+            return false;
+        }
+        
+        // Hostname kontrolü
+        if (!parsedUrl.hostname || parsedUrl.hostname.length > 255) {
+            return false;
+        }
+        
         return true;
     } catch {
         return false;
@@ -158,42 +232,69 @@ export const isAlphanumeric = (input: string): boolean => {
     return true;
 };
 
-// XSS koruması için özel karakterler
+// XSS koruması için tehlikeli pattern'ler (Geliştirilmiş)
+const DANGEROUS_EVENTS = [
+    'onload', 'onerror', 'onclick', 'onmouseover', 'onfocus', 
+    'onblur', 'onchange', 'onsubmit', 'onreset', 'onselect',
+    'onkeydown', 'onkeypress', 'onkeyup', 'onmousedown', 
+    'onmouseup', 'onmouseenter', 'onmouseleave'
+];
+
+const DANGEROUS_TAGS = ['script', 'iframe', 'object', 'embed', 'link', 'meta'];
+
 export const containsDangerousChars = (input: string): boolean => {
-    if (!input) return false;
-    const dangerous = ['<script', 'javascript:', 'onclick', 'onerror', 'onload'];
+    if (!input || input.length > MAX_INPUT_LENGTH) return false;
+    
     const lowerInput = input.toLowerCase();
-    return dangerous.some(danger => lowerInput.includes(danger));
+    
+    // Event handler kontrolü
+    if (DANGEROUS_EVENTS.some(event => lowerInput.includes(event + '='))) {
+        return true;
+    }
+    
+    // Tag kontrolü
+    if (DANGEROUS_TAGS.some(tag => lowerInput.includes('<' + tag) || lowerInput.includes('</' + tag))) {
+        return true;
+    }
+    
+    // JavaScript pseudo-protocol
+    if (lowerInput.includes('javascript:') || 
+        lowerInput.includes('vbscript:') || 
+        lowerInput.includes('data:text/html')) {
+        return true;
+    }
+    
+    return false;
 };
 
-// SQL injection için basit kontrol (ilk katman)
+// SQL injection için basit kontrol (Geliştirilmiş)
+const SQL_PATTERNS = [
+    /select.+from/i,
+    /drop\s+(table|database)/i,
+    /delete\s+from/i,
+    /insert\s+into/i,
+    /update\s+set/i,
+    /union\s+select/i,
+    /--\s*$/m,
+    /;\s*$/m,
+    /\*\/|\/\*/,
+    /exec\s+\(/i,
+    /xp_cmdshell/i
+];
+
 export const containsSqlPatterns = (input: string): boolean => {
-    if (!input || input.length > 5000) return false;
+    if (!input || input.length === 0) return false;
+    if (input.length > 5000) return false;
     
-    const dangerousSql = [
-        /\bSELECT\b/i, /\bDROP\b/i, /\bDELETE\b/i, 
-        /\bINSERT\b/i, /\bUPDATE\b/i, /\bUNION\b/i,
-        /--/, /;/, /\/\*/, /\*\//
-    ];
+    // Uzun girdilerde performans için sınırlama
+    const checkStr = input.length > SQL_PATTERN_MAX_LENGTH 
+        ? input.substring(0, SQL_PATTERN_MAX_LENGTH) 
+        : input;
     
-    return dangerousSql.some(pattern => pattern.test(input));
+    return SQL_PATTERNS.some(pattern => pattern.test(checkStr));
 };
 
-// ============ TİP TANIMLARI ============
-
-export type ValidationRule = (value: unknown) => boolean;
-
-interface ValidationResult {
-    valid: boolean;
-    errors: Record<string, string>;
-}
-
-interface ValidationOptions {
-    requiredFields?: string[];      // Zorunlu alanlar
-    optionalFields?: string[];      // Opsiyonel alanlar (bunlar eksikse hata vermez)
-}
-
-// ============ ANA VALİDASYON FONKSİYONU (GÜNCELLENMİŞ) ============
+// ============ ANA VALİDASYON FONKSİYONU (DÜZELTİLMİŞ) ============
 
 /**
  * Tüm alanları toplu olarak doğrular
@@ -208,30 +309,62 @@ export const validateInput = (
     options: ValidationOptions = {}
 ): ValidationResult => {
     const errors: Record<string, string> = {};
-    const { requiredFields = [], optionalFields = [] } = options;
+    const {
+        requiredFields = [],
+        optionalFields = [],
+        errorMessages = {},
+        maxErrors = Infinity,
+        abortEarly = false,
+        allowEmptyStrings = false
+    } = options;
     
     // 1. Required alanların varlık kontrolü
     for (const field of requiredFields) {
         const value = data[field];
-        if (value === undefined || value === null || value === '') {
-            errors[field] = `${field} is required`;
+        const isEmpty = value === undefined || value === null || 
+                       (!allowEmptyStrings && value === '');
+        
+        if (isEmpty) {
+            errors[field] = errorMessages[field] || `${field} is required`;
+            if (abortEarly) {
+                return { valid: false, errors };
+            }
+            if (Object.keys(errors).length >= maxErrors) {
+                return { valid: false, errors };
+            }
         }
     }
     
     // 2. Validasyon kurallarını uygula (sadece var olan alanlar için)
     for (const [field, validator] of Object.entries(rules)) {
-        const value = data[field];
+        // Hata limiti kontrolü
+        if (Object.keys(errors).length >= maxErrors) break;
         
-        // Optional alanlar kontrolü: eğer alan optional ise ve değer yoksa atla
+        const value = data[field];
         const isOptional = optionalFields.includes(field);
-        if (isOptional && (value === undefined || value === null || value === '')) {
+        const isEmpty = value === undefined || value === null || 
+                       (!allowEmptyStrings && value === '');
+        
+        // Optional alanlar için atlama
+        if (isOptional && isEmpty) {
             continue;
         }
         
         // Required alanlar zaten yukarıda kontrol edildi, burada sadece validasyon yap
         if (value !== undefined && value !== null) {
-            if (!validator(value)) {
-                errors[field] = `Invalid ${field}`;
+            try {
+                if (!validator(value)) {
+                    errors[field] = errorMessages[field] || `Invalid ${field}`;
+                    if (abortEarly) {
+                        return { valid: false, errors };
+                    }
+                }
+            } catch (error) {
+                // Validator hatası durumunda
+                errors[field] = errorMessages[field] || `Validation error for ${field}`;
+                if (abortEarly) {
+                    return { valid: false, errors };
+                }
             }
         }
     }
@@ -254,21 +387,105 @@ export const createValidationRules = <T extends Record<string, unknown>>(
 };
 
 /**
- * Örnek kullanım:
- * 
- * const rules = createValidationRules({
- *     email: isValidEmail,
- *     password: isValidPassword,
- *     name: (value) => isValidName(value as string)
- * });
- * 
- * const result = validateInput(
- *     { email: "test@example.com", password: "Pass1234", name: "John Doe" },
- *     rules,
- *     { requiredFields: ["email", "password"] }
- * );
- * 
- * if (!result.valid) {
- *     console.error(result.errors);
- * }
+ * Validasyon hatalarını formata etmek için yardımcı fonksiyon
  */
+export const formatValidationErrors = (errors: Record<string, string>): string[] => {
+    return Object.values(errors);
+};
+
+/**
+ * Tek bir alanı validate etmek için yardımcı fonksiyon
+ */
+export const validateField = (
+    value: unknown,
+    validator: ValidationRule,
+    fieldName: string
+): { valid: boolean; error?: string } => {
+    if (!validator(value)) {
+        return { valid: false, error: `Invalid ${fieldName}` };
+    }
+    return { valid: true };
+};
+
+/**
+ * Güvenli string karşılaştırma (timing attack resistant)
+ */
+export const safeCompare = (a: string, b: string): boolean => {
+    if (a.length !== b.length) return false;
+    
+    let result = 0;
+    for (let i = 0; i < a.length; i++) {
+        result |= a.charCodeAt(i) ^ b.charCodeAt(i);
+    }
+    return result === 0;
+};
+
+/**
+ * Input sanitize etme
+ */
+export const sanitizeInput = (input: string): string => {
+    if (!input) return '';
+    
+    // Tehlikeli karakterleri escape et
+    return input
+        .replace(/[&<>]/g, (char) => {
+            switch (char) {
+                case '&': return '&amp;';
+                case '<': return '&lt;';
+                case '>': return '&gt;';
+                default: return char;
+            }
+        })
+        .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '') // Kontrol karakterlerini temizle
+        .substring(0, MAX_INPUT_LENGTH);
+};
+
+// ============ ÖRNEK KULLANIM ============
+
+/*
+// Validasyon kuralları oluşturma
+const rules = createValidationRules({
+    email: isValidEmail,
+    password: isValidPassword,
+    name: (value) => isValidName(value as string)
+});
+
+// Validasyon opsiyonları
+const options = {
+    requiredFields: ["email", "password"],
+    optionalFields: ["name"],
+    errorMessages: {
+        email: "Please enter a valid email address",
+        password: "Password must be at least 8 characters with uppercase, lowercase and numbers"
+    },
+    abortEarly: false,
+    maxErrors: 5
+};
+
+// Validasyonu çalıştırma
+const formData = {
+    email: "test@example.com",
+    password: "Pass1234",
+    name: "John Doe"
+};
+
+const result = validateInput(formData, rules, options);
+
+if (!result.valid) {
+    console.error("Validation errors:", result.errors);
+    // Output: { valid: true, errors: {} } - eğer validasyon başarılıysa
+} else {
+    console.log("Validation passed!");
+}
+
+// Tek alan validasyonu
+const emailValidation = validateField("test@example.com", isValidEmail, "email");
+if (!emailValidation.valid) {
+    console.error(emailValidation.error);
+}
+
+// Input sanitize
+const userInput = "<script>alert('xss')</script>";
+const safeInput = sanitizeInput(userInput);
+console.log(safeInput); // &lt;script&gt;alert('xss')&lt;/script&gt;
+*/
