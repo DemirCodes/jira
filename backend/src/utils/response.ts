@@ -1,100 +1,169 @@
 import { Response } from 'express';
+import { AppError } from './errorCodes';
 
-interface ApiResponse {
+// ─── TİPLER ───────────────────────────────────────────────────────────────────
+
+export interface ApiMeta {
+    requestId?: string;
+    timestamp: string;
+    path: string;
+    message?: string;
+    page?: number;
+    limit?: number;
+    total?: number;
+    duration?: number; // optional
+}
+
+export interface ApiResponse<T = unknown> {
     success: boolean;
-    data?: unknown;
+    data?: T;
     error?: {
         code: string;
         message: string;
         details?: unknown;
     };
-    meta?: {
-        page?: number;
-        limit?: number;
-        total?: number;
-        timestamp: string;
-        path?: string;
-        message?: string;
-    };
+    meta: ApiMeta;
 }
 
-export const sendSuccess = (
-    res: Response,
-    data: unknown,
-    statusCode: number = 200
-): Response => {
-    const response: ApiResponse = {
-        success: true,
-        data,
-        meta: {
-            timestamp: new Date().toISOString(),
-            path: res.req?.path,
-        },
-    };
+export interface PaginatedData<T> {
+    items: T[];
+    page: number;
+    limit: number;
+    total: number;
+    totalPages: number;
+}
+
+// ─── GÜVENLİK ─────────────────────────────────────────────────────────────────
+
+const sanitizeErrorDetails = (details: unknown): unknown => {
+    if (process.env.NODE_ENV !== 'production') return details;
+    if (!details) return undefined;
     
-    return res.status(statusCode).json(response);
+    try {
+        const SENSITIVE = new Set(['stack', 'password', 'token', 'secret', 'authorization']);
+        
+        if (details instanceof Error) {
+            return { message: details.message };
+        }
+        
+        if (typeof details === 'object') {
+            return Object.fromEntries(
+                Object.entries(details as Record<string, unknown>)
+                    .filter(([k]) => !SENSITIVE.has(k.toLowerCase()))
+            );
+        }
+        
+        return undefined;
+    } catch {
+        return undefined;
+    }
 };
 
-export const sendSuccessWithMessage = (
+// ─── YARDIMCI ─────────────────────────────────────────────────────────────────
+
+const buildMeta = (res: Response, extra?: Partial<ApiMeta>): ApiMeta => ({
+    requestId: (res.req as any).id,
+    timestamp: new Date().toISOString(),
+    path: res.req.path,
+    ...extra,
+});
+
+// ─── RESPONSE FONKSİYONLARI ───────────────────────────────────────────────────
+
+export const sendSuccess = <T>(
     res: Response,
-    data: unknown,
-    message: string,
-    statusCode: number = 200
+    data: T,
+    statusCode = 200,
+    message?: string,
 ): Response => {
-    const response: ApiResponse = {
+    const body: ApiResponse<T> = {
         success: true,
         data,
-        meta: {
-            timestamp: new Date().toISOString(),
-            path: res.req?.path,
-            message,
-        },
+        meta: buildMeta(res, message ? { message } : undefined),
     };
-    
-    return res.status(statusCode).json(response);
+    return res.status(statusCode).json(body);
 };
 
+// GELİŞTİRİLMİŞ HATA YANITI - AppError destekli
 export const sendError = (
     res: Response,
-    errorCode: string,
-    message: string,
-    statusCode: number = 400,
-    details?: unknown
+    error: AppError | string,
+    customMessage?: string,
+    customStatusCode?: number,
+    details?: unknown,
 ): Response => {
-    const response: ApiResponse = {
+    let errorCode: string;
+    let message: string;
+    let statusCode: number;
+    let errorDetails: unknown = details;
+
+    if (typeof error === 'string') {
+        errorCode = error;
+        message = customMessage || error;
+        statusCode = customStatusCode || 400;
+    } else {
+        errorCode = error.errorCode;
+        message = customMessage || error.message;
+        statusCode = customStatusCode || error.statusCode;
+        errorDetails = errorDetails || error;
+    }
+
+    const body: ApiResponse = {
         success: false,
         error: {
             code: errorCode,
             message,
-            details,
+            details: sanitizeErrorDetails(errorDetails),
         },
-        meta: {
-            timestamp: new Date().toISOString(),
-            path: res.req?.path,
-        },
+        meta: buildMeta(res),
     };
-    
-    return res.status(statusCode).json(response);
+    return res.status(statusCode).json(body);
 };
 
-export const sendPaginated = (
+export const sendPaginated = <T>(
     res: Response,
-    data: unknown[],
+    items: T[],
     total: number,
     page: number,
-    limit: number
+    limit: number,
 ): Response => {
-    const response: ApiResponse = {
+    const body: ApiResponse<PaginatedData<T>> = {
         success: true,
-        data,
-        meta: {
+        data: {
+            items,
             page,
             limit,
             total,
-            timestamp: new Date().toISOString(),
-            path: res.req?.path,
+            totalPages: Math.ceil(total / limit),
         },
+        meta: buildMeta(res),
     };
-    
-    return res.status(200).json(response);
+    return res.status(200).json(body);
+};
+
+// YENİ: Validation helper'ı
+export const sendValidationError = (
+    res: Response,
+    errors: Record<string, string[]>,
+): Response => {
+    return sendError(
+        res,
+        'VALIDATION_FAILED',
+        'Validation failed',
+        422,
+        { errors }
+    );
+};
+
+// YENİ: 404 helper'ı
+export const sendNotFound = (
+    res: Response,
+    resource: string,
+): Response => {
+    return sendError(
+        res,
+        'NOT_FOUND',
+        `${resource} not found`,
+        404
+    );
 };

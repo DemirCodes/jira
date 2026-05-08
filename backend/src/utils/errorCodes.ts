@@ -72,7 +72,7 @@ export const ErrorCodes = {
 } as const;
 
 // 2. TypeScript Tip Tanımları
-export type ErrorCode = typeof ErrorCodes[keyof typeof ErrorCodes];
+export type ErrorCode = (typeof ErrorCodes)[keyof typeof ErrorCodes];
 
 // 3. Hata Mesajları
 export const ErrorMessages: Record<ErrorCode, string> = {
