@@ -326,3 +326,15 @@ export const blacklistAllUserTokens = async (userId: string): Promise<void> => {
     // Şimdilik sadece log atıyoruz
     log.info('All user tokens blacklisted', { userId });
 };
+
+/**
+ * 1. KRİTİK: Rate Limiting Bypass (Yüksek Risk)
+ * 2. KRİTİK: Timing Attack (Yüksek Risk)
+ * 3. YÜKSEK RİSK: JWT Algorithm Confusion
+ * 4. ORTA RİSK: Information Leakage
+ * 5. ORTA RİSK: Race Condition
+ * 6. ORTA RİSK: Memory Exhaustion DoS
+ * 7. DÜŞÜK RİSK: Fingerprint Bypass
+ * 8. DÜŞÜK RİSK: No Token Revocation for Password Change
+ * 
+ */

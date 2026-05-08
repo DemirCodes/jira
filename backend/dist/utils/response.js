@@ -1,60 +1,66 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendPaginated = exports.sendError = exports.sendSuccessWithMessage = exports.sendSuccess = void 0;
-const sendSuccess = (res, data, statusCode = 200) => {
-    const response = {
+var sendSuccess = function (res, data, statusCode) {
+    var _a;
+    if (statusCode === void 0) { statusCode = 200; }
+    var response = {
         success: true,
-        data,
+        data: data,
         meta: {
             timestamp: new Date().toISOString(),
-            path: res.req?.path,
+            path: (_a = res.req) === null || _a === void 0 ? void 0 : _a.path,
         },
     };
     return res.status(statusCode).json(response);
 };
 exports.sendSuccess = sendSuccess;
-const sendSuccessWithMessage = (res, data, message, statusCode = 200) => {
-    const response = {
+var sendSuccessWithMessage = function (res, data, message, statusCode) {
+    var _a;
+    if (statusCode === void 0) { statusCode = 200; }
+    var response = {
         success: true,
-        data,
+        data: data,
         meta: {
             timestamp: new Date().toISOString(),
-            path: res.req?.path,
-            message,
+            path: (_a = res.req) === null || _a === void 0 ? void 0 : _a.path,
+            message: message,
         },
     };
     return res.status(statusCode).json(response);
 };
 exports.sendSuccessWithMessage = sendSuccessWithMessage;
-const sendError = (res, errorCode, message, statusCode = 400, details) => {
-    const response = {
+var sendError = function (res, errorCode, message, statusCode, details) {
+    var _a;
+    if (statusCode === void 0) { statusCode = 400; }
+    var response = {
         success: false,
         error: {
             code: errorCode,
-            message,
-            details,
+            message: message,
+            details: details,
         },
         meta: {
             timestamp: new Date().toISOString(),
-            path: res.req?.path,
+            path: (_a = res.req) === null || _a === void 0 ? void 0 : _a.path,
         },
     };
     return res.status(statusCode).json(response);
 };
 exports.sendError = sendError;
-const sendPaginated = (res, data, total, page, limit) => {
-    const response = {
+var sendPaginated = function (res, data, total, page, limit) {
+    var _a;
+    var response = {
         success: true,
-        data,
+        data: data,
         meta: {
-            page,
-            limit,
-            total,
+            page: page,
+            limit: limit,
+            total: total,
             timestamp: new Date().toISOString(),
-            path: res.req?.path,
+            path: (_a = res.req) === null || _a === void 0 ? void 0 : _a.path,
         },
     };
     return res.status(200).json(response);
 };
 exports.sendPaginated = sendPaginated;
-//# sourceMappingURL=response.js.map

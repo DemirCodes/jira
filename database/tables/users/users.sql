@@ -21,3 +21,6 @@ CREATE TABLE public.users (
     two_factor_enabled boolean DEFAULT false,
     last_password_change_at timestamp with time zone DEFAULT now()
 );
+
+
+ALTER TABLE users ADD COLUMN IF NOT EXISTS token_version INTEGER DEFAULT 1;

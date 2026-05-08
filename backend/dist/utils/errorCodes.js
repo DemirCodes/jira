@@ -7,6 +7,22 @@
  * - YYY: Kategori (00=GENERAL, 01=NOT_FOUND, 02=PERMISSION, 03=CONFLICT, 04=VALIDATION)
  * - ZZZ: Spesifik hata numarası
  */
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.parseErrorCode = exports.isAppError = exports.AppError = exports.getHttpStatusFromErrorCode = exports.ErrorMessages = exports.ErrorCodes = void 0;
 // 1. Hata Kodları Tanımları (Immutable)
@@ -66,58 +82,58 @@ exports.ErrorCodes = {
     RATE_LIMIT_EXCEEDED: '800-001-001',
 };
 // 3. Hata Mesajları
-exports.ErrorMessages = {
-    [exports.ErrorCodes.AUTH_NO_TOKEN]: 'No token provided. Please authenticate.',
-    [exports.ErrorCodes.AUTH_INVALID_TOKEN]: 'Invalid token. Please login again.',
-    [exports.ErrorCodes.AUTH_TOKEN_EXPIRED]: 'Token expired. Please refresh your token.',
-    [exports.ErrorCodes.AUTH_INVALID_CREDENTIALS]: 'Invalid email or password.',
-    [exports.ErrorCodes.AUTH_USER_NOT_FOUND]: 'User not found with this email.',
-    [exports.ErrorCodes.AUTH_EMAIL_ALREADY_EXISTS]: 'Email already exists. Please use another email.',
-    [exports.ErrorCodes.AUTH_WEAK_PASSWORD]: 'Password is too weak. Use at least 8 characters with uppercase, lowercase and number.',
-    [exports.ErrorCodes.AUTH_RATE_LIMIT]: 'Too many attempts. Please try again later.',
-    [exports.ErrorCodes.ORG_NOT_FOUND]: 'Organization not found.',
-    [exports.ErrorCodes.ORG_ALREADY_EXISTS]: 'Organization with this name already exists.',
-    [exports.ErrorCodes.ORG_SLUG_TAKEN]: 'This slug is already taken.',
-    [exports.ErrorCodes.ORG_PERMISSION_DENIED]: 'You do not have permission to perform this action.',
-    [exports.ErrorCodes.ORG_OWNER_REQUIRED]: 'Only organization owner can perform this action.',
-    [exports.ErrorCodes.ORG_LIMIT_REACHED]: 'Organization creation limit reached (max 2).',
-    [exports.ErrorCodes.ORG_INVALID_INVITE_CODE]: 'Invalid friendship code.',
-    [exports.ErrorCodes.ORG_USER_ALREADY_MEMBER]: 'User is already a member of this organization.',
-    [exports.ErrorCodes.SITE_NOT_FOUND]: 'Site not found.',
-    [exports.ErrorCodes.SITE_ALREADY_EXISTS]: 'Site with this name already exists.',
-    [exports.ErrorCodes.SITE_SLUG_TAKEN]: 'This site slug is already taken.',
-    [exports.ErrorCodes.SITE_PERMISSION_DENIED]: 'You do not have permission to perform this action on this site.',
-    [exports.ErrorCodes.SITE_ADMIN_REQUIRED]: 'Only site admin can perform this action.',
-    [exports.ErrorCodes.SITE_PRIVATE_CANNOT_INVITE]: 'Cannot invite users to private site.',
-    [exports.ErrorCodes.PROJECT_NOT_FOUND]: 'Project not found.',
-    [exports.ErrorCodes.PROJECT_ALREADY_EXISTS]: 'Project with this name already exists in this site.',
-    [exports.ErrorCodes.PROJECT_SLUG_TAKEN]: 'This project slug is already taken.',
-    [exports.ErrorCodes.PROJECT_PERMISSION_DENIED]: 'You do not have permission to perform this action on this project.',
-    [exports.ErrorCodes.PROJECT_ADMIN_REQUIRED]: 'Only project admin can perform this action.',
-    [exports.ErrorCodes.PROJECT_PRIVATE_CANNOT_INVITE]: 'Cannot invite users to private project.',
-    [exports.ErrorCodes.PROJECT_CANNOT_DELETE_HAS_ISSUES]: 'Cannot delete project with existing issues.',
-    [exports.ErrorCodes.ISSUE_NOT_FOUND]: 'Issue not found.',
-    [exports.ErrorCodes.ISSUE_PERMISSION_DENIED]: 'You do not have permission to perform this action on this issue.',
-    [exports.ErrorCodes.ISSUE_CANNOT_DELETE_HAS_CHILDREN]: 'Cannot delete issue with child issues.',
-    [exports.ErrorCodes.ISSUE_INVALID_STATUS]: 'Invalid status transition.',
-    [exports.ErrorCodes.DB_CONNECTION_FAILED]: 'Database connection failed.',
-    [exports.ErrorCodes.DB_QUERY_FAILED]: 'Database query failed.',
-    [exports.ErrorCodes.DB_UNIQUE_VIOLATION]: 'Resource already exists.',
-    [exports.ErrorCodes.DB_FOREIGN_KEY_VIOLATION]: 'Related resource not found.',
-    [exports.ErrorCodes.VALIDATION_FAILED]: 'Validation failed.',
-    [exports.ErrorCodes.VALIDATION_INVALID_EMAIL]: 'Invalid email format.',
-    [exports.ErrorCodes.VALIDATION_INVALID_UUID]: 'Invalid UUID format.',
-    [exports.ErrorCodes.VALIDATION_INVALID_PASSWORD]: 'Password must be at least 8 characters with uppercase, lowercase and number.',
-    [exports.ErrorCodes.VALIDATION_INVALID_NAME]: 'Invalid name format.',
-    [exports.ErrorCodes.VALIDATION_INVALID_SLUG]: 'Invalid slug format. Use only lowercase letters, numbers and hyphens.',
-    [exports.ErrorCodes.VALIDATION_MISSING_FIELD]: 'Required field is missing.',
-    [exports.ErrorCodes.RATE_LIMIT_EXCEEDED]: 'Too many requests. Please try again later.',
-};
+exports.ErrorMessages = (_a = {},
+    _a[exports.ErrorCodes.AUTH_NO_TOKEN] = 'No token provided. Please authenticate.',
+    _a[exports.ErrorCodes.AUTH_INVALID_TOKEN] = 'Invalid token. Please login again.',
+    _a[exports.ErrorCodes.AUTH_TOKEN_EXPIRED] = 'Token expired. Please refresh your token.',
+    _a[exports.ErrorCodes.AUTH_INVALID_CREDENTIALS] = 'Invalid email or password.',
+    _a[exports.ErrorCodes.AUTH_USER_NOT_FOUND] = 'User not found with this email.',
+    _a[exports.ErrorCodes.AUTH_EMAIL_ALREADY_EXISTS] = 'Email already exists. Please use another email.',
+    _a[exports.ErrorCodes.AUTH_WEAK_PASSWORD] = 'Password is too weak. Use at least 8 characters with uppercase, lowercase and number.',
+    _a[exports.ErrorCodes.AUTH_RATE_LIMIT] = 'Too many attempts. Please try again later.',
+    _a[exports.ErrorCodes.ORG_NOT_FOUND] = 'Organization not found.',
+    _a[exports.ErrorCodes.ORG_ALREADY_EXISTS] = 'Organization with this name already exists.',
+    _a[exports.ErrorCodes.ORG_SLUG_TAKEN] = 'This slug is already taken.',
+    _a[exports.ErrorCodes.ORG_PERMISSION_DENIED] = 'You do not have permission to perform this action.',
+    _a[exports.ErrorCodes.ORG_OWNER_REQUIRED] = 'Only organization owner can perform this action.',
+    _a[exports.ErrorCodes.ORG_LIMIT_REACHED] = 'Organization creation limit reached (max 2).',
+    _a[exports.ErrorCodes.ORG_INVALID_INVITE_CODE] = 'Invalid friendship code.',
+    _a[exports.ErrorCodes.ORG_USER_ALREADY_MEMBER] = 'User is already a member of this organization.',
+    _a[exports.ErrorCodes.SITE_NOT_FOUND] = 'Site not found.',
+    _a[exports.ErrorCodes.SITE_ALREADY_EXISTS] = 'Site with this name already exists.',
+    _a[exports.ErrorCodes.SITE_SLUG_TAKEN] = 'This site slug is already taken.',
+    _a[exports.ErrorCodes.SITE_PERMISSION_DENIED] = 'You do not have permission to perform this action on this site.',
+    _a[exports.ErrorCodes.SITE_ADMIN_REQUIRED] = 'Only site admin can perform this action.',
+    _a[exports.ErrorCodes.SITE_PRIVATE_CANNOT_INVITE] = 'Cannot invite users to private site.',
+    _a[exports.ErrorCodes.PROJECT_NOT_FOUND] = 'Project not found.',
+    _a[exports.ErrorCodes.PROJECT_ALREADY_EXISTS] = 'Project with this name already exists in this site.',
+    _a[exports.ErrorCodes.PROJECT_SLUG_TAKEN] = 'This project slug is already taken.',
+    _a[exports.ErrorCodes.PROJECT_PERMISSION_DENIED] = 'You do not have permission to perform this action on this project.',
+    _a[exports.ErrorCodes.PROJECT_ADMIN_REQUIRED] = 'Only project admin can perform this action.',
+    _a[exports.ErrorCodes.PROJECT_PRIVATE_CANNOT_INVITE] = 'Cannot invite users to private project.',
+    _a[exports.ErrorCodes.PROJECT_CANNOT_DELETE_HAS_ISSUES] = 'Cannot delete project with existing issues.',
+    _a[exports.ErrorCodes.ISSUE_NOT_FOUND] = 'Issue not found.',
+    _a[exports.ErrorCodes.ISSUE_PERMISSION_DENIED] = 'You do not have permission to perform this action on this issue.',
+    _a[exports.ErrorCodes.ISSUE_CANNOT_DELETE_HAS_CHILDREN] = 'Cannot delete issue with child issues.',
+    _a[exports.ErrorCodes.ISSUE_INVALID_STATUS] = 'Invalid status transition.',
+    _a[exports.ErrorCodes.DB_CONNECTION_FAILED] = 'Database connection failed.',
+    _a[exports.ErrorCodes.DB_QUERY_FAILED] = 'Database query failed.',
+    _a[exports.ErrorCodes.DB_UNIQUE_VIOLATION] = 'Resource already exists.',
+    _a[exports.ErrorCodes.DB_FOREIGN_KEY_VIOLATION] = 'Related resource not found.',
+    _a[exports.ErrorCodes.VALIDATION_FAILED] = 'Validation failed.',
+    _a[exports.ErrorCodes.VALIDATION_INVALID_EMAIL] = 'Invalid email format.',
+    _a[exports.ErrorCodes.VALIDATION_INVALID_UUID] = 'Invalid UUID format.',
+    _a[exports.ErrorCodes.VALIDATION_INVALID_PASSWORD] = 'Password must be at least 8 characters with uppercase, lowercase and number.',
+    _a[exports.ErrorCodes.VALIDATION_INVALID_NAME] = 'Invalid name format.',
+    _a[exports.ErrorCodes.VALIDATION_INVALID_SLUG] = 'Invalid slug format. Use only lowercase letters, numbers and hyphens.',
+    _a[exports.ErrorCodes.VALIDATION_MISSING_FIELD] = 'Required field is missing.',
+    _a[exports.ErrorCodes.RATE_LIMIT_EXCEEDED] = 'Too many requests. Please try again later.',
+    _a);
 // 4. HTTP Durum Kodu Belirleyici
-const getHttpStatusFromErrorCode = (errorCode) => {
-    const parts = errorCode.split('-');
-    const moduleCode = parseInt(parts[0], 10);
-    const categoryCode = parseInt(parts[1], 10);
+var getHttpStatusFromErrorCode = function (errorCode) {
+    var parts = errorCode.split('-');
+    var moduleCode = parseInt(parts[0], 10);
+    var categoryCode = parseInt(parts[1], 10);
     // Kategoriye göre HTTP kodunu belirle
     if (categoryCode === 1)
         return 404; // NOT_FOUND
@@ -138,29 +154,30 @@ const getHttpStatusFromErrorCode = (errorCode) => {
 };
 exports.getHttpStatusFromErrorCode = getHttpStatusFromErrorCode;
 // 5. Custom Error Sınıfı
-class AppError extends Error {
-    statusCode;
-    errorCode;
-    isOperational;
-    constructor(errorCode, message, statusCode) {
-        const errorMessage = message || exports.ErrorMessages[errorCode] || 'Unknown Error';
-        const calculatedStatus = statusCode || (0, exports.getHttpStatusFromErrorCode)(errorCode);
-        super(errorMessage);
-        this.name = 'AppError';
-        this.errorCode = errorCode;
-        this.statusCode = calculatedStatus;
-        this.isOperational = true;
-        Error.captureStackTrace(this, this.constructor);
+var AppError = /** @class */ (function (_super) {
+    __extends(AppError, _super);
+    function AppError(errorCode, message, statusCode) {
+        var _this = this;
+        var errorMessage = message || exports.ErrorMessages[errorCode] || 'Unknown Error';
+        var calculatedStatus = statusCode || (0, exports.getHttpStatusFromErrorCode)(errorCode);
+        _this = _super.call(this, errorMessage) || this;
+        _this.name = 'AppError';
+        _this.errorCode = errorCode;
+        _this.statusCode = calculatedStatus;
+        _this.isOperational = true;
+        Error.captureStackTrace(_this, _this.constructor);
+        return _this;
     }
-}
+    return AppError;
+}(Error));
 exports.AppError = AppError;
 // 6. Yardımcı Fonksiyonlar
-const isAppError = (error) => {
+var isAppError = function (error) {
     return error instanceof AppError;
 };
 exports.isAppError = isAppError;
-const parseErrorCode = (errorCode) => {
-    const parts = errorCode.split('-');
+var parseErrorCode = function (errorCode) {
+    var parts = errorCode.split('-');
     return {
         module: parseInt(parts[0], 10),
         category: parseInt(parts[1], 10),
@@ -168,4 +185,3 @@ const parseErrorCode = (errorCode) => {
     };
 };
 exports.parseErrorCode = parseErrorCode;
-//# sourceMappingURL=errorCodes.js.map

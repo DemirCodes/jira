@@ -1,0 +1,5 @@
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-05-07 17:31:17"}
+{"level":"info","message":"🚀 Server running on port 3030","timestamp":"2026-05-07 18:20:11"}
+{"level":"info","message":"📡 Health: http://localhost:3030/health","timestamp":"2026-05-07 18:20:11"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-05-07 18:20:11"}
+{"level":"info","message":"✅ Redis event system started","timestamp":"2026-05-07 18:20:11"}
