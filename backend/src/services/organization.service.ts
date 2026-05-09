@@ -158,20 +158,39 @@ export const createOrganization = async (
 export const getUserOrganizations = async (userId: string): Promise<Organization[]> => {
     validateUserId(userId);
     
+    // Fonksiyon çağrısı yerine direkt sorgu (geçici çözüm)
     const result = await tenantPool.query(
-        'SELECT * FROM list_user_organizations($1)',
+        `SELECT o.org_id, o.org_name, o.org_description, o.slug, o.org_status, 
+                o.created_at, o.created_by, om.role as user_role
+         FROM organizations o
+         JOIN organization_memberships om ON om.org_id = o.org_id
+         WHERE om.user_id = $1 AND om.deleted_at IS NULL AND o.deleted_at IS NULL
+         ORDER BY o.created_at DESC`,
         [userId]
     );
     return result.rows;
 };
 
-export const getOrganizationById = async (orgId: string): Promise<Organization | null> => {
+
+export const getOrganizationById = async (userId: string, orgId: string): Promise<Organization | null> => {
+    validateUserId(userId);
     validateOrgId(orgId);
+    
+    // Yetki kontrolü: Kullanıcı bu organization'a üye mi?
+    const accessCheck = await tenantPool.query(
+        'SELECT 1 FROM organization_memberships WHERE org_id = $1 AND user_id = $2 AND deleted_at IS NULL',
+        [orgId, userId]
+    );
+    
+    if (accessCheck.rows.length === 0) {
+        throw new Error('PERMISSION_DENIED');
+    }
     
     const result = await tenantPool.query(
         'SELECT * FROM get_organization_by_id($1)',
         [orgId]
     );
+    
     return result.rows[0] || null;
 };
 

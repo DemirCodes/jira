@@ -1,0 +1,6 @@
+{"error":"syntax error at or near \"$1\"","level":"error","message":"Auth failed: RLS setup error","timestamp":"2026-05-09 18:14:00","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":"syntax error at or near \"$1\"","level":"error","message":"Auth failed: RLS setup error","timestamp":"2026-05-09 18:14:00","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":"syntax error at or near \"$1\"","level":"error","message":"Auth failed: RLS setup error","timestamp":"2026-05-09 18:14:00","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":"trailing junk after numeric literal at or near \"42d3\"","level":"error","message":"Auth failed: RLS setup error","timestamp":"2026-05-09 18:19:13","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":"trailing junk after numeric literal at or near \"42d3\"","level":"error","message":"Auth failed: RLS setup error","timestamp":"2026-05-09 18:19:13","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":"trailing junk after numeric literal at or near \"42d3\"","level":"error","message":"Auth failed: RLS setup error","timestamp":"2026-05-09 18:19:13","userId":"123e4567-e89b-42d3-a456-426614174000"}

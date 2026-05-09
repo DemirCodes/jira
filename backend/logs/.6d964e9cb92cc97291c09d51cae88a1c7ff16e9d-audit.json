@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 30
+    },
+    "auditLog": "/home/dmrcode/Desktop/jira/backend/logs/.6d964e9cb92cc97291c09d51cae88a1c7ff16e9d-audit.json",
+    "files": [
+        {
+            "date": 1778338826315,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-05-09.log",
+            "hash": "f6334b6efa810ce224ee01879436629444cb6a9440623d1cc3dbaaac035f2389"
+        }
+    ],
+    "hashType": "sha256"
+}

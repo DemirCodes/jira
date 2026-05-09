@@ -41,8 +41,10 @@ export const list = async (req: Request, res: Response): Promise<void> => {
 
 export const getById = async (req: Request, res: Response): Promise<void> => {
     try {
+        const userId = req.userId!;  
         const { id } = req.params;
-        const org = await orgService.getOrganizationById(id);
+        
+        const org = await orgService.getOrganizationById(userId, id);
         
         if (!org) {
             res.status(404).json({ error: 'Organization not found' });
@@ -51,9 +53,14 @@ export const getById = async (req: Request, res: Response): Promise<void> => {
         
         res.json(org);
     } catch (error: any) {
-        res.status(500).json({ error: error.message });
+        if (error.message === 'PERMISSION_DENIED') {
+            res.status(403).json({ error: 'Access denied' });
+        } else {
+            res.status(500).json({ error: error.message });
+        }
     }
 };
+
 
 // ==================== UPDATE ====================
 export const update = async (req: Request, res: Response): Promise<void> => {
