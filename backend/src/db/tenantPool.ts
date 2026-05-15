@@ -12,14 +12,14 @@
 import { Pool } from "pg";
 import dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config({ path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env' });
 
 // ============================================
 // 1. ENV VALIDATION
 // ============================================
 const requiredEnvVars = [
     'TENANT_DB_HOST',
-    'TENANT_DB_NAME', 
+    'TENANT_DB_NAME',
     'TENANT_DB_USER',
     'TENANT_DB_PASSWORD'
 ];
@@ -34,7 +34,7 @@ if (missingVars.length > 0) {
 // ============================================
 const getSSLConfig = () => {
     const sslMode = process.env.TENANT_DB_SSL_MODE || 'disable';
-    
+
     if (sslMode === 'disable') return false;
     if (sslMode === 'require') return { rejectUnauthorized: false };
     if (sslMode === 'verify-full') {
@@ -57,19 +57,19 @@ export const tenantPool = new Pool({
     database: process.env.TENANT_DB_NAME,
     user: process.env.TENANT_DB_USER,
     password: process.env.TENANT_DB_PASSWORD,
-    
+
     max: parseInt(process.env.TENANT_DB_POOL_MAX || '30'),
     min: parseInt(process.env.TENANT_DB_POOL_MIN || '5'),
-    
+
     idleTimeoutMillis: parseInt(process.env.TENANT_DB_IDLE_TIMEOUT || '30000'),
     connectionTimeoutMillis: parseInt(process.env.TENANT_DB_CONNECTION_TIMEOUT || '10000'),
     statement_timeout: parseInt(process.env.TENANT_DB_STATEMENT_TIMEOUT || '30000'),
-    
+
     ssl: getSSLConfig(),
-    
+
     keepAlive: true,
     keepAliveInitialDelayMillis: 10000,
-    
+
     application_name: 'tenant_api',
 });
 
@@ -101,7 +101,7 @@ tenantPool.on('error', (err) => {
 // ============================================
 const shutdown = async (signal: string) => {
     console.log(`[TenantDB] ⚠️ ${signal} sinyali alındı, bağlantılar kapatılıyor...`);
-    
+
     try {
         await tenantPool.end();
         console.log('[TenantDB] ✅ Tüm bağlantılar başarıyla kapatıldı');
@@ -137,7 +137,7 @@ export const healthCheck = async (): Promise<boolean> => {
 export const getPoolMetrics = () => {
     const maxClients = parseInt(process.env.TENANT_DB_POOL_MAX || '30');
     const activeCount = tenantPool.totalCount - tenantPool.idleCount;
-    
+
     const metrics = {
         totalCount: tenantPool.totalCount,
         idleCount: tenantPool.idleCount,
@@ -147,7 +147,7 @@ export const getPoolMetrics = () => {
         usagePercent: (activeCount / maxClients) * 100,
         timestamp: new Date().toISOString()
     };
-    
+
     console.log('[TenantDB] 📊 Pool metrics:', metrics);
     return metrics;
 };
@@ -160,15 +160,15 @@ export const withConnection = async <T>(
 ): Promise<T> => {
     const client = await tenantPool.connect();
     const startTime = Date.now();
-    
+
     try {
         const result = await callback(client);
         const duration = Date.now() - startTime;
-        
+
         if (duration > 5000) {
             console.warn(`[TenantDB] ⚠️ Yavaş sorgu (${duration}ms)`);
         }
-        
+
         return result;
     } finally {
         client.release();

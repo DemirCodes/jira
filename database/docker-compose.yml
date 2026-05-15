@@ -11,7 +11,7 @@ services:
       POSTGRES_PASSWORD: jira
       POSTGRES_DB: jira
     ports:
-      - "5434:5434"
+      - "5434:5432"
     volumes:
       - ./migrations:/docker-entrypoint-initdb.d/migrations
       - ./seeds:/docker-entrypoint-initdb.d/seeds

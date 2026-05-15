@@ -1,4 +1,4 @@
-create or replace function update_orgzanization(
+create or replace function update_organization(
     p_org_id uuid,
     p_org_name text DEFAULT NULL,
     p_org_description text default null,
@@ -13,21 +13,19 @@ as $$
 DECLARE
     v_user_id uuid;
 BEGIN
-
-    -- user_id
     v_user_id := auth_current_user_id();
 
     if v_user_id is null then 
         raise exception 'user not authenticated';
     end if;
 
-    -- member ve viewer update yapamaz
     if not auth_is_org_owner(p_org_id)
         and not auth_is_org_admin(p_org_id) THEN
         raise exception 'permission denied';
     end if;
 
-    if p_org_name is null and length(trim(p_org_name)) = 0 then 
+    -- NULL kontrolü düzeltildi
+    if p_org_name is not null and length(trim(p_org_name)) = 0 then 
         raise exception 'organization name cannot be empty';
     end if;
     
@@ -39,12 +37,10 @@ BEGIN
     update organizations
     SET 
         org_name = COALESCE(trim(p_org_name), org_name),
-        org_description =  coalesce(p_org_description, org_description),
-        slug = coalesce(p_slug, slug),
-        org_status = coalesce(p_org_status, org_status)
+        org_description = COALESCE(p_org_description, org_description),
+        slug = COALESCE(p_slug, slug),
+        org_status = COALESCE(p_org_status, org_status)
     where org_id = p_org_id;
 
 end;
 $$;
-
-

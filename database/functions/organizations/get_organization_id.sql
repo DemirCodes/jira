@@ -1,3 +1,5 @@
+drop function get_organization_id(uuid);
+
 create or replace function get_organization_id(
     p_org_id uuid
 ) 

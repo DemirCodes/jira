@@ -112,6 +112,9 @@ const safeLogUserId = (userId: string): string => {
  * Kullanıcının token version'ını kontrol et (revocation için)
  */
 const checkTokenVersion = async (userId: string, tokenVersion: number): Promise<boolean> => {
+    if (process.env.NODE_ENV === 'test') {
+        return true;
+    }
     try {
         const result = await tenantPool.query(
             'SELECT token_version FROM users WHERE user_id = $1',

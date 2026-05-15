@@ -37,8 +37,7 @@ export const updateOrganizationSchema = z.object({
 // Invite to Organization Schema
 export const inviteToOrganizationSchema = z.object({
     friendshipCode: z.string()
-        .min(6, 'Friendship code must be at least 6 characters')
-        .max(50, 'Friendship code cannot exceed 50 characters'),
+        .uuid('Invalid friendship code format. Must be a valid UUID.'),
     
     role: z.enum(['admin', 'member', 'viewer'])
         .default('member'),
@@ -48,3 +47,9 @@ export const inviteToOrganizationSchema = z.object({
 export const updateMemberRoleSchema = z.object({
     role: z.enum(['admin', 'member', 'viewer']),
 });
+
+// Type exports
+export type CreateOrganizationInput = z.infer<typeof createOrganizationSchema>;
+export type UpdateOrganizationInput = z.infer<typeof updateOrganizationSchema>;
+export type InviteToOrganizationInput = z.infer<typeof inviteToOrganizationSchema>;
+export type UpdateMemberRoleInput = z.infer<typeof updateMemberRoleSchema>;

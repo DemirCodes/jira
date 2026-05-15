@@ -9,6 +9,21 @@
             "date": 1778338826315,
             "name": "/home/dmrcode/Desktop/jira/backend/logs/exceptions-2026-05-09.log",
             "hash": "d7270f32db8d6040fcf0333a70eb580bb6b0975440403b6c301e4e62529e853e"
+        },
+        {
+            "date": 1778506215809,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/exceptions-2026-05-11.log",
+            "hash": "c7a01d40d926db6af604bf2bc9c5692298fc41ace30b3b86f791a7af62e010d5"
+        },
+        {
+            "date": 1778760661561,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/exceptions-2026-05-14.log",
+            "hash": "362cb1c668dd60a74d9a10aa8ce10f199e3a55eff227bb5486d0dd9931dbd23e"
+        },
+        {
+            "date": 1778843920152,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/exceptions-2026-05-15.log",
+            "hash": "66d84dcd20805e1f4a45ff442657a7744ba4cf514166ab7d37caafe0ca2c3f68"
         }
     ],
     "hashType": "sha256"

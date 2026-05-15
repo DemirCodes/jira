@@ -15,7 +15,7 @@ DECLARE
     v_user_id uuid;
 BEGIN
         --current user
-        v_user_id := auth_current_user();
+        v_user_id := auth_current_user_id();
 
         if v_user_id is null then 
             raise exception 'user not authenticated';
@@ -34,7 +34,7 @@ BEGIN
         JOIN 
             organization_memberships as om on o.org_id = om.org_id
         WHERE
-            om.user_id = o.user_id
+            om.user_id = v_user_id
             AND
             om.membership_is_active = 1
             AND

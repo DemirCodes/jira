@@ -1,0 +1,810 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="jira" schema="public" type="PostgreSQL - 16.11 (Debian 16.11-1.pgdg13+1)">
+   <tables>
+      <table name="application_bugs" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="bug_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="reported_by" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="application_bugs_reported_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="org_id" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="org_id" foreignKey="application_bugs_org_id_fkey" implied="false" onDeleteCascade="false" schema="public" table="organizations"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="project_id" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="project_id" foreignKey="application_bugs_project_id_fkey" implied="false" onDeleteCascade="false" schema="public" table="projects"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="title" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="description" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'open'::bug_status" digits="0" id="6" name="status" nullable="false" remarks="" size="2147483647" type="bug_status" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'medium'::priority_level" digits="0" id="7" name="priority" nullable="true" remarks="" size="2147483647" type="priority_level" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="assigned_to" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="9" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="10" name="resolved_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="11" name="deleted_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="deleted_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <primaryKey column="bug_id" sequenceNumberInPK="1"/>
+         <index name="application_bugs_pkey" unique="true">
+            <column ascending="true" name="bug_id"/>
+         </index>
+      </table>
+      <table name="issue_activity" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="activity_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="issue_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="issue_id" foreignKey="issue_activity_issue_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="issues"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_id" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="issue_activity_user_id_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="field_name" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="old_value" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="new_value" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="6" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="activity_id" sequenceNumberInPK="1"/>
+         <index name="issue_activity_pkey" unique="true">
+            <column ascending="true" name="activity_id"/>
+         </index>
+      </table>
+      <table name="issue_assets" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="issue_asset_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="issue_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="issue_id" foreignKey="issue_assets_issue_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="issues"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="uploaded_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="issue_assets_uploaded_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="asset_type" nullable="false" remarks="" size="2147483647" type="asset_type" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="file_name" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="mime_type" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="byte_size" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="storage_key" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="checksum" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'{}'::jsonb" digits="0" id="9" name="metadata" nullable="true" remarks="" size="2147483647" type="jsonb" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="10" name="is_active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="11" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="12" name="updated_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="13" name="deleted_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="deleted_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="issue_assets_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <primaryKey column="issue_asset_id" sequenceNumberInPK="1"/>
+         <index name="issue_assets_pkey" unique="true">
+            <column ascending="true" name="issue_asset_id"/>
+         </index>
+      </table>
+      <table name="issue_memberships" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="issue_membership_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="issue_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="issue_id" foreignKey="issue_memberships_issue_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="issues"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="issue_memberships_user_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="role" nullable="false" remarks="" size="2147483647" type="issue_role" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="4" name="membership_is_active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="5" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="6" name="updated_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="7" name="deleted_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="deleted_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="issue_memberships_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <primaryKey column="issue_membership_id" sequenceNumberInPK="1"/>
+         <index name="issue_memberships_pkey" unique="true">
+            <column ascending="true" name="issue_membership_id"/>
+         </index>
+         <index name="idx_issue_memberships_is_active" unique="false">
+            <column ascending="true" name="membership_is_active"/>
+         </index>
+         <index name="idx_issue_memberships_issue_id" unique="false">
+            <column ascending="true" name="issue_id"/>
+         </index>
+         <index name="idx_issue_memberships_issue_role" unique="false">
+            <column ascending="true" name="issue_id"/>
+            <column ascending="true" name="role"/>
+         </index>
+         <index name="idx_issue_memberships_role" unique="false">
+            <column ascending="true" name="role"/>
+         </index>
+         <index name="idx_issue_memberships_user_id" unique="false">
+            <column ascending="true" name="user_id"/>
+         </index>
+         <index name="idx_issue_memberships_user_issue" unique="false">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="issue_id"/>
+         </index>
+         <index name="idx_issue_memberships_user_role" unique="false">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="role"/>
+         </index>
+      </table>
+      <table name="issue_summary" numRows="0" remarks="" schema="public" type="VIEW" viewSql=" SELECT i.issue_id,&#10;    i.issue_no,&#10;    i.issue_title,&#10;    i.issue_description,&#10;    i.status,&#10;    i.priority,&#10;    i.is_private,&#10;    i.is_editable,&#10;    i.created_at,&#10;    i.updated_at,&#10;    i.reporter_id,&#10;    concat(r.user_name, ' ', r.user_last_name) AS reporter_name,&#10;    r.user_email AS reporter_email,&#10;    i.assignee_id,&#10;    concat(a.user_name, ' ', a.user_last_name) AS assignee_name,&#10;    a.user_email AS assignee_email,&#10;    i.parent_issue_id,&#10;    parent.issue_title AS parent_issue_title,&#10;    parent.issue_no AS parent_issue_no,&#10;    i.blocking_issue_id,&#10;    blocking.issue_title AS blocking_issue_title,&#10;    blocking.issue_no AS blocking_issue_no,&#10;    p.project_id,&#10;    p.project_name,&#10;    p.slug AS project_slug,&#10;    s.site_id,&#10;    s.site_name,&#10;    o.org_id,&#10;    o.org_name,&#10;    ( SELECT count(*) AS count&#10;           FROM issue_memberships im&#10;          WHERE ((im.issue_id = i.issue_id) AND (im.membership_is_active = true) AND (im.deleted_at IS NULL))) AS member_count,&#10;    ( SELECT count(*) AS count&#10;           FROM issue_assets ia&#10;          WHERE ((ia.issue_id = i.issue_id) AND (ia.is_active = true) AND (ia.deleted_at IS NULL))) AS asset_count&#10;   FROM (((((((issues i&#10;     LEFT JOIN users r ON (((r.user_id = i.reporter_id) AND (r.deleted_at IS NULL))))&#10;     LEFT JOIN users a ON (((a.user_id = i.assignee_id) AND (a.deleted_at IS NULL))))&#10;     LEFT JOIN issues parent ON (((parent.issue_id = i.parent_issue_id) AND (parent.deleted_at IS NULL))))&#10;     LEFT JOIN issues blocking ON (((blocking.issue_id = i.blocking_issue_id) AND (blocking.deleted_at IS NULL))))&#10;     JOIN projects p ON (((p.project_id = i.project_id) AND (p.deleted_at IS NULL))))&#10;     JOIN sites s ON (((s.site_id = p.site_id) AND (s.deleted_at IS NULL))))&#10;     JOIN organizations o ON (((o.org_id = s.org_id) AND (o.deleted_at IS NULL))))&#10;  WHERE (i.deleted_at IS NULL);">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="issue_id" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="issue_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="issues"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="issue_no" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="issue_title" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="issue_description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="status" nullable="true" remarks="" size="2147483647" type="issue_status" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="priority" nullable="true" remarks="" size="2147483647" type="priority_level" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="is_private" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="is_editable" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="8" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="9" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="reporter_id" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="reporter_name" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="reporter_email" nullable="true" remarks="" size="2147483647" type="citext" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="assignee_id" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="assignee_name" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="assignee_email" nullable="true" remarks="" size="2147483647" type="citext" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="16" name="parent_issue_id" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="issue_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="issues"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="17" name="parent_issue_title" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="18" name="parent_issue_no" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="19" name="blocking_issue_id" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="issue_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="issues"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="20" name="blocking_issue_title" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="21" name="blocking_issue_no" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="22" name="project_id" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="project_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="projects"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="23" name="project_name" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="24" name="project_slug" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="25" name="site_id" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="site_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="sites"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="26" name="site_name" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="27" name="org_id" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="org_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="organizations"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="28" name="org_name" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="29" name="member_count" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="30" name="asset_count" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+      </table>
+      <table name="issues" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="issue_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <child column="issue_id" foreignKey="issue_activity_issue_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="issue_activity"/>
+            <child column="issue_id" foreignKey="issue_assets_issue_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="issue_assets"/>
+            <child column="issue_id" foreignKey="issue_memberships_issue_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="issue_memberships"/>
+            <child column="blocking_issue_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="issue_summary"/>
+            <child column="issue_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="issue_summary"/>
+            <child column="parent_issue_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="issue_summary"/>
+            <child column="blocking_issue_id" foreignKey="issues_blocking_issue_id_fkey" implied="false" onDeleteCascade="false" schema="public" table="issues"/>
+            <child column="parent_issue_id" foreignKey="issues_parent_issue_id_fkey" implied="false" onDeleteCascade="false" schema="public" table="issues"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="project_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="project_id" foreignKey="issues_project_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="projects"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="issue_no" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="issue_title" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="issue_description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'open'::issue_status" digits="0" id="5" name="status" nullable="false" remarks="" size="2147483647" type="issue_status" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'medium'::priority_level" digits="0" id="6" name="priority" nullable="true" remarks="" size="2147483647" type="priority_level" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="reporter_id" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="issues_reporter_id_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="assignee_id" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="issues_assignee_id_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="parent_issue_id" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="issue_id" foreignKey="issues_parent_issue_id_fkey" implied="false" onDeleteCascade="false" schema="public" table="issues"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="blocking_issue_id" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="issue_id" foreignKey="issues_blocking_issue_id_fkey" implied="false" onDeleteCascade="false" schema="public" table="issues"/>
+         </column>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="11" name="issue_is_active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="12" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="13" name="updated_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="14" name="deleted_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="deleted_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="issues_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="16" name="is_private" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="17" name="is_editable" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="issue_id" sequenceNumberInPK="1"/>
+         <index name="issues_pkey" unique="true">
+            <column ascending="true" name="issue_id"/>
+         </index>
+         <index name="idx_issues_assignee_id" unique="false">
+            <column ascending="true" name="assignee_id"/>
+         </index>
+         <index name="idx_issues_assignee_id_priority" unique="false">
+            <column ascending="true" name="assignee_id"/>
+            <column ascending="true" name="priority"/>
+         </index>
+         <index name="idx_issues_assignee_id_status" unique="false">
+            <column ascending="true" name="assignee_id"/>
+            <column ascending="true" name="status"/>
+         </index>
+         <index name="idx_issues_created_at" unique="false">
+            <column ascending="false" name="created_at"/>
+         </index>
+         <index name="idx_issues_parent_issue_id" unique="false">
+            <column ascending="true" name="parent_issue_id"/>
+         </index>
+         <index name="idx_issues_priority" unique="false">
+            <column ascending="true" name="priority"/>
+         </index>
+         <index name="idx_issues_project_id" unique="false">
+            <column ascending="true" name="project_id"/>
+         </index>
+         <index name="idx_issues_project_id_priority" unique="false">
+            <column ascending="true" name="project_id"/>
+            <column ascending="true" name="priority"/>
+         </index>
+         <index name="idx_issues_project_id_status" unique="false">
+            <column ascending="true" name="project_id"/>
+            <column ascending="true" name="status"/>
+         </index>
+         <index name="idx_issues_reporter_id" unique="false">
+            <column ascending="true" name="reporter_id"/>
+         </index>
+         <index name="idx_issues_status" unique="false">
+            <column ascending="true" name="status"/>
+         </index>
+         <index name="issues_project_id_issue_no_key" unique="true">
+            <column ascending="true" name="project_id"/>
+            <column ascending="true" name="issue_no"/>
+         </index>
+      </table>
+      <table name="notifications" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="notification_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="notifications_user_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="type" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="title" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="content" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'{}'::jsonb" digits="0" id="5" name="metadata" nullable="true" remarks="" size="2147483647" type="jsonb" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="6" name="is_read" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="7" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="8" name="read_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="9" name="deleted_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="notification_id" sequenceNumberInPK="1"/>
+         <index name="notifications_pkey" unique="true">
+            <column ascending="true" name="notification_id"/>
+         </index>
+         <index name="idx_notifications_created_at" unique="false">
+            <column ascending="false" name="created_at"/>
+         </index>
+         <index name="idx_notifications_is_read" unique="false">
+            <column ascending="true" name="is_read"/>
+         </index>
+         <index name="idx_notifications_user_id" unique="false">
+            <column ascending="true" name="user_id"/>
+         </index>
+      </table>
+      <table name="organization_assets" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="org_asset_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="org_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="org_id" foreignKey="organization_assets_org_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="organizations"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="uploaded_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="organization_assets_uploaded_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="asset_type" nullable="false" remarks="" size="2147483647" type="asset_type" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="file_name" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="mime_type" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="byte_size" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="storage_key" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="checksum" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'{}'::jsonb" digits="0" id="9" name="metadata" nullable="true" remarks="" size="2147483647" type="jsonb" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="10" name="is_active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="11" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="12" name="updated_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="13" name="deleted_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="deleted_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="organization_assets_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <primaryKey column="org_asset_id" sequenceNumberInPK="1"/>
+         <index name="organization_assets_pkey" unique="true">
+            <column ascending="true" name="org_asset_id"/>
+         </index>
+      </table>
+      <table name="organization_memberships" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="org_membership_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="org_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="org_id" foreignKey="organization_memberships_org_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="organizations"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="organization_memberships_user_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="'viewer'::org_role" digits="0" id="3" name="role" nullable="false" remarks="" size="2147483647" type="org_role" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="invited_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="organization_memberships_invited_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="5" name="membership_is_active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="6" name="joined_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="7" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="8" name="updated_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="9" name="deleted_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="deleted_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="organization_memberships_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <primaryKey column="org_membership_id" sequenceNumberInPK="1"/>
+         <index name="organization_memberships_pkey" unique="true">
+            <column ascending="true" name="org_membership_id"/>
+         </index>
+         <index name="idx_organization_memberships_invited_by" unique="false">
+            <column ascending="true" name="invited_by"/>
+         </index>
+         <index name="idx_organization_memberships_is_active" unique="false">
+            <column ascending="true" name="membership_is_active"/>
+         </index>
+         <index name="idx_organization_memberships_joined_at" unique="false">
+            <column ascending="false" name="joined_at"/>
+         </index>
+         <index name="idx_organization_memberships_org_active" unique="false">
+            <column ascending="true" name="org_id"/>
+            <column ascending="true" name="membership_is_active"/>
+         </index>
+         <index name="idx_organization_memberships_org_id" unique="false">
+            <column ascending="true" name="org_id"/>
+         </index>
+         <index name="idx_organization_memberships_org_role" unique="false">
+            <column ascending="true" name="org_id"/>
+            <column ascending="true" name="role"/>
+         </index>
+         <index name="idx_organization_memberships_role" unique="false">
+            <column ascending="true" name="role"/>
+         </index>
+         <index name="idx_organization_memberships_user_id" unique="false">
+            <column ascending="true" name="user_id"/>
+         </index>
+         <index name="idx_organization_memberships_user_org" unique="false">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="org_id"/>
+         </index>
+         <index name="idx_organization_memberships_user_role" unique="false">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="role"/>
+         </index>
+         <index name="organization_memberships_org_id_user_id_key" unique="true">
+            <column ascending="true" name="org_id"/>
+            <column ascending="true" name="user_id"/>
+         </index>
+      </table>
+      <table name="organizations" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="org_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <child column="org_id" foreignKey="application_bugs_org_id_fkey" implied="false" onDeleteCascade="false" schema="public" table="application_bugs"/>
+            <child column="org_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="issue_summary"/>
+            <child column="org_id" foreignKey="organization_assets_org_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="organization_assets"/>
+            <child column="org_id" foreignKey="organization_memberships_org_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="organization_memberships"/>
+            <child column="org_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="project_summary"/>
+            <child column="org_id" foreignKey="sites_org_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="sites"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="org_check_id" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="org_name" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="org_description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="slug" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'active'::text" digits="0" id="5" name="org_status" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="created_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="organizations_created_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="7" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="8" name="updated_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="9" name="deleted_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="deleted_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="organizations_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <primaryKey column="org_id" sequenceNumberInPK="1"/>
+         <index name="organizations_pkey" unique="true">
+            <column ascending="true" name="org_id"/>
+         </index>
+         <index name="organizations_org_check_id_key" unique="true">
+            <column ascending="true" name="org_check_id"/>
+         </index>
+         <index name="organizations_slug_key" unique="true">
+            <column ascending="true" name="slug"/>
+         </index>
+      </table>
+      <table name="project_assets" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="project_asset_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="project_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="project_id" foreignKey="project_assets_project_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="projects"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="uploaded_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="project_assets_uploaded_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="asset_type" nullable="false" remarks="" size="2147483647" type="asset_type" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="file_name" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="mime_type" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="byte_size" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="storage_key" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="checksum" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'{}'::jsonb" digits="0" id="9" name="metadata" nullable="true" remarks="" size="2147483647" type="jsonb" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="10" name="is_active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="11" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="12" name="updated_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="13" name="deleted_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="deleted_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="project_assets_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <primaryKey column="project_asset_id" sequenceNumberInPK="1"/>
+         <index name="project_assets_pkey" unique="true">
+            <column ascending="true" name="project_asset_id"/>
+         </index>
+      </table>
+      <table name="project_memberships" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="project_membership_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="project_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="project_id" foreignKey="project_memberships_project_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="projects"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="project_memberships_user_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="role" nullable="false" remarks="" size="2147483647" type="project_role" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="invited_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="project_memberships_invited_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="5" name="membership_is_active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="6" name="joined_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="7" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="8" name="updated_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="9" name="deleted_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="deleted_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="project_memberships_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <primaryKey column="project_membership_id" sequenceNumberInPK="1"/>
+         <index name="project_memberships_pkey" unique="true">
+            <column ascending="true" name="project_membership_id"/>
+         </index>
+         <index name="idx_project_memberships_invited_by" unique="false">
+            <column ascending="true" name="invited_by"/>
+         </index>
+         <index name="idx_project_memberships_is_active" unique="false">
+            <column ascending="true" name="membership_is_active"/>
+         </index>
+         <index name="idx_project_memberships_project_active" unique="false">
+            <column ascending="true" name="project_id"/>
+            <column ascending="true" name="membership_is_active"/>
+         </index>
+         <index name="idx_project_memberships_project_id" unique="false">
+            <column ascending="true" name="project_id"/>
+         </index>
+         <index name="idx_project_memberships_project_role" unique="false">
+            <column ascending="true" name="project_id"/>
+            <column ascending="true" name="role"/>
+         </index>
+         <index name="idx_project_memberships_role" unique="false">
+            <column ascending="true" name="role"/>
+         </index>
+         <index name="idx_project_memberships_user_id" unique="false">
+            <column ascending="true" name="user_id"/>
+         </index>
+         <index name="idx_project_memberships_user_project" unique="false">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="project_id"/>
+         </index>
+         <index name="idx_project_memberships_user_role" unique="false">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="role"/>
+         </index>
+         <index name="project_memberships_project_id_user_id_key" unique="true">
+            <column ascending="true" name="project_id"/>
+            <column ascending="true" name="user_id"/>
+         </index>
+      </table>
+      <table name="project_requirements" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="requirement_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="project_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="project_id" foreignKey="project_requirements_project_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="projects"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="title" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'medium'::priority_level" digits="0" id="4" name="priority" nullable="true" remarks="" size="2147483647" type="priority_level" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="5" name="is_done" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="created_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="project_requirements_created_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="7" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="done_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="project_requirements_done_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="9" name="done_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="10" name="deleted_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="deleted_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="project_requirements_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <primaryKey column="requirement_id" sequenceNumberInPK="1"/>
+         <index name="project_requirements_pkey" unique="true">
+            <column ascending="true" name="requirement_id"/>
+         </index>
+      </table>
+      <table name="project_summary" numRows="0" remarks="" schema="public" type="VIEW" viewSql=" SELECT p.project_id,&#10;    p.project_name,&#10;    p.project_description,&#10;    p.slug,&#10;    p.project_status,&#10;    p.is_private,&#10;    p.created_at,&#10;    p.created_by,&#10;    p.completed_at,&#10;    p.completed_by,&#10;    s.site_id,&#10;    s.site_name,&#10;    o.org_id,&#10;    o.org_name,&#10;    ( SELECT count(*) AS count&#10;           FROM issues i&#10;          WHERE ((i.project_id = p.project_id) AND (i.deleted_at IS NULL))) AS total_issues,&#10;    ( SELECT count(*) AS count&#10;           FROM issues i&#10;          WHERE ((i.project_id = p.project_id) AND (i.status = 'open'::issue_status) AND (i.deleted_at IS NULL))) AS open_issues,&#10;    ( SELECT count(*) AS count&#10;           FROM project_memberships pm&#10;          WHERE ((pm.project_id = p.project_id) AND (pm.membership_is_active = true) AND (pm.deleted_at IS NULL))) AS total_members,&#10;    ( SELECT count(*) AS count&#10;           FROM project_requirements pr&#10;          WHERE ((pr.project_id = p.project_id) AND (pr.deleted_at IS NULL))) AS total_requirements,&#10;    ( SELECT count(*) AS count&#10;           FROM project_requirements pr&#10;          WHERE ((pr.project_id = p.project_id) AND (pr.is_done = true) AND (pr.deleted_at IS NULL))) AS completed_requirements&#10;   FROM ((projects p&#10;     JOIN sites s ON (((s.site_id = p.site_id) AND (s.deleted_at IS NULL))))&#10;     JOIN organizations o ON (((o.org_id = s.org_id) AND (o.deleted_at IS NULL))))&#10;  WHERE (p.deleted_at IS NULL);">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="project_id" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="project_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="projects"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="project_name" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="project_description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="slug" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="project_status" nullable="true" remarks="" size="2147483647" type="project_status" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="is_private" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="6" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="created_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="8" name="completed_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="completed_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="site_id" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="site_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="sites"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="site_name" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="org_id" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="org_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="organizations"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="org_name" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="total_issues" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="open_issues" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="16" name="total_members" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="17" name="total_requirements" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="18" name="completed_requirements" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+      </table>
+      <table name="projects" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="project_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <child column="project_id" foreignKey="application_bugs_project_id_fkey" implied="false" onDeleteCascade="false" schema="public" table="application_bugs"/>
+            <child column="project_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="issue_summary"/>
+            <child column="project_id" foreignKey="issues_project_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="issues"/>
+            <child column="project_id" foreignKey="project_assets_project_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="project_assets"/>
+            <child column="project_id" foreignKey="project_memberships_project_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="project_memberships"/>
+            <child column="project_id" foreignKey="project_requirements_project_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="project_requirements"/>
+            <child column="project_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="project_summary"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="site_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="site_id" foreignKey="projects_site_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="sites"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="project_check_id" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="project_name" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="project_description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="slug" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'active'::project_status" digits="0" id="6" name="project_status" nullable="false" remarks="" size="2147483647" type="project_status" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="created_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="projects_created_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="8" name="completed_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="completed_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="projects_completed_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="10" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="11" name="updated_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="12" name="deleted_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="deleted_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="projects_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="14" name="is_private" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="project_id" sequenceNumberInPK="1"/>
+         <index name="projects_pkey" unique="true">
+            <column ascending="true" name="project_id"/>
+         </index>
+         <index name="projects_project_check_id_key" unique="true">
+            <column ascending="true" name="project_check_id"/>
+         </index>
+         <index name="projects_site_id_project_name_key" unique="true">
+            <column ascending="true" name="site_id"/>
+            <column ascending="true" name="project_name"/>
+         </index>
+      </table>
+      <table name="site_assets" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="site_asset_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="site_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="site_id" foreignKey="site_assets_site_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="sites"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="uploaded_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="site_assets_uploaded_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="asset_type" nullable="false" remarks="" size="2147483647" type="asset_type" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="file_name" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="mime_type" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="byte_size" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="storage_key" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="checksum" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'{}'::jsonb" digits="0" id="9" name="metadata" nullable="true" remarks="" size="2147483647" type="jsonb" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="10" name="is_active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="11" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="12" name="updated_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="13" name="deleted_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="deleted_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="site_assets_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <primaryKey column="site_asset_id" sequenceNumberInPK="1"/>
+         <index name="site_assets_pkey" unique="true">
+            <column ascending="true" name="site_asset_id"/>
+         </index>
+      </table>
+      <table name="site_memberships" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="site_membership_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="site_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="site_id" foreignKey="site_memberships_site_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="sites"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="site_memberships_user_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="role" nullable="false" remarks="" size="2147483647" type="site_role" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="invited_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="site_memberships_invited_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="5" name="membership_is_active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="6" name="joined_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="7" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="8" name="updated_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="9" name="deleted_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="deleted_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="site_memberships_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <primaryKey column="site_membership_id" sequenceNumberInPK="1"/>
+         <index name="site_memberships_pkey" unique="true">
+            <column ascending="true" name="site_membership_id"/>
+         </index>
+         <index name="idx_site_memberships_invited_by" unique="false">
+            <column ascending="true" name="invited_by"/>
+         </index>
+         <index name="idx_site_memberships_is_active" unique="false">
+            <column ascending="true" name="membership_is_active"/>
+         </index>
+         <index name="idx_site_memberships_joined_at" unique="false">
+            <column ascending="false" name="joined_at"/>
+         </index>
+         <index name="idx_site_memberships_role" unique="false">
+            <column ascending="true" name="role"/>
+         </index>
+         <index name="idx_site_memberships_site_active" unique="false">
+            <column ascending="true" name="site_id"/>
+            <column ascending="true" name="membership_is_active"/>
+         </index>
+         <index name="idx_site_memberships_site_id" unique="false">
+            <column ascending="true" name="site_id"/>
+         </index>
+         <index name="idx_site_memberships_site_role" unique="false">
+            <column ascending="true" name="site_id"/>
+            <column ascending="true" name="role"/>
+         </index>
+         <index name="idx_site_memberships_user_id" unique="false">
+            <column ascending="true" name="user_id"/>
+         </index>
+         <index name="idx_site_memberships_user_role" unique="false">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="role"/>
+         </index>
+         <index name="idx_site_memberships_user_site" unique="false">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="site_id"/>
+         </index>
+         <index name="site_memberships_site_id_user_id_key" unique="true">
+            <column ascending="true" name="site_id"/>
+            <column ascending="true" name="user_id"/>
+         </index>
+      </table>
+      <table name="sites" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="site_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <child column="site_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="issue_summary"/>
+            <child column="site_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="project_summary"/>
+            <child column="site_id" foreignKey="projects_site_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="projects"/>
+            <child column="site_id" foreignKey="site_assets_site_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="site_assets"/>
+            <child column="site_id" foreignKey="site_memberships_site_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="site_memberships"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="org_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="org_id" foreignKey="sites_org_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="organizations"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="site_name" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="site_slug" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'active'::site_status" digits="0" id="4" name="site_status" nullable="false" remarks="" size="2147483647" type="site_status" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="created_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="sites_created_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="6" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="7" name="updated_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="8" name="deleted_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="deleted_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="sites_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="10" name="is_private" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="site_id" sequenceNumberInPK="1"/>
+         <index name="sites_pkey" unique="true">
+            <column ascending="true" name="site_id"/>
+         </index>
+         <index name="sites_org_id_site_slug_key" unique="true">
+            <column ascending="true" name="org_id"/>
+            <column ascending="true" name="site_slug"/>
+         </index>
+      </table>
+      <table name="system_audit_logs" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="audit_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="actor_type" nullable="false" remarks="" size="2147483647" type="actor_type" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="actor_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="entity_type" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="entity_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="action_type" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="old_value" nullable="true" remarks="" size="2147483647" type="jsonb" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="new_value" nullable="true" remarks="" size="2147483647" type="jsonb" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="8" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="audit_id" sequenceNumberInPK="1"/>
+         <index name="system_audit_logs_pkey" unique="true">
+            <column ascending="true" name="audit_id"/>
+         </index>
+      </table>
+      <table name="users" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="0" name="user_id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <child column="reported_by" foreignKey="application_bugs_reported_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="application_bugs"/>
+            <child column="user_id" foreignKey="issue_activity_user_id_fkey" implied="false" onDeleteCascade="false" schema="public" table="issue_activity"/>
+            <child column="deleted_by" foreignKey="issue_assets_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="issue_assets"/>
+            <child column="uploaded_by" foreignKey="issue_assets_uploaded_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="issue_assets"/>
+            <child column="deleted_by" foreignKey="issue_memberships_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="issue_memberships"/>
+            <child column="user_id" foreignKey="issue_memberships_user_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="issue_memberships"/>
+            <child column="assignee_id" foreignKey="issues_assignee_id_fkey" implied="false" onDeleteCascade="false" schema="public" table="issues"/>
+            <child column="deleted_by" foreignKey="issues_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="issues"/>
+            <child column="reporter_id" foreignKey="issues_reporter_id_fkey" implied="false" onDeleteCascade="false" schema="public" table="issues"/>
+            <child column="user_id" foreignKey="notifications_user_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="notifications"/>
+            <child column="deleted_by" foreignKey="organization_assets_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="organization_assets"/>
+            <child column="uploaded_by" foreignKey="organization_assets_uploaded_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="organization_assets"/>
+            <child column="deleted_by" foreignKey="organization_memberships_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="organization_memberships"/>
+            <child column="invited_by" foreignKey="organization_memberships_invited_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="organization_memberships"/>
+            <child column="user_id" foreignKey="organization_memberships_user_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="organization_memberships"/>
+            <child column="created_by" foreignKey="organizations_created_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="organizations"/>
+            <child column="deleted_by" foreignKey="organizations_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="organizations"/>
+            <child column="deleted_by" foreignKey="project_assets_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="project_assets"/>
+            <child column="uploaded_by" foreignKey="project_assets_uploaded_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="project_assets"/>
+            <child column="deleted_by" foreignKey="project_memberships_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="project_memberships"/>
+            <child column="invited_by" foreignKey="project_memberships_invited_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="project_memberships"/>
+            <child column="user_id" foreignKey="project_memberships_user_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="project_memberships"/>
+            <child column="created_by" foreignKey="project_requirements_created_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="project_requirements"/>
+            <child column="deleted_by" foreignKey="project_requirements_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="project_requirements"/>
+            <child column="done_by" foreignKey="project_requirements_done_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="project_requirements"/>
+            <child column="completed_by" foreignKey="projects_completed_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="projects"/>
+            <child column="created_by" foreignKey="projects_created_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="projects"/>
+            <child column="deleted_by" foreignKey="projects_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="projects"/>
+            <child column="deleted_by" foreignKey="site_assets_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="site_assets"/>
+            <child column="uploaded_by" foreignKey="site_assets_uploaded_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="site_assets"/>
+            <child column="deleted_by" foreignKey="site_memberships_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="site_memberships"/>
+            <child column="invited_by" foreignKey="site_memberships_invited_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="site_memberships"/>
+            <child column="user_id" foreignKey="site_memberships_user_id_fkey" implied="false" onDeleteCascade="true" schema="public" table="site_memberships"/>
+            <child column="created_by" foreignKey="sites_created_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="sites"/>
+            <child column="deleted_by" foreignKey="sites_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="sites"/>
+            <child column="deleted_by" foreignKey="users_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_name" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_last_name" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="user_display_name" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="user_email" nullable="false" remarks="" size="2147483647" type="citext" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="user_password" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="6" name="user_is_active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="7" name="last_login_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="gen_random_uuid()" digits="0" id="8" name="user_friendship_code" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="'{}'::jsonb" digits="0" id="9" name="metadata" nullable="true" remarks="" size="2147483647" type="jsonb" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="10" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="11" name="updated_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="12" name="deleted_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="deleted_by" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="user_id" foreignKey="users_deleted_by_fkey" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="14" name="email_verified_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="email_verification_token" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="16" name="password_reset_token" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="17" name="password_reset_expires_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="18" name="two_factor_secret" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="19" name="two_factor_enabled" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="20" name="last_password_change_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="user_id" sequenceNumberInPK="1"/>
+         <index name="users_pkey" unique="true">
+            <column ascending="true" name="user_id"/>
+         </index>
+         <index name="idx_users_active" unique="false">
+            <column ascending="true" name="user_is_active"/>
+         </index>
+         <index name="idx_users_created_at" unique="false">
+            <column ascending="false" name="created_at"/>
+         </index>
+         <index name="idx_users_email" unique="false">
+            <column ascending="true" name="user_email"/>
+         </index>
+         <index name="idx_users_friendship_code" unique="false">
+            <column ascending="true" name="user_friendship_code"/>
+         </index>
+         <index name="idx_users_name" unique="false">
+            <column ascending="true" name="user_name"/>
+         </index>
+         <index name="users_user_email_key" unique="true">
+            <column ascending="true" name="user_email"/>
+         </index>
+         <index name="users_user_friendship_code_key" unique="true">
+            <column ascending="true" name="user_friendship_code"/>
+         </index>
+      </table>
+   </tables>
+</database>
