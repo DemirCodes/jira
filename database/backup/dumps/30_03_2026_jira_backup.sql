@@ -2,12 +2,12 @@
 -- PostgreSQL database dump
 --
 
-\restrict oaLHUmjzr88v7Zesl5EOz5HWgrp1dwBtr4JBquyZr2klJOGyDJhsar4K8kaaK6E
+\restrict h23qLqZKjGaVdutNpGPo4o5ijtfeuJV27m2PdmGwufKoyK2Hf7ApzqF1KfvmEIn
 
 -- Dumped from database version 16.13 (Ubuntu 16.13-0ubuntu0.24.04.1)
 -- Dumped by pg_dump version 16.13 (Ubuntu 16.13-0ubuntu0.24.04.1)
 
--- Started on 2026-05-14 16:36:16 +03
+-- Started on 2026-05-19 18:10:36 +03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -7452,11 +7452,11 @@ CREATE POLICY organizations_update_policy ON public.organizations FOR UPDATE USI
 
 ALTER TABLE public.projects ENABLE ROW LEVEL SECURITY;
 
--- Completed on 2026-05-14 16:36:16 +03
+-- Completed on 2026-05-19 18:10:36 +03
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict oaLHUmjzr88v7Zesl5EOz5HWgrp1dwBtr4JBquyZr2klJOGyDJhsar4K8kaaK6E
+\unrestrict h23qLqZKjGaVdutNpGPo4o5ijtfeuJV27m2PdmGwufKoyK2Hf7ApzqF1KfvmEIn
 

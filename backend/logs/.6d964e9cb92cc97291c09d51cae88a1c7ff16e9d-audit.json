@@ -24,6 +24,11 @@
             "date": 1778843920152,
             "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-05-15.log",
             "hash": "a82dad9af67a10a975865dd661ec1a45f6f17939bbdae830cf456b0197686eef"
+        },
+        {
+            "date": 1779203205253,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-05-19.log",
+            "hash": "d6cbcd1481d9edb57d007fa71d178aeca620cbade79944b1df5eeae6034e9035"
         }
     ],
     "hashType": "sha256"

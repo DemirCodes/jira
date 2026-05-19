@@ -24,6 +24,11 @@
             "date": 1778843920152,
             "name": "/home/dmrcode/Desktop/jira/backend/logs/exceptions-2026-05-15.log",
             "hash": "66d84dcd20805e1f4a45ff442657a7744ba4cf514166ab7d37caafe0ca2c3f68"
+        },
+        {
+            "date": 1779203205252,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/exceptions-2026-05-19.log",
+            "hash": "9b1879cfa1b630e54eee530ba0cadf8c95d976ea0950b9b229a4067ed6b85392"
         }
     ],
     "hashType": "sha256"

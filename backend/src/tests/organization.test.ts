@@ -19,16 +19,22 @@ describe('Organization API Tests', () => {
     let testMemberId: string;
     let testMemberEmail: string;
 
+    // Yetki testleri için
+    let viewerUserId: string;
+    let viewerToken: string;
+    let memberToken: string;
+
     beforeAll(async () => {
         const ts = Date.now();
         testEmail = `test-${ts}@example.com`;
         testMemberEmail = `member-${ts}@example.com`;
         testUserId = '123e4567-e89b-42d3-a456-426614174000';
         testMemberId = '223e4567-e89b-42d3-a456-426614174001';
+        viewerUserId = '323e4567-e89b-42d3-a456-426614174002';
 
         await tenantPool.query('DELETE FROM users WHERE user_id = $1', ['22222222-2222-2222-2222-222222222222']);
 
-        // DELETE'leri TAMAMEN KALDIRDIK. ON CONFLICT ile INSERT yapıyoruz.
+        // Owner kullanıcı
         await tenantPool.query(
             `INSERT INTO users (user_id, user_name, user_email, user_password, user_is_active) 
          VALUES ($1, $2, $3, $4, $5)
@@ -36,6 +42,7 @@ describe('Organization API Tests', () => {
             [testUserId, 'Test User', testEmail, 'hashed_password', true]
         );
 
+        // Member kullanıcı
         await tenantPool.query(
             `INSERT INTO users (user_id, user_name, user_email, user_password, user_is_active) 
          VALUES ($1, $2, $3, $4, $5)
@@ -43,19 +50,37 @@ describe('Organization API Tests', () => {
             [testMemberId, 'Member User', testMemberEmail, 'hashed_password', true]
         );
 
+        // Viewer kullanıcı
+        await tenantPool.query(
+            `INSERT INTO users (user_id, user_name, user_email, user_password, user_is_active) 
+         VALUES ($1, $2, $3, $4, $5)
+         ON CONFLICT (user_id) DO UPDATE SET user_is_active = true, deleted_at = NULL`,
+            [viewerUserId, 'Viewer User', 'viewer@test.com', 'hashed_password', true]
+        );
+
         const check = await tenantPool.query(
             'SELECT user_id, user_is_active, deleted_at FROM users WHERE user_id = $1',
             [testUserId]
         );
         console.log('User in beforeAll:', check.rows[0]);
-        // Token oluştur
+
+        // Token'lar
         authToken = jwt.sign(
             { userId: testUserId, tokenVersion: 1 },
+            process.env.JWT_SECRET || 'test_secret_key_32_chars_long_for_jwt'
+        );
+        memberToken = jwt.sign(
+            { userId: testMemberId, tokenVersion: 1 },
+            process.env.JWT_SECRET || 'test_secret_key_32_chars_long_for_jwt'
+        );
+        viewerToken = jwt.sign(
+            { userId: viewerUserId, tokenVersion: 1 },
             process.env.JWT_SECRET || 'test_secret_key_32_chars_long_for_jwt'
         );
 
         log.info('Test setup completed');
     });
+
     afterEach(async () => {
         if (testOrgId) {
             try {
@@ -66,12 +91,13 @@ describe('Organization API Tests', () => {
             testOrgId = ''; // sıfırla
         }
     });
+
     afterAll(async () => {
         try {
-            await tenantPool.query(`DELETE FROM organization_memberships WHERE user_id IN ($1, $2)`, [testUserId, testMemberId]);
-            await tenantPool.query(`DELETE FROM system_audit_logs WHERE actor_id IN ($1, $2)`, [testUserId, testMemberId]);
-            await tenantPool.query(`DELETE FROM organizations WHERE created_by IN ($1, $2)`, [testUserId, testMemberId]);
-            await tenantPool.query(`DELETE FROM users WHERE user_id IN ($1, $2)`, [testUserId, testMemberId]);
+            await tenantPool.query(`DELETE FROM organization_memberships WHERE user_id IN ($1, $2, $3)`, [testUserId, testMemberId, viewerUserId]);
+            await tenantPool.query(`DELETE FROM system_audit_logs WHERE actor_id IN ($1, $2, $3)`, [testUserId, testMemberId, viewerUserId]);
+            await tenantPool.query(`DELETE FROM organizations WHERE created_by IN ($1, $2, $3)`, [testUserId, testMemberId, viewerUserId]);
+            await tenantPool.query(`DELETE FROM users WHERE user_id IN ($1, $2, $3)`, [testUserId, testMemberId, viewerUserId]);
         } catch (e) {
             // Cleanup hatalarını yoksay
         }
@@ -169,7 +195,7 @@ describe('Organization API Tests', () => {
 
     describe('GET /api/organizations/:id', () => {
         it('should get organization by id', async () => {
-            if (!testOrgId) return; // Skip if no org created
+            if (!testOrgId) return;
 
             const response = await request(app)
                 .get(`/api/organizations/${testOrgId}`)
@@ -351,6 +377,129 @@ describe('Organization API Tests', () => {
                 .set('Authorization', `Bearer ${authToken}`);
 
             expect(response.status).toBe(404);
+        });
+    });
+
+    // ==================== AUTHORIZATION TESTS ====================
+    describe('Organization Authorization', () => {
+        // Her yetki testi öncesi viewer ve member'ı organizasyona ekle
+        beforeEach(async () => {
+            if (!testOrgId) return;
+            // Viewer'ı ekle (eğer yoksa)
+            await tenantPool.query(
+                `INSERT INTO organization_memberships (org_id, user_id, role, membership_is_active, joined_at)
+                 VALUES ($1, $2, 'viewer', true, now())
+                 ON CONFLICT (org_id, user_id) DO UPDATE SET role = 'viewer', deleted_at = NULL`,
+                [testOrgId, viewerUserId]
+            );
+            // Member'ı ekle (eğer yoksa)
+            await tenantPool.query(
+                `INSERT INTO organization_memberships (org_id, user_id, role, membership_is_active, joined_at)
+                 VALUES ($1, $2, 'member', true, now())
+                 ON CONFLICT (org_id, user_id) DO UPDATE SET role = 'member', deleted_at = NULL`,
+                [testOrgId, testMemberId]
+            );
+        });
+
+        it('should deny DELETE for member (non-owner)', async () => {
+            if (!testOrgId) return;
+
+            const response = await request(app)
+                .delete(`/api/organizations/${testOrgId}`)
+                .set('Authorization', `Bearer ${memberToken}`);
+
+            expect(response.status).toBe(403);
+            expect(response.body.error).toContain('Only organization owner');
+        });
+
+        it('should deny DELETE for viewer', async () => {
+            if (!testOrgId) return;
+
+            const response = await request(app)
+                .delete(`/api/organizations/${testOrgId}`)
+                .set('Authorization', `Bearer ${viewerToken}`);
+
+            expect(response.status).toBe(403);
+            expect(response.body.error).toContain('Only organization owner');
+        });
+
+        it('should deny UPDATE for viewer', async () => {
+            if (!testOrgId) return;
+
+            const response = await request(app)
+                .put(`/api/organizations/${testOrgId}`)
+                .set('Authorization', `Bearer ${viewerToken}`)
+                .send({ name: 'Hacked Name' });
+
+            expect(response.status).toBe(403);
+        });
+
+        it('should allow UPDATE for admin', async () => {
+            if (!testOrgId) return;
+            // Member'ı admin yap
+            await tenantPool.query(
+                'UPDATE organization_memberships SET role = $1 WHERE org_id = $2 AND user_id = $3',
+                ['admin', testOrgId, testMemberId]
+            );
+
+            const response = await request(app)
+                .put(`/api/organizations/${testOrgId}`)
+                .set('Authorization', `Bearer ${memberToken}`)
+                .send({ name: 'Admin Updated Name' });
+
+            expect(response.status).toBe(200);
+        });
+
+        it('should deny INVITE for viewer', async () => {
+            if (!testOrgId) return;
+
+            const response = await request(app)
+                .post(`/api/organizations/${testOrgId}/invite`)
+                .set('Authorization', `Bearer ${viewerToken}`)
+                .send({ friendshipCode: '00000000-0000-4000-8000-000000000000', role: 'member' });
+
+            expect(response.status).toBe(403);
+        });
+
+        it('should allow INVITE for admin', async () => {
+            if (!testOrgId) return;
+            // Member'ı admin yap
+            await tenantPool.query(
+                'UPDATE organization_memberships SET role = $1 WHERE org_id = $2 AND user_id = $3',
+                ['admin', testOrgId, testMemberId]
+            );
+
+            const response = await request(app)
+                .post(`/api/organizations/${testOrgId}/invite`)
+                .set('Authorization', `Bearer ${memberToken}`)
+                .send({ friendshipCode: '00000000-0000-4000-8000-000000000000', role: 'member' });
+
+            expect(response.status).not.toBe(403);
+        });
+
+        it('should deny VIEW_MEMBERS for viewer', async () => {
+            if (!testOrgId) return;
+
+            const response = await request(app)
+                .get(`/api/organizations/${testOrgId}/members`)
+                .set('Authorization', `Bearer ${viewerToken}`);
+
+            expect(response.status).toBe(403);
+        });
+
+        it('should allow VIEW_MEMBERS for admin', async () => {
+            if (!testOrgId) return;
+            // Member'ı admin yap
+            await tenantPool.query(
+                'UPDATE organization_memberships SET role = $1 WHERE org_id = $2 AND user_id = $3',
+                ['admin', testOrgId, testMemberId]
+            );
+
+            const response = await request(app)
+                .get(`/api/organizations/${testOrgId}/members`)
+                .set('Authorization', `Bearer ${memberToken}`);
+
+            expect(response.status).toBe(200);
         });
     });
 });
