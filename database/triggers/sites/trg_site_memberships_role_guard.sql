@@ -56,7 +56,6 @@ BEGIN
 END;
 $$;
 
-
 drop trigger if exists site_memberships_role_guard_trigger on public.site_memberships;
 
 create trigger site_memberships_role_guard_trigger
@@ -64,5 +63,3 @@ BEFORE
     insert or update of role on public.site_memberships
 for each ROW
 execute function public.trg_site_memberships_role_guard();
-
-

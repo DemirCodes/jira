@@ -163,7 +163,35 @@ export const requireOrgMember = (userId: string, orgId: string) =>
         'You must be a member of this organization'
     );
 
+
+
+const getOrganizationRole = async (userId: string, orgId: string): Promise<string | null> => {
+    const result = await tenantPool.query(
+        `SELECT role FROM organization_memberships 
+         WHERE org_id = $1 AND user_id = $2 AND membership_is_active = true AND deleted_at IS NULL`,
+        [orgId, userId]
+    );
+    return result.rows[0]?.role || null;
+};
 // ==================== SITE YETKİ KONTROLLERİ ====================
+
+const getSiteRole = async (userId: string, siteId: string): Promise<string | null> => {
+    const result = await tenantPool.query(
+        `SELECT role FROM site_memberships 
+         WHERE site_id = $1 AND user_id = $2 AND membership_is_active = true AND deleted_at IS NULL`,
+        [siteId, userId]
+    );
+    return result.rows[0]?.role || null;
+};
+
+const getSiteOrgId = async (siteId: string): Promise<string | null> => {
+    const result = await tenantPool.query(
+        'SELECT org_id FROM sites WHERE site_id = $1 AND deleted_at IS NULL',
+        [siteId]
+    );
+    return result.rows[0]?.org_id || null;
+};
+
 
 export const requireSiteAdmin = (userId: string, siteId: string) =>
     enforcePermission('site_memberships', 'site_id', siteId, userId,
@@ -189,6 +217,59 @@ export const requireSiteContributorOrAdmin = (userId: string, siteId: string) =>
         true
     );
 
+// Site admin veya org owner (her şeyi yapabilir)
+export const requireSiteAdminOrOrgOwner = async (userId: string, siteId: string) => {
+    const siteRole = await getSiteRole(userId, siteId);
+    if (siteRole === 'admin') return;
+
+    const orgId = await getSiteOrgId(siteId);
+    if (orgId && await isOrgOwnerOrAdmin(userId, orgId)) return;
+
+    throw new AppError(ErrorCodes.SITE_PERMISSION_DENIED,
+        'Only site admin or organization owner can perform this action');
+};
+
+// Site'ye davet etme yetkisi (is_private kontrolü dahil)
+export const requireSiteInvitePermission = async (userId: string, siteId: string) => {
+    const siteRole = await getSiteRole(userId, siteId);
+    if (siteRole === 'admin') return;
+
+    const orgId = await getSiteOrgId(siteId);
+    if (!orgId) throw new AppError(ErrorCodes.SITE_NOT_FOUND);
+
+    const orgRole = await getOrganizationRole(userId, orgId);
+    if (orgRole === 'owner') return;
+
+    if (orgRole === 'admin') {
+        const isPrivate = await isEntityPrivate('sites', 'site_id', siteId);
+        if (!isPrivate) return;
+        throw new AppError(ErrorCodes.SITE_PRIVATE_CANNOT_INVITE,
+            'Org admin cannot invite users to private sites');
+    }
+
+    throw new AppError(ErrorCodes.SITE_PERMISSION_DENIED,
+        'Only org owner, org admin (public sites), or site admin can invite');
+};
+
+// Site asset yükleme yetkisi
+export const requireSiteAssetUploadPermission = async (userId: string, siteId: string) => {
+    const siteRole = await getSiteRole(userId, siteId);
+    if (siteRole === 'admin' || siteRole === 'contrubitor') return;
+
+    const orgId = await getSiteOrgId(siteId);
+    if (!orgId) throw new AppError(ErrorCodes.SITE_NOT_FOUND);
+
+    const orgRole = await getOrganizationRole(userId, orgId);
+    if (orgRole === 'owner') return;
+
+    if (orgRole === 'admin') {
+        const isPrivate = await isEntityPrivate('sites', 'site_id', siteId);
+        if (!isPrivate) return;
+    }
+
+    throw new AppError(ErrorCodes.SITE_PERMISSION_DENIED,
+        'Only site admin, contributor, or org owner can upload assets');
+};
 // ==================== PROJECT YETKİ KONTROLLERİ ====================
 
 export const requireProjectAdmin = (userId: string, projectId: string) =>

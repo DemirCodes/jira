@@ -36,3 +36,33 @@ export const authLimiter = rateLimit({
     standardHeaders: true,
     legacyHeaders: false,
 });
+
+
+export const inviteLimiter = rateLimit({
+    windowMs: 60 * 1000, // 1 dakika
+    max: 10,
+    message: {
+        success: false,
+        error: {
+            code: '800-001-001',
+            message: 'Too many invitation requests. Please try again later.'
+        }
+    },
+    standardHeaders: true,
+    legacyHeaders: false,
+});
+
+// Üye yönetimi endpoint'leri için limiter (dakikada 20 istek)
+export const memberManagementLimiter = rateLimit({
+    windowMs: 60 * 1000, // 1 dakika
+    max: 20,
+    message: {
+        success: false,
+        error: {
+            code: '800-001-001',
+            message: 'Too many member management requests. Please try again later.'
+        }
+    },
+    standardHeaders: true,
+    legacyHeaders: false,
+});

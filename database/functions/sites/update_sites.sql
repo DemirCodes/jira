@@ -1,91 +1,65 @@
+-- update_site.sql
+DROP FUNCTION IF EXISTS update_site (uuid, text, text, boolean);
 
-create or replace function update_site_status(
+CREATE OR REPLACE FUNCTION update_site(
     p_site_id uuid,
-    p_new_status site_status,
-    p_org_id uuid default null
+    p_site_name text DEFAULT NULL,
+    p_site_slug text DEFAULT NULL,
+    p_is_private boolean DEFAULT NULL
 )
-returns boolean
-language plpgsql
-security definer
-set search_path = public
-as $$
-declare
+RETURNS boolean
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+DECLARE
     v_user_id uuid;
     v_org_id uuid;
-    v_current_status site_status;
-begin
-    --  Kullanıcı kontrolü
+    v_is_org_owner boolean;
+    v_is_site_admin boolean;
+BEGIN
     v_user_id := auth_current_user_id();
-    
-    if v_user_id is null then 
-        raise exception 'User not authenticated';
-    end if;
-    
-    -- Site kontrolü
-    select org_id, site_status into v_org_id, v_current_status
-    from sites
-    where site_id = p_site_id
-        and deleted_at is null;
-    
-    if v_org_id is null then
-        raise exception 'Site not found';
-    end if;
-    
-    --  Organization ID
-    if p_org_id is not null then
-        v_org_id := get_organization_id(p_org_id);
-    else
-        v_org_id := get_organization_id(v_org_id);
-    end if;
-    
-    --  Yetki kontrolü
-    if not (
-        auth_is_org_owner(v_org_id) or 
-        auth_is_site_admin(p_site_id)
-    ) then
-        raise exception 'Only organization owner or site admin can update site status';
-    end if;
-    
-    --  Status güncelleme kuralları
-    if p_new_status = v_current_status then
-        raise exception 'Site is already %', v_current_status;
-    end if;
-    
-    -- Suspended'dan active'e geçiş yetkisi
-    if v_current_status = 'suspended' and p_new_status = 'active' then
-        -- admin yetkisi yeterli
-        null;
-    end if;
-    
-    update sites
-    set 
-        site_status = p_new_status,
+    IF v_user_id IS NULL THEN
+        RAISE EXCEPTION 'User not authenticated';
+    END IF;
+
+    -- Site'nin organizasyonunu bul
+    SELECT org_id INTO v_org_id
+    FROM sites
+    WHERE site_id = p_site_id AND deleted_at IS NULL;
+
+    IF v_org_id IS NULL THEN
+        RAISE EXCEPTION 'Site not found';
+    END IF;
+
+    -- Yetki kontrolü: org_owner veya site_admin
+    v_is_org_owner := auth_is_org_owner(v_org_id);
+    v_is_site_admin := auth_is_site_admin(p_site_id);
+
+    IF NOT (v_is_org_owner OR v_is_site_admin) THEN
+        RAISE EXCEPTION 'PERMISSION_DENIED';
+    END IF;
+
+    -- Slug benzersizlik kontrolü
+    IF p_site_slug IS NOT NULL THEN
+        IF EXISTS (
+            SELECT 1 FROM sites
+            WHERE org_id = v_org_id
+              AND site_slug = lower(trim(p_site_slug))
+              AND site_id != p_site_id
+              AND deleted_at IS NULL
+        ) THEN
+            RAISE EXCEPTION 'Slug already exists';
+        END IF;
+    END IF;
+
+    UPDATE sites
+    SET site_name = COALESCE(p_site_name, site_name),
+        site_slug = COALESCE(lower(trim(p_site_slug)), site_slug),
+        is_private = COALESCE(p_is_private, is_private),
         updated_at = now()
-    where site_id = p_site_id;
-    
-    --  Audit log
-    insert into system_audit_logs (
-        actor_type,
-        actor_id,
-        entity_type,
-        entity_id,
-        action_type,
-        old_value,
-        new_value,
-        created_at
-    )
-    values (
-        'tenant_user',
-        v_user_id,
-        'site',
-        p_site_id,
-        'UPDATE_STATUS',
-        jsonb_build_object('site_status', v_current_status),
-        jsonb_build_object('site_status', p_new_status),
-        now()
-    );
-    
-    return true;
-    
-end;
+    WHERE site_id = p_site_id;
+
+    RETURN FOUND;
+END;
 $$;
