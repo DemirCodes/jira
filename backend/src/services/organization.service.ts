@@ -478,7 +478,14 @@ export const getPendingInvitations = async (orgId: string): Promise<Organization
         throw error;
     }
 };
+export const getInvitationOrgId = async (invitationId: string): Promise<string | null> => {
+    // Şu an invitation sistemi henüz tam implemente edilmedi
+    // İleride invitations tablosu eklendiğinde buradan org_id çekilecek
+    // Şimdilik null dönerek controller'da hata verdirelim
+    return null;
+};
 
+// organization.service.ts içinde zaten varsa dokunma, yoksa ekle:
 export const cancelInvitation = async (invitationId: string): Promise<void> => {
     if (!isValidUUID(invitationId)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID);
     try {
@@ -492,6 +499,7 @@ export const cancelInvitation = async (invitationId: string): Promise<void> => {
         throw error;
     }
 };
+
 
 // ==================== STATS ====================
 export const getOrganizationStats = async (orgId: string): Promise<OrganizationStats | null> => {

@@ -7,6 +7,7 @@ import {
     updateMemberRoleSchema
 } from '../schemas/organization.schema';
 import * as orgController from '../controllers/organization.controller';
+import { inviteLimiter, memberManagementLimiter } from '../middlewares/rateLimit';
 
 const router = Router();
 
@@ -22,9 +23,10 @@ router.patch('/:id/members/:memberId', validate(updateMemberRoleSchema), orgCont
 router.delete('/:id/members/:memberId', orgController.removeMember);
 
 // Invitations
-router.post('/:id/invite', validate(inviteToOrganizationSchema), orgController.invite);
-router.get('/:id/invitations', orgController.listInvitations);
-router.delete('/invitations/:invitationId', orgController.cancelInvitation);
+
+router.post('/:id/invite', inviteLimiter, validate(inviteToOrganizationSchema), orgController.invite);
+router.put('/:id/members/:memberId/role', memberManagementLimiter, validate(updateMemberRoleSchema), orgController.updateMemberRole);
+router.delete('/:id/members/:memberId', memberManagementLimiter, orgController.removeMember);
 
 // Stats & Leave
 router.get('/:id/stats', orgController.getStats);

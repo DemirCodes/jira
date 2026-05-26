@@ -9,7 +9,7 @@ import { apiLimiter } from './middlewares/rateLimit';
 import { authMiddleware } from './middlewares/auth';
 import organizationRoutes from './routes/organization.routes';
 import { log } from './utils/logger';
-
+import invitationRoutes from './routes/invitation.routes';
 dotenv.config();
 
 const app = express();
@@ -18,6 +18,7 @@ const port = process.env.PORT || 3030;
 setupSecurity(app);
 app.use(express.json({ limit: '10mb' }));
 app.use('/api', apiLimiter);
+
 
 // Public endpoints
 app.get('/health', (req, res) => {
@@ -28,8 +29,10 @@ app.get('/', (req, res) => {
     res.json({ message: 'JIRA API is running!' });
 });
 
+
 // API Routes
 app.use('/api/organizations', authMiddleware, organizationRoutes);
+app.use('/api/invitations', authMiddleware, invitationRoutes);
 
 // Error handler (en son)
 app.use(errorHandler);

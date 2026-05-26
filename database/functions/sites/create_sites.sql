@@ -113,8 +113,8 @@ begin
     values (
         v_site_id,
         v_user_id,
-        'admin',              -- 👈 DÜZELTİLDİ: role buraya gelmeli
-        v_user_id,                 -- 👈 invited_by
+        'admin',              
+        v_user_id,                 
         true,
         now(),
         now(),

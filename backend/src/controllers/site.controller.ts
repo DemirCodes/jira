@@ -4,6 +4,7 @@ import * as authService from '../services/authorization.service';
 import { AppError, ErrorCodes } from '../utils/errorCodes';
 import { log } from '../utils/logger';
 import { isValidUUID } from '../utils/regexValidator';
+import * as invitationService from '../services/invitation.service';
 
 // CREATE
 export const create = async (req: Request, res: Response): Promise<void> => {
@@ -176,12 +177,21 @@ export const invite = async (req: Request, res: Response): Promise<void> => {
         }
 
         if (!isValidUUID(id) || !isValidUUID(org_id) || !isValidUUID(friendshipCode)) {
-            throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID);
+            throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid UUID format');
         }
 
+        // Yetki kontrolü: site invite permission
         await authService.requireSiteInvitePermission(userId, id);
 
-        const invitationId = await siteService.inviteToSite(friendshipCode, org_id, id, role);
+        // Yeni davet sistemini kullan
+        const invitationId = await invitationService.createInvitation(
+            org_id,              // org_id
+            friendshipCode,      // friendshipCode
+            'site',              // entity_type
+            role,                // role
+            id                   // entity_id = site_id
+        );
+
         res.status(201).json({ invitation_id: invitationId, message: 'Invitation sent' });
     } catch (error: any) {
         if (error instanceof AppError) {

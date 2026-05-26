@@ -2,22 +2,31 @@
 -- PostgreSQL database dump
 --
 
-\restrict h23qLqZKjGaVdutNpGPo4o5ijtfeuJV27m2PdmGwufKoyK2Hf7ApzqF1KfvmEIn
+\restrict JZWoJggyErij0KdiMImHqNBjMG2fdJdCNxfem7YVOUZOzCZKrMLZTkdZGIv4pnY
 
 -- Dumped from database version 16.13 (Ubuntu 16.13-0ubuntu0.24.04.1)
 -- Dumped by pg_dump version 16.13 (Ubuntu 16.13-0ubuntu0.24.04.1)
 
--- Started on 2026-05-19 18:10:36 +03
+-- Started on 2026-05-26 13:07:37 +03
 
 SET statement_timeout = 0;
+
 SET lock_timeout = 0;
+
 SET idle_in_transaction_session_timeout = 0;
+
 SET client_encoding = 'UTF8';
+
 SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
+
+SELECT pg_catalog.set_config ('search_path', '', false);
+
 SET check_function_bodies = false;
+
 SET xmloption = content;
+
 SET client_min_messages = warning;
+
 SET row_security = off;
 
 --
@@ -27,15 +36,13 @@ SET row_security = off;
 
 CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA public;
 
-
 --
--- TOC entry 4025 (class 0 OID 0)
+-- TOC entry 4047 (class 0 OID 0)
 -- Dependencies: 3
--- Name: EXTENSION citext; Type: COMMENT; Schema: -; Owner: 
+-- Name: EXTENSION citext; Type: COMMENT; Schema: -; Owner:
 --
 
 COMMENT ON EXTENSION citext IS 'data type for case-insensitive character strings';
-
 
 --
 -- TOC entry 2 (class 3079 OID 17200)
@@ -44,18 +51,16 @@ COMMENT ON EXTENSION citext IS 'data type for case-insensitive character strings
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
 
-
 --
--- TOC entry 4026 (class 0 OID 0)
+-- TOC entry 4048 (class 0 OID 0)
 -- Dependencies: 2
--- Name: EXTENSION pgcrypto; Type: COMMENT; Schema: -; Owner: 
+-- Name: EXTENSION pgcrypto; Type: COMMENT; Schema: -; Owner:
 --
 
 COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
 
-
 --
--- TOC entry 1042 (class 1247 OID 17484)
+-- TOC entry 1045 (class 1247 OID 17484)
 -- Name: actor_type; Type: TYPE; Schema: public; Owner: postgres
 --
 
@@ -64,11 +69,10 @@ CREATE TYPE public.actor_type AS ENUM (
     'platform_user'
 );
 
-
 ALTER TYPE public.actor_type OWNER TO postgres;
 
 --
--- TOC entry 1063 (class 1247 OID 17550)
+-- TOC entry 1066 (class 1247 OID 17550)
 -- Name: asset_type; Type: TYPE; Schema: public; Owner: postgres
 --
 
@@ -77,11 +81,10 @@ CREATE TYPE public.asset_type AS ENUM (
     'image'
 );
 
-
 ALTER TYPE public.asset_type OWNER TO postgres;
 
 --
--- TOC entry 1033 (class 1247 OID 17364)
+-- TOC entry 1036 (class 1247 OID 17364)
 -- Name: audit_action; Type: TYPE; Schema: public; Owner: postgres
 --
 
@@ -91,11 +94,10 @@ CREATE TYPE public.audit_action AS ENUM (
     'D'
 );
 
-
 ALTER TYPE public.audit_action OWNER TO postgres;
 
 --
--- TOC entry 1039 (class 1247 OID 17472)
+-- TOC entry 1042 (class 1247 OID 17472)
 -- Name: bug_status; Type: TYPE; Schema: public; Owner: postgres
 --
 
@@ -107,11 +109,10 @@ CREATE TYPE public.bug_status AS ENUM (
     'rejected'
 );
 
-
 ALTER TYPE public.bug_status OWNER TO postgres;
 
 --
--- TOC entry 1030 (class 1247 OID 17352)
+-- TOC entry 1033 (class 1247 OID 17352)
 -- Name: issue_priority; Type: TYPE; Schema: public; Owner: postgres
 --
 
@@ -123,11 +124,10 @@ CREATE TYPE public.issue_priority AS ENUM (
     'highest'
 );
 
-
 ALTER TYPE public.issue_priority OWNER TO postgres;
 
 --
--- TOC entry 1051 (class 1247 OID 17510)
+-- TOC entry 1054 (class 1247 OID 17510)
 -- Name: issue_role; Type: TYPE; Schema: public; Owner: postgres
 --
 
@@ -137,11 +137,10 @@ CREATE TYPE public.issue_role AS ENUM (
     'watcher'
 );
 
-
 ALTER TYPE public.issue_role OWNER TO postgres;
 
 --
--- TOC entry 1057 (class 1247 OID 17526)
+-- TOC entry 1060 (class 1247 OID 17526)
 -- Name: issue_status; Type: TYPE; Schema: public; Owner: postgres
 --
 
@@ -154,11 +153,10 @@ CREATE TYPE public.issue_status AS ENUM (
     'closed'
 );
 
-
 ALTER TYPE public.issue_status OWNER TO postgres;
 
 --
--- TOC entry 1027 (class 1247 OID 17343)
+-- TOC entry 1030 (class 1247 OID 17343)
 -- Name: issue_type; Type: TYPE; Schema: public; Owner: postgres
 --
 
@@ -169,11 +167,10 @@ CREATE TYPE public.issue_type AS ENUM (
     'epic'
 );
 
-
 ALTER TYPE public.issue_type OWNER TO postgres;
 
 --
--- TOC entry 1045 (class 1247 OID 17490)
+-- TOC entry 1048 (class 1247 OID 17490)
 -- Name: org_role; Type: TYPE; Schema: public; Owner: postgres
 --
 
@@ -184,11 +181,10 @@ CREATE TYPE public.org_role AS ENUM (
     'viewer'
 );
 
-
 ALTER TYPE public.org_role OWNER TO postgres;
 
 --
--- TOC entry 1120 (class 1247 OID 18100)
+-- TOC entry 1123 (class 1247 OID 18100)
 -- Name: org_status; Type: TYPE; Schema: public; Owner: postgres
 --
 
@@ -198,11 +194,10 @@ CREATE TYPE public.org_status AS ENUM (
     'archived'
 );
 
-
 ALTER TYPE public.org_status OWNER TO postgres;
 
 --
--- TOC entry 1036 (class 1247 OID 17464)
+-- TOC entry 1039 (class 1247 OID 17464)
 -- Name: platform_role; Type: TYPE; Schema: public; Owner: postgres
 --
 
@@ -212,11 +207,10 @@ CREATE TYPE public.platform_role AS ENUM (
     'billing_admin'
 );
 
-
 ALTER TYPE public.platform_role OWNER TO postgres;
 
 --
--- TOC entry 1060 (class 1247 OID 17540)
+-- TOC entry 1063 (class 1247 OID 17540)
 -- Name: priority_level; Type: TYPE; Schema: public; Owner: postgres
 --
 
@@ -227,11 +221,10 @@ CREATE TYPE public.priority_level AS ENUM (
     'critical'
 );
 
-
 ALTER TYPE public.priority_level OWNER TO postgres;
 
 --
--- TOC entry 1048 (class 1247 OID 17500)
+-- TOC entry 1051 (class 1247 OID 17500)
 -- Name: project_role; Type: TYPE; Schema: public; Owner: postgres
 --
 
@@ -242,11 +235,10 @@ CREATE TYPE public.project_role AS ENUM (
     'viewer'
 );
 
-
 ALTER TYPE public.project_role OWNER TO postgres;
 
 --
--- TOC entry 1054 (class 1247 OID 17518)
+-- TOC entry 1057 (class 1247 OID 17518)
 -- Name: project_status; Type: TYPE; Schema: public; Owner: postgres
 --
 
@@ -256,11 +248,10 @@ CREATE TYPE public.project_status AS ENUM (
     'archived'
 );
 
-
 ALTER TYPE public.project_status OWNER TO postgres;
 
 --
--- TOC entry 1111 (class 1247 OID 18026)
+-- TOC entry 1114 (class 1247 OID 18026)
 -- Name: site_role; Type: TYPE; Schema: public; Owner: postgres
 --
 
@@ -270,11 +261,10 @@ CREATE TYPE public.site_role AS ENUM (
     'viewer'
 );
 
-
 ALTER TYPE public.site_role OWNER TO postgres;
 
 --
--- TOC entry 1066 (class 1247 OID 17556)
+-- TOC entry 1069 (class 1247 OID 17556)
 -- Name: site_status; Type: TYPE; Schema: public; Owner: postgres
 --
 
@@ -284,11 +274,69 @@ CREATE TYPE public.site_status AS ENUM (
     'suspended'
 );
 
-
 ALTER TYPE public.site_status OWNER TO postgres;
 
 --
--- TOC entry 283 (class 1255 OID 17999)
+-- TOC entry 406 (class 1255 OID 18652)
+-- Name: accept_invitation(uuid); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION public.accept_invitation(p_invitation_id uuid) RETURNS boolean
+    LANGUAGE plpgsql SECURITY DEFINER
+    SET search_path TO 'public'
+    AS $$
+DECLARE
+    v_invitation record;
+    v_user_id uuid;
+BEGIN
+    v_user_id := auth_current_user_id();
+    IF v_user_id IS NULL THEN
+        RAISE EXCEPTION 'User not authenticated';
+    END IF;
+
+    SELECT * INTO v_invitation
+    FROM invitations
+    WHERE invitation_id = p_invitation_id
+      AND deleted_at IS NULL;
+
+    IF v_invitation IS NULL THEN
+        RAISE EXCEPTION 'Invitation not found';
+    END IF;
+
+    IF v_invitation.invited_user_id != v_user_id THEN
+        RAISE EXCEPTION 'This invitation is not for you';
+    END IF;
+
+    IF v_invitation.status != 'pending' THEN
+        RAISE EXCEPTION 'Invitation is already %', v_invitation.status;
+    END IF;
+
+    IF v_invitation.expires_at < now() THEN
+        UPDATE invitations SET status = 'expired' WHERE invitation_id = p_invitation_id;
+        RAISE EXCEPTION 'Invitation has expired';
+    END IF;
+
+    -- Üyeliği ekle
+    IF v_invitation.entity_type = 'organization' THEN
+        INSERT INTO organization_memberships (org_id, user_id, role, invited_by, membership_is_active, joined_at)
+        VALUES (v_invitation.org_id, v_user_id, v_invitation.role::org_role, v_invitation.invited_by, true, now());
+    ELSIF v_invitation.entity_type = 'site' THEN
+        INSERT INTO site_memberships (site_id, user_id, role, invited_by, membership_is_active, joined_at)
+        VALUES (v_invitation.entity_id, v_user_id, v_invitation.role::site_role, v_invitation.invited_by, true, now());
+    END IF;
+
+    -- Davet durumunu güncelle
+    UPDATE invitations SET status = 'accepted', accepted_at = now()
+    WHERE invitation_id = p_invitation_id;
+
+    RETURN true;
+END;
+$$;
+
+ALTER FUNCTION public.accept_invitation(p_invitation_id uuid) OWNER TO postgres;
+
+--
+-- TOC entry 284 (class 1255 OID 17999)
 -- Name: auth_current_user_id(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -298,11 +346,10 @@ CREATE FUNCTION public.auth_current_user_id() RETURNS uuid
 select current_setting('app.current_user_id')::uuid;
 $$;
 
-
 ALTER FUNCTION public.auth_current_user_id() OWNER TO postgres;
 
 --
--- TOC entry 379 (class 1255 OID 18008)
+-- TOC entry 381 (class 1255 OID 18008)
 -- Name: auth_is_issue_contributor(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -324,11 +371,10 @@ select exists
             )
 $$;
 
-
 ALTER FUNCTION public.auth_is_issue_contributor(p_issue_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 244 (class 1255 OID 18009)
+-- TOC entry 245 (class 1255 OID 18009)
 -- Name: auth_is_issue_reviewer(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -351,11 +397,10 @@ select exists
 
 $$;
 
-
 ALTER FUNCTION public.auth_is_issue_reviewer(p_issue_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 324 (class 1255 OID 18010)
+-- TOC entry 326 (class 1255 OID 18010)
 -- Name: auth_is_issue_watcher(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -377,11 +422,10 @@ select exists
             )
 $$;
 
-
 ALTER FUNCTION public.auth_is_issue_watcher(p_issue_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 242 (class 1255 OID 18002)
+-- TOC entry 243 (class 1255 OID 18002)
 -- Name: auth_is_org_admin(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -406,11 +450,10 @@ SELECT
         )
 $$;
 
-
 ALTER FUNCTION public.auth_is_org_admin(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 397 (class 1255 OID 18000)
+-- TOC entry 399 (class 1255 OID 18000)
 -- Name: auth_is_org_member(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -432,11 +475,10 @@ select exists
             )
 $$;
 
-
 ALTER FUNCTION public.auth_is_org_member(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 240 (class 1255 OID 18003)
+-- TOC entry 241 (class 1255 OID 18003)
 -- Name: auth_is_org_owner(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -461,11 +503,10 @@ SELECT
         )
 $$;
 
-
 ALTER FUNCTION public.auth_is_org_owner(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 255 (class 1255 OID 18001)
+-- TOC entry 256 (class 1255 OID 18001)
 -- Name: auth_is_org_viewer(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -490,11 +531,10 @@ SELECT
         )
 $$;
 
-
 ALTER FUNCTION public.auth_is_org_viewer(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 286 (class 1255 OID 18004)
+-- TOC entry 287 (class 1255 OID 18004)
 -- Name: auth_is_project_admin(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -519,11 +559,10 @@ select
             )
 $$;
 
-
 ALTER FUNCTION public.auth_is_project_admin(p_project_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 300 (class 1255 OID 18005)
+-- TOC entry 302 (class 1255 OID 18005)
 -- Name: auth_is_project_contributor(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -548,11 +587,10 @@ select
             )
 $$;
 
-
 ALTER FUNCTION public.auth_is_project_contributor(p_project_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 336 (class 1255 OID 18006)
+-- TOC entry 338 (class 1255 OID 18006)
 -- Name: auth_is_project_reviewer(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -577,11 +615,10 @@ SELECT
         )
 $$;
 
-
 ALTER FUNCTION public.auth_is_project_reviewer(p_project_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 389 (class 1255 OID 18007)
+-- TOC entry 391 (class 1255 OID 18007)
 -- Name: auth_is_project_viewer(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -606,11 +643,10 @@ SELECT
         )
 $$;
 
-
 ALTER FUNCTION public.auth_is_project_viewer(p_project_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 359 (class 1255 OID 18092)
+-- TOC entry 361 (class 1255 OID 18092)
 -- Name: auth_is_site_admin(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -636,11 +672,10 @@ CREATE FUNCTION public.auth_is_site_admin(p_site_id uuid) RETURNS boolean
 
 $$;
 
-
 ALTER FUNCTION public.auth_is_site_admin(p_site_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 238 (class 1255 OID 18323)
+-- TOC entry 239 (class 1255 OID 18323)
 -- Name: auth_is_site_contributor(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -665,11 +700,10 @@ CREATE FUNCTION public.auth_is_site_contributor(p_site_id uuid) RETURNS boolean
         )
 $$;
 
-
 ALTER FUNCTION public.auth_is_site_contributor(p_site_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 390 (class 1255 OID 18095)
+-- TOC entry 392 (class 1255 OID 18095)
 -- Name: auth_is_site_contrubitor(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -695,11 +729,10 @@ CREATE FUNCTION public.auth_is_site_contrubitor(p_site_id uuid) RETURNS boolean
 
 $$;
 
-
 ALTER FUNCTION public.auth_is_site_contrubitor(p_site_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 350 (class 1255 OID 18094)
+-- TOC entry 352 (class 1255 OID 18094)
 -- Name: auth_is_site_viewer(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -725,11 +758,10 @@ CREATE FUNCTION public.auth_is_site_viewer(p_site_id uuid) RETURNS boolean
 
 $$;
 
-
 ALTER FUNCTION public.auth_is_site_viewer(p_site_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 241 (class 1255 OID 17988)
+-- TOC entry 242 (class 1255 OID 17988)
 -- Name: can_assign_project_role(public.org_role, public.project_role); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -755,11 +787,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.can_assign_project_role(p_org_role public.org_role, p_project_role public.project_role) OWNER TO postgres;
 
 --
--- TOC entry 366 (class 1255 OID 18635)
+-- TOC entry 368 (class 1255 OID 18635)
 -- Name: cancel_invitation(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -781,11 +812,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.cancel_invitation(p_invitation_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 281 (class 1255 OID 18594)
+-- TOC entry 282 (class 1255 OID 18594)
 -- Name: change_platform_password(uuid, text, text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -829,11 +859,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.change_platform_password(p_user_id uuid, p_old_password_hash text, p_new_password_hash text) OWNER TO postgres;
 
 --
--- TOC entry 296 (class 1255 OID 18595)
+-- TOC entry 298 (class 1255 OID 18595)
 -- Name: create_api_key(uuid, text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -857,11 +886,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.create_api_key(p_platform_user_id uuid, p_key_name text) OWNER TO postgres;
 
 --
--- TOC entry 343 (class 1255 OID 18185)
+-- TOC entry 345 (class 1255 OID 18185)
 -- Name: create_issues(uuid, text, text, boolean); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1036,11 +1064,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.create_issues(p_project_id uuid, p_issue_title text, p_issue_description text, p_is_private boolean) OWNER TO postgres;
 
 --
--- TOC entry 349 (class 1255 OID 18639)
+-- TOC entry 351 (class 1255 OID 18639)
 -- Name: create_organization(uuid, text, text, text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1182,11 +1209,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.create_organization(p_user_id uuid, p_org_name text, p_slug text, p_description text) OWNER TO postgres;
 
 --
--- TOC entry 394 (class 1255 OID 18640)
+-- TOC entry 396 (class 1255 OID 18640)
 -- Name: create_organization_asset(uuid, public.asset_type, text, text, bigint, text, text, jsonb); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1240,11 +1266,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.create_organization_asset(p_org_id uuid, p_asset_type public.asset_type, p_file_name text, p_mime_type text, p_byte_size bigint, p_storage_key text, p_checksum text, p_metadata jsonb) OWNER TO postgres;
 
 --
--- TOC entry 405 (class 1255 OID 18596)
+-- TOC entry 408 (class 1255 OID 18596)
 -- Name: create_platorm_user(public.citext, text, public.platform_role); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1291,11 +1316,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.create_platorm_user(p_email public.citext, p_password_hash text, p_role public.platform_role) OWNER TO postgres;
 
 --
--- TOC entry 277 (class 1255 OID 18197)
+-- TOC entry 278 (class 1255 OID 18197)
 -- Name: create_project(uuid, text, text, boolean); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1441,11 +1465,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.create_project(p_site_id uuid, p_project_name text, p_project_description text, p_is_private boolean) OWNER TO postgres;
 
 --
--- TOC entry 332 (class 1255 OID 18206)
+-- TOC entry 334 (class 1255 OID 18206)
 -- Name: create_sites(text, text, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1544,11 +1567,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.create_sites(p_site_name text, p_site_slug text, p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 364 (class 1255 OID 18188)
+-- TOC entry 366 (class 1255 OID 18188)
 -- Name: delete_issues(uuid, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1701,11 +1723,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.delete_issues(p_issue_id uuid, p_project_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 410 (class 1255 OID 18641)
+-- TOC entry 413 (class 1255 OID 18641)
 -- Name: delete_organization_asset(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1755,11 +1776,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.delete_organization_asset(p_asset_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 342 (class 1255 OID 18597)
+-- TOC entry 344 (class 1255 OID 18597)
 -- Name: delete_platform_user(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1779,11 +1799,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.delete_platform_user(p_user_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 378 (class 1255 OID 18198)
+-- TOC entry 380 (class 1255 OID 18198)
 -- Name: delete_project(uuid, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1908,11 +1927,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.delete_project(p_project_id uuid, p_site_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 406 (class 1255 OID 18207)
+-- TOC entry 409 (class 1255 OID 18207)
 -- Name: delete_site(uuid, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2006,11 +2024,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.delete_site(p_site_id uuid, p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 275 (class 1255 OID 18190)
+-- TOC entry 276 (class 1255 OID 18190)
 -- Name: get_issue_id(uuid, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2074,11 +2091,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.get_issue_id(p_issue_id uuid, p_project_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 291 (class 1255 OID 18191)
+-- TOC entry 292 (class 1255 OID 18191)
 -- Name: get_issues(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2126,11 +2142,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.get_issues(p_project_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 316 (class 1255 OID 18642)
+-- TOC entry 318 (class 1255 OID 18642)
 -- Name: get_organization_asset(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2180,11 +2195,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.get_organization_asset(p_asset_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 249 (class 1255 OID 18643)
+-- TOC entry 250 (class 1255 OID 18643)
 -- Name: get_organization_by_id(uuid, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2224,11 +2238,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.get_organization_by_id(p_org_id uuid, p_uid uuid) OWNER TO postgres;
 
 --
--- TOC entry 327 (class 1255 OID 18644)
+-- TOC entry 329 (class 1255 OID 18644)
 -- Name: get_organization_id(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2280,11 +2293,10 @@ BEGIN
 end;
 $$;
 
-
 ALTER FUNCTION public.get_organization_id(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 268 (class 1255 OID 18638)
+-- TOC entry 269 (class 1255 OID 18638)
 -- Name: get_organization_members(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2332,11 +2344,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.get_organization_members(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 304 (class 1255 OID 18636)
+-- TOC entry 306 (class 1255 OID 18636)
 -- Name: get_organization_stats(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2380,11 +2391,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.get_organization_stats(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 271 (class 1255 OID 18024)
+-- TOC entry 272 (class 1255 OID 18024)
 -- Name: get_organizations(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2438,11 +2448,10 @@ BEGIN
 end;
 $$;
 
-
 ALTER FUNCTION public.get_organizations(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 372 (class 1255 OID 18634)
+-- TOC entry 374 (class 1255 OID 18634)
 -- Name: get_pending_invitations(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2487,11 +2496,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.get_pending_invitations(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 335 (class 1255 OID 18598)
+-- TOC entry 337 (class 1255 OID 18598)
 -- Name: get_platform_user(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2519,11 +2527,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.get_platform_user(p_user_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 307 (class 1255 OID 18200)
+-- TOC entry 309 (class 1255 OID 18200)
 -- Name: get_projects(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2558,11 +2565,10 @@ BEGIN
 end;
 $$;
 
-
 ALTER FUNCTION public.get_projects(p_site_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 403 (class 1255 OID 18199)
+-- TOC entry 405 (class 1255 OID 18199)
 -- Name: get_site_id(uuid, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2621,11 +2627,10 @@ end;
 
 $$;
 
-
 ALTER FUNCTION public.get_site_id(p_site_id uuid, p_project_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 295 (class 1255 OID 18208)
+-- TOC entry 297 (class 1255 OID 18208)
 -- Name: get_sites(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2654,11 +2659,10 @@ BEGIN
     ORDER BY s.site_name;
 END;$$;
 
-
 ALTER FUNCTION public.get_sites(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 310 (class 1255 OID 18637)
+-- TOC entry 312 (class 1255 OID 18637)
 -- Name: get_user_organizations(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2694,11 +2698,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.get_user_organizations() OWNER TO postgres;
 
 --
--- TOC entry 408 (class 1255 OID 18192)
+-- TOC entry 411 (class 1255 OID 18192)
 -- Name: invite_issue(uuid, uuid, uuid, uuid, uuid, public.issue_role); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2881,11 +2884,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.invite_issue(p_friendship_code uuid, p_org_id uuid, p_site_id uuid, p_project_id uuid, p_issue_id uuid, p_issue_role public.issue_role) OWNER TO postgres;
 
 --
--- TOC entry 282 (class 1255 OID 18201)
+-- TOC entry 283 (class 1255 OID 18201)
 -- Name: invite_project(uuid, uuid, uuid, uuid, public.project_role); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -3048,11 +3050,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.invite_project(p_friendship_code uuid, p_org_id uuid, p_site_id uuid, p_project_id uuid, p_project_role public.project_role) OWNER TO postgres;
 
 --
--- TOC entry 380 (class 1255 OID 18209)
+-- TOC entry 382 (class 1255 OID 18209)
 -- Name: invite_site(uuid, uuid, uuid, public.site_role); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -3188,11 +3189,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.invite_site(p_friendship_code uuid, p_org_id uuid, p_site_id uuid, p_site_role public.site_role) OWNER TO postgres;
 
 --
--- TOC entry 329 (class 1255 OID 18633)
+-- TOC entry 331 (class 1255 OID 18633)
 -- Name: invite_to_organization(uuid, uuid, text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -3293,11 +3293,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.invite_to_organization(p_org_id uuid, p_friendship_code uuid, p_role text) OWNER TO postgres;
 
 --
--- TOC entry 280 (class 1255 OID 18645)
+-- TOC entry 281 (class 1255 OID 18645)
 -- Name: invite_user_to_organization(uuid, uuid, public.org_role); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -3415,11 +3414,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.invite_user_to_organization(p_user_friendship_code uuid, p_org_id uuid, p_role public.org_role) OWNER TO postgres;
 
 --
--- TOC entry 245 (class 1255 OID 18646)
+-- TOC entry 246 (class 1255 OID 18646)
 -- Name: leave_organization(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -3473,11 +3471,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.leave_organization(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 269 (class 1255 OID 18599)
+-- TOC entry 270 (class 1255 OID 18599)
 -- Name: list_api_keys(uuid, integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -3503,11 +3500,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.list_api_keys(p_platform_user_id uuid, p_limit integer, p_offset integer) OWNER TO postgres;
 
 --
--- TOC entry 330 (class 1255 OID 18193)
+-- TOC entry 332 (class 1255 OID 18193)
 -- Name: list_issues(uuid, public.issue_status, public.priority_level, uuid, uuid, text, integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -3674,11 +3670,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.list_issues(p_project_id uuid, p_status public.issue_status, p_priority public.priority_level, p_assignee_id uuid, p_reporter_id uuid, p_search text, p_limit integer, p_offset integer) OWNER TO postgres;
 
 --
--- TOC entry 252 (class 1255 OID 18591)
+-- TOC entry 253 (class 1255 OID 18591)
 -- Name: list_notifications(uuid, boolean, integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -3701,11 +3696,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.list_notifications(p_user_id uuid, p_unread_only boolean, p_limit integer, p_offset integer) OWNER TO postgres;
 
 --
--- TOC entry 369 (class 1255 OID 18647)
+-- TOC entry 371 (class 1255 OID 18647)
 -- Name: list_organization_assets(uuid, public.asset_type, integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -3751,11 +3745,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.list_organization_assets(p_org_id uuid, p_asset_type public.asset_type, p_limit integer, p_offset integer) OWNER TO postgres;
 
 --
--- TOC entry 292 (class 1255 OID 18600)
+-- TOC entry 293 (class 1255 OID 18600)
 -- Name: list_platform_users(public.platform_role, integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -3788,11 +3781,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.list_platform_users(p_role public.platform_role, p_limit integer, p_offset integer) OWNER TO postgres;
 
 --
--- TOC entry 352 (class 1255 OID 18202)
+-- TOC entry 354 (class 1255 OID 18202)
 -- Name: list_projects(uuid, public.project_status, text, boolean, integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -3946,11 +3938,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.list_projects(p_site_id uuid, p_status public.project_status, p_search text, p_is_private boolean, p_limit integer, p_offset integer) OWNER TO postgres;
 
 --
--- TOC entry 388 (class 1255 OID 18210)
+-- TOC entry 390 (class 1255 OID 18210)
 -- Name: list_sites(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -3980,11 +3971,10 @@ BEGIN
     ORDER BY s.site_name;
 END;$$;
 
-
 ALTER FUNCTION public.list_sites(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 395 (class 1255 OID 18023)
+-- TOC entry 397 (class 1255 OID 18023)
 -- Name: list_user_organizations(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4027,11 +4017,10 @@ BEGIN
 end;
 $$;
 
-
 ALTER FUNCTION public.list_user_organizations() OWNER TO postgres;
 
 --
--- TOC entry 351 (class 1255 OID 18592)
+-- TOC entry 353 (class 1255 OID 18592)
 -- Name: mark_notification_read(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4049,11 +4038,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.mark_notification_read(p_notification_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 305 (class 1255 OID 18601)
+-- TOC entry 307 (class 1255 OID 18601)
 -- Name: refresh_platform_token(text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4090,11 +4078,53 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.refresh_platform_token(p_old_token text) OWNER TO postgres;
 
 --
--- TOC entry 306 (class 1255 OID 18602)
+-- TOC entry 294 (class 1255 OID 18651)
+-- Name: reject_invitation(uuid); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION public.reject_invitation(p_invitation_id uuid) RETURNS boolean
+    LANGUAGE plpgsql SECURITY DEFINER
+    SET search_path TO 'public'
+    AS $$
+DECLARE
+    v_invitation record;
+    v_user_id uuid;
+BEGIN
+    v_user_id := auth_current_user_id();
+    IF v_user_id IS NULL THEN
+        RAISE EXCEPTION 'User not authenticated';
+    END IF;
+
+    SELECT * INTO v_invitation
+    FROM invitations
+    WHERE invitation_id = p_invitation_id AND deleted_at IS NULL;
+
+    IF v_invitation IS NULL THEN
+        RAISE EXCEPTION 'Invitation not found';
+    END IF;
+
+    IF v_invitation.invited_user_id != v_user_id THEN
+        RAISE EXCEPTION 'This invitation is not for you';
+    END IF;
+
+    IF v_invitation.status != 'pending' THEN
+        RAISE EXCEPTION 'Invitation is already %', v_invitation.status;
+    END IF;
+
+    UPDATE invitations SET status = 'rejected', rejected_at = now()
+    WHERE invitation_id = p_invitation_id;
+
+    RETURN true;
+END;
+$$;
+
+ALTER FUNCTION public.reject_invitation(p_invitation_id uuid) OWNER TO postgres;
+
+--
+-- TOC entry 308 (class 1255 OID 18602)
 -- Name: reset_platform_password_confirm(text, text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4134,11 +4164,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.reset_platform_password_confirm(p_token text, p_new_password_hash text) OWNER TO postgres;
 
 --
--- TOC entry 246 (class 1255 OID 18603)
+-- TOC entry 247 (class 1255 OID 18603)
 -- Name: reset_platform_password_request(public.citext); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4172,11 +4201,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.reset_platform_password_request(p_email public.citext) OWNER TO postgres;
 
 --
--- TOC entry 314 (class 1255 OID 18604)
+-- TOC entry 316 (class 1255 OID 18604)
 -- Name: revoke_api_key(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4222,11 +4250,10 @@ BEGIN
 end;
 $$;
 
-
 ALTER FUNCTION public.revoke_api_key(p_api_key uuid) OWNER TO postgres;
 
 --
--- TOC entry 257 (class 1255 OID 18212)
+-- TOC entry 258 (class 1255 OID 18212)
 -- Name: soft_delete_organization(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4273,11 +4300,10 @@ BEGIN
 end;
 $$;
 
-
 ALTER FUNCTION public.soft_delete_organization(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 270 (class 1255 OID 18292)
+-- TOC entry 271 (class 1255 OID 18292)
 -- Name: trg_assets_update(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4291,11 +4317,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.trg_assets_update() OWNER TO postgres;
 
 --
--- TOC entry 284 (class 1255 OID 18286)
+-- TOC entry 285 (class 1255 OID 18286)
 -- Name: trg_issue_activity(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4366,11 +4391,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.trg_issue_activity() OWNER TO postgres;
 
 --
--- TOC entry 273 (class 1255 OID 18289)
+-- TOC entry 274 (class 1255 OID 18289)
 -- Name: trg_issue_memberships_role_guard(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4465,11 +4489,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.trg_issue_memberships_role_guard() OWNER TO postgres;
 
 --
--- TOC entry 294 (class 1255 OID 18303)
+-- TOC entry 296 (class 1255 OID 18303)
 -- Name: trg_prevent_issue_delete_if_has_children(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4495,11 +4518,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.trg_prevent_issue_delete_if_has_children() OWNER TO postgres;
 
 --
--- TOC entry 239 (class 1255 OID 18301)
+-- TOC entry 240 (class 1255 OID 18301)
 -- Name: trg_prevent_org_delete_if_has_sites(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4525,11 +4547,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.trg_prevent_org_delete_if_has_sites() OWNER TO postgres;
 
 --
--- TOC entry 374 (class 1255 OID 18299)
+-- TOC entry 376 (class 1255 OID 18299)
 -- Name: trg_prevent_project_delete_if_has_issues(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4556,11 +4577,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.trg_prevent_project_delete_if_has_issues() OWNER TO postgres;
 
 --
--- TOC entry 387 (class 1255 OID 18297)
+-- TOC entry 389 (class 1255 OID 18297)
 -- Name: trg_prevent_site_delete_if_has_projects(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4587,11 +4607,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.trg_prevent_site_delete_if_has_projects() OWNER TO postgres;
 
 --
--- TOC entry 393 (class 1255 OID 17989)
+-- TOC entry 395 (class 1255 OID 17989)
 -- Name: trg_project_memberships_role_guard(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4636,11 +4655,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.trg_project_memberships_role_guard() OWNER TO postgres;
 
 --
--- TOC entry 363 (class 1255 OID 18097)
+-- TOC entry 365 (class 1255 OID 18097)
 -- Name: trg_site_memberships_role_guard(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4650,79 +4668,49 @@ CREATE FUNCTION public.trg_site_memberships_role_guard() RETURNS trigger
 DECLARE
     v_org_id uuid;
     v_org_role org_role;
-
 BEGIN
-    
-    
-    IF not EXISTS
-        (
-            select 
-                1
-            from 
-                organizations as o
-            where
-                o.org_id = v_org_id   
-        )
-        THEN
-            RAISE EXCEPTION 'Its not already organization %',v_org_id;
-    end if;
+    SELECT s.org_id INTO v_org_id
+    FROM public.sites AS s
+    WHERE s.site_id = NEW.site_id;
 
-    
+    IF v_org_id IS NULL THEN
+        RAISE EXCEPTION 'Organization not found for site %', NEW.site_id;
+    END IF;
 
-    SELECT
-        s.org_id
-    INTO    
-        v_org_id
-    from 
-        sites as s
-    where
-        s.site_id = NEW.site_id;
-    
+    SELECT om.role INTO v_org_role
+    FROM public.organization_memberships AS om
+    WHERE om.org_id = v_org_id
+      AND om.user_id = NEW.user_id
+      AND om.membership_is_active = TRUE
+      AND om.deleted_at IS NULL;
 
+    IF v_org_role IS NULL THEN
+        RAISE EXCEPTION 'User % is not an active member of organization %', NEW.user_id, v_org_id;
+    END IF;
 
+    -- Owner ve admin için kısıtlama yok
+    IF v_org_role IN ('owner', 'admin') THEN
+        RETURN NEW;
+    END IF;
 
-    if v_org_id is null THEN
-        raise exception 'Organization not found for site %',NEW.site_id;
-    end if;
+    -- Viewer sadece viewer olabilir
+    IF v_org_role = 'viewer' AND NEW.role != 'viewer' THEN
+        RAISE EXCEPTION 'Role escalation blocked: org_role=viewer cannot be assigned site_role=%', NEW.role;
+    END IF;
 
-    SELECT
-        om.role
-    into 
-        v_org_role
-    from 
-        organization_memberships as om 
-    where 
-        om.org_id = v_org_id
-        AND
-        om.user_id = NEW.user_id
-        AND
-        om.membership_is_active = true
-        AND
-        om.deleted_at is null;
+    -- Member admin olamaz
+    IF v_org_role = 'member' AND NEW.role = 'admin' THEN
+        RAISE EXCEPTION 'Role escalation blocked: org_role=member cannot be assigned admin';
+    END IF;
 
-    
-    if v_org_role is null THEN
-        raise exception 'User % is not an active member of organization %',
-                        NEW.user_id, v_org_id;
-    end if;
-
-
-    if v_org_role = 'viewer' AND NEW.role != 'viewer' THEN
-        raise EXCEPTION 'Role escalation blocked: org_role= viewer cannot be assigned site_role = %',
-                        NEW.role;
-
-    end if;
-
-    return NEW;
-
+    RETURN NEW;
 END;
 $$;
-
 
 ALTER FUNCTION public.trg_site_memberships_role_guard() OWNER TO postgres;
 
 --
--- TOC entry 247 (class 1255 OID 18589)
+-- TOC entry 248 (class 1255 OID 18589)
 -- Name: trigger_notify_issue_assigned(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4744,11 +4732,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.trigger_notify_issue_assigned() OWNER TO postgres;
 
 --
--- TOC entry 262 (class 1255 OID 18195)
+-- TOC entry 263 (class 1255 OID 18195)
 -- Name: update_issues(uuid, text, text, public.issue_status, public.priority_level, uuid, boolean, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4953,11 +4940,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.update_issues(p_issue_id uuid, p_issue_title text, p_issue_description text, p_status public.issue_status, p_priority public.priority_level, p_assignee_id uuid, p_is_private boolean, p_project_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 312 (class 1255 OID 18630)
+-- TOC entry 314 (class 1255 OID 18630)
 -- Name: update_organization(uuid, text, text, text, text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -5000,11 +4986,10 @@ BEGIN
 end;
 $$;
 
-
 ALTER FUNCTION public.update_organization(p_org_id uuid, p_org_name text, p_org_description text, p_slug text, p_org_status text) OWNER TO postgres;
 
 --
--- TOC entry 308 (class 1255 OID 18648)
+-- TOC entry 310 (class 1255 OID 18648)
 -- Name: update_organization_asset(uuid, text, text, jsonb); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -5096,11 +5081,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.update_organization_asset(p_asset_id uuid, p_file_name text, p_mime_type text, p_metadata jsonb) OWNER TO postgres;
 
 --
--- TOC entry 357 (class 1255 OID 18605)
+-- TOC entry 359 (class 1255 OID 18605)
 -- Name: update_platform_user(uuid, public.citext, public.platform_role, boolean); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -5125,11 +5109,10 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.update_platform_user(p_user_id uuid, p_email public.citext, p_role public.platform_role, p_is_active boolean) OWNER TO postgres;
 
 --
--- TOC entry 251 (class 1255 OID 18204)
+-- TOC entry 252 (class 1255 OID 18204)
 -- Name: update_project_status(uuid, public.project_status, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -5279,11 +5262,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.update_project_status(p_project_id uuid, p_new_status public.project_status, p_site_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 362 (class 1255 OID 18211)
+-- TOC entry 364 (class 1255 OID 18211)
 -- Name: update_site_status(uuid, public.site_status, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -5372,11 +5354,10 @@ begin
 end;
 $$;
 
-
 ALTER FUNCTION public.update_site_status(p_site_id uuid, p_new_status public.site_status, p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 398 (class 1255 OID 18606)
+-- TOC entry 400 (class 1255 OID 18606)
 -- Name: verify_platform_token(text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -5396,7 +5377,6 @@ BEGIN
 END;
 $$;
 
-
 ALTER FUNCTION public.verify_platform_token(p_token text) OWNER TO postgres;
 
 SET default_tablespace = '';
@@ -5409,7 +5389,7 @@ SET default_table_access_method = heap;
 --
 
 CREATE TABLE public.application_bugs (
-    bug_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    bug_id uuid DEFAULT gen_random_uuid () NOT NULL,
     reported_by uuid NOT NULL,
     org_id uuid,
     project_id uuid,
@@ -5424,8 +5404,54 @@ CREATE TABLE public.application_bugs (
     deleted_by uuid
 );
 
-
 ALTER TABLE public.application_bugs OWNER TO postgres;
+
+--
+-- TOC entry 237 (class 1259 OID 18653)
+-- Name: invitations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.invitations (
+    invitation_id uuid DEFAULT gen_random_uuid () NOT NULL,
+    org_id uuid NOT NULL,
+    invited_by uuid NOT NULL,
+    invited_user_id uuid NOT NULL,
+    entity_type text NOT NULL,
+    entity_id uuid,
+    role text NOT NULL,
+    status text DEFAULT 'pending'::text NOT NULL,
+    created_at timestamp with time zone DEFAULT now(),
+    expires_at timestamp with time zone DEFAULT (now() + '7 days'::interval),
+    accepted_at timestamp with time zone,
+    rejected_at timestamp with time zone,
+    cancelled_at timestamp with time zone,
+    deleted_at timestamp with time zone,
+    CONSTRAINT invitations_entity_type_check CHECK (
+        (
+            entity_type = ANY (
+                ARRAY[
+                    'organization'::text,
+                    'site'::text,
+                    'project'::text
+                ]
+            )
+        )
+    ),
+    CONSTRAINT invitations_status_check CHECK (
+        (
+            status = ANY (
+                ARRAY[
+                    'pending'::text,
+                    'accepted'::text,
+                    'rejected'::text,
+                    'expired'::text
+                ]
+            )
+        )
+    )
+);
+
+ALTER TABLE public.invitations OWNER TO postgres;
 
 --
 -- TOC entry 233 (class 1259 OID 18215)
@@ -5433,7 +5459,7 @@ ALTER TABLE public.application_bugs OWNER TO postgres;
 --
 
 CREATE TABLE public.issue_activity (
-    activity_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    activity_id uuid DEFAULT gen_random_uuid () NOT NULL,
     issue_id uuid NOT NULL,
     user_id uuid,
     field_name text NOT NULL,
@@ -5441,7 +5467,6 @@ CREATE TABLE public.issue_activity (
     new_value text,
     created_at timestamp with time zone DEFAULT now()
 );
-
 
 ALTER TABLE public.issue_activity OWNER TO postgres;
 
@@ -5451,7 +5476,7 @@ ALTER TABLE public.issue_activity OWNER TO postgres;
 --
 
 CREATE TABLE public.issue_assets (
-    issue_asset_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    issue_asset_id uuid DEFAULT gen_random_uuid () NOT NULL,
     issue_id uuid NOT NULL,
     uploaded_by uuid,
     asset_type public.asset_type NOT NULL,
@@ -5468,7 +5493,6 @@ CREATE TABLE public.issue_assets (
     deleted_by uuid
 );
 
-
 ALTER TABLE public.issue_assets OWNER TO postgres;
 
 --
@@ -5477,7 +5501,7 @@ ALTER TABLE public.issue_assets OWNER TO postgres;
 --
 
 CREATE TABLE public.issue_memberships (
-    issue_membership_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    issue_membership_id uuid DEFAULT gen_random_uuid () NOT NULL,
     issue_id uuid NOT NULL,
     user_id uuid NOT NULL,
     role public.issue_role NOT NULL,
@@ -5488,7 +5512,6 @@ CREATE TABLE public.issue_memberships (
     deleted_by uuid
 );
 
-
 ALTER TABLE public.issue_memberships OWNER TO postgres;
 
 --
@@ -5497,7 +5520,7 @@ ALTER TABLE public.issue_memberships OWNER TO postgres;
 --
 
 CREATE TABLE public.issues (
-    issue_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    issue_id uuid DEFAULT gen_random_uuid () NOT NULL,
     project_id uuid NOT NULL,
     issue_no bigint NOT NULL,
     issue_title text NOT NULL,
@@ -5517,7 +5540,6 @@ CREATE TABLE public.issues (
     is_editable boolean DEFAULT false NOT NULL
 );
 
-
 ALTER TABLE public.issues OWNER TO postgres;
 
 --
@@ -5526,7 +5548,7 @@ ALTER TABLE public.issues OWNER TO postgres;
 --
 
 CREATE TABLE public.organizations (
-    org_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    org_id uuid DEFAULT gen_random_uuid () NOT NULL,
     org_check_id text NOT NULL,
     org_name text NOT NULL,
     org_description text,
@@ -5539,7 +5561,6 @@ CREATE TABLE public.organizations (
     deleted_by uuid
 );
 
-
 ALTER TABLE public.organizations OWNER TO postgres;
 
 --
@@ -5548,7 +5569,7 @@ ALTER TABLE public.organizations OWNER TO postgres;
 --
 
 CREATE TABLE public.projects (
-    project_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    project_id uuid DEFAULT gen_random_uuid () NOT NULL,
     site_id uuid NOT NULL,
     project_check_id text NOT NULL,
     project_name text NOT NULL,
@@ -5565,7 +5586,6 @@ CREATE TABLE public.projects (
     is_private boolean DEFAULT false NOT NULL
 );
 
-
 ALTER TABLE public.projects OWNER TO postgres;
 
 --
@@ -5574,7 +5594,7 @@ ALTER TABLE public.projects OWNER TO postgres;
 --
 
 CREATE TABLE public.sites (
-    site_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    site_id uuid DEFAULT gen_random_uuid () NOT NULL,
     org_id uuid NOT NULL,
     site_name text NOT NULL,
     site_slug text NOT NULL,
@@ -5587,7 +5607,6 @@ CREATE TABLE public.sites (
     is_private boolean DEFAULT false NOT NULL
 );
 
-
 ALTER TABLE public.sites OWNER TO postgres;
 
 --
@@ -5596,7 +5615,7 @@ ALTER TABLE public.sites OWNER TO postgres;
 --
 
 CREATE TABLE public.users (
-    user_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    user_id uuid DEFAULT gen_random_uuid () NOT NULL,
     user_name text NOT NULL,
     user_last_name text,
     user_display_name text,
@@ -5604,7 +5623,7 @@ CREATE TABLE public.users (
     user_password text NOT NULL,
     user_is_active boolean DEFAULT true NOT NULL,
     last_login_at timestamp with time zone,
-    user_friendship_code uuid DEFAULT gen_random_uuid() NOT NULL,
+    user_friendship_code uuid DEFAULT gen_random_uuid () NOT NULL,
     metadata jsonb DEFAULT '{}'::jsonb,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
     updated_at timestamp with time zone DEFAULT now() NOT NULL,
@@ -5620,7 +5639,6 @@ CREATE TABLE public.users (
     token_version integer DEFAULT 1
 );
 
-
 ALTER TABLE public.users OWNER TO postgres;
 
 --
@@ -5629,7 +5647,8 @@ ALTER TABLE public.users OWNER TO postgres;
 --
 
 CREATE VIEW public.issue_summary AS
- SELECT i.issue_id,
+SELECT
+    i.issue_id,
     i.issue_no,
     i.issue_title,
     i.issue_description,
@@ -5640,10 +5659,18 @@ CREATE VIEW public.issue_summary AS
     i.created_at,
     i.updated_at,
     i.reporter_id,
-    concat(r.user_name, ' ', r.user_last_name) AS reporter_name,
+    concat(
+        r.user_name,
+        ' ',
+        r.user_last_name
+    ) AS reporter_name,
     r.user_email AS reporter_email,
     i.assignee_id,
-    concat(a.user_name, ' ', a.user_last_name) AS assignee_name,
+    concat(
+        a.user_name,
+        ' ',
+        a.user_last_name
+    ) AS assignee_name,
     a.user_email AS assignee_email,
     i.parent_issue_id,
     parent.issue_title AS parent_issue_title,
@@ -5658,22 +5685,88 @@ CREATE VIEW public.issue_summary AS
     s.site_name,
     o.org_id,
     o.org_name,
-    ( SELECT count(*) AS count
-           FROM public.issue_memberships im
-          WHERE ((im.issue_id = i.issue_id) AND (im.membership_is_active = true) AND (im.deleted_at IS NULL))) AS member_count,
-    ( SELECT count(*) AS count
-           FROM public.issue_assets ia
-          WHERE ((ia.issue_id = i.issue_id) AND (ia.is_active = true) AND (ia.deleted_at IS NULL))) AS asset_count
-   FROM (((((((public.issues i
-     LEFT JOIN public.users r ON (((r.user_id = i.reporter_id) AND (r.deleted_at IS NULL))))
-     LEFT JOIN public.users a ON (((a.user_id = i.assignee_id) AND (a.deleted_at IS NULL))))
-     LEFT JOIN public.issues parent ON (((parent.issue_id = i.parent_issue_id) AND (parent.deleted_at IS NULL))))
-     LEFT JOIN public.issues blocking ON (((blocking.issue_id = i.blocking_issue_id) AND (blocking.deleted_at IS NULL))))
-     JOIN public.projects p ON (((p.project_id = i.project_id) AND (p.deleted_at IS NULL))))
-     JOIN public.sites s ON (((s.site_id = p.site_id) AND (s.deleted_at IS NULL))))
-     JOIN public.organizations o ON (((o.org_id = s.org_id) AND (o.deleted_at IS NULL))))
-  WHERE (i.deleted_at IS NULL);
-
+    (
+        SELECT count(*) AS count
+        FROM public.issue_memberships im
+        WHERE (
+                (im.issue_id = i.issue_id)
+                AND (
+                    im.membership_is_active = true
+                )
+                AND (im.deleted_at IS NULL)
+            )
+    ) AS member_count,
+    (
+        SELECT count(*) AS count
+        FROM public.issue_assets ia
+        WHERE (
+                (ia.issue_id = i.issue_id)
+                AND (ia.is_active = true)
+                AND (ia.deleted_at IS NULL)
+            )
+    ) AS asset_count
+FROM (
+        (
+            (
+                (
+                    (
+                        (
+                            (
+                                public.issues i
+                                LEFT JOIN public.users r ON (
+                                    (
+                                        (r.user_id = i.reporter_id)
+                                        AND (r.deleted_at IS NULL)
+                                    )
+                                )
+                            )
+                            LEFT JOIN public.users a ON (
+                                (
+                                    (a.user_id = i.assignee_id)
+                                    AND (a.deleted_at IS NULL)
+                                )
+                            )
+                        )
+                        LEFT JOIN public.issues parent ON (
+                            (
+                                (
+                                    parent.issue_id = i.parent_issue_id
+                                )
+                                AND (parent.deleted_at IS NULL)
+                            )
+                        )
+                    )
+                    LEFT JOIN public.issues blocking ON (
+                        (
+                            (
+                                blocking.issue_id = i.blocking_issue_id
+                            )
+                            AND (blocking.deleted_at IS NULL)
+                        )
+                    )
+                )
+                JOIN public.projects p ON (
+                    (
+                        (p.project_id = i.project_id)
+                        AND (p.deleted_at IS NULL)
+                    )
+                )
+            )
+            JOIN public.sites s ON (
+                (
+                    (s.site_id = p.site_id)
+                    AND (s.deleted_at IS NULL)
+                )
+            )
+        )
+        JOIN public.organizations o ON (
+            (
+                (o.org_id = s.org_id)
+                AND (o.deleted_at IS NULL)
+            )
+        )
+    )
+WHERE (i.deleted_at IS NULL);
 
 ALTER VIEW public.issue_summary OWNER TO postgres;
 
@@ -5683,7 +5776,7 @@ ALTER VIEW public.issue_summary OWNER TO postgres;
 --
 
 CREATE TABLE public.notifications (
-    notification_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    notification_id uuid DEFAULT gen_random_uuid () NOT NULL,
     user_id uuid NOT NULL,
     type text NOT NULL,
     title text NOT NULL,
@@ -5695,7 +5788,6 @@ CREATE TABLE public.notifications (
     deleted_at timestamp with time zone
 );
 
-
 ALTER TABLE public.notifications OWNER TO postgres;
 
 --
@@ -5704,7 +5796,7 @@ ALTER TABLE public.notifications OWNER TO postgres;
 --
 
 CREATE TABLE public.organization_assets (
-    org_asset_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    org_asset_id uuid DEFAULT gen_random_uuid () NOT NULL,
     org_id uuid NOT NULL,
     uploaded_by uuid,
     asset_type public.asset_type NOT NULL,
@@ -5721,7 +5813,6 @@ CREATE TABLE public.organization_assets (
     deleted_by uuid
 );
 
-
 ALTER TABLE public.organization_assets OWNER TO postgres;
 
 --
@@ -5730,7 +5821,7 @@ ALTER TABLE public.organization_assets OWNER TO postgres;
 --
 
 CREATE TABLE public.organization_memberships (
-    org_membership_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    org_membership_id uuid DEFAULT gen_random_uuid () NOT NULL,
     org_id uuid NOT NULL,
     user_id uuid NOT NULL,
     role public.org_role DEFAULT 'viewer'::public.org_role NOT NULL,
@@ -5743,7 +5834,6 @@ CREATE TABLE public.organization_memberships (
     deleted_by uuid
 );
 
-
 ALTER TABLE public.organization_memberships OWNER TO postgres;
 
 --
@@ -5752,7 +5842,7 @@ ALTER TABLE public.organization_memberships OWNER TO postgres;
 --
 
 CREATE TABLE public.project_assets (
-    project_asset_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    project_asset_id uuid DEFAULT gen_random_uuid () NOT NULL,
     project_id uuid NOT NULL,
     uploaded_by uuid,
     asset_type public.asset_type NOT NULL,
@@ -5769,7 +5859,6 @@ CREATE TABLE public.project_assets (
     deleted_by uuid
 );
 
-
 ALTER TABLE public.project_assets OWNER TO postgres;
 
 --
@@ -5778,7 +5867,7 @@ ALTER TABLE public.project_assets OWNER TO postgres;
 --
 
 CREATE TABLE public.project_memberships (
-    project_membership_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    project_membership_id uuid DEFAULT gen_random_uuid () NOT NULL,
     project_id uuid NOT NULL,
     user_id uuid NOT NULL,
     role public.project_role NOT NULL,
@@ -5791,7 +5880,6 @@ CREATE TABLE public.project_memberships (
     deleted_by uuid
 );
 
-
 ALTER TABLE public.project_memberships OWNER TO postgres;
 
 --
@@ -5800,7 +5888,7 @@ ALTER TABLE public.project_memberships OWNER TO postgres;
 --
 
 CREATE TABLE public.project_requirements (
-    requirement_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    requirement_id uuid DEFAULT gen_random_uuid () NOT NULL,
     project_id uuid NOT NULL,
     title text NOT NULL,
     description text,
@@ -5814,7 +5902,6 @@ CREATE TABLE public.project_requirements (
     deleted_by uuid
 );
 
-
 ALTER TABLE public.project_requirements OWNER TO postgres;
 
 --
@@ -5823,7 +5910,8 @@ ALTER TABLE public.project_requirements OWNER TO postgres;
 --
 
 CREATE VIEW public.project_summary AS
- SELECT p.project_id,
+SELECT
+    p.project_id,
     p.project_name,
     p.project_description,
     p.slug,
@@ -5837,26 +5925,71 @@ CREATE VIEW public.project_summary AS
     s.site_name,
     o.org_id,
     o.org_name,
-    ( SELECT count(*) AS count
-           FROM public.issues i
-          WHERE ((i.project_id = p.project_id) AND (i.deleted_at IS NULL))) AS total_issues,
-    ( SELECT count(*) AS count
-           FROM public.issues i
-          WHERE ((i.project_id = p.project_id) AND (i.status = 'open'::public.issue_status) AND (i.deleted_at IS NULL))) AS open_issues,
-    ( SELECT count(*) AS count
-           FROM public.project_memberships pm
-          WHERE ((pm.project_id = p.project_id) AND (pm.membership_is_active = true) AND (pm.deleted_at IS NULL))) AS total_members,
-    ( SELECT count(*) AS count
-           FROM public.project_requirements pr
-          WHERE ((pr.project_id = p.project_id) AND (pr.deleted_at IS NULL))) AS total_requirements,
-    ( SELECT count(*) AS count
-           FROM public.project_requirements pr
-          WHERE ((pr.project_id = p.project_id) AND (pr.is_done = true) AND (pr.deleted_at IS NULL))) AS completed_requirements
-   FROM ((public.projects p
-     JOIN public.sites s ON (((s.site_id = p.site_id) AND (s.deleted_at IS NULL))))
-     JOIN public.organizations o ON (((o.org_id = s.org_id) AND (o.deleted_at IS NULL))))
-  WHERE (p.deleted_at IS NULL);
-
+    (
+        SELECT count(*) AS count
+        FROM public.issues i
+        WHERE (
+                (i.project_id = p.project_id)
+                AND (i.deleted_at IS NULL)
+            )
+    ) AS total_issues,
+    (
+        SELECT count(*) AS count
+        FROM public.issues i
+        WHERE (
+                (i.project_id = p.project_id)
+                AND (
+                    i.status = 'open'::public.issue_status
+                )
+                AND (i.deleted_at IS NULL)
+            )
+    ) AS open_issues,
+    (
+        SELECT count(*) AS count
+        FROM public.project_memberships pm
+        WHERE (
+                (pm.project_id = p.project_id)
+                AND (
+                    pm.membership_is_active = true
+                )
+                AND (pm.deleted_at IS NULL)
+            )
+    ) AS total_members,
+    (
+        SELECT count(*) AS count
+        FROM public.project_requirements pr
+        WHERE (
+                (pr.project_id = p.project_id)
+                AND (pr.deleted_at IS NULL)
+            )
+    ) AS total_requirements,
+    (
+        SELECT count(*) AS count
+        FROM public.project_requirements pr
+        WHERE (
+                (pr.project_id = p.project_id)
+                AND (pr.is_done = true)
+                AND (pr.deleted_at IS NULL)
+            )
+    ) AS completed_requirements
+FROM (
+        (
+            public.projects p
+            JOIN public.sites s ON (
+                (
+                    (s.site_id = p.site_id)
+                    AND (s.deleted_at IS NULL)
+                )
+            )
+        )
+        JOIN public.organizations o ON (
+            (
+                (o.org_id = s.org_id)
+                AND (o.deleted_at IS NULL)
+            )
+        )
+    )
+WHERE (p.deleted_at IS NULL);
 
 ALTER VIEW public.project_summary OWNER TO postgres;
 
@@ -5866,7 +5999,7 @@ ALTER VIEW public.project_summary OWNER TO postgres;
 --
 
 CREATE TABLE public.site_assets (
-    site_asset_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    site_asset_id uuid DEFAULT gen_random_uuid () NOT NULL,
     site_id uuid NOT NULL,
     uploaded_by uuid,
     asset_type public.asset_type NOT NULL,
@@ -5883,7 +6016,6 @@ CREATE TABLE public.site_assets (
     deleted_by uuid
 );
 
-
 ALTER TABLE public.site_assets OWNER TO postgres;
 
 --
@@ -5892,7 +6024,7 @@ ALTER TABLE public.site_assets OWNER TO postgres;
 --
 
 CREATE TABLE public.site_memberships (
-    site_membership_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    site_membership_id uuid DEFAULT gen_random_uuid () NOT NULL,
     site_id uuid NOT NULL,
     user_id uuid NOT NULL,
     role public.site_role NOT NULL,
@@ -5905,7 +6037,6 @@ CREATE TABLE public.site_memberships (
     deleted_by uuid
 );
 
-
 ALTER TABLE public.site_memberships OWNER TO postgres;
 
 --
@@ -5914,7 +6045,7 @@ ALTER TABLE public.site_memberships OWNER TO postgres;
 --
 
 CREATE TABLE public.system_audit_logs (
-    audit_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    audit_id uuid DEFAULT gen_random_uuid () NOT NULL,
     actor_type public.actor_type NOT NULL,
     actor_id uuid NOT NULL,
     entity_type text NOT NULL,
@@ -5925,1487 +6056,1499 @@ CREATE TABLE public.system_audit_logs (
     created_at timestamp with time zone DEFAULT now() NOT NULL
 );
 
-
 ALTER TABLE public.system_audit_logs OWNER TO postgres;
 
 --
--- TOC entry 4015 (class 0 OID 17945)
+-- TOC entry 4036 (class 0 OID 17945)
 -- Dependencies: 230
 -- Data for Name: application_bugs; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+
 COPY public.application_bugs (bug_id, reported_by, org_id, project_id, title, description, status, priority, assigned_to, created_at, resolved_at, deleted_at, deleted_by) FROM stdin;
 \.
 
+--
+-- TOC entry 4041 (class 0 OID 18653)
+-- Dependencies: 237
+-- Data for Name: invitations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+COPY public.invitations (invitation_id, org_id, invited_by, invited_user_id, entity_type, entity_id, role, status, created_at, expires_at, accepted_at, rejected_at, cancelled_at, deleted_at) FROM stdin;
+\.
 
 --
--- TOC entry 4018 (class 0 OID 18215)
+-- TOC entry 4039 (class 0 OID 18215)
 -- Dependencies: 233
 -- Data for Name: issue_activity; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+
 COPY public.issue_activity (activity_id, issue_id, user_id, field_name, old_value, new_value, created_at) FROM stdin;
 \.
 
-
 --
--- TOC entry 4014 (class 0 OID 17918)
+-- TOC entry 4035 (class 0 OID 17918)
 -- Dependencies: 229
 -- Data for Name: issue_assets; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+
 COPY public.issue_assets (issue_asset_id, issue_id, uploaded_by, asset_type, file_name, mime_type, byte_size, storage_key, checksum, metadata, is_active, created_at, updated_at, deleted_at, deleted_by) FROM stdin;
 \.
 
-
 --
--- TOC entry 4011 (class 0 OID 17840)
+-- TOC entry 4032 (class 0 OID 17840)
 -- Dependencies: 226
 -- Data for Name: issue_memberships; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+
 COPY public.issue_memberships (issue_membership_id, issue_id, user_id, role, membership_is_active, created_at, updated_at, deleted_at, deleted_by) FROM stdin;
 \.
 
-
 --
--- TOC entry 4010 (class 0 OID 17795)
+-- TOC entry 4031 (class 0 OID 17795)
 -- Dependencies: 225
 -- Data for Name: issues; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+
 COPY public.issues (issue_id, project_id, issue_no, issue_title, issue_description, status, priority, reporter_id, assignee_id, parent_issue_id, blocking_issue_id, issue_is_active, created_at, updated_at, deleted_at, deleted_by, is_private, is_editable) FROM stdin;
 \.
 
-
 --
--- TOC entry 4019 (class 0 OID 18570)
+-- TOC entry 4040 (class 0 OID 18570)
 -- Dependencies: 236
 -- Data for Name: notifications; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+
 COPY public.notifications (notification_id, user_id, type, title, content, metadata, is_read, created_at, read_at, deleted_at) FROM stdin;
 \.
 
-
 --
--- TOC entry 4012 (class 0 OID 17864)
+-- TOC entry 4033 (class 0 OID 17864)
 -- Dependencies: 227
 -- Data for Name: organization_assets; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+
 COPY public.organization_assets (org_asset_id, org_id, uploaded_by, asset_type, file_name, mime_type, byte_size, storage_key, checksum, metadata, is_active, created_at, updated_at, deleted_at, deleted_by) FROM stdin;
 \.
 
-
 --
--- TOC entry 4005 (class 0 OID 17637)
+-- TOC entry 4026 (class 0 OID 17637)
 -- Dependencies: 220
 -- Data for Name: organization_memberships; Type: TABLE DATA; Schema: public; Owner: postgres
 --
+
 
 COPY public.organization_memberships (org_membership_id, org_id, user_id, role, invited_by, membership_is_active, joined_at, created_at, updated_at, deleted_at, deleted_by) FROM stdin;
 3b064a4f-2c3d-4682-9a5c-d53628b3a516	c3f5e9c9-7323-436d-b209-b0eeab2f3596	11111111-1111-1111-1111-111111111111	owner	\N	t	2026-05-09 17:55:39.790178+03	2026-05-09 17:55:39.790178+03	2026-05-09 17:55:39.790178+03	\N	\N
 61eecd40-fde2-44c3-a77a-ba385b734f32	c3f5e9c9-7323-436d-b209-b0eeab2f3596	22222222-2222-2222-2222-222222222222	member	\N	t	2026-05-09 17:57:28.930407+03	2026-05-09 17:57:28.930407+03	2026-05-09 17:57:28.930407+03	\N	\N
 \.
 
-
 --
--- TOC entry 4004 (class 0 OID 17612)
+-- TOC entry 4025 (class 0 OID 17612)
 -- Dependencies: 219
 -- Data for Name: organizations; Type: TABLE DATA; Schema: public; Owner: postgres
 --
+
 
 COPY public.organizations (org_id, org_check_id, org_name, org_description, slug, org_status, created_by, created_at, updated_at, deleted_at, deleted_by) FROM stdin;
 c3f5e9c9-7323-436d-b209-b0eeab2f3596	3512a68fabf8	Test Organization	Test Description	test-org	active	11111111-1111-1111-1111-111111111111	2026-05-09 17:55:39.790178+03	2026-05-09 17:55:39.790178+03	\N	\N
 \.
 
-
 --
--- TOC entry 4013 (class 0 OID 17891)
+-- TOC entry 4034 (class 0 OID 17891)
 -- Dependencies: 228
 -- Data for Name: project_assets; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+
 COPY public.project_assets (project_asset_id, project_id, uploaded_by, asset_type, file_name, mime_type, byte_size, storage_key, checksum, metadata, is_active, created_at, updated_at, deleted_at, deleted_by) FROM stdin;
 \.
 
-
 --
--- TOC entry 4008 (class 0 OID 17732)
+-- TOC entry 4029 (class 0 OID 17732)
 -- Dependencies: 223
 -- Data for Name: project_memberships; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+
 COPY public.project_memberships (project_membership_id, project_id, user_id, role, invited_by, membership_is_active, joined_at, created_at, updated_at, deleted_at, deleted_by) FROM stdin;
 \.
 
-
 --
--- TOC entry 4009 (class 0 OID 17764)
+-- TOC entry 4030 (class 0 OID 17764)
 -- Dependencies: 224
 -- Data for Name: project_requirements; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+
 COPY public.project_requirements (requirement_id, project_id, title, description, priority, is_done, created_by, created_at, done_by, done_at, deleted_at, deleted_by) FROM stdin;
 \.
 
-
 --
--- TOC entry 4007 (class 0 OID 17697)
+-- TOC entry 4028 (class 0 OID 17697)
 -- Dependencies: 222
 -- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+
 COPY public.projects (project_id, site_id, project_check_id, project_name, project_description, slug, project_status, created_by, completed_at, completed_by, created_at, updated_at, deleted_at, deleted_by, is_private) FROM stdin;
 \.
 
-
 --
--- TOC entry 4017 (class 0 OID 18045)
+-- TOC entry 4038 (class 0 OID 18045)
 -- Dependencies: 232
 -- Data for Name: site_assets; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+
 COPY public.site_assets (site_asset_id, site_id, uploaded_by, asset_type, file_name, mime_type, byte_size, storage_key, checksum, metadata, is_active, created_at, updated_at, deleted_at, deleted_by) FROM stdin;
 \.
 
-
 --
--- TOC entry 4016 (class 0 OID 18033)
+-- TOC entry 4037 (class 0 OID 18033)
 -- Dependencies: 231
 -- Data for Name: site_memberships; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+
 COPY public.site_memberships (site_membership_id, site_id, user_id, role, invited_by, membership_is_active, joined_at, created_at, updated_at, deleted_at, deleted_by) FROM stdin;
 \.
 
-
 --
--- TOC entry 4006 (class 0 OID 17669)
+-- TOC entry 4027 (class 0 OID 17669)
 -- Dependencies: 221
 -- Data for Name: sites; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+
 COPY public.sites (site_id, org_id, site_name, site_slug, site_status, created_by, created_at, updated_at, deleted_at, deleted_by, is_private) FROM stdin;
 \.
 
-
 --
--- TOC entry 4002 (class 0 OID 17581)
+-- TOC entry 4023 (class 0 OID 17581)
 -- Dependencies: 217
 -- Data for Name: system_audit_logs; Type: TABLE DATA; Schema: public; Owner: postgres
 --
+
 
 COPY public.system_audit_logs (audit_id, actor_type, actor_id, entity_type, entity_id, action_type, old_value, new_value, created_at) FROM stdin;
 e071b65d-b561-4054-9692-62c4cee2970f	tenant_user	11111111-1111-1111-1111-111111111111	organization	c3f5e9c9-7323-436d-b209-b0eeab2f3596	CREATE	\N	{"slug": "test-org", "org_name": "Test Organization"}	2026-05-09 17:55:39.790178+03
 \.
 
-
 --
--- TOC entry 4003 (class 0 OID 17590)
+-- TOC entry 4024 (class 0 OID 17590)
 -- Dependencies: 218
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
+
 
 COPY public.users (user_id, user_name, user_last_name, user_display_name, user_email, user_password, user_is_active, last_login_at, user_friendship_code, metadata, created_at, updated_at, deleted_at, deleted_by, email_verified_at, email_verification_token, password_reset_token, password_reset_expires_at, two_factor_secret, two_factor_enabled, last_password_change_at, token_version) FROM stdin;
 11111111-1111-1111-1111-111111111111	Test User	\N	\N	test@example.com	hashed_password	t	\N	e90b6f31-4f54-4a19-a9c2-4043c9370ac6	{}	2026-05-09 17:55:38.824914+03	2026-05-09 17:55:38.824914+03	\N	\N	\N	\N	\N	\N	\N	f	2026-05-09 17:55:38.824914+03	1
 22222222-2222-2222-2222-222222222222	Member User	\N	\N	member@example.com	hashed_password	t	\N	bd3d75fd-6ce7-430e-b58f-26da3d2150a2	{}	2026-05-09 17:57:21.429323+03	2026-05-09 17:57:21.429323+03	\N	\N	\N	\N	\N	\N	\N	f	2026-05-09 17:57:21.429323+03	1
 \.
 
-
 --
--- TOC entry 3760 (class 2606 OID 17955)
+-- TOC entry 3772 (class 2606 OID 17955)
 -- Name: application_bugs application_bugs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.application_bugs
-    ADD CONSTRAINT application_bugs_pkey PRIMARY KEY (bug_id);
-
+ADD CONSTRAINT application_bugs_pkey PRIMARY KEY (bug_id);
 
 --
--- TOC entry 3778 (class 2606 OID 18223)
+-- TOC entry 3800 (class 2606 OID 18665)
+-- Name: invitations invitations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.invitations
+ADD CONSTRAINT invitations_pkey PRIMARY KEY (invitation_id);
+
+--
+-- TOC entry 3790 (class 2606 OID 18223)
 -- Name: issue_activity issue_activity_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_activity
-    ADD CONSTRAINT issue_activity_pkey PRIMARY KEY (activity_id);
-
+ADD CONSTRAINT issue_activity_pkey PRIMARY KEY (activity_id);
 
 --
--- TOC entry 3758 (class 2606 OID 17929)
+-- TOC entry 3770 (class 2606 OID 17929)
 -- Name: issue_assets issue_assets_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_assets
-    ADD CONSTRAINT issue_assets_pkey PRIMARY KEY (issue_asset_id);
-
+ADD CONSTRAINT issue_assets_pkey PRIMARY KEY (issue_asset_id);
 
 --
--- TOC entry 3752 (class 2606 OID 17848)
+-- TOC entry 3764 (class 2606 OID 17848)
 -- Name: issue_memberships issue_memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_memberships
-    ADD CONSTRAINT issue_memberships_pkey PRIMARY KEY (issue_membership_id);
-
+ADD CONSTRAINT issue_memberships_pkey PRIMARY KEY (issue_membership_id);
 
 --
--- TOC entry 3741 (class 2606 OID 17807)
+-- TOC entry 3753 (class 2606 OID 17807)
 -- Name: issues issues_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issues
-    ADD CONSTRAINT issues_pkey PRIMARY KEY (issue_id);
-
+ADD CONSTRAINT issues_pkey PRIMARY KEY (issue_id);
 
 --
--- TOC entry 3743 (class 2606 OID 17809)
+-- TOC entry 3755 (class 2606 OID 17809)
 -- Name: issues issues_project_id_issue_no_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issues
-    ADD CONSTRAINT issues_project_id_issue_no_key UNIQUE (project_id, issue_no);
-
+ADD CONSTRAINT issues_project_id_issue_no_key UNIQUE (project_id, issue_no);
 
 --
--- TOC entry 3783 (class 2606 OID 18580)
+-- TOC entry 3795 (class 2606 OID 18580)
 -- Name: notifications notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.notifications
-    ADD CONSTRAINT notifications_pkey PRIMARY KEY (notification_id);
-
+ADD CONSTRAINT notifications_pkey PRIMARY KEY (notification_id);
 
 --
--- TOC entry 3754 (class 2606 OID 17875)
+-- TOC entry 3766 (class 2606 OID 17875)
 -- Name: organization_assets organization_assets_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_assets
-    ADD CONSTRAINT organization_assets_pkey PRIMARY KEY (org_asset_id);
-
+ADD CONSTRAINT organization_assets_pkey PRIMARY KEY (org_asset_id);
 
 --
--- TOC entry 3701 (class 2606 OID 17648)
+-- TOC entry 3713 (class 2606 OID 17648)
 -- Name: organization_memberships organization_memberships_org_id_user_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_memberships
-    ADD CONSTRAINT organization_memberships_org_id_user_id_key UNIQUE (org_id, user_id);
-
+ADD CONSTRAINT organization_memberships_org_id_user_id_key UNIQUE (org_id, user_id);
 
 --
--- TOC entry 3703 (class 2606 OID 17646)
+-- TOC entry 3715 (class 2606 OID 17646)
 -- Name: organization_memberships organization_memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_memberships
-    ADD CONSTRAINT organization_memberships_pkey PRIMARY KEY (org_membership_id);
-
+ADD CONSTRAINT organization_memberships_pkey PRIMARY KEY (org_membership_id);
 
 --
--- TOC entry 3685 (class 2606 OID 17624)
+-- TOC entry 3697 (class 2606 OID 17624)
 -- Name: organizations organizations_org_check_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organizations
-    ADD CONSTRAINT organizations_org_check_id_key UNIQUE (org_check_id);
-
+ADD CONSTRAINT organizations_org_check_id_key UNIQUE (org_check_id);
 
 --
--- TOC entry 3687 (class 2606 OID 17622)
+-- TOC entry 3699 (class 2606 OID 17622)
 -- Name: organizations organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organizations
-    ADD CONSTRAINT organizations_pkey PRIMARY KEY (org_id);
-
+ADD CONSTRAINT organizations_pkey PRIMARY KEY (org_id);
 
 --
--- TOC entry 3689 (class 2606 OID 17626)
+-- TOC entry 3701 (class 2606 OID 17626)
 -- Name: organizations organizations_slug_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organizations
-    ADD CONSTRAINT organizations_slug_key UNIQUE (slug);
-
+ADD CONSTRAINT organizations_slug_key UNIQUE (slug);
 
 --
--- TOC entry 3756 (class 2606 OID 17902)
+-- TOC entry 3768 (class 2606 OID 17902)
 -- Name: project_assets project_assets_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_assets
-    ADD CONSTRAINT project_assets_pkey PRIMARY KEY (project_asset_id);
-
+ADD CONSTRAINT project_assets_pkey PRIMARY KEY (project_asset_id);
 
 --
--- TOC entry 3724 (class 2606 OID 17741)
+-- TOC entry 3736 (class 2606 OID 17741)
 -- Name: project_memberships project_memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_memberships
-    ADD CONSTRAINT project_memberships_pkey PRIMARY KEY (project_membership_id);
-
+ADD CONSTRAINT project_memberships_pkey PRIMARY KEY (project_membership_id);
 
 --
--- TOC entry 3726 (class 2606 OID 17743)
+-- TOC entry 3738 (class 2606 OID 17743)
 -- Name: project_memberships project_memberships_project_id_user_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_memberships
-    ADD CONSTRAINT project_memberships_project_id_user_id_key UNIQUE (project_id, user_id);
-
+ADD CONSTRAINT project_memberships_project_id_user_id_key UNIQUE (project_id, user_id);
 
 --
--- TOC entry 3728 (class 2606 OID 17774)
+-- TOC entry 3740 (class 2606 OID 17774)
 -- Name: project_requirements project_requirements_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_requirements
-    ADD CONSTRAINT project_requirements_pkey PRIMARY KEY (requirement_id);
-
+ADD CONSTRAINT project_requirements_pkey PRIMARY KEY (requirement_id);
 
 --
--- TOC entry 3709 (class 2606 OID 17707)
+-- TOC entry 3721 (class 2606 OID 17707)
 -- Name: projects projects_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.projects
-    ADD CONSTRAINT projects_pkey PRIMARY KEY (project_id);
-
+ADD CONSTRAINT projects_pkey PRIMARY KEY (project_id);
 
 --
--- TOC entry 3711 (class 2606 OID 17709)
+-- TOC entry 3723 (class 2606 OID 17709)
 -- Name: projects projects_project_check_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.projects
-    ADD CONSTRAINT projects_project_check_id_key UNIQUE (project_check_id);
-
+ADD CONSTRAINT projects_project_check_id_key UNIQUE (project_check_id);
 
 --
--- TOC entry 3713 (class 2606 OID 17711)
+-- TOC entry 3725 (class 2606 OID 17711)
 -- Name: projects projects_site_id_project_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.projects
-    ADD CONSTRAINT projects_site_id_project_name_key UNIQUE (site_id, project_name);
-
+ADD CONSTRAINT projects_site_id_project_name_key UNIQUE (site_id, project_name);
 
 --
--- TOC entry 3776 (class 2606 OID 18056)
+-- TOC entry 3788 (class 2606 OID 18056)
 -- Name: site_assets site_assets_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_assets
-    ADD CONSTRAINT site_assets_pkey PRIMARY KEY (site_asset_id);
-
+ADD CONSTRAINT site_assets_pkey PRIMARY KEY (site_asset_id);
 
 --
--- TOC entry 3772 (class 2606 OID 18042)
+-- TOC entry 3784 (class 2606 OID 18042)
 -- Name: site_memberships site_memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_memberships
-    ADD CONSTRAINT site_memberships_pkey PRIMARY KEY (site_membership_id);
-
+ADD CONSTRAINT site_memberships_pkey PRIMARY KEY (site_membership_id);
 
 --
--- TOC entry 3774 (class 2606 OID 18044)
+-- TOC entry 3786 (class 2606 OID 18044)
 -- Name: site_memberships site_memberships_site_id_user_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_memberships
-    ADD CONSTRAINT site_memberships_site_id_user_id_key UNIQUE (site_id, user_id);
-
+ADD CONSTRAINT site_memberships_site_id_user_id_key UNIQUE (site_id, user_id);
 
 --
--- TOC entry 3705 (class 2606 OID 17681)
+-- TOC entry 3717 (class 2606 OID 17681)
 -- Name: sites sites_org_id_site_slug_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.sites
-    ADD CONSTRAINT sites_org_id_site_slug_key UNIQUE (org_id, site_slug);
-
+ADD CONSTRAINT sites_org_id_site_slug_key UNIQUE (org_id, site_slug);
 
 --
--- TOC entry 3707 (class 2606 OID 17679)
+-- TOC entry 3719 (class 2606 OID 17679)
 -- Name: sites sites_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.sites
-    ADD CONSTRAINT sites_pkey PRIMARY KEY (site_id);
-
+ADD CONSTRAINT sites_pkey PRIMARY KEY (site_id);
 
 --
--- TOC entry 3672 (class 2606 OID 17589)
+-- TOC entry 3684 (class 2606 OID 17589)
 -- Name: system_audit_logs system_audit_logs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.system_audit_logs
-    ADD CONSTRAINT system_audit_logs_pkey PRIMARY KEY (audit_id);
-
+ADD CONSTRAINT system_audit_logs_pkey PRIMARY KEY (audit_id);
 
 --
--- TOC entry 3679 (class 2606 OID 17602)
+-- TOC entry 3691 (class 2606 OID 17602)
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users
-    ADD CONSTRAINT users_pkey PRIMARY KEY (user_id);
-
+ADD CONSTRAINT users_pkey PRIMARY KEY (user_id);
 
 --
--- TOC entry 3681 (class 2606 OID 17604)
+-- TOC entry 3693 (class 2606 OID 17604)
 -- Name: users users_user_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users
-    ADD CONSTRAINT users_user_email_key UNIQUE (user_email);
-
+ADD CONSTRAINT users_user_email_key UNIQUE (user_email);
 
 --
--- TOC entry 3683 (class 2606 OID 17606)
+-- TOC entry 3695 (class 2606 OID 17606)
 -- Name: users users_user_friendship_code_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users
-    ADD CONSTRAINT users_user_friendship_code_key UNIQUE (user_friendship_code);
-
+ADD CONSTRAINT users_user_friendship_code_key UNIQUE (user_friendship_code);
 
 --
--- TOC entry 3744 (class 1259 OID 18240)
+-- TOC entry 3796 (class 1259 OID 18682)
+-- Name: idx_invitations_invited_user; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX idx_invitations_invited_user ON public.invitations USING btree (invited_user_id)
+WHERE (
+        (deleted_at IS NULL)
+        AND (status = 'pending'::text)
+    );
+
+--
+-- TOC entry 3797 (class 1259 OID 18681)
+-- Name: idx_invitations_org_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX idx_invitations_org_id ON public.invitations USING btree (org_id)
+WHERE (deleted_at IS NULL);
+
+--
+-- TOC entry 3798 (class 1259 OID 18683)
+-- Name: idx_invitations_status; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX idx_invitations_status ON public.invitations USING btree (status)
+WHERE (deleted_at IS NULL);
+
+--
+-- TOC entry 3756 (class 1259 OID 18240)
 -- Name: idx_issue_memberships_is_active; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_issue_memberships_is_active ON public.issue_memberships USING btree (membership_is_active) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_issue_memberships_is_active ON public.issue_memberships USING btree (membership_is_active)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3745 (class 1259 OID 18238)
+-- TOC entry 3757 (class 1259 OID 18238)
 -- Name: idx_issue_memberships_issue_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_issue_memberships_issue_id ON public.issue_memberships USING btree (issue_id) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_issue_memberships_issue_id ON public.issue_memberships USING btree (issue_id)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3746 (class 1259 OID 18242)
+-- TOC entry 3758 (class 1259 OID 18242)
 -- Name: idx_issue_memberships_issue_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_issue_memberships_issue_role ON public.issue_memberships USING btree (issue_id, role) WHERE ((membership_is_active = true) AND (deleted_at IS NULL));
-
+CREATE INDEX idx_issue_memberships_issue_role ON public.issue_memberships USING btree (issue_id, role)
+WHERE (
+        (membership_is_active = true)
+        AND (deleted_at IS NULL)
+    );
 
 --
--- TOC entry 3747 (class 1259 OID 18239)
+-- TOC entry 3759 (class 1259 OID 18239)
 -- Name: idx_issue_memberships_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_issue_memberships_role ON public.issue_memberships USING btree (role) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_issue_memberships_role ON public.issue_memberships USING btree (role)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3748 (class 1259 OID 18237)
+-- TOC entry 3760 (class 1259 OID 18237)
 -- Name: idx_issue_memberships_user_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_issue_memberships_user_id ON public.issue_memberships USING btree (user_id) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_issue_memberships_user_id ON public.issue_memberships USING btree (user_id)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3749 (class 1259 OID 18241)
+-- TOC entry 3761 (class 1259 OID 18241)
 -- Name: idx_issue_memberships_user_issue; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_issue_memberships_user_issue ON public.issue_memberships USING btree (user_id, issue_id) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_issue_memberships_user_issue ON public.issue_memberships USING btree (user_id, issue_id)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3750 (class 1259 OID 18243)
+-- TOC entry 3762 (class 1259 OID 18243)
 -- Name: idx_issue_memberships_user_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_issue_memberships_user_role ON public.issue_memberships USING btree (user_id, role) WHERE ((membership_is_active = true) AND (deleted_at IS NULL));
-
+CREATE INDEX idx_issue_memberships_user_role ON public.issue_memberships USING btree (user_id, role)
+WHERE (
+        (membership_is_active = true)
+        AND (deleted_at IS NULL)
+    );
 
 --
--- TOC entry 3729 (class 1259 OID 18234)
+-- TOC entry 3741 (class 1259 OID 18234)
 -- Name: idx_issues_assignee_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_issues_assignee_id ON public.issues USING btree (assignee_id) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_issues_assignee_id ON public.issues USING btree (assignee_id)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3730 (class 1259 OID 18236)
+-- TOC entry 3742 (class 1259 OID 18236)
 -- Name: idx_issues_assignee_id_priority; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_issues_assignee_id_priority ON public.issues USING btree (assignee_id, priority) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_issues_assignee_id_priority ON public.issues USING btree (assignee_id, priority)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3731 (class 1259 OID 18235)
+-- TOC entry 3743 (class 1259 OID 18235)
 -- Name: idx_issues_assignee_id_status; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_issues_assignee_id_status ON public.issues USING btree (assignee_id, status) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_issues_assignee_id_status ON public.issues USING btree (assignee_id, status)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3732 (class 1259 OID 18249)
+-- TOC entry 3744 (class 1259 OID 18249)
 -- Name: idx_issues_created_at; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_issues_created_at ON public.issues USING btree (created_at DESC) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_issues_created_at ON public.issues USING btree (created_at DESC)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3733 (class 1259 OID 18248)
+-- TOC entry 3745 (class 1259 OID 18248)
 -- Name: idx_issues_parent_issue_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_issues_parent_issue_id ON public.issues USING btree (parent_issue_id) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_issues_parent_issue_id ON public.issues USING btree (parent_issue_id)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3734 (class 1259 OID 18246)
+-- TOC entry 3746 (class 1259 OID 18246)
 -- Name: idx_issues_priority; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_issues_priority ON public.issues USING btree (priority) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_issues_priority ON public.issues USING btree (priority)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3735 (class 1259 OID 18244)
+-- TOC entry 3747 (class 1259 OID 18244)
 -- Name: idx_issues_project_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_issues_project_id ON public.issues USING btree (project_id) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_issues_project_id ON public.issues USING btree (project_id)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3736 (class 1259 OID 18251)
+-- TOC entry 3748 (class 1259 OID 18251)
 -- Name: idx_issues_project_id_priority; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_issues_project_id_priority ON public.issues USING btree (project_id, priority) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_issues_project_id_priority ON public.issues USING btree (project_id, priority)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3737 (class 1259 OID 18250)
+-- TOC entry 3749 (class 1259 OID 18250)
 -- Name: idx_issues_project_id_status; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_issues_project_id_status ON public.issues USING btree (project_id, status) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_issues_project_id_status ON public.issues USING btree (project_id, status)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3738 (class 1259 OID 18247)
+-- TOC entry 3750 (class 1259 OID 18247)
 -- Name: idx_issues_reporter_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_issues_reporter_id ON public.issues USING btree (reporter_id) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_issues_reporter_id ON public.issues USING btree (reporter_id)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3739 (class 1259 OID 18245)
+-- TOC entry 3751 (class 1259 OID 18245)
 -- Name: idx_issues_status; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_issues_status ON public.issues USING btree (status) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_issues_status ON public.issues USING btree (status)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3779 (class 1259 OID 18588)
+-- TOC entry 3791 (class 1259 OID 18588)
 -- Name: idx_notifications_created_at; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_notifications_created_at ON public.notifications USING btree (created_at DESC) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_notifications_created_at ON public.notifications USING btree (created_at DESC)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3780 (class 1259 OID 18587)
+-- TOC entry 3792 (class 1259 OID 18587)
 -- Name: idx_notifications_is_read; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_notifications_is_read ON public.notifications USING btree (is_read) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_notifications_is_read ON public.notifications USING btree (is_read)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3781 (class 1259 OID 18586)
+-- TOC entry 3793 (class 1259 OID 18586)
 -- Name: idx_notifications_user_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_notifications_user_id ON public.notifications USING btree (user_id) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_notifications_user_id ON public.notifications USING btree (user_id)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3690 (class 1259 OID 18256)
+-- TOC entry 3702 (class 1259 OID 18256)
 -- Name: idx_organization_memberships_invited_by; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_organization_memberships_invited_by ON public.organization_memberships USING btree (invited_by) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_organization_memberships_invited_by ON public.organization_memberships USING btree (invited_by)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3691 (class 1259 OID 18255)
+-- TOC entry 3703 (class 1259 OID 18255)
 -- Name: idx_organization_memberships_is_active; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_organization_memberships_is_active ON public.organization_memberships USING btree (membership_is_active) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_organization_memberships_is_active ON public.organization_memberships USING btree (membership_is_active)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3692 (class 1259 OID 18257)
+-- TOC entry 3704 (class 1259 OID 18257)
 -- Name: idx_organization_memberships_joined_at; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_organization_memberships_joined_at ON public.organization_memberships USING btree (joined_at DESC) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_organization_memberships_joined_at ON public.organization_memberships USING btree (joined_at DESC)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3693 (class 1259 OID 18261)
+-- TOC entry 3705 (class 1259 OID 18261)
 -- Name: idx_organization_memberships_org_active; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_organization_memberships_org_active ON public.organization_memberships USING btree (org_id, membership_is_active) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_organization_memberships_org_active ON public.organization_memberships USING btree (org_id, membership_is_active)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3694 (class 1259 OID 18253)
+-- TOC entry 3706 (class 1259 OID 18253)
 -- Name: idx_organization_memberships_org_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_organization_memberships_org_id ON public.organization_memberships USING btree (org_id) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_organization_memberships_org_id ON public.organization_memberships USING btree (org_id)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3695 (class 1259 OID 18259)
+-- TOC entry 3707 (class 1259 OID 18259)
 -- Name: idx_organization_memberships_org_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_organization_memberships_org_role ON public.organization_memberships USING btree (org_id, role) WHERE ((membership_is_active = true) AND (deleted_at IS NULL));
-
+CREATE INDEX idx_organization_memberships_org_role ON public.organization_memberships USING btree (org_id, role)
+WHERE (
+        (membership_is_active = true)
+        AND (deleted_at IS NULL)
+    );
 
 --
--- TOC entry 3696 (class 1259 OID 18254)
+-- TOC entry 3708 (class 1259 OID 18254)
 -- Name: idx_organization_memberships_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_organization_memberships_role ON public.organization_memberships USING btree (role) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_organization_memberships_role ON public.organization_memberships USING btree (role)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3697 (class 1259 OID 18252)
+-- TOC entry 3709 (class 1259 OID 18252)
 -- Name: idx_organization_memberships_user_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_organization_memberships_user_id ON public.organization_memberships USING btree (user_id) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_organization_memberships_user_id ON public.organization_memberships USING btree (user_id)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3698 (class 1259 OID 18258)
+-- TOC entry 3710 (class 1259 OID 18258)
 -- Name: idx_organization_memberships_user_org; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_organization_memberships_user_org ON public.organization_memberships USING btree (user_id, org_id) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_organization_memberships_user_org ON public.organization_memberships USING btree (user_id, org_id)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3699 (class 1259 OID 18260)
+-- TOC entry 3711 (class 1259 OID 18260)
 -- Name: idx_organization_memberships_user_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_organization_memberships_user_role ON public.organization_memberships USING btree (user_id, role) WHERE ((membership_is_active = true) AND (deleted_at IS NULL));
-
+CREATE INDEX idx_organization_memberships_user_role ON public.organization_memberships USING btree (user_id, role)
+WHERE (
+        (membership_is_active = true)
+        AND (deleted_at IS NULL)
+    );
 
 --
--- TOC entry 3714 (class 1259 OID 18266)
+-- TOC entry 3726 (class 1259 OID 18266)
 -- Name: idx_project_memberships_invited_by; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_project_memberships_invited_by ON public.project_memberships USING btree (invited_by) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_project_memberships_invited_by ON public.project_memberships USING btree (invited_by)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3715 (class 1259 OID 18265)
+-- TOC entry 3727 (class 1259 OID 18265)
 -- Name: idx_project_memberships_is_active; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_project_memberships_is_active ON public.project_memberships USING btree (membership_is_active) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_project_memberships_is_active ON public.project_memberships USING btree (membership_is_active)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3716 (class 1259 OID 18270)
+-- TOC entry 3728 (class 1259 OID 18270)
 -- Name: idx_project_memberships_project_active; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_project_memberships_project_active ON public.project_memberships USING btree (project_id, membership_is_active) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_project_memberships_project_active ON public.project_memberships USING btree (
+    project_id,
+    membership_is_active
+)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3717 (class 1259 OID 18263)
+-- TOC entry 3729 (class 1259 OID 18263)
 -- Name: idx_project_memberships_project_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_project_memberships_project_id ON public.project_memberships USING btree (project_id) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_project_memberships_project_id ON public.project_memberships USING btree (project_id)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3718 (class 1259 OID 18268)
+-- TOC entry 3730 (class 1259 OID 18268)
 -- Name: idx_project_memberships_project_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_project_memberships_project_role ON public.project_memberships USING btree (project_id, role) WHERE ((membership_is_active = true) AND (deleted_at IS NULL));
-
+CREATE INDEX idx_project_memberships_project_role ON public.project_memberships USING btree (project_id, role)
+WHERE (
+        (membership_is_active = true)
+        AND (deleted_at IS NULL)
+    );
 
 --
--- TOC entry 3719 (class 1259 OID 18264)
+-- TOC entry 3731 (class 1259 OID 18264)
 -- Name: idx_project_memberships_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_project_memberships_role ON public.project_memberships USING btree (role) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_project_memberships_role ON public.project_memberships USING btree (role)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3720 (class 1259 OID 18262)
+-- TOC entry 3732 (class 1259 OID 18262)
 -- Name: idx_project_memberships_user_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_project_memberships_user_id ON public.project_memberships USING btree (user_id) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_project_memberships_user_id ON public.project_memberships USING btree (user_id)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3721 (class 1259 OID 18267)
+-- TOC entry 3733 (class 1259 OID 18267)
 -- Name: idx_project_memberships_user_project; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_project_memberships_user_project ON public.project_memberships USING btree (user_id, project_id) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_project_memberships_user_project ON public.project_memberships USING btree (user_id, project_id)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3722 (class 1259 OID 18269)
+-- TOC entry 3734 (class 1259 OID 18269)
 -- Name: idx_project_memberships_user_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_project_memberships_user_role ON public.project_memberships USING btree (user_id, role) WHERE ((membership_is_active = true) AND (deleted_at IS NULL));
-
+CREATE INDEX idx_project_memberships_user_role ON public.project_memberships USING btree (user_id, role)
+WHERE (
+        (membership_is_active = true)
+        AND (deleted_at IS NULL)
+    );
 
 --
--- TOC entry 3761 (class 1259 OID 18275)
+-- TOC entry 3773 (class 1259 OID 18275)
 -- Name: idx_site_memberships_invited_by; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_site_memberships_invited_by ON public.site_memberships USING btree (invited_by) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_site_memberships_invited_by ON public.site_memberships USING btree (invited_by)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3762 (class 1259 OID 18274)
+-- TOC entry 3774 (class 1259 OID 18274)
 -- Name: idx_site_memberships_is_active; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_site_memberships_is_active ON public.site_memberships USING btree (membership_is_active) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_site_memberships_is_active ON public.site_memberships USING btree (membership_is_active)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3763 (class 1259 OID 18276)
+-- TOC entry 3775 (class 1259 OID 18276)
 -- Name: idx_site_memberships_joined_at; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_site_memberships_joined_at ON public.site_memberships USING btree (joined_at DESC) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_site_memberships_joined_at ON public.site_memberships USING btree (joined_at DESC)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3764 (class 1259 OID 18273)
+-- TOC entry 3776 (class 1259 OID 18273)
 -- Name: idx_site_memberships_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_site_memberships_role ON public.site_memberships USING btree (role) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_site_memberships_role ON public.site_memberships USING btree (role)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3765 (class 1259 OID 18280)
+-- TOC entry 3777 (class 1259 OID 18280)
 -- Name: idx_site_memberships_site_active; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_site_memberships_site_active ON public.site_memberships USING btree (site_id, membership_is_active) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_site_memberships_site_active ON public.site_memberships USING btree (site_id, membership_is_active)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3766 (class 1259 OID 18272)
+-- TOC entry 3778 (class 1259 OID 18272)
 -- Name: idx_site_memberships_site_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_site_memberships_site_id ON public.site_memberships USING btree (site_id) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_site_memberships_site_id ON public.site_memberships USING btree (site_id)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3767 (class 1259 OID 18278)
+-- TOC entry 3779 (class 1259 OID 18278)
 -- Name: idx_site_memberships_site_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_site_memberships_site_role ON public.site_memberships USING btree (site_id, role) WHERE ((membership_is_active = true) AND (deleted_at IS NULL));
-
+CREATE INDEX idx_site_memberships_site_role ON public.site_memberships USING btree (site_id, role)
+WHERE (
+        (membership_is_active = true)
+        AND (deleted_at IS NULL)
+    );
 
 --
--- TOC entry 3768 (class 1259 OID 18271)
+-- TOC entry 3780 (class 1259 OID 18271)
 -- Name: idx_site_memberships_user_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_site_memberships_user_id ON public.site_memberships USING btree (user_id) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_site_memberships_user_id ON public.site_memberships USING btree (user_id)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3769 (class 1259 OID 18279)
+-- TOC entry 3781 (class 1259 OID 18279)
 -- Name: idx_site_memberships_user_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_site_memberships_user_role ON public.site_memberships USING btree (user_id, role) WHERE ((membership_is_active = true) AND (deleted_at IS NULL));
-
+CREATE INDEX idx_site_memberships_user_role ON public.site_memberships USING btree (user_id, role)
+WHERE (
+        (membership_is_active = true)
+        AND (deleted_at IS NULL)
+    );
 
 --
--- TOC entry 3770 (class 1259 OID 18277)
+-- TOC entry 3782 (class 1259 OID 18277)
 -- Name: idx_site_memberships_user_site; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_site_memberships_user_site ON public.site_memberships USING btree (user_id, site_id) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_site_memberships_user_site ON public.site_memberships USING btree (user_id, site_id)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3673 (class 1259 OID 18285)
+-- TOC entry 3685 (class 1259 OID 18285)
 -- Name: idx_users_active; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_users_active ON public.users USING btree (user_is_active) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_users_active ON public.users USING btree (user_is_active)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3674 (class 1259 OID 18284)
+-- TOC entry 3686 (class 1259 OID 18284)
 -- Name: idx_users_created_at; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_users_created_at ON public.users USING btree (created_at DESC) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_users_created_at ON public.users USING btree (created_at DESC)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3675 (class 1259 OID 18281)
+-- TOC entry 3687 (class 1259 OID 18281)
 -- Name: idx_users_email; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_users_email ON public.users USING btree (user_email) WHERE ((deleted_at IS NULL) AND (user_is_active = true));
-
+CREATE INDEX idx_users_email ON public.users USING btree (user_email)
+WHERE (
+        (deleted_at IS NULL)
+        AND (user_is_active = true)
+    );
 
 --
--- TOC entry 3676 (class 1259 OID 18282)
+-- TOC entry 3688 (class 1259 OID 18282)
 -- Name: idx_users_friendship_code; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_users_friendship_code ON public.users USING btree (user_friendship_code) WHERE ((deleted_at IS NULL) AND (user_is_active = true));
-
+CREATE INDEX idx_users_friendship_code ON public.users USING btree (user_friendship_code)
+WHERE (
+        (deleted_at IS NULL)
+        AND (user_is_active = true)
+    );
 
 --
--- TOC entry 3677 (class 1259 OID 18283)
+-- TOC entry 3689 (class 1259 OID 18283)
 -- Name: idx_users_name; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX idx_users_name ON public.users USING btree (user_name) WHERE (deleted_at IS NULL);
-
+CREATE INDEX idx_users_name ON public.users USING btree (user_name)
+WHERE (deleted_at IS NULL);
 
 --
--- TOC entry 3842 (class 2620 OID 18287)
+-- TOC entry 3862 (class 2620 OID 18287)
 -- Name: issues issue_activity_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER issue_activity_trigger AFTER INSERT OR DELETE OR UPDATE ON public.issues FOR EACH ROW EXECUTE FUNCTION public.trg_issue_activity();
 
-
 --
--- TOC entry 3848 (class 2620 OID 18296)
+-- TOC entry 3868 (class 2620 OID 18296)
 -- Name: issue_assets issue_assets_update_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER issue_assets_update_trigger BEFORE UPDATE ON public.issue_assets FOR EACH ROW EXECUTE FUNCTION public.trg_assets_update();
 
-
 --
--- TOC entry 3843 (class 2620 OID 18590)
+-- TOC entry 3863 (class 2620 OID 18590)
 -- Name: issues issue_assigned_notification; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER issue_assigned_notification AFTER UPDATE ON public.issues FOR EACH ROW EXECUTE FUNCTION public.trigger_notify_issue_assigned();
 
-
 --
--- TOC entry 3845 (class 2620 OID 18290)
+-- TOC entry 3865 (class 2620 OID 18290)
 -- Name: issue_memberships issue_memberships_role_guard_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER issue_memberships_role_guard_trigger BEFORE INSERT OR UPDATE OF role ON public.issue_memberships FOR EACH ROW EXECUTE FUNCTION public.trg_issue_memberships_role_guard();
 
-
 --
--- TOC entry 3846 (class 2620 OID 18293)
+-- TOC entry 3866 (class 2620 OID 18293)
 -- Name: organization_assets organization_assets_update_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER organization_assets_update_trigger BEFORE UPDATE ON public.organization_assets FOR EACH ROW EXECUTE FUNCTION public.trg_assets_update();
 
-
 --
--- TOC entry 3844 (class 2620 OID 18304)
+-- TOC entry 3864 (class 2620 OID 18304)
 -- Name: issues prevent_issue_delete_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER prevent_issue_delete_trigger BEFORE UPDATE ON public.issues FOR EACH ROW EXECUTE FUNCTION public.trg_prevent_issue_delete_if_has_children();
 
-
 --
--- TOC entry 3837 (class 2620 OID 18302)
+-- TOC entry 3857 (class 2620 OID 18302)
 -- Name: organizations prevent_org_delete_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER prevent_org_delete_trigger BEFORE UPDATE ON public.organizations FOR EACH ROW EXECUTE FUNCTION public.trg_prevent_org_delete_if_has_sites();
 
-
 --
--- TOC entry 3839 (class 2620 OID 18300)
+-- TOC entry 3859 (class 2620 OID 18300)
 -- Name: projects prevent_project_delete_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER prevent_project_delete_trigger BEFORE UPDATE ON public.projects FOR EACH ROW EXECUTE FUNCTION public.trg_prevent_project_delete_if_has_issues();
 
-
 --
--- TOC entry 3838 (class 2620 OID 18298)
+-- TOC entry 3858 (class 2620 OID 18298)
 -- Name: sites prevent_site_delete_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER prevent_site_delete_trigger BEFORE UPDATE ON public.sites FOR EACH ROW EXECUTE FUNCTION public.trg_prevent_site_delete_if_has_projects();
 
-
 --
--- TOC entry 3847 (class 2620 OID 18295)
+-- TOC entry 3867 (class 2620 OID 18295)
 -- Name: project_assets project_assets_update_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER project_assets_update_trigger BEFORE UPDATE ON public.project_assets FOR EACH ROW EXECUTE FUNCTION public.trg_assets_update();
 
-
 --
--- TOC entry 3840 (class 2620 OID 17990)
+-- TOC entry 3860 (class 2620 OID 17990)
 -- Name: project_memberships project_memberships_role_guard; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER project_memberships_role_guard BEFORE INSERT OR UPDATE OF role ON public.project_memberships FOR EACH ROW EXECUTE FUNCTION public.trg_project_memberships_role_guard();
 
-
 --
--- TOC entry 3841 (class 2620 OID 18291)
+-- TOC entry 3861 (class 2620 OID 18291)
 -- Name: project_memberships project_memberships_role_guard_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER project_memberships_role_guard_trigger BEFORE INSERT OR UPDATE OF role ON public.project_memberships FOR EACH ROW EXECUTE FUNCTION public.trg_project_memberships_role_guard();
 
-
 --
--- TOC entry 3850 (class 2620 OID 18294)
+-- TOC entry 3871 (class 2620 OID 18294)
 -- Name: site_assets site_assets_update_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER site_assets_update_trigger BEFORE UPDATE ON public.site_assets FOR EACH ROW EXECUTE FUNCTION public.trg_assets_update();
 
-
 --
--- TOC entry 3849 (class 2620 OID 18098)
+-- TOC entry 3869 (class 2620 OID 18098)
 -- Name: site_memberships site_memberships_role_guard; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER site_memberships_role_guard BEFORE INSERT OR UPDATE OF role ON public.site_memberships FOR EACH ROW EXECUTE FUNCTION public.trg_site_memberships_role_guard();
 
+--
+-- TOC entry 3870 (class 2620 OID 18650)
+-- Name: site_memberships site_memberships_role_guard_trigger; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE TRIGGER site_memberships_role_guard_trigger BEFORE INSERT OR UPDATE OF role ON public.site_memberships FOR EACH ROW EXECUTE FUNCTION public.trg_site_memberships_role_guard();
 
 --
--- TOC entry 3824 (class 2606 OID 17961)
+-- TOC entry 3841 (class 2606 OID 17961)
 -- Name: application_bugs application_bugs_org_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.application_bugs
-    ADD CONSTRAINT application_bugs_org_id_fkey FOREIGN KEY (org_id) REFERENCES public.organizations(org_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT application_bugs_org_id_fkey FOREIGN KEY (org_id) REFERENCES public.organizations (org_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3825 (class 2606 OID 17966)
+-- TOC entry 3842 (class 2606 OID 17966)
 -- Name: application_bugs application_bugs_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.application_bugs
-    ADD CONSTRAINT application_bugs_project_id_fkey FOREIGN KEY (project_id) REFERENCES public.projects(project_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT application_bugs_project_id_fkey FOREIGN KEY (project_id) REFERENCES public.projects (project_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3826 (class 2606 OID 17956)
+-- TOC entry 3843 (class 2606 OID 17956)
 -- Name: application_bugs application_bugs_reported_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.application_bugs
-    ADD CONSTRAINT application_bugs_reported_by_fkey FOREIGN KEY (reported_by) REFERENCES public.users(user_id);
-
+ADD CONSTRAINT application_bugs_reported_by_fkey FOREIGN KEY (reported_by) REFERENCES public.users (user_id);
 
 --
--- TOC entry 3834 (class 2606 OID 18224)
+-- TOC entry 3854 (class 2606 OID 18671)
+-- Name: invitations invitations_invited_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.invitations
+ADD CONSTRAINT invitations_invited_by_fkey FOREIGN KEY (invited_by) REFERENCES public.users (user_id) ON DELETE CASCADE;
+
+--
+-- TOC entry 3855 (class 2606 OID 18676)
+-- Name: invitations invitations_invited_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.invitations
+ADD CONSTRAINT invitations_invited_user_id_fkey FOREIGN KEY (invited_user_id) REFERENCES public.users (user_id) ON DELETE CASCADE;
+
+--
+-- TOC entry 3856 (class 2606 OID 18666)
+-- Name: invitations invitations_org_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.invitations
+ADD CONSTRAINT invitations_org_id_fkey FOREIGN KEY (org_id) REFERENCES public.organizations (org_id) ON DELETE CASCADE;
+
+--
+-- TOC entry 3851 (class 2606 OID 18224)
 -- Name: issue_activity issue_activity_issue_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_activity
-    ADD CONSTRAINT issue_activity_issue_id_fkey FOREIGN KEY (issue_id) REFERENCES public.issues(issue_id) ON DELETE CASCADE;
-
+ADD CONSTRAINT issue_activity_issue_id_fkey FOREIGN KEY (issue_id) REFERENCES public.issues (issue_id) ON DELETE CASCADE;
 
 --
--- TOC entry 3835 (class 2606 OID 18229)
+-- TOC entry 3852 (class 2606 OID 18229)
 -- Name: issue_activity issue_activity_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_activity
-    ADD CONSTRAINT issue_activity_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT issue_activity_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3821 (class 2606 OID 17940)
+-- TOC entry 3838 (class 2606 OID 17940)
 -- Name: issue_assets issue_assets_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_assets
-    ADD CONSTRAINT issue_assets_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT issue_assets_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3822 (class 2606 OID 17930)
+-- TOC entry 3839 (class 2606 OID 17930)
 -- Name: issue_assets issue_assets_issue_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_assets
-    ADD CONSTRAINT issue_assets_issue_id_fkey FOREIGN KEY (issue_id) REFERENCES public.issues(issue_id) ON DELETE CASCADE;
-
+ADD CONSTRAINT issue_assets_issue_id_fkey FOREIGN KEY (issue_id) REFERENCES public.issues (issue_id) ON DELETE CASCADE;
 
 --
--- TOC entry 3823 (class 2606 OID 17935)
+-- TOC entry 3840 (class 2606 OID 17935)
 -- Name: issue_assets issue_assets_uploaded_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_assets
-    ADD CONSTRAINT issue_assets_uploaded_by_fkey FOREIGN KEY (uploaded_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT issue_assets_uploaded_by_fkey FOREIGN KEY (uploaded_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3812 (class 2606 OID 17859)
+-- TOC entry 3829 (class 2606 OID 17859)
 -- Name: issue_memberships issue_memberships_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_memberships
-    ADD CONSTRAINT issue_memberships_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT issue_memberships_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3813 (class 2606 OID 17849)
+-- TOC entry 3830 (class 2606 OID 17849)
 -- Name: issue_memberships issue_memberships_issue_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_memberships
-    ADD CONSTRAINT issue_memberships_issue_id_fkey FOREIGN KEY (issue_id) REFERENCES public.issues(issue_id) ON DELETE CASCADE;
-
+ADD CONSTRAINT issue_memberships_issue_id_fkey FOREIGN KEY (issue_id) REFERENCES public.issues (issue_id) ON DELETE CASCADE;
 
 --
--- TOC entry 3814 (class 2606 OID 17854)
+-- TOC entry 3831 (class 2606 OID 17854)
 -- Name: issue_memberships issue_memberships_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_memberships
-    ADD CONSTRAINT issue_memberships_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
-
+ADD CONSTRAINT issue_memberships_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users (user_id) ON DELETE CASCADE;
 
 --
--- TOC entry 3806 (class 2606 OID 17820)
+-- TOC entry 3823 (class 2606 OID 17820)
 -- Name: issues issues_assignee_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issues
-    ADD CONSTRAINT issues_assignee_id_fkey FOREIGN KEY (assignee_id) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT issues_assignee_id_fkey FOREIGN KEY (assignee_id) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3807 (class 2606 OID 17830)
+-- TOC entry 3824 (class 2606 OID 17830)
 -- Name: issues issues_blocking_issue_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issues
-    ADD CONSTRAINT issues_blocking_issue_id_fkey FOREIGN KEY (blocking_issue_id) REFERENCES public.issues(issue_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT issues_blocking_issue_id_fkey FOREIGN KEY (blocking_issue_id) REFERENCES public.issues (issue_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3808 (class 2606 OID 17835)
+-- TOC entry 3825 (class 2606 OID 17835)
 -- Name: issues issues_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issues
-    ADD CONSTRAINT issues_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT issues_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3809 (class 2606 OID 17825)
+-- TOC entry 3826 (class 2606 OID 17825)
 -- Name: issues issues_parent_issue_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issues
-    ADD CONSTRAINT issues_parent_issue_id_fkey FOREIGN KEY (parent_issue_id) REFERENCES public.issues(issue_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT issues_parent_issue_id_fkey FOREIGN KEY (parent_issue_id) REFERENCES public.issues (issue_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3810 (class 2606 OID 17810)
+-- TOC entry 3827 (class 2606 OID 17810)
 -- Name: issues issues_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issues
-    ADD CONSTRAINT issues_project_id_fkey FOREIGN KEY (project_id) REFERENCES public.projects(project_id) ON DELETE CASCADE;
-
+ADD CONSTRAINT issues_project_id_fkey FOREIGN KEY (project_id) REFERENCES public.projects (project_id) ON DELETE CASCADE;
 
 --
--- TOC entry 3811 (class 2606 OID 17815)
+-- TOC entry 3828 (class 2606 OID 17815)
 -- Name: issues issues_reporter_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issues
-    ADD CONSTRAINT issues_reporter_id_fkey FOREIGN KEY (reporter_id) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT issues_reporter_id_fkey FOREIGN KEY (reporter_id) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3836 (class 2606 OID 18581)
+-- TOC entry 3853 (class 2606 OID 18581)
 -- Name: notifications notifications_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.notifications
-    ADD CONSTRAINT notifications_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
-
+ADD CONSTRAINT notifications_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users (user_id) ON DELETE CASCADE;
 
 --
--- TOC entry 3815 (class 2606 OID 17886)
+-- TOC entry 3832 (class 2606 OID 17886)
 -- Name: organization_assets organization_assets_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_assets
-    ADD CONSTRAINT organization_assets_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT organization_assets_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3816 (class 2606 OID 17876)
+-- TOC entry 3833 (class 2606 OID 17876)
 -- Name: organization_assets organization_assets_org_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_assets
-    ADD CONSTRAINT organization_assets_org_id_fkey FOREIGN KEY (org_id) REFERENCES public.organizations(org_id) ON DELETE CASCADE;
-
+ADD CONSTRAINT organization_assets_org_id_fkey FOREIGN KEY (org_id) REFERENCES public.organizations (org_id) ON DELETE CASCADE;
 
 --
--- TOC entry 3817 (class 2606 OID 17881)
+-- TOC entry 3834 (class 2606 OID 17881)
 -- Name: organization_assets organization_assets_uploaded_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_assets
-    ADD CONSTRAINT organization_assets_uploaded_by_fkey FOREIGN KEY (uploaded_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT organization_assets_uploaded_by_fkey FOREIGN KEY (uploaded_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3787 (class 2606 OID 17664)
+-- TOC entry 3804 (class 2606 OID 17664)
 -- Name: organization_memberships organization_memberships_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_memberships
-    ADD CONSTRAINT organization_memberships_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT organization_memberships_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3788 (class 2606 OID 17659)
+-- TOC entry 3805 (class 2606 OID 17659)
 -- Name: organization_memberships organization_memberships_invited_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_memberships
-    ADD CONSTRAINT organization_memberships_invited_by_fkey FOREIGN KEY (invited_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT organization_memberships_invited_by_fkey FOREIGN KEY (invited_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3789 (class 2606 OID 17649)
+-- TOC entry 3806 (class 2606 OID 17649)
 -- Name: organization_memberships organization_memberships_org_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_memberships
-    ADD CONSTRAINT organization_memberships_org_id_fkey FOREIGN KEY (org_id) REFERENCES public.organizations(org_id) ON DELETE CASCADE;
-
+ADD CONSTRAINT organization_memberships_org_id_fkey FOREIGN KEY (org_id) REFERENCES public.organizations (org_id) ON DELETE CASCADE;
 
 --
--- TOC entry 3790 (class 2606 OID 17654)
+-- TOC entry 3807 (class 2606 OID 17654)
 -- Name: organization_memberships organization_memberships_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_memberships
-    ADD CONSTRAINT organization_memberships_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
-
+ADD CONSTRAINT organization_memberships_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users (user_id) ON DELETE CASCADE;
 
 --
--- TOC entry 3785 (class 2606 OID 17627)
+-- TOC entry 3802 (class 2606 OID 17627)
 -- Name: organizations organizations_created_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organizations
-    ADD CONSTRAINT organizations_created_by_fkey FOREIGN KEY (created_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT organizations_created_by_fkey FOREIGN KEY (created_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3786 (class 2606 OID 17632)
+-- TOC entry 3803 (class 2606 OID 17632)
 -- Name: organizations organizations_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organizations
-    ADD CONSTRAINT organizations_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT organizations_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3818 (class 2606 OID 17913)
+-- TOC entry 3835 (class 2606 OID 17913)
 -- Name: project_assets project_assets_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_assets
-    ADD CONSTRAINT project_assets_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT project_assets_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3819 (class 2606 OID 17903)
+-- TOC entry 3836 (class 2606 OID 17903)
 -- Name: project_assets project_assets_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_assets
-    ADD CONSTRAINT project_assets_project_id_fkey FOREIGN KEY (project_id) REFERENCES public.projects(project_id) ON DELETE CASCADE;
-
+ADD CONSTRAINT project_assets_project_id_fkey FOREIGN KEY (project_id) REFERENCES public.projects (project_id) ON DELETE CASCADE;
 
 --
--- TOC entry 3820 (class 2606 OID 17908)
+-- TOC entry 3837 (class 2606 OID 17908)
 -- Name: project_assets project_assets_uploaded_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_assets
-    ADD CONSTRAINT project_assets_uploaded_by_fkey FOREIGN KEY (uploaded_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT project_assets_uploaded_by_fkey FOREIGN KEY (uploaded_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3798 (class 2606 OID 17759)
+-- TOC entry 3815 (class 2606 OID 17759)
 -- Name: project_memberships project_memberships_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_memberships
-    ADD CONSTRAINT project_memberships_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT project_memberships_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3799 (class 2606 OID 17754)
+-- TOC entry 3816 (class 2606 OID 17754)
 -- Name: project_memberships project_memberships_invited_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_memberships
-    ADD CONSTRAINT project_memberships_invited_by_fkey FOREIGN KEY (invited_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT project_memberships_invited_by_fkey FOREIGN KEY (invited_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3800 (class 2606 OID 17744)
+-- TOC entry 3817 (class 2606 OID 17744)
 -- Name: project_memberships project_memberships_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_memberships
-    ADD CONSTRAINT project_memberships_project_id_fkey FOREIGN KEY (project_id) REFERENCES public.projects(project_id) ON DELETE CASCADE;
-
+ADD CONSTRAINT project_memberships_project_id_fkey FOREIGN KEY (project_id) REFERENCES public.projects (project_id) ON DELETE CASCADE;
 
 --
--- TOC entry 3801 (class 2606 OID 17749)
+-- TOC entry 3818 (class 2606 OID 17749)
 -- Name: project_memberships project_memberships_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_memberships
-    ADD CONSTRAINT project_memberships_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
-
+ADD CONSTRAINT project_memberships_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users (user_id) ON DELETE CASCADE;
 
 --
--- TOC entry 3802 (class 2606 OID 17780)
+-- TOC entry 3819 (class 2606 OID 17780)
 -- Name: project_requirements project_requirements_created_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_requirements
-    ADD CONSTRAINT project_requirements_created_by_fkey FOREIGN KEY (created_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT project_requirements_created_by_fkey FOREIGN KEY (created_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3803 (class 2606 OID 17790)
+-- TOC entry 3820 (class 2606 OID 17790)
 -- Name: project_requirements project_requirements_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_requirements
-    ADD CONSTRAINT project_requirements_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT project_requirements_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3804 (class 2606 OID 17785)
+-- TOC entry 3821 (class 2606 OID 17785)
 -- Name: project_requirements project_requirements_done_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_requirements
-    ADD CONSTRAINT project_requirements_done_by_fkey FOREIGN KEY (done_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT project_requirements_done_by_fkey FOREIGN KEY (done_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3805 (class 2606 OID 17775)
+-- TOC entry 3822 (class 2606 OID 17775)
 -- Name: project_requirements project_requirements_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_requirements
-    ADD CONSTRAINT project_requirements_project_id_fkey FOREIGN KEY (project_id) REFERENCES public.projects(project_id) ON DELETE CASCADE;
-
+ADD CONSTRAINT project_requirements_project_id_fkey FOREIGN KEY (project_id) REFERENCES public.projects (project_id) ON DELETE CASCADE;
 
 --
--- TOC entry 3794 (class 2606 OID 17722)
+-- TOC entry 3811 (class 2606 OID 17722)
 -- Name: projects projects_completed_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.projects
-    ADD CONSTRAINT projects_completed_by_fkey FOREIGN KEY (completed_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT projects_completed_by_fkey FOREIGN KEY (completed_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3795 (class 2606 OID 17717)
+-- TOC entry 3812 (class 2606 OID 17717)
 -- Name: projects projects_created_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.projects
-    ADD CONSTRAINT projects_created_by_fkey FOREIGN KEY (created_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT projects_created_by_fkey FOREIGN KEY (created_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3796 (class 2606 OID 17727)
+-- TOC entry 3813 (class 2606 OID 17727)
 -- Name: projects projects_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.projects
-    ADD CONSTRAINT projects_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT projects_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3797 (class 2606 OID 17712)
+-- TOC entry 3814 (class 2606 OID 17712)
 -- Name: projects projects_site_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.projects
-    ADD CONSTRAINT projects_site_id_fkey FOREIGN KEY (site_id) REFERENCES public.sites(site_id) ON DELETE CASCADE;
-
+ADD CONSTRAINT projects_site_id_fkey FOREIGN KEY (site_id) REFERENCES public.sites (site_id) ON DELETE CASCADE;
 
 --
--- TOC entry 3831 (class 2606 OID 18087)
+-- TOC entry 3848 (class 2606 OID 18087)
 -- Name: site_assets site_assets_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_assets
-    ADD CONSTRAINT site_assets_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT site_assets_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3832 (class 2606 OID 18077)
+-- TOC entry 3849 (class 2606 OID 18077)
 -- Name: site_assets site_assets_site_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_assets
-    ADD CONSTRAINT site_assets_site_id_fkey FOREIGN KEY (site_id) REFERENCES public.sites(site_id) ON DELETE CASCADE;
-
+ADD CONSTRAINT site_assets_site_id_fkey FOREIGN KEY (site_id) REFERENCES public.sites (site_id) ON DELETE CASCADE;
 
 --
--- TOC entry 3833 (class 2606 OID 18082)
+-- TOC entry 3850 (class 2606 OID 18082)
 -- Name: site_assets site_assets_uploaded_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_assets
-    ADD CONSTRAINT site_assets_uploaded_by_fkey FOREIGN KEY (uploaded_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT site_assets_uploaded_by_fkey FOREIGN KEY (uploaded_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3827 (class 2606 OID 18072)
+-- TOC entry 3844 (class 2606 OID 18072)
 -- Name: site_memberships site_memberships_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_memberships
-    ADD CONSTRAINT site_memberships_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT site_memberships_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3828 (class 2606 OID 18067)
+-- TOC entry 3845 (class 2606 OID 18067)
 -- Name: site_memberships site_memberships_invited_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_memberships
-    ADD CONSTRAINT site_memberships_invited_by_fkey FOREIGN KEY (invited_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT site_memberships_invited_by_fkey FOREIGN KEY (invited_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3829 (class 2606 OID 18057)
+-- TOC entry 3846 (class 2606 OID 18057)
 -- Name: site_memberships site_memberships_site_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_memberships
-    ADD CONSTRAINT site_memberships_site_id_fkey FOREIGN KEY (site_id) REFERENCES public.sites(site_id) ON DELETE CASCADE;
-
+ADD CONSTRAINT site_memberships_site_id_fkey FOREIGN KEY (site_id) REFERENCES public.sites (site_id) ON DELETE CASCADE;
 
 --
--- TOC entry 3830 (class 2606 OID 18062)
+-- TOC entry 3847 (class 2606 OID 18062)
 -- Name: site_memberships site_memberships_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_memberships
-    ADD CONSTRAINT site_memberships_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
-
+ADD CONSTRAINT site_memberships_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users (user_id) ON DELETE CASCADE;
 
 --
--- TOC entry 3791 (class 2606 OID 17687)
+-- TOC entry 3808 (class 2606 OID 17687)
 -- Name: sites sites_created_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.sites
-    ADD CONSTRAINT sites_created_by_fkey FOREIGN KEY (created_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT sites_created_by_fkey FOREIGN KEY (created_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3792 (class 2606 OID 17692)
+-- TOC entry 3809 (class 2606 OID 17692)
 -- Name: sites sites_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.sites
-    ADD CONSTRAINT sites_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT sites_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3793 (class 2606 OID 17682)
+-- TOC entry 3810 (class 2606 OID 17682)
 -- Name: sites sites_org_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.sites
-    ADD CONSTRAINT sites_org_id_fkey FOREIGN KEY (org_id) REFERENCES public.organizations(org_id) ON DELETE CASCADE;
-
+ADD CONSTRAINT sites_org_id_fkey FOREIGN KEY (org_id) REFERENCES public.organizations (org_id) ON DELETE CASCADE;
 
 --
--- TOC entry 3784 (class 2606 OID 17607)
+-- TOC entry 3801 (class 2606 OID 17607)
 -- Name: users users_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users
-    ADD CONSTRAINT users_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users(user_id) ON DELETE SET NULL;
-
+ADD CONSTRAINT users_deleted_by_fkey FOREIGN KEY (deleted_by) REFERENCES public.users (user_id) ON DELETE SET NULL;
 
 --
--- TOC entry 3996 (class 0 OID 17612)
+-- TOC entry 4017 (class 0 OID 17612)
 -- Dependencies: 219
 -- Name: organizations; Type: ROW SECURITY; Schema: public; Owner: postgres
 --
@@ -7413,50 +7556,75 @@ ALTER TABLE ONLY public.users
 ALTER TABLE public.organizations ENABLE ROW LEVEL SECURITY;
 
 --
--- TOC entry 4000 (class 3256 OID 18017)
+-- TOC entry 4021 (class 3256 OID 18017)
 -- Name: organizations organizations_delete_policy; Type: POLICY; Schema: public; Owner: postgres
 --
 
-CREATE POLICY organizations_delete_policy ON public.organizations FOR DELETE USING (public.auth_is_org_owner(org_id));
-
+CREATE POLICY organizations_delete_policy ON public.organizations FOR DELETE USING (
+    public.auth_is_org_owner (org_id)
+);
 
 --
--- TOC entry 4001 (class 3256 OID 18018)
+-- TOC entry 4022 (class 3256 OID 18018)
 -- Name: organizations organizations_insert_policy; Type: POLICY; Schema: public; Owner: postgres
 --
 
-CREATE POLICY organizations_insert_policy ON public.organizations FOR INSERT WITH CHECK ((created_by = public.auth_current_user_id()));
-
+CREATE POLICY organizations_insert_policy ON public.organizations FOR INSERT
+WITH
+    CHECK (
+        (
+            created_by = public.auth_current_user_id ()
+        )
+    );
 
 --
--- TOC entry 3998 (class 3256 OID 18015)
+-- TOC entry 4019 (class 3256 OID 18015)
 -- Name: organizations organizations_select_policy; Type: POLICY; Schema: public; Owner: postgres
 --
 
-CREATE POLICY organizations_select_policy ON public.organizations FOR SELECT USING ((public.auth_is_org_owner(org_id) OR public.auth_is_org_admin(org_id) OR public.auth_is_org_member(org_id) OR public.auth_is_org_viewer(org_id)));
-
+CREATE POLICY organizations_select_policy ON public.organizations FOR
+SELECT USING (
+        (
+            public.auth_is_org_owner (org_id)
+            OR public.auth_is_org_admin (org_id)
+            OR public.auth_is_org_member (org_id)
+            OR public.auth_is_org_viewer (org_id)
+        )
+    );
 
 --
--- TOC entry 3999 (class 3256 OID 18016)
+-- TOC entry 4020 (class 3256 OID 18016)
 -- Name: organizations organizations_update_policy; Type: POLICY; Schema: public; Owner: postgres
 --
 
-CREATE POLICY organizations_update_policy ON public.organizations FOR UPDATE USING ((public.auth_is_org_owner(org_id) OR public.auth_is_org_admin(org_id))) WITH CHECK ((public.auth_is_org_owner(org_id) OR public.auth_is_org_admin(org_id)));
-
+CREATE POLICY organizations_update_policy ON public.organizations
+FOR UPDATE
+    USING (
+        (
+            public.auth_is_org_owner (org_id)
+            OR public.auth_is_org_admin (org_id)
+        )
+    )
+WITH
+    CHECK (
+        (
+            public.auth_is_org_owner (org_id)
+            OR public.auth_is_org_admin (org_id)
+        )
+    );
 
 --
--- TOC entry 3997 (class 0 OID 17697)
+-- TOC entry 4018 (class 0 OID 17697)
 -- Dependencies: 222
 -- Name: projects; Type: ROW SECURITY; Schema: public; Owner: postgres
 --
 
 ALTER TABLE public.projects ENABLE ROW LEVEL SECURITY;
 
--- Completed on 2026-05-19 18:10:36 +03
+-- Completed on 2026-05-26 13:07:38 +03
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict h23qLqZKjGaVdutNpGPo4o5ijtfeuJV27m2PdmGwufKoyK2Hf7ApzqF1KfvmEIn
-
+\unrestrict JZWoJggyErij0KdiMImHqNBjMG2fdJdCNxfem7YVOUZOzCZKrMLZTkdZGIv4pnY

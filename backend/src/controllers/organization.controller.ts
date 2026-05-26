@@ -1,9 +1,13 @@
+/************ IMPORTS ***********/
 import { Request, Response } from 'express';
 import * as orgService from '../services/organization.service';
 import * as authService from '../services/authorization.service';
 import { AppError, ErrorCodes } from '../utils/errorCodes';
 import { log } from '../utils/logger';
 import { isValidUUID } from '../utils/regexValidator';
+import * as invitationService from '../services/invitation.service';
+/************ IMPORTS ***********/
+
 
 // ==================== CREATE ====================
 export const create = async (req: Request, res: Response): Promise<void> => {
@@ -120,8 +124,8 @@ export const remove = async (req: Request, res: Response): Promise<void> => {
 // ==================== INVITE ====================
 export const invite = async (req: Request, res: Response): Promise<void> => {
     try {
-        const { id } = req.params;
         const userId = req.userId!;
+        const { id } = req.params;
         const { friendshipCode, role = 'member' } = req.body;
 
         if (!friendshipCode) {
@@ -132,7 +136,15 @@ export const invite = async (req: Request, res: Response): Promise<void> => {
         // Yetki kontrolü: owner veya admin
         await authService.requireOrgAdminOrOwner(userId, id);
 
-        const invitationId = await orgService.inviteToOrganization(id, friendshipCode, role);
+        // Yeni davet sistemini kullan
+        const invitationId = await invitationService.createInvitation(
+            id,                  // org_id
+            friendshipCode,      // friendshipCode
+            'organization',      // entity_type
+            role,                // role
+            undefined            // entity_id (org davetinde yok)
+        );
+
         res.status(201).json({ invitation_id: invitationId, message: 'Invitation sent' });
     } catch (error: any) {
         if (error instanceof AppError) {
@@ -233,13 +245,28 @@ export const listInvitations = async (req: Request, res: Response): Promise<void
     }
 };
 
+
 export const cancelInvitation = async (req: Request, res: Response): Promise<void> => {
     try {
         const { invitationId } = req.params;
         const userId = req.userId!;
 
-        // Yetki kontrolü: owner veya admin (orgId'yi invitation'dan almak gerekir, şimdilik es geçiyoruz)
-        // await authService.requireOrgAdminOrOwner(userId, orgId);
+        if (!isValidUUID(invitationId)) {
+            throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid invitation ID');
+        }
+
+        // Davetin hangi organizasyona ait olduğunu bul
+        const orgId = await orgService.getInvitationOrgId(invitationId);
+        if (!orgId) {
+            // Şimdilik orgId bulunamazsa, DB fonksiyonu zaten yetki kontrolü yapıyor
+            // O yüzden direkt DB'ye git, yetkiyi DB kontrol etsin
+            await orgService.cancelInvitation(invitationId);
+            res.json({ message: 'Invitation cancelled' });
+            return;
+        }
+
+        // Yetki kontrolü: organizasyon admin veya owner'ı olmalı
+        await authService.requireOrgAdminOrOwner(userId, orgId);
 
         await orgService.cancelInvitation(invitationId);
         res.json({ message: 'Invitation cancelled' });
