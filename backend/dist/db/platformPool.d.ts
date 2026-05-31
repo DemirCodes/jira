@@ -14,4 +14,15 @@
  */
 import { Pool } from "pg";
 export declare const platformPool: Pool;
+export declare const healthCheck: () => Promise<boolean>;
+export declare const getPoolMetrics: () => {
+    totalCount: number;
+    idleCount: number;
+    waitingCount: number;
+    activeCount: number;
+    maxClients: number;
+    usagePercent: number;
+    timestamp: string;
+};
+export declare const withConnection: <T>(callback: (client: any) => Promise<T>) => Promise<T>;
 //# sourceMappingURL=platformPool.d.ts.map

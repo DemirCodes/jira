@@ -1,66 +1,96 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendPaginated = exports.sendError = exports.sendSuccessWithMessage = exports.sendSuccess = void 0;
-var sendSuccess = function (res, data, statusCode) {
-    var _a;
-    if (statusCode === void 0) { statusCode = 200; }
-    var response = {
+exports.sendNotFound = exports.sendValidationError = exports.sendPaginated = exports.sendError = exports.sendSuccess = void 0;
+// ─── GÜVENLİK ─────────────────────────────────────────────────────────────────
+const sanitizeErrorDetails = (details) => {
+    if (process.env.NODE_ENV !== 'production')
+        return details;
+    if (!details)
+        return undefined;
+    try {
+        const SENSITIVE = new Set(['stack', 'password', 'token', 'secret', 'authorization']);
+        if (details instanceof Error) {
+            return { message: details.message };
+        }
+        if (typeof details === 'object') {
+            return Object.fromEntries(Object.entries(details)
+                .filter(([k]) => !SENSITIVE.has(k.toLowerCase())));
+        }
+        return undefined;
+    }
+    catch {
+        return undefined;
+    }
+};
+// ─── YARDIMCI ─────────────────────────────────────────────────────────────────
+const buildMeta = (res, extra) => ({
+    requestId: res.req.id,
+    timestamp: new Date().toISOString(),
+    path: res.req.path,
+    ...extra,
+});
+// ─── RESPONSE FONKSİYONLARI ───────────────────────────────────────────────────
+const sendSuccess = (res, data, statusCode = 200, message) => {
+    const body = {
         success: true,
-        data: data,
-        meta: {
-            timestamp: new Date().toISOString(),
-            path: (_a = res.req) === null || _a === void 0 ? void 0 : _a.path,
-        },
+        data,
+        meta: buildMeta(res, message ? { message } : undefined),
     };
-    return res.status(statusCode).json(response);
+    return res.status(statusCode).json(body);
 };
 exports.sendSuccess = sendSuccess;
-var sendSuccessWithMessage = function (res, data, message, statusCode) {
-    var _a;
-    if (statusCode === void 0) { statusCode = 200; }
-    var response = {
-        success: true,
-        data: data,
-        meta: {
-            timestamp: new Date().toISOString(),
-            path: (_a = res.req) === null || _a === void 0 ? void 0 : _a.path,
-            message: message,
-        },
-    };
-    return res.status(statusCode).json(response);
-};
-exports.sendSuccessWithMessage = sendSuccessWithMessage;
-var sendError = function (res, errorCode, message, statusCode, details) {
-    var _a;
-    if (statusCode === void 0) { statusCode = 400; }
-    var response = {
+// GELİŞTİRİLMİŞ HATA YANITI - AppError destekli
+const sendError = (res, error, customMessage, customStatusCode, details) => {
+    let errorCode;
+    let message;
+    let statusCode;
+    let errorDetails = details;
+    if (typeof error === 'string') {
+        errorCode = error;
+        message = customMessage || error;
+        statusCode = customStatusCode || 400;
+    }
+    else {
+        errorCode = error.errorCode;
+        message = customMessage || error.message;
+        statusCode = customStatusCode || error.statusCode;
+        errorDetails = errorDetails || error;
+    }
+    const body = {
         success: false,
         error: {
             code: errorCode,
-            message: message,
-            details: details,
+            message,
+            details: sanitizeErrorDetails(errorDetails),
         },
-        meta: {
-            timestamp: new Date().toISOString(),
-            path: (_a = res.req) === null || _a === void 0 ? void 0 : _a.path,
-        },
+        meta: buildMeta(res),
     };
-    return res.status(statusCode).json(response);
+    return res.status(statusCode).json(body);
 };
 exports.sendError = sendError;
-var sendPaginated = function (res, data, total, page, limit) {
-    var _a;
-    var response = {
+const sendPaginated = (res, items, total, page, limit) => {
+    const body = {
         success: true,
-        data: data,
-        meta: {
-            page: page,
-            limit: limit,
-            total: total,
-            timestamp: new Date().toISOString(),
-            path: (_a = res.req) === null || _a === void 0 ? void 0 : _a.path,
+        data: {
+            items,
+            page,
+            limit,
+            total,
+            totalPages: Math.ceil(total / limit),
         },
+        meta: buildMeta(res),
     };
-    return res.status(200).json(response);
+    return res.status(200).json(body);
 };
 exports.sendPaginated = sendPaginated;
+// YENİ: Validation helper'ı
+const sendValidationError = (res, errors) => {
+    return (0, exports.sendError)(res, 'VALIDATION_FAILED', 'Validation failed', 422, { errors });
+};
+exports.sendValidationError = sendValidationError;
+// YENİ: 404 helper'ı
+const sendNotFound = (res, resource) => {
+    return (0, exports.sendError)(res, 'NOT_FOUND', `${resource} not found`, 404);
+};
+exports.sendNotFound = sendNotFound;
+//# sourceMappingURL=response.js.map

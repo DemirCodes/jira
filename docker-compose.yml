@@ -1,0 +1,115 @@
+version: "3.9"
+
+services:
+  # ==================== PLATFORM VERİTABANI ====================
+  platform-db:
+    image: postgres:16
+    container_name: platform_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: jira
+      POSTGRES_PASSWORD: jira
+      POSTGRES_DB: platform
+    ports:
+      - "5433:5432"
+    volumes:
+      - platform_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jira -d platform"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==================== TENANT VERİTABANI ====================
+  tenant-db:
+    image: postgres:16
+    container_name: tenant_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: jira
+      POSTGRES_PASSWORD: jira
+      POSTGRES_DB: jira
+    ports:
+      - "5434:5432"
+    volumes:
+      - tenant_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jira -d jira"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==================== REDIS ====================
+  redis:
+    image: redis:7-alpine
+    container_name: jira_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==================== TENANT BACKEND ====================
+  tenant-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: tenant_backend
+    restart: unless-stopped
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    env_file:
+      - ./backend/.env.docker
+    ports:
+      - "3000:3000"
+    depends_on:
+      tenant-db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # ==================== NGINX ====================
+  nginx:
+    image: nginx:alpine
+    container_name: jira_nginx
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - tenant-backend
+
+volumes:
+  platform_db_data:
+  tenant_db_data:
+  redis_data:
+
+
+    # ==================== PLATFORM BACKEND (Boş - sonra ekleyeceğiz) ====================
+  # platform-backend:
+  #   build:
+  #     context: ./platform
+  #     dockerfile: Dockerfile
+  #   container_name: platform_backend
+  #   restart: unless-stopped
+  #   environment:
+  #     NODE_ENV: development
+  #     PORT: 3001
+  #     PLATFORM_DB_HOST: platform-db
+  #     PLATFORM_DB_PORT: 5432
+  #     PLATFORM_DB_NAME: platform
+  #     PLATFORM_DB_USER: jira
+  #     PLATFORM_DB_PASSWORD: jira
+  #   ports:
+  #     - "3001:3001"
+  #   depends_on:
+  #     platform-db:
+  #       condition: service_healthy

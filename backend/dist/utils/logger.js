@@ -1,77 +1,99 @@
 "use strict";
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.stream = exports.log = exports.logger = void 0;
-var winston_1 = require("winston");
-var path_1 = require("path");
-var fs_1 = require("fs");
-// Log formatı
-var logFormat = winston_1.default.format.combine(winston_1.default.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), winston_1.default.format.errors({ stack: true }), winston_1.default.format.splat(), winston_1.default.format.json());
-// Konsol formatı (daha okunabilir)
-var consoleFormat = winston_1.default.format.combine(winston_1.default.format.colorize(), winston_1.default.format.timestamp({ format: 'HH:mm:ss' }), winston_1.default.format.printf(function (info) {
-    var timestamp = info.timestamp, level = info.level, message = info.message, stack = info.stack, meta = __rest(info, ["timestamp", "level", "message", "stack"]);
-    var log = "".concat(timestamp, " [").concat(level, "]: ").concat(message);
-    if (stack) {
-        log += "\n".concat(stack);
+const winston_1 = __importDefault(require("winston"));
+const winston_daily_rotate_file_1 = __importDefault(require("winston-daily-rotate-file"));
+const path_1 = __importDefault(require("path"));
+const fs_1 = __importDefault(require("fs"));
+// ─── GÜVENLİK ─────────────────────────────────────────────────────────────────
+const SENSITIVE_FIELDS = new Set([
+    'password', 'token', 'authorization', 'cookie', 'secret',
+]);
+const sanitizeMeta = (meta) => {
+    const result = {};
+    for (const [k, v] of Object.entries(meta)) {
+        result[k] = SENSITIVE_FIELDS.has(k.toLowerCase()) ? '[REDACTED]' : v;
     }
-    var metaKeys = Object.keys(meta);
-    if (metaKeys.length > 0 && metaKeys[0] !== 'timestamp' && metaKeys[0] !== 'level' && metaKeys[0] !== 'message') {
-        log += " ".concat(JSON.stringify(meta));
-    }
-    return log;
+    return result;
+};
+// ─── FORMAT ───────────────────────────────────────────────────────────────────
+const fileFormat = winston_1.default.format.combine(winston_1.default.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), winston_1.default.format.errors({ stack: true }), winston_1.default.format.splat(), winston_1.default.format.json());
+const consoleFormat = winston_1.default.format.combine(winston_1.default.format.colorize(), winston_1.default.format.timestamp({ format: 'HH:mm:ss' }), winston_1.default.format.printf((info) => {
+    const { timestamp, level, message, stack, ...meta } = info;
+    let line = `${timestamp} [${level}]: ${message}`;
+    if (stack)
+        line += `\n${stack}`;
+    if (Object.keys(meta).length > 0)
+        line += ` ${JSON.stringify(meta)}`;
+    return line;
 }));
-// logs klasörünü oluştur
-var logsDir = path_1.default.join(process.cwd(), 'logs');
-if (!fs_1.default.existsSync(logsDir)) {
-    fs_1.default.mkdirSync(logsDir, { recursive: true });
-}
-// Logger instance'ı
+// ─── LOGS KLASÖRÜ ─────────────────────────────────────────────────────────────
+const logsDir = path_1.default.join(process.cwd(), 'logs');
+fs_1.default.mkdirSync(logsDir, { recursive: true });
+// ─── ROTASYON AYARLARI ────────────────────────────────────────────────────────
+/**
+ * Ortak rotasyon seçenekleri:
+ *  - datePattern : her gün yeni dosya  (YYYY-MM-DD)
+ *  - maxSize     : tek dosya 20 MB'ı geçemez
+ *  - maxFiles    : 30 günden eski dosyalar silinir
+ *  - zippedArchive: eski dosyalar .gz olarak sıkıştırılır (disk tasarrufu)
+ */
+const rotateBase = {
+    dirname: logsDir,
+    datePattern: 'YYYY-MM-DD',
+    maxSize: '20m',
+    maxFiles: '30d',
+    zippedArchive: true,
+    format: fileFormat,
+};
+const makeRotateTransport = (filename, level) => new winston_daily_rotate_file_1.default({
+    ...rotateBase,
+    filename, // ör. "error-%DATE%.log"
+    ...(level ? { level } : {}),
+});
+// ─── LOGGER ───────────────────────────────────────────────────────────────────
 exports.logger = winston_1.default.createLogger({
-    level: process.env.LOG_LEVEL || 'info',
-    format: logFormat,
+    level: process.env.LOG_LEVEL ?? 'info',
     transports: [
-        new winston_1.default.transports.File({
-            filename: path_1.default.join('logs', 'error.log'),
-            level: 'error'
-        }),
-        new winston_1.default.transports.File({
-            filename: path_1.default.join('logs', 'combined.log')
-        }),
+        makeRotateTransport('error-%DATE%.log', 'error'),
+        makeRotateTransport('combined-%DATE%.log'),
     ],
     exceptionHandlers: [
-        new winston_1.default.transports.File({ filename: path_1.default.join('logs', 'exceptions.log') })
+        makeRotateTransport('exceptions-%DATE%.log'),
     ],
     rejectionHandlers: [
-        new winston_1.default.transports.File({ filename: path_1.default.join('logs', 'rejections.log') })
-    ]
+        makeRotateTransport('rejections-%DATE%.log'),
+    ],
 });
-// Development ortamında konsola da yaz
 if (process.env.NODE_ENV !== 'production') {
     exports.logger.add(new winston_1.default.transports.Console({
         format: consoleFormat,
-        level: 'debug'
+        level: 'debug',
     }));
 }
-// Kısa kullanım için helper'lar (any yok!)
+// Rotasyon olaylarını logla (isteğe bağlı, izleme için faydalı)
+exports.logger.transports.forEach(t => {
+    if (t instanceof winston_daily_rotate_file_1.default) {
+        t.on('rotate', (oldFile, newFile) => {
+            exports.logger.info('Log rotated', { oldFile, newFile });
+        });
+        t.on('new', (newFile) => {
+            exports.logger.info('New log file created', { newFile });
+        });
+    }
+});
+const makeMethod = (level) => (message, meta) => exports.logger[level](message, meta ? sanitizeMeta(meta) : undefined);
 exports.log = {
-    info: function (message, meta) { return exports.logger.info(message, meta); },
-    error: function (message, meta) { return exports.logger.error(message, meta); },
-    warn: function (message, meta) { return exports.logger.warn(message, meta); },
-    debug: function (message, meta) { return exports.logger.debug(message, meta); },
+    info: makeMethod('info'),
+    error: makeMethod('error'),
+    warn: makeMethod('warn'),
+    debug: makeMethod('debug'),
 };
-// Winston stream for morgan (HTTP logging)
+// ─── MORGAN STREAM ────────────────────────────────────────────────────────────
 exports.stream = {
-    write: function (message) {
-        exports.logger.info(message.trim());
-    },
+    write: (message) => { exports.logger.info(message.trim()); },
 };
+//# sourceMappingURL=logger.js.map

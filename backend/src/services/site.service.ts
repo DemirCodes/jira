@@ -29,6 +29,20 @@ import {
     SiteStats
 } from '../types/site.types';
 
+// ==================== IDOR PROTECTION ====================
+const verifySiteBelongsToOrg = async (siteId: string, orgId: string): Promise<void> => {
+    const result = await tenantPool.query(
+        'SELECT 1 FROM sites WHERE site_id = $1 AND org_id = $2 AND deleted_at IS NULL',
+        [siteId, orgId]
+    );
+
+    if (result.rowCount === 0) {
+        log.warn('IDOR Attempt detected or Site not found', { siteId, orgId });
+        // Saldırgana çok detay vermemek için NOT_FOUND dönmek en güvenlisidir
+        throw new AppError(ErrorCodes.SITE_NOT_FOUND, 'Site not found in this organization');
+    }
+};
+
 // ==================== VALIDATION HELPERS ====================
 
 const validateSiteInput = (name: string, slug: string): void => {
@@ -166,14 +180,17 @@ export const getSiteById = async (siteId: string): Promise<Site | null> => {
 };
 
 // ==================== UPDATE ====================
-
 export const updateSite = async (
     siteId: string,
+    orgId: string, // Eklendi
     name?: string,
     slug?: string,
     isPrivate?: boolean
 ): Promise<void> => {
     validateSiteId(siteId);
+    validateOrgId(orgId);  // Eklendi
+
+    await verifySiteBelongsToOrg(siteId, orgId); // IDOR KONTROLÜ
 
     if (name && !isValidName(name, 2, 100)) throw new AppError(ErrorCodes.VALIDATION_INVALID_NAME);
     if (slug && !isValidSlug(slug, 3, 50)) throw new AppError(ErrorCodes.VALIDATION_INVALID_SLUG);
@@ -327,14 +344,17 @@ export const getSiteMembers = async (siteId: string): Promise<SiteMember[]> => {
         throw new AppError(ErrorCodes.DB_QUERY_FAILED, 'Failed to retrieve site members');
     }
 };
-
 export const updateSiteMemberRole = async (
     siteId: string,
+    orgId: string, // Eklendi
     memberId: string,
     role: string
 ): Promise<void> => {
     validateSiteId(siteId);
+    validateOrgId(orgId); // Eklendi
     if (!isValidUUID(memberId)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID);
+
+    await verifySiteBelongsToOrg(siteId, orgId); // IDOR KONTROLÜ
 
     try {
         const result = await tenantPool.query(
@@ -352,9 +372,20 @@ export const updateSiteMemberRole = async (
     }
 };
 
-export const removeSiteMember = async (siteId: string, memberId: string): Promise<void> => {
+
+// ==================== REMOVE ====================
+
+
+export const removeSiteMember = async (
+    siteId: string,
+    orgId: string, // Eklendi
+    memberId: string
+): Promise<void> => {
     validateSiteId(siteId);
+    validateOrgId(orgId); // Eklendi
     if (!isValidUUID(memberId)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID);
+
+    await verifySiteBelongsToOrg(siteId, orgId); // IDOR KONTROLÜ
 
     try {
         const result = await tenantPool.query(

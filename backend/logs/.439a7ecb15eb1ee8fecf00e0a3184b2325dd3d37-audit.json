@@ -44,6 +44,21 @@
             "date": 1779790188970,
             "name": "/home/dmrcode/Desktop/jira/backend/logs/exceptions-2026-05-26.log",
             "hash": "0f0c858dde92c7c1cb9a0bf976789211516d43e2edb9c1c16a030dd688c7db50"
+        },
+        {
+            "date": 1780050017135,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/exceptions-2026-05-29.log",
+            "hash": "ddf4feccfada8729649535c2db7a27ec69fd07ed406333e6860b7acedbaba516"
+        },
+        {
+            "date": 1780141875307,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/exceptions-2026-05-30.log",
+            "hash": "285513616ba0df142c5781a097a76beaccac76a55b145abccaeb943aefebd47b"
+        },
+        {
+            "date": 1780218412442,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/exceptions-2026-05-31.log",
+            "hash": "84ab87818d3f554431cc4eb4aa82b4c5a0ee71a83182f5d49c0508d01c931b71"
         }
     ],
     "hashType": "sha256"

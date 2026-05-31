@@ -1,12 +1,20 @@
+/**
+ * SITE CONTROLLER
+ * 
+ * Tüm yetkilendirme authorization.service.ts ile yapılır.
+ * Controller sadece request/response işlemlerinden sorumludur.
+ * 
+ * GÜVENLİK: Tüm yazma işlemlerinde org_id validasyonu yapılır.
+ */
+
 import { Request, Response } from 'express';
 import * as siteService from '../services/site.service';
 import * as authService from '../services/authorization.service';
 import { AppError, ErrorCodes } from '../utils/errorCodes';
 import { log } from '../utils/logger';
 import { isValidUUID } from '../utils/regexValidator';
-import * as invitationService from '../services/invitation.service';
 
-// CREATE
+// ==================== CREATE ====================
 export const create = async (req: Request, res: Response): Promise<void> => {
     try {
         const userId = req.userId!;
@@ -32,7 +40,7 @@ export const create = async (req: Request, res: Response): Promise<void> => {
     }
 };
 
-// READ - List by Org
+// ==================== READ ====================
 export const listByOrg = async (req: Request, res: Response): Promise<void> => {
     try {
         const { orgId } = req.params;
@@ -42,6 +50,7 @@ export const listByOrg = async (req: Request, res: Response): Promise<void> => {
             throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid organization ID');
         }
 
+        // Yetki: org member (owner, admin, member, viewer)
         await authService.requireOrgMember(userId, orgId);
 
         const sites = await siteService.getSitesByOrg(orgId);
@@ -56,7 +65,6 @@ export const listByOrg = async (req: Request, res: Response): Promise<void> => {
     }
 };
 
-// READ - Get by ID
 export const getById = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
@@ -66,6 +74,7 @@ export const getById = async (req: Request, res: Response): Promise<void> => {
             throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid site ID');
         }
 
+        // Yetki: site_member veya org_owner/admin (hiyerarşik)
         await authService.requireSiteMember(userId, id);
 
         const site = await siteService.getSiteById(id);
@@ -84,20 +93,26 @@ export const getById = async (req: Request, res: Response): Promise<void> => {
     }
 };
 
-// UPDATE
+// ==================== UPDATE ====================
 export const update = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
         const userId = req.userId!;
-        const { name, slug, is_private } = req.body;
+        const { org_id, name, slug, is_private } = req.body;
 
-        if (!isValidUUID(id)) {
-            throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid site ID');
+        if (!org_id) {
+            res.status(400).json({ error: 'org_id is required' });
+            return;
         }
 
+        if (!isValidUUID(id) || !isValidUUID(org_id)) {
+            throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid UUID format');
+        }
+
+        // Yetki: org_owner veya site_admin
         await authService.requireSiteAdminOrOrgOwner(userId, id);
 
-        await siteService.updateSite(id, name, slug, is_private);
+        await siteService.updateSite(id, org_id, name, slug, is_private);
         res.json({ message: 'Site updated successfully' });
     } catch (error: any) {
         if (error instanceof AppError) {
@@ -109,25 +124,25 @@ export const update = async (req: Request, res: Response): Promise<void> => {
     }
 };
 
-// UPDATE STATUS
 export const updateStatus = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
         const userId = req.userId!;
-        const { status, org_id } = req.body;
+        const { org_id, status } = req.body;
 
-        if (!status || !['active', 'archived', 'suspended'].includes(status)) {
-            res.status(400).json({ error: 'Invalid status. Allowed: active, archived, suspended' });
+        if (!org_id || !status) {
+            res.status(400).json({ error: 'org_id and status are required' });
             return;
         }
 
-        if (!isValidUUID(id)) {
-            throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid site ID');
+        if (!isValidUUID(id) || !isValidUUID(org_id)) {
+            throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid UUID format');
         }
 
+        // Yetki: org_owner veya site_admin
         await authService.requireSiteAdminOrOrgOwner(userId, id);
 
-        await siteService.updateSiteStatus(id, status, org_id);
+        await siteService.updateSiteStatus(id, org_id, status);
         res.json({ message: 'Site status updated successfully' });
     } catch (error: any) {
         if (error instanceof AppError) {
@@ -139,17 +154,23 @@ export const updateStatus = async (req: Request, res: Response): Promise<void> =
     }
 };
 
-// DELETE
+// ==================== DELETE ====================
 export const remove = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
         const userId = req.userId!;
         const { org_id } = req.body;
 
-        if (!isValidUUID(id)) {
-            throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid site ID');
+        if (!org_id) {
+            res.status(400).json({ error: 'org_id is required' });
+            return;
         }
 
+        if (!isValidUUID(id) || !isValidUUID(org_id)) {
+            throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid UUID format');
+        }
+
+        // Yetki: org_owner veya site_admin
         await authService.requireSiteAdminOrOrgOwner(userId, id);
 
         await siteService.deleteSite(id, org_id);
@@ -164,7 +185,7 @@ export const remove = async (req: Request, res: Response): Promise<void> => {
     }
 };
 
-// INVITE
+// ==================== INVITE ====================
 export const invite = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
@@ -180,16 +201,13 @@ export const invite = async (req: Request, res: Response): Promise<void> => {
             throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid UUID format');
         }
 
-        // Yetki kontrolü: site invite permission
+        // Yetki: org_owner, org_admin veya site_admin
         await authService.requireSiteInvitePermission(userId, id);
 
-        // Yeni davet sistemini kullan
+        // Davet sistemini kullan
+        const invitationService = await import('../services/invitation.service');
         const invitationId = await invitationService.createInvitation(
-            org_id,              // org_id
-            friendshipCode,      // friendshipCode
-            'site',              // entity_type
-            role,                // role
-            id                   // entity_id = site_id
+            org_id, friendshipCode, 'site', role, id
         );
 
         res.status(201).json({ invitation_id: invitationId, message: 'Invitation sent' });
@@ -203,7 +221,7 @@ export const invite = async (req: Request, res: Response): Promise<void> => {
     }
 };
 
-// MEMBERS - List
+// ==================== MEMBERS ====================
 export const listMembers = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
@@ -213,6 +231,7 @@ export const listMembers = async (req: Request, res: Response): Promise<void> =>
             throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid site ID');
         }
 
+        // Yetki: site member (viewer dahil)
         await authService.requireSiteMember(userId, id);
 
         const members = await siteService.getSiteMembers(id);
@@ -227,25 +246,25 @@ export const listMembers = async (req: Request, res: Response): Promise<void> =>
     }
 };
 
-// MEMBERS - Update Role
 export const updateMemberRole = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id, memberId } = req.params;
         const userId = req.userId!;
-        const { role } = req.body;
+        const { org_id, role } = req.body;
 
-        if (!role || !['admin', 'contrubitor', 'viewer'].includes(role)) {
-            res.status(400).json({ error: 'Invalid role. Allowed: admin, contrubitor, viewer' });
+        if (!org_id || !role) {
+            res.status(400).json({ error: 'org_id and role are required' });
             return;
         }
 
-        if (!isValidUUID(id) || !isValidUUID(memberId)) {
-            throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID);
+        if (!isValidUUID(id) || !isValidUUID(memberId) || !isValidUUID(org_id)) {
+            throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid UUID format');
         }
 
+        // Yetki: org_owner veya site_admin
         await authService.requireSiteAdminOrOrgOwner(userId, id);
 
-        await siteService.updateSiteMemberRole(id, memberId, role);
+        await siteService.updateSiteMemberRole(id, org_id, memberId, role);
         res.json({ message: 'Member role updated successfully' });
     } catch (error: any) {
         if (error instanceof AppError) {
@@ -257,19 +276,25 @@ export const updateMemberRole = async (req: Request, res: Response): Promise<voi
     }
 };
 
-// MEMBERS - Remove
 export const removeMember = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id, memberId } = req.params;
         const userId = req.userId!;
+        const { org_id } = req.body;
 
-        if (!isValidUUID(id) || !isValidUUID(memberId)) {
-            throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID);
+        if (!org_id) {
+            res.status(400).json({ error: 'org_id is required' });
+            return;
         }
 
+        if (!isValidUUID(id) || !isValidUUID(memberId) || !isValidUUID(org_id)) {
+            throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid UUID format');
+        }
+
+        // Yetki: org_owner veya site_admin
         await authService.requireSiteAdminOrOrgOwner(userId, id);
 
-        await siteService.removeSiteMember(id, memberId);
+        await siteService.removeSiteMember(id, org_id, memberId);
         res.json({ message: 'Member removed successfully' });
     } catch (error: any) {
         if (error instanceof AppError) {
@@ -281,7 +306,7 @@ export const removeMember = async (req: Request, res: Response): Promise<void> =
     }
 };
 
-// STATS
+// ==================== STATS ====================
 export const getStats = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
@@ -291,6 +316,7 @@ export const getStats = async (req: Request, res: Response): Promise<void> => {
             throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid site ID');
         }
 
+        // Yetki: site member
         await authService.requireSiteMember(userId, id);
 
         const stats = await siteService.getSiteStats(id);

@@ -26,13 +26,14 @@ export interface OrganizationMember {
 export interface OrganizationInvitation {
     invitation_id: string;
     organization_id: string;
-    invited_email: string;
+    invited_user_id: string;
     invited_by_user_id: string;
     role: string;
     status: 'pending' | 'accepted' | 'rejected' | 'expired';
-    token_hash: string;
-    expires_at: Date;
+    invited_email?: string;      // zorunlu değil
+    token_hash?: string;         // zorunlu değil
     created_at: Date;
+    expires_at: Date;
 }
 
 export interface OrganizationStats {

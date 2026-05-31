@@ -6,6 +6,9 @@ import siteRoutes from '../routes/site.routes';
 import { log } from '../utils/logger';
 import { authMiddleware } from '../middlewares/auth';
 
+// KRİTİK: Auth middleware'in patlamaması için!
+process.env.JWT_SECRET = 'test_secret';
+
 const app = express();
 app.use(express.json());
 app.use('/api/sites', authMiddleware, siteRoutes);
@@ -25,7 +28,7 @@ describe('Site API Tests', () => {
         // ÖNCE app.current_user_id SET ET
         await tenantPool.query("SELECT set_config('app.current_user_id', $1, true)", [ownerId]);
 
-        // Kullanıcıları oluştur
+        // Kullanıcıları oluştur (EKSİKSİZ)
         await tenantPool.query(
             `INSERT INTO users (user_id, user_name, user_email, user_password, user_is_active) 
             VALUES ($1, 'Owner', 'owner@test.com', 'hash', true)
@@ -45,7 +48,7 @@ describe('Site API Tests', () => {
             [viewerId]
         );
 
-        // Test organizasyonu oluştur (artık auth_current_user_id() çalışacak)
+        // Test organizasyonu oluştur
         const orgResult = await tenantPool.query(
             'SELECT create_organization($1, $2, $3, $4) as org_id',
             [ownerId, 'Test Org', 'test-org-site', 'Org for site tests']
@@ -64,11 +67,10 @@ describe('Site API Tests', () => {
             [testOrgId, viewerId]
         );
 
-        // Token'lar
-        ownerToken = jwt.sign({ userId: ownerId, tokenVersion: 1 }, process.env.JWT_SECRET || 'test_secret');
-        memberToken = jwt.sign({ userId: memberId, tokenVersion: 1 }, process.env.JWT_SECRET || 'test_secret');
-        viewerToken = jwt.sign({ userId: viewerId, tokenVersion: 1 }, process.env.JWT_SECRET || 'test_secret');
-
+        // Token'lar (Sonlarına ! eklendi)
+        ownerToken = jwt.sign({ userId: ownerId, tokenVersion: 1 }, process.env.JWT_SECRET!);
+        memberToken = jwt.sign({ userId: memberId, tokenVersion: 1 }, process.env.JWT_SECRET!);
+        viewerToken = jwt.sign({ userId: viewerId, tokenVersion: 1 }, process.env.JWT_SECRET!);
         log.info('Site test setup completed');
     });
 
@@ -80,6 +82,8 @@ describe('Site API Tests', () => {
         await tenantPool.query('DELETE FROM organizations WHERE org_id = $1', [testOrgId]);
         await tenantPool.query('DELETE FROM users WHERE user_id IN ($1, $2, $3)', [ownerId, memberId, viewerId]);
         log.info('Site test cleanup completed');
+
+        await tenantPool.end();
     });
 
     // ==================== CREATE ====================
@@ -127,7 +131,6 @@ describe('Site API Tests', () => {
         });
 
         it('should deny get for non-member', async () => {
-            // Viewer is member of org but not site yet, so should be denied by requireSiteMember
             if (!testSiteId) return;
             const response = await request(app)
                 .get(`/api/sites/${testSiteId}`)
@@ -144,7 +147,7 @@ describe('Site API Tests', () => {
             const response = await request(app)
                 .put(`/api/sites/${testSiteId}`)
                 .set('Authorization', `Bearer ${ownerToken}`)
-                .send({ name: 'Updated Site' });
+                .send({ org_id: testOrgId, name: 'Updated Site' }); // DÜZELTİLDİ: org_id eklendi
 
             expect(response.status).toBe(200);
         });
@@ -154,7 +157,7 @@ describe('Site API Tests', () => {
             const response = await request(app)
                 .put(`/api/sites/${testSiteId}`)
                 .set('Authorization', `Bearer ${memberToken}`)
-                .send({ name: 'Hacked' });
+                .send({ org_id: testOrgId, name: 'Hacked' }); // DÜZELTİLDİ: org_id eklendi
 
             expect(response.status).toBe(403);
         });
@@ -163,7 +166,6 @@ describe('Site API Tests', () => {
     // ==================== DELETE ====================
     describe('DELETE /api/sites/:id', () => {
         it('should delete site (owner)', async () => {
-            // Create a new site to delete
             const createRes = await request(app)
                 .post('/api/sites')
                 .set('Authorization', `Bearer ${ownerToken}`)
@@ -172,7 +174,8 @@ describe('Site API Tests', () => {
 
             const response = await request(app)
                 .delete(`/api/sites/${deleteId}`)
-                .set('Authorization', `Bearer ${ownerToken}`);
+                .set('Authorization', `Bearer ${ownerToken}`)
+                .send({ org_id: testOrgId }); // DÜZELTİLDİ: org_id eklendi
 
             expect(response.status).toBe(200);
         });
@@ -181,7 +184,8 @@ describe('Site API Tests', () => {
             if (!testSiteId) return;
             const response = await request(app)
                 .delete(`/api/sites/${testSiteId}`)
-                .set('Authorization', `Bearer ${memberToken}`);
+                .set('Authorization', `Bearer ${memberToken}`)
+                .send({ org_id: testOrgId }); // DÜZELTİLDİ: org_id eklendi
 
             expect(response.status).toBe(403);
         });
@@ -196,7 +200,6 @@ describe('Site API Tests', () => {
                 .set('Authorization', `Bearer ${ownerToken}`)
                 .send({ org_id: testOrgId, friendshipCode: 'bd3d75fd-6ce7-430e-b58f-26da3d2150a2', role: 'contrubitor' });
 
-            // It might succeed or return 201 (depending on if that user exists), but not 403
             expect(response.status).not.toBe(403);
         });
 

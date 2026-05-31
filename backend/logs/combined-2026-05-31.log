@@ -1,0 +1,389 @@
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:06:52"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:06:52"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-05-31 12:06:52"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:06:53"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:06:53"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:08:26"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:08:26"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-05-31 12:08:26"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:08:26","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"test-org-1780218506329","timestamp":"2026-05-31 12:08:26"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:08:26","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:08:26","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:08:26","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"duplicate-slug-mptk4ur7","timestamp":"2026-05-31 12:08:26"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:08:26","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"duplicate-slug-mptk4ur7","timestamp":"2026-05-31 12:08:26"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 12:08:26"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-05-31 12:08:26","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to retrieve organizations","timestamp":"2026-05-31 12:08:26"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 12:08:26"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 12:08:26","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"currentRole":"none","entity":"organization_memberships/00000000-0000-4000-8000-000000000000","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin","member","viewer"],"timestamp":"2026-05-31 12:08:26","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/invalid-id","timestamp":"2026-05-31 12:08:26","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 12:08:26","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-05-31 12:08:26"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:08:26"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:08:26"}
+{"level":"info","message":"Site test setup completed","timestamp":"2026-05-31 12:08:26"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:08:26","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"sites"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create site","slug":"test-site-1780218506650","timestamp":"2026-05-31 12:08:26"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:08:26","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"currentRole":"member","entity":"organization_memberships/e63d48d2-5395-446e-9187-e7abbcb7a631","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin"],"timestamp":"2026-05-31 12:08:26","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:08:26","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"currentRole":"viewer","entity":"organization_memberships/e63d48d2-5395-446e-9187-e7abbcb7a631","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin"],"timestamp":"2026-05-31 12:08:26","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:08:26","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"sites"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create site","slug":"delete-1780218506716","timestamp":"2026-05-31 12:08:26"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-05-31 12:08:26","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site test cleanup completed","timestamp":"2026-05-31 12:08:26"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:12:59"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:12:59"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-05-31 12:12:59"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:12:59","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"test-org-1780218779391","timestamp":"2026-05-31 12:12:59"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:12:59","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:12:59","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:12:59","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"duplicate-slug-mptkapg3","timestamp":"2026-05-31 12:12:59"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:12:59","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"duplicate-slug-mptkapg3","timestamp":"2026-05-31 12:12:59"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 12:12:59"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-05-31 12:12:59","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to retrieve organizations","timestamp":"2026-05-31 12:12:59"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 12:12:59"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 12:12:59","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"currentRole":"none","entity":"organization_memberships/00000000-0000-4000-8000-000000000000","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin","member","viewer"],"timestamp":"2026-05-31 12:12:59","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/invalid-id","timestamp":"2026-05-31 12:12:59","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 12:12:59","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-05-31 12:12:59"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:12:59"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:12:59"}
+{"level":"info","message":"Site test setup completed","timestamp":"2026-05-31 12:12:59"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:12:59","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"sites"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create site","slug":"test-site-1780218779624","timestamp":"2026-05-31 12:12:59"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:12:59","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"currentRole":"member","entity":"organization_memberships/a7d40bf5-d230-474d-a2ff-0c57de4ebb63","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin"],"timestamp":"2026-05-31 12:12:59","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:12:59","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"currentRole":"viewer","entity":"organization_memberships/a7d40bf5-d230-474d-a2ff-0c57de4ebb63","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin"],"timestamp":"2026-05-31 12:12:59","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:12:59","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"sites"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create site","slug":"delete-1780218779691","timestamp":"2026-05-31 12:12:59"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-05-31 12:12:59","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site test cleanup completed","timestamp":"2026-05-31 12:12:59"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:14:25"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:14:25"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-05-31 12:14:25"}
+{"duration":"4ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:14:25","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"test-org-1780218865770","timestamp":"2026-05-31 12:14:25"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:14:25","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:14:25","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:14:25","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"duplicate-slug-mptkck3h","timestamp":"2026-05-31 12:14:25"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:14:25","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"duplicate-slug-mptkck3h","timestamp":"2026-05-31 12:14:25"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 12:14:25"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-05-31 12:14:25","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to retrieve organizations","timestamp":"2026-05-31 12:14:25"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 12:14:25"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 12:14:25","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"currentRole":"none","entity":"organization_memberships/00000000-0000-4000-8000-000000000000","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin","member","viewer"],"timestamp":"2026-05-31 12:14:25","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/invalid-id","timestamp":"2026-05-31 12:14:25","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 12:14:25","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-05-31 12:14:25"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:14:25"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:14:25"}
+{"level":"info","message":"Site test setup completed","timestamp":"2026-05-31 12:14:25"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:14:26","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"sites"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create site","slug":"test-site-1780218865999","timestamp":"2026-05-31 12:14:26"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:14:26","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"currentRole":"member","entity":"organization_memberships/0e960d81-7553-4208-b762-8d706db9215c","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin"],"timestamp":"2026-05-31 12:14:26","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:14:26","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"currentRole":"viewer","entity":"organization_memberships/0e960d81-7553-4208-b762-8d706db9215c","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin"],"timestamp":"2026-05-31 12:14:26","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:14:26","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"sites"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create site","slug":"delete-1780218866060","timestamp":"2026-05-31 12:14:26"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-05-31 12:14:26","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site test cleanup completed","timestamp":"2026-05-31 12:14:26"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:14:56"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:14:56"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-05-31 12:14:56"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:14:56","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"test-org-1780218896471","timestamp":"2026-05-31 12:14:56"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:14:56","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:14:56","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:14:56","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"duplicate-slug-mptkd7sg","timestamp":"2026-05-31 12:14:56"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:14:56","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"duplicate-slug-mptkd7sg","timestamp":"2026-05-31 12:14:56"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 12:14:56"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-05-31 12:14:56","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to retrieve organizations","timestamp":"2026-05-31 12:14:56"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 12:14:56"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 12:14:56","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"currentRole":"none","entity":"organization_memberships/00000000-0000-4000-8000-000000000000","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin","member","viewer"],"timestamp":"2026-05-31 12:14:56","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/invalid-id","timestamp":"2026-05-31 12:14:56","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 12:14:56","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-05-31 12:14:56"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:14:56"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:14:56"}
+{"level":"info","message":"Site test setup completed","timestamp":"2026-05-31 12:14:56"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:14:56","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"sites"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create site","slug":"test-site-1780218896705","timestamp":"2026-05-31 12:14:56"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:14:56","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"currentRole":"member","entity":"organization_memberships/7af0749c-5500-447b-86fe-1b71ddaa3c8b","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin"],"timestamp":"2026-05-31 12:14:56","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:14:56","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"currentRole":"viewer","entity":"organization_memberships/7af0749c-5500-447b-86fe-1b71ddaa3c8b","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin"],"timestamp":"2026-05-31 12:14:56","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:14:56","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"sites"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create site","slug":"delete-1780218896769","timestamp":"2026-05-31 12:14:56"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-05-31 12:14:56","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site test cleanup completed","timestamp":"2026-05-31 12:14:56"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:15:10"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:15:10"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-05-31 12:15:10"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:15:10","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"test-org-1780218910723","timestamp":"2026-05-31 12:15:10"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-05-31 12:15:10"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:16:01"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:16:01"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-05-31 12:16:01"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:16:01","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"test-org-1780218961683","timestamp":"2026-05-31 12:16:01"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-05-31 12:16:01"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:16:01"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:16:01"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:20:36"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:20:36"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:20:36"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:20:36"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:20:58"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:20:58"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:20:58"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:20:58"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-05-31 12:20:58"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:20:58","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"test-org-1780219258677","timestamp":"2026-05-31 12:20:58"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-05-31 12:20:58"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:21:20"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:21:20"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:21:20"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:21:20"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-05-31 12:21:20"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:21:20","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"test-org-1780219280566","timestamp":"2026-05-31 12:21:20"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-05-31 12:21:20"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:22:27"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:22:27"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-05-31 12:22:27"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:22:27","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"test-org-1780219347827","timestamp":"2026-05-31 12:22:27"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-05-31 12:22:27"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:22:27"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:22:27"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:22:52"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:22:52"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-05-31 12:22:52"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:22:52","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"test-org-1780219372532","timestamp":"2026-05-31 12:22:52"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:22:52","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:22:52","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:22:52","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"duplicate-slug-mptknf42","timestamp":"2026-05-31 12:22:52"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:22:52","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create organization","slug":"duplicate-slug-mptknf42","timestamp":"2026-05-31 12:22:52"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 12:22:52"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-05-31 12:22:52","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"organizations"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to retrieve organizations","timestamp":"2026-05-31 12:22:52"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 12:22:52"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 12:22:52","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"currentRole":"none","entity":"organization_memberships/00000000-0000-4000-8000-000000000000","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin","member","viewer"],"timestamp":"2026-05-31 12:22:52","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/invalid-id","timestamp":"2026-05-31 12:22:52","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 12:22:52","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-05-31 12:22:52"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:22:52"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:22:52"}
+{"level":"info","message":"Site test setup completed","timestamp":"2026-05-31 12:22:52"}
+{"duration":"4ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:22:52","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"sites"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create site","slug":"test-site-1780219372747","timestamp":"2026-05-31 12:22:52"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:22:52","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"currentRole":"member","entity":"organization_memberships/c8d2d394-58fa-4bec-b864-d1a53332b0ba","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin"],"timestamp":"2026-05-31 12:22:52","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:22:52","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"currentRole":"viewer","entity":"organization_memberships/c8d2d394-58fa-4bec-b864-d1a53332b0ba","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin"],"timestamp":"2026-05-31 12:22:52","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:22:52","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"clientVersion":"7.8.0","code":"P6001","meta":{"modelName":"sites"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Failed to create site","slug":"delete-1780219372806","timestamp":"2026-05-31 12:22:52"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-05-31 12:22:52","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site test cleanup completed","timestamp":"2026-05-31 12:22:52"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:37:29"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:37:29"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-05-31 12:37:29"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:37:29","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Organization created","orgId":"dddfae55-6c99-4d1e-b255-223a7f43922c","slug":"test-org-1780220249344","timestamp":"2026-05-31 12:37:29"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:37:29","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:37:29","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:37:29","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Organization created","orgId":"c2206933-55aa-45e0-bec7-0eff3c2b0b53","slug":"duplicate-slug-mptl67mm","timestamp":"2026-05-31 12:37:29"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 12:37:29","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 12:37:29"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-05-31 12:37:29","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Retrieved 1 organizations","timestamp":"2026-05-31 12:37:29"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 12:37:29"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 12:37:29","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"currentRole":"none","entity":"organization_memberships/00000000-0000-4000-8000-000000000000","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin","member","viewer"],"timestamp":"2026-05-31 12:37:29","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/invalid-id","timestamp":"2026-05-31 12:37:29","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 12:37:29","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-05-31 12:37:29"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 12:37:29"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 12:37:29"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 13:27:38"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 13:27:38"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 13:27:38"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 13:27:38"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-05-31 13:27:38"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:27:38","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Organization created","orgId":"daf1a4a5-2ad9-4e52-9535-62f890b8e556","slug":"test-org-1780223258834","timestamp":"2026-05-31 13:27:38"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:27:38","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:27:38","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:27:38","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Organization created","orgId":"1df6ebde-828a-40ff-912d-3b598efe373a","slug":"duplicate-slug-mptmyprl","timestamp":"2026-05-31 13:27:38"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:27:38","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 13:27:38"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-05-31 13:27:38","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Retrieved 1 organizations","timestamp":"2026-05-31 13:27:38"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 13:27:38"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 13:27:38","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"currentRole":"none","entity":"organization_memberships/00000000-0000-4000-8000-000000000000","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin","member","viewer"],"timestamp":"2026-05-31 13:27:38","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/invalid-id","timestamp":"2026-05-31 13:27:38","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 13:27:38","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-05-31 13:27:38"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 13:48:09"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 13:48:09"}
+{"level":"info","message":"Site test setup completed","timestamp":"2026-05-31 13:48:09"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:48:09","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site created","siteId":"4efe34b5-32a9-460a-b3cd-ad16f0faed1b","slug":"test-site-1780224489267","timestamp":"2026-05-31 13:48:09"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:48:09","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"currentRole":"member","entity":"organization_memberships/6ea8f96c-8e87-4601-99a0-0f606f7ac365","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin"],"timestamp":"2026-05-31 13:48:09","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:48:09","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"currentRole":"viewer","entity":"organization_memberships/6ea8f96c-8e87-4601-99a0-0f606f7ac365","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin"],"timestamp":"2026-05-31 13:48:09","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/4efe34b5-32a9-460a-b3cd-ad16f0faed1b","timestamp":"2026-05-31 13:48:09","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/4efe34b5-32a9-460a-b3cd-ad16f0faed1b","timestamp":"2026-05-31 13:48:09","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"currentRole":"none","entity":"site_memberships/4efe34b5-32a9-460a-b3cd-ad16f0faed1b","level":"warn","message":"Authorization denied","requiredRoles":["admin","contrubitor","viewer"],"timestamp":"2026-05-31 13:48:09","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/4efe34b5-32a9-460a-b3cd-ad16f0faed1b","timestamp":"2026-05-31 13:48:09","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site updated","siteId":"4efe34b5-32a9-460a-b3cd-ad16f0faed1b","timestamp":"2026-05-31 13:48:09"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/4efe34b5-32a9-460a-b3cd-ad16f0faed1b","timestamp":"2026-05-31 13:48:09","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:48:09","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site created","siteId":"912065df-8a83-490e-b20e-17d70b1e95ba","slug":"delete-1780224489325","timestamp":"2026-05-31 13:48:09"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/912065df-8a83-490e-b20e-17d70b1e95ba","timestamp":"2026-05-31 13:48:09","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site deleted","siteId":"912065df-8a83-490e-b20e-17d70b1e95ba","timestamp":"2026-05-31 13:48:09"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/4efe34b5-32a9-460a-b3cd-ad16f0faed1b","timestamp":"2026-05-31 13:48:09","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/4efe34b5-32a9-460a-b3cd-ad16f0faed1b/invite","timestamp":"2026-05-31 13:48:09","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"entityType":"site","error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":254,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create invitation","orgId":"6ea8f96c-8e87-4601-99a0-0f606f7ac365","timestamp":"2026-05-31 13:48:09"}
+{"duration":"6ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/4efe34b5-32a9-460a-b3cd-ad16f0faed1b/invite","timestamp":"2026-05-31 13:48:09","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/4efe34b5-32a9-460a-b3cd-ad16f0faed1b/members","timestamp":"2026-05-31 13:48:09","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/4efe34b5-32a9-460a-b3cd-ad16f0faed1b/stats","timestamp":"2026-05-31 13:48:09","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site test cleanup completed","timestamp":"2026-05-31 13:48:09"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 13:48:09"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 13:48:09"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-05-31 13:48:09"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:48:09","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Organization created","orgId":"6b0ce88d-f872-4344-968f-c7e5d5f9e5cf","slug":"test-org-1780224489466","timestamp":"2026-05-31 13:48:09"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:48:09","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:48:09","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:48:09","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Organization created","orgId":"d72c483e-1f07-47d8-85a8-482d2afe4d90","slug":"duplicate-slug-mptnp3bg","timestamp":"2026-05-31 13:48:09"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:48:09","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 13:48:09"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-05-31 13:48:09","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Retrieved 1 organizations","timestamp":"2026-05-31 13:48:09"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 13:48:09"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 13:48:09","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"currentRole":"none","entity":"organization_memberships/00000000-0000-4000-8000-000000000000","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin","member","viewer"],"timestamp":"2026-05-31 13:48:09","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/invalid-id","timestamp":"2026-05-31 13:48:09","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 13:48:09","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-05-31 13:48:09"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 13:50:31"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 13:50:31"}
+{"level":"info","message":"Site test setup completed","timestamp":"2026-05-31 13:50:31"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:50:31","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site created","siteId":"a3e43914-3a44-4f8a-9ad9-4621acc17153","slug":"test-site-1780224631232","timestamp":"2026-05-31 13:50:31"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:50:31","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"currentRole":"member","entity":"organization_memberships/1aaad6f7-5339-4e5e-9628-4b5aa015b5d2","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin"],"timestamp":"2026-05-31 13:50:31","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:50:31","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"currentRole":"viewer","entity":"organization_memberships/1aaad6f7-5339-4e5e-9628-4b5aa015b5d2","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin"],"timestamp":"2026-05-31 13:50:31","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/a3e43914-3a44-4f8a-9ad9-4621acc17153","timestamp":"2026-05-31 13:50:31","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/a3e43914-3a44-4f8a-9ad9-4621acc17153","timestamp":"2026-05-31 13:50:31","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"currentRole":"none","entity":"site_memberships/a3e43914-3a44-4f8a-9ad9-4621acc17153","level":"warn","message":"Authorization denied","requiredRoles":["admin","contrubitor","viewer"],"timestamp":"2026-05-31 13:50:31","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/a3e43914-3a44-4f8a-9ad9-4621acc17153","timestamp":"2026-05-31 13:50:31","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site updated","siteId":"a3e43914-3a44-4f8a-9ad9-4621acc17153","timestamp":"2026-05-31 13:50:31"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/a3e43914-3a44-4f8a-9ad9-4621acc17153","timestamp":"2026-05-31 13:50:31","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:50:31","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site created","siteId":"5b218865-dc5a-4f21-a2b9-1ba6b7ea962d","slug":"delete-1780224631284","timestamp":"2026-05-31 13:50:31"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/5b218865-dc5a-4f21-a2b9-1ba6b7ea962d","timestamp":"2026-05-31 13:50:31","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site deleted","siteId":"5b218865-dc5a-4f21-a2b9-1ba6b7ea962d","timestamp":"2026-05-31 13:50:31"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/a3e43914-3a44-4f8a-9ad9-4621acc17153","timestamp":"2026-05-31 13:50:31","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/a3e43914-3a44-4f8a-9ad9-4621acc17153/invite","timestamp":"2026-05-31 13:50:31","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"entityType":"site","error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":254,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create invitation","orgId":"1aaad6f7-5339-4e5e-9628-4b5aa015b5d2","timestamp":"2026-05-31 13:50:31"}
+{"duration":"6ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/a3e43914-3a44-4f8a-9ad9-4621acc17153/invite","timestamp":"2026-05-31 13:50:31","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/a3e43914-3a44-4f8a-9ad9-4621acc17153/members","timestamp":"2026-05-31 13:50:31","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/a3e43914-3a44-4f8a-9ad9-4621acc17153/stats","timestamp":"2026-05-31 13:50:31","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site test cleanup completed","timestamp":"2026-05-31 13:50:31"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 13:50:31"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 13:50:31"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-05-31 13:50:31"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:50:31","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Organization created","orgId":"2b3a3cad-3be3-4e0a-9e02-646752beff52","slug":"test-org-1780224631558","timestamp":"2026-05-31 13:50:31"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:50:31","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:50:31","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:50:31","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Organization created","orgId":"3518b085-187c-426a-8653-e8046571d970","slug":"duplicate-slug-mptns4yd","timestamp":"2026-05-31 13:50:31"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:50:31","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 13:50:31"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-05-31 13:50:31","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Retrieved 1 organizations","timestamp":"2026-05-31 13:50:31"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 13:50:31"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 13:50:31","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"currentRole":"none","entity":"organization_memberships/00000000-0000-4000-8000-000000000000","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin","member","viewer"],"timestamp":"2026-05-31 13:50:31","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/invalid-id","timestamp":"2026-05-31 13:50:31","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 13:50:31","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-05-31 13:50:31"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 13:52:14"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 13:52:14"}
+{"level":"info","message":"Site test setup completed","timestamp":"2026-05-31 13:52:14"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:52:14","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site created","siteId":"146c09e7-36a3-4f2d-99f9-954a2d280790","slug":"test-site-1780224734849","timestamp":"2026-05-31 13:52:14"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:52:14","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"currentRole":"member","entity":"organization_memberships/7440fcb4-acc5-4d4e-9aa4-0f0ec559324d","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin"],"timestamp":"2026-05-31 13:52:14","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:52:14","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"currentRole":"viewer","entity":"organization_memberships/7440fcb4-acc5-4d4e-9aa4-0f0ec559324d","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin"],"timestamp":"2026-05-31 13:52:14","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/146c09e7-36a3-4f2d-99f9-954a2d280790","timestamp":"2026-05-31 13:52:14","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/146c09e7-36a3-4f2d-99f9-954a2d280790","timestamp":"2026-05-31 13:52:14","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"currentRole":"none","entity":"site_memberships/146c09e7-36a3-4f2d-99f9-954a2d280790","level":"warn","message":"Authorization denied","requiredRoles":["admin","contrubitor","viewer"],"timestamp":"2026-05-31 13:52:14","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/146c09e7-36a3-4f2d-99f9-954a2d280790","timestamp":"2026-05-31 13:52:14","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site updated","siteId":"146c09e7-36a3-4f2d-99f9-954a2d280790","timestamp":"2026-05-31 13:52:14"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/146c09e7-36a3-4f2d-99f9-954a2d280790","timestamp":"2026-05-31 13:52:14","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:52:14","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site created","siteId":"b4e32e5a-074a-4959-b79e-cbe5817d849a","slug":"delete-1780224734900","timestamp":"2026-05-31 13:52:14"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/b4e32e5a-074a-4959-b79e-cbe5817d849a","timestamp":"2026-05-31 13:52:14","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site deleted","siteId":"b4e32e5a-074a-4959-b79e-cbe5817d849a","timestamp":"2026-05-31 13:52:14"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/146c09e7-36a3-4f2d-99f9-954a2d280790","timestamp":"2026-05-31 13:52:14","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/146c09e7-36a3-4f2d-99f9-954a2d280790/invite","timestamp":"2026-05-31 13:52:14","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"entityType":"site","error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":254,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create invitation","orgId":"7440fcb4-acc5-4d4e-9aa4-0f0ec559324d","timestamp":"2026-05-31 13:52:14"}
+{"duration":"5ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/146c09e7-36a3-4f2d-99f9-954a2d280790/invite","timestamp":"2026-05-31 13:52:14","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/146c09e7-36a3-4f2d-99f9-954a2d280790/members","timestamp":"2026-05-31 13:52:14","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/146c09e7-36a3-4f2d-99f9-954a2d280790/stats","timestamp":"2026-05-31 13:52:14","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site test cleanup completed","timestamp":"2026-05-31 13:52:14"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-05-31.log","timestamp":"2026-05-31 13:52:15"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-31.log","timestamp":"2026-05-31 13:52:15"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-05-31 13:52:15"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:52:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Organization created","orgId":"b189a644-aa4a-4198-aae5-15af68a619e4","slug":"test-org-1780224735039","timestamp":"2026-05-31 13:52:15"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:52:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:52:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:52:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Organization created","orgId":"e532a8e9-3b27-4708-be71-10c5ace48097","slug":"duplicate-slug-mptnucsv","timestamp":"2026-05-31 13:52:15"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-05-31 13:52:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 13:52:15"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-05-31 13:52:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Retrieved 1 organizations","timestamp":"2026-05-31 13:52:15"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-05-31 13:52:15"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 13:52:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"currentRole":"none","entity":"organization_memberships/00000000-0000-4000-8000-000000000000","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin","member","viewer"],"timestamp":"2026-05-31 13:52:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/invalid-id","timestamp":"2026-05-31 13:52:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-05-31 13:52:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-05-31 13:52:15"}

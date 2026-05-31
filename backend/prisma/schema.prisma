@@ -1,0 +1,542 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model application_bugs {
+  bug_id        String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  reported_by   String          @db.Uuid
+  org_id        String?         @db.Uuid
+  project_id    String?         @db.Uuid
+  title         String
+  description   String
+  status        bug_status      @default(open)
+  priority      priority_level? @default(medium)
+  assigned_to   String?         @db.Uuid
+  created_at    DateTime        @default(now()) @db.Timestamptz(6)
+  resolved_at   DateTime?       @db.Timestamptz(6)
+  deleted_at    DateTime?       @db.Timestamptz(6)
+  deleted_by    String?         @db.Uuid
+  organizations organizations?  @relation(fields: [org_id], references: [org_id], onUpdate: NoAction)
+  projects      projects?       @relation(fields: [project_id], references: [project_id], onUpdate: NoAction)
+  users         users           @relation(fields: [reported_by], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model invitations {
+  invitation_id                            String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  org_id                                   String        @db.Uuid
+  invited_by                               String        @db.Uuid
+  invited_user_id                          String        @db.Uuid
+  entity_type                              String
+  entity_id                                String?       @db.Uuid
+  role                                     String
+  status                                   String        @default("pending")
+  created_at                               DateTime?     @default(now()) @db.Timestamptz(6)
+  expires_at                               DateTime?     @default(dbgenerated("(now() + '7 days'::interval)")) @db.Timestamptz(6)
+  accepted_at                              DateTime?     @db.Timestamptz(6)
+  rejected_at                              DateTime?     @db.Timestamptz(6)
+  cancelled_at                             DateTime?     @db.Timestamptz(6)
+  deleted_at                               DateTime?     @db.Timestamptz(6)
+  users_invitations_invited_byTousers      users         @relation("invitations_invited_byTousers", fields: [invited_by], references: [user_id], onDelete: Cascade, onUpdate: NoAction)
+  users_invitations_invited_user_idTousers users         @relation("invitations_invited_user_idTousers", fields: [invited_user_id], references: [user_id], onDelete: Cascade, onUpdate: NoAction)
+  organizations                            organizations @relation(fields: [org_id], references: [org_id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model issue_activity {
+  activity_id String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  issue_id    String    @db.Uuid
+  user_id     String?   @db.Uuid
+  field_name  String
+  old_value   String?
+  new_value   String?
+  created_at  DateTime? @default(now()) @db.Timestamptz(6)
+  issues      issues    @relation(fields: [issue_id], references: [issue_id], onDelete: Cascade, onUpdate: NoAction)
+  users       users?    @relation(fields: [user_id], references: [user_id], onUpdate: NoAction)
+}
+
+model issue_assets {
+  issue_asset_id                        String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  issue_id                              String     @db.Uuid
+  uploaded_by                           String?    @db.Uuid
+  asset_type                            asset_type
+  file_name                             String
+  mime_type                             String?
+  byte_size                             BigInt?
+  storage_key                           String
+  checksum                              String?
+  metadata                              Json?      @default("{}")
+  is_active                             Boolean    @default(true)
+  created_at                            DateTime   @default(now()) @db.Timestamptz(6)
+  updated_at                            DateTime   @default(now()) @db.Timestamptz(6)
+  deleted_at                            DateTime?  @db.Timestamptz(6)
+  deleted_by                            String?    @db.Uuid
+  users_issue_assets_deleted_byTousers  users?     @relation("issue_assets_deleted_byTousers", fields: [deleted_by], references: [user_id], onUpdate: NoAction)
+  issues                                issues     @relation(fields: [issue_id], references: [issue_id], onDelete: Cascade, onUpdate: NoAction)
+  users_issue_assets_uploaded_byTousers users?     @relation("issue_assets_uploaded_byTousers", fields: [uploaded_by], references: [user_id], onUpdate: NoAction)
+}
+
+model issue_memberships {
+  issue_membership_id                       String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  issue_id                                  String     @db.Uuid
+  user_id                                   String     @db.Uuid
+  role                                      issue_role
+  membership_is_active                      Boolean    @default(true)
+  created_at                                DateTime   @default(now()) @db.Timestamptz(6)
+  updated_at                                DateTime   @default(now()) @db.Timestamptz(6)
+  deleted_at                                DateTime?  @db.Timestamptz(6)
+  deleted_by                                String?    @db.Uuid
+  users_issue_memberships_deleted_byTousers users?     @relation("issue_memberships_deleted_byTousers", fields: [deleted_by], references: [user_id], onUpdate: NoAction)
+  issues                                    issues     @relation(fields: [issue_id], references: [issue_id], onDelete: Cascade, onUpdate: NoAction)
+  users_issue_memberships_user_idTousers    users      @relation("issue_memberships_user_idTousers", fields: [user_id], references: [user_id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model issues {
+  issue_id                                      String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  project_id                                    String              @db.Uuid
+  issue_no                                      BigInt
+  issue_title                                   String
+  issue_description                             String?
+  status                                        issue_status        @default(open)
+  priority                                      priority_level?     @default(medium)
+  reporter_id                                   String?             @db.Uuid
+  assignee_id                                   String?             @db.Uuid
+  parent_issue_id                               String?             @db.Uuid
+  blocking_issue_id                             String?             @db.Uuid
+  issue_is_active                               Boolean             @default(true)
+  created_at                                    DateTime            @default(now()) @db.Timestamptz(6)
+  updated_at                                    DateTime            @default(now()) @db.Timestamptz(6)
+  deleted_at                                    DateTime?           @db.Timestamptz(6)
+  deleted_by                                    String?             @db.Uuid
+  is_private                                    Boolean             @default(false)
+  is_editable                                   Boolean             @default(false)
+  issue_activity                                issue_activity[]
+  issue_assets                                  issue_assets[]
+  issue_memberships                             issue_memberships[]
+  users_issues_assignee_idTousers               users?              @relation("issues_assignee_idTousers", fields: [assignee_id], references: [user_id], onUpdate: NoAction)
+  issues_issues_blocking_issue_idToissues       issues?             @relation("issues_blocking_issue_idToissues", fields: [blocking_issue_id], references: [issue_id], onUpdate: NoAction)
+  other_issues_issues_blocking_issue_idToissues issues[]            @relation("issues_blocking_issue_idToissues")
+  users_issues_deleted_byTousers                users?              @relation("issues_deleted_byTousers", fields: [deleted_by], references: [user_id], onUpdate: NoAction)
+  issues_issues_parent_issue_idToissues         issues?             @relation("issues_parent_issue_idToissues", fields: [parent_issue_id], references: [issue_id], onUpdate: NoAction)
+  other_issues_issues_parent_issue_idToissues   issues[]            @relation("issues_parent_issue_idToissues")
+  projects                                      projects            @relation(fields: [project_id], references: [project_id], onDelete: Cascade, onUpdate: NoAction)
+  users_issues_reporter_idTousers               users?              @relation("issues_reporter_idTousers", fields: [reporter_id], references: [user_id], onUpdate: NoAction)
+
+  @@unique([project_id, issue_no])
+}
+
+model notifications {
+  notification_id String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id         String    @db.Uuid
+  type            String
+  title           String
+  content         String?
+  metadata        Json?     @default("{}")
+  is_read         Boolean?  @default(false)
+  created_at      DateTime? @default(now()) @db.Timestamptz(6)
+  read_at         DateTime? @db.Timestamptz(6)
+  deleted_at      DateTime? @db.Timestamptz(6)
+  users           users     @relation(fields: [user_id], references: [user_id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model organization_assets {
+  org_asset_id                                 String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  org_id                                       String        @db.Uuid
+  uploaded_by                                  String?       @db.Uuid
+  asset_type                                   asset_type
+  file_name                                    String
+  mime_type                                    String?
+  byte_size                                    BigInt?
+  storage_key                                  String
+  checksum                                     String?
+  metadata                                     Json?         @default("{}")
+  is_active                                    Boolean       @default(true)
+  created_at                                   DateTime      @default(now()) @db.Timestamptz(6)
+  updated_at                                   DateTime      @default(now()) @db.Timestamptz(6)
+  deleted_at                                   DateTime?     @db.Timestamptz(6)
+  deleted_by                                   String?       @db.Uuid
+  users_organization_assets_deleted_byTousers  users?        @relation("organization_assets_deleted_byTousers", fields: [deleted_by], references: [user_id], onUpdate: NoAction)
+  organizations                                organizations @relation(fields: [org_id], references: [org_id], onDelete: Cascade, onUpdate: NoAction)
+  users_organization_assets_uploaded_byTousers users?        @relation("organization_assets_uploaded_byTousers", fields: [uploaded_by], references: [user_id], onUpdate: NoAction)
+}
+
+model organization_memberships {
+  org_membership_id                                String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  org_id                                           String        @db.Uuid
+  user_id                                          String        @db.Uuid
+  role                                             org_role      @default(viewer)
+  invited_by                                       String?       @db.Uuid
+  membership_is_active                             Boolean       @default(true)
+  joined_at                                        DateTime      @default(now()) @db.Timestamptz(6)
+  created_at                                       DateTime      @default(now()) @db.Timestamptz(6)
+  updated_at                                       DateTime      @default(now()) @db.Timestamptz(6)
+  deleted_at                                       DateTime?     @db.Timestamptz(6)
+  deleted_by                                       String?       @db.Uuid
+  users_organization_memberships_deleted_byTousers users?        @relation("organization_memberships_deleted_byTousers", fields: [deleted_by], references: [user_id], onUpdate: NoAction)
+  users_organization_memberships_invited_byTousers users?        @relation("organization_memberships_invited_byTousers", fields: [invited_by], references: [user_id], onUpdate: NoAction)
+  organizations                                    organizations @relation(fields: [org_id], references: [org_id], onDelete: Cascade, onUpdate: NoAction)
+  users_organization_memberships_user_idTousers    users         @relation("organization_memberships_user_idTousers", fields: [user_id], references: [user_id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([org_id, user_id])
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model organizations {
+  org_id                                String                     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  org_check_id                          String                     @unique
+  org_name                              String
+  org_description                       String?
+  slug                                  String                     @unique
+  org_status                            String                     @default("active")
+  created_by                            String?                    @db.Uuid
+  created_at                            DateTime                   @default(now()) @db.Timestamptz(6)
+  updated_at                            DateTime                   @default(now()) @db.Timestamptz(6)
+  deleted_at                            DateTime?                  @db.Timestamptz(6)
+  deleted_by                            String?                    @db.Uuid
+  application_bugs                      application_bugs[]
+  invitations                           invitations[]
+  organization_assets                   organization_assets[]
+  organization_memberships              organization_memberships[]
+  users_organizations_created_byTousers users?                     @relation("organizations_created_byTousers", fields: [created_by], references: [user_id], onUpdate: NoAction)
+  users_organizations_deleted_byTousers users?                     @relation("organizations_deleted_byTousers", fields: [deleted_by], references: [user_id], onUpdate: NoAction)
+  sites                                 sites[]
+}
+
+model project_assets {
+  project_asset_id                        String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  project_id                              String     @db.Uuid
+  uploaded_by                             String?    @db.Uuid
+  asset_type                              asset_type
+  file_name                               String
+  mime_type                               String?
+  byte_size                               BigInt?
+  storage_key                             String
+  checksum                                String?
+  metadata                                Json?      @default("{}")
+  is_active                               Boolean    @default(true)
+  created_at                              DateTime   @default(now()) @db.Timestamptz(6)
+  updated_at                              DateTime   @default(now()) @db.Timestamptz(6)
+  deleted_at                              DateTime?  @db.Timestamptz(6)
+  deleted_by                              String?    @db.Uuid
+  users_project_assets_deleted_byTousers  users?     @relation("project_assets_deleted_byTousers", fields: [deleted_by], references: [user_id], onUpdate: NoAction)
+  projects                                projects   @relation(fields: [project_id], references: [project_id], onDelete: Cascade, onUpdate: NoAction)
+  users_project_assets_uploaded_byTousers users?     @relation("project_assets_uploaded_byTousers", fields: [uploaded_by], references: [user_id], onUpdate: NoAction)
+}
+
+model project_memberships {
+  project_membership_id                       String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  project_id                                  String       @db.Uuid
+  user_id                                     String       @db.Uuid
+  role                                        project_role
+  invited_by                                  String?      @db.Uuid
+  membership_is_active                        Boolean      @default(true)
+  joined_at                                   DateTime     @default(now()) @db.Timestamptz(6)
+  created_at                                  DateTime     @default(now()) @db.Timestamptz(6)
+  updated_at                                  DateTime     @default(now()) @db.Timestamptz(6)
+  deleted_at                                  DateTime?    @db.Timestamptz(6)
+  deleted_by                                  String?      @db.Uuid
+  users_project_memberships_deleted_byTousers users?       @relation("project_memberships_deleted_byTousers", fields: [deleted_by], references: [user_id], onUpdate: NoAction)
+  users_project_memberships_invited_byTousers users?       @relation("project_memberships_invited_byTousers", fields: [invited_by], references: [user_id], onUpdate: NoAction)
+  projects                                    projects     @relation(fields: [project_id], references: [project_id], onDelete: Cascade, onUpdate: NoAction)
+  users_project_memberships_user_idTousers    users        @relation("project_memberships_user_idTousers", fields: [user_id], references: [user_id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([project_id, user_id])
+}
+
+model project_requirements {
+  requirement_id                               String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  project_id                                   String          @db.Uuid
+  title                                        String
+  description                                  String?
+  priority                                     priority_level? @default(medium)
+  is_done                                      Boolean         @default(false)
+  created_by                                   String?         @db.Uuid
+  created_at                                   DateTime        @default(now()) @db.Timestamptz(6)
+  done_by                                      String?         @db.Uuid
+  done_at                                      DateTime?       @db.Timestamptz(6)
+  deleted_at                                   DateTime?       @db.Timestamptz(6)
+  deleted_by                                   String?         @db.Uuid
+  users_project_requirements_created_byTousers users?          @relation("project_requirements_created_byTousers", fields: [created_by], references: [user_id], onUpdate: NoAction)
+  users_project_requirements_deleted_byTousers users?          @relation("project_requirements_deleted_byTousers", fields: [deleted_by], references: [user_id], onUpdate: NoAction)
+  users_project_requirements_done_byTousers    users?          @relation("project_requirements_done_byTousers", fields: [done_by], references: [user_id], onUpdate: NoAction)
+  projects                                     projects        @relation(fields: [project_id], references: [project_id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model projects {
+  project_id                         String                 @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  site_id                            String                 @db.Uuid
+  project_check_id                   String                 @unique
+  project_name                       String
+  project_description                String?
+  slug                               String?
+  project_status                     project_status         @default(active)
+  created_by                         String?                @db.Uuid
+  completed_at                       DateTime?              @db.Timestamptz(6)
+  completed_by                       String?                @db.Uuid
+  created_at                         DateTime               @default(now()) @db.Timestamptz(6)
+  updated_at                         DateTime               @default(now()) @db.Timestamptz(6)
+  deleted_at                         DateTime?              @db.Timestamptz(6)
+  deleted_by                         String?                @db.Uuid
+  is_private                         Boolean                @default(false)
+  application_bugs                   application_bugs[]
+  issues                             issues[]
+  project_assets                     project_assets[]
+  project_memberships                project_memberships[]
+  project_requirements               project_requirements[]
+  users_projects_completed_byTousers users?                 @relation("projects_completed_byTousers", fields: [completed_by], references: [user_id], onUpdate: NoAction)
+  users_projects_created_byTousers   users?                 @relation("projects_created_byTousers", fields: [created_by], references: [user_id], onUpdate: NoAction)
+  users_projects_deleted_byTousers   users?                 @relation("projects_deleted_byTousers", fields: [deleted_by], references: [user_id], onUpdate: NoAction)
+  sites                              sites                  @relation(fields: [site_id], references: [site_id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([site_id, project_name])
+}
+
+model site_assets {
+  site_asset_id                        String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  site_id                              String     @db.Uuid
+  uploaded_by                          String?    @db.Uuid
+  asset_type                           asset_type
+  file_name                            String
+  mime_type                            String?
+  byte_size                            BigInt?
+  storage_key                          String
+  checksum                             String?
+  metadata                             Json?      @default("{}")
+  is_active                            Boolean    @default(true)
+  created_at                           DateTime   @default(now()) @db.Timestamptz(6)
+  updated_at                           DateTime   @default(now()) @db.Timestamptz(6)
+  deleted_at                           DateTime?  @db.Timestamptz(6)
+  deleted_by                           String?    @db.Uuid
+  users_site_assets_deleted_byTousers  users?     @relation("site_assets_deleted_byTousers", fields: [deleted_by], references: [user_id], onUpdate: NoAction)
+  sites                                sites      @relation(fields: [site_id], references: [site_id], onDelete: Cascade, onUpdate: NoAction)
+  users_site_assets_uploaded_byTousers users?     @relation("site_assets_uploaded_byTousers", fields: [uploaded_by], references: [user_id], onUpdate: NoAction)
+}
+
+model site_memberships {
+  site_membership_id                       String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  site_id                                  String    @db.Uuid
+  user_id                                  String    @db.Uuid
+  role                                     site_role
+  invited_by                               String?   @db.Uuid
+  membership_is_active                     Boolean   @default(true)
+  joined_at                                DateTime  @default(now()) @db.Timestamptz(6)
+  created_at                               DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at                               DateTime  @default(now()) @db.Timestamptz(6)
+  deleted_at                               DateTime? @db.Timestamptz(6)
+  deleted_by                               String?   @db.Uuid
+  users_site_memberships_deleted_byTousers users?    @relation("site_memberships_deleted_byTousers", fields: [deleted_by], references: [user_id], onUpdate: NoAction)
+  users_site_memberships_invited_byTousers users?    @relation("site_memberships_invited_byTousers", fields: [invited_by], references: [user_id], onUpdate: NoAction)
+  sites                                    sites     @relation(fields: [site_id], references: [site_id], onDelete: Cascade, onUpdate: NoAction)
+  users_site_memberships_user_idTousers    users     @relation("site_memberships_user_idTousers", fields: [user_id], references: [user_id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([site_id, user_id])
+}
+
+model sites {
+  site_id                       String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  org_id                        String             @db.Uuid
+  site_name                     String
+  site_slug                     String
+  site_status                   site_status        @default(active)
+  created_by                    String?            @db.Uuid
+  created_at                    DateTime           @default(now()) @db.Timestamptz(6)
+  updated_at                    DateTime           @default(now()) @db.Timestamptz(6)
+  deleted_at                    DateTime?          @db.Timestamptz(6)
+  deleted_by                    String?            @db.Uuid
+  is_private                    Boolean            @default(false)
+  projects                      projects[]
+  site_assets                   site_assets[]
+  site_memberships              site_memberships[]
+  users_sites_created_byTousers users?             @relation("sites_created_byTousers", fields: [created_by], references: [user_id], onUpdate: NoAction)
+  users_sites_deleted_byTousers users?             @relation("sites_deleted_byTousers", fields: [deleted_by], references: [user_id], onUpdate: NoAction)
+  organizations                 organizations      @relation(fields: [org_id], references: [org_id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([org_id, site_slug])
+}
+
+model system_audit_logs {
+  audit_id    String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  actor_type  actor_type
+  actor_id    String     @db.Uuid
+  entity_type String
+  entity_id   String     @db.Uuid
+  action_type String
+  old_value   Json?
+  new_value   Json?
+  created_at  DateTime   @default(now()) @db.Timestamptz(6)
+}
+
+model users {
+  user_id                                                             String                     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_name                                                           String
+  user_last_name                                                      String?
+  user_display_name                                                   String?
+  user_email                                                          String                     @unique @db.Citext
+  user_password                                                       String
+  user_is_active                                                      Boolean                    @default(true)
+  last_login_at                                                       DateTime?                  @db.Timestamptz(6)
+  user_friendship_code                                                String                     @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  metadata                                                            Json?                      @default("{}")
+  created_at                                                          DateTime                   @default(now()) @db.Timestamptz(6)
+  updated_at                                                          DateTime                   @default(now()) @db.Timestamptz(6)
+  deleted_at                                                          DateTime?                  @db.Timestamptz(6)
+  deleted_by                                                          String?                    @db.Uuid
+  email_verified_at                                                   DateTime?                  @db.Timestamptz(6)
+  email_verification_token                                            String?
+  password_reset_token                                                String?
+  password_reset_expires_at                                           DateTime?                  @db.Timestamptz(6)
+  two_factor_secret                                                   String?
+  two_factor_enabled                                                  Boolean?                   @default(false)
+  last_password_change_at                                             DateTime?                  @default(now()) @db.Timestamptz(6)
+  token_version                                                       Int?                       @default(1)
+  application_bugs                                                    application_bugs[]
+  invitations_invitations_invited_byTousers                           invitations[]              @relation("invitations_invited_byTousers")
+  invitations_invitations_invited_user_idTousers                      invitations[]              @relation("invitations_invited_user_idTousers")
+  issue_activity                                                      issue_activity[]
+  issue_assets_issue_assets_deleted_byTousers                         issue_assets[]             @relation("issue_assets_deleted_byTousers")
+  issue_assets_issue_assets_uploaded_byTousers                        issue_assets[]             @relation("issue_assets_uploaded_byTousers")
+  issue_memberships_issue_memberships_deleted_byTousers               issue_memberships[]        @relation("issue_memberships_deleted_byTousers")
+  issue_memberships_issue_memberships_user_idTousers                  issue_memberships[]        @relation("issue_memberships_user_idTousers")
+  issues_issues_assignee_idTousers                                    issues[]                   @relation("issues_assignee_idTousers")
+  issues_issues_deleted_byTousers                                     issues[]                   @relation("issues_deleted_byTousers")
+  issues_issues_reporter_idTousers                                    issues[]                   @relation("issues_reporter_idTousers")
+  notifications                                                       notifications[]
+  organization_assets_organization_assets_deleted_byTousers           organization_assets[]      @relation("organization_assets_deleted_byTousers")
+  organization_assets_organization_assets_uploaded_byTousers          organization_assets[]      @relation("organization_assets_uploaded_byTousers")
+  organization_memberships_organization_memberships_deleted_byTousers organization_memberships[] @relation("organization_memberships_deleted_byTousers")
+  organization_memberships_organization_memberships_invited_byTousers organization_memberships[] @relation("organization_memberships_invited_byTousers")
+  organization_memberships_organization_memberships_user_idTousers    organization_memberships[] @relation("organization_memberships_user_idTousers")
+  organizations_organizations_created_byTousers                       organizations[]            @relation("organizations_created_byTousers")
+  organizations_organizations_deleted_byTousers                       organizations[]            @relation("organizations_deleted_byTousers")
+  project_assets_project_assets_deleted_byTousers                     project_assets[]           @relation("project_assets_deleted_byTousers")
+  project_assets_project_assets_uploaded_byTousers                    project_assets[]           @relation("project_assets_uploaded_byTousers")
+  project_memberships_project_memberships_deleted_byTousers           project_memberships[]      @relation("project_memberships_deleted_byTousers")
+  project_memberships_project_memberships_invited_byTousers           project_memberships[]      @relation("project_memberships_invited_byTousers")
+  project_memberships_project_memberships_user_idTousers              project_memberships[]      @relation("project_memberships_user_idTousers")
+  project_requirements_project_requirements_created_byTousers         project_requirements[]     @relation("project_requirements_created_byTousers")
+  project_requirements_project_requirements_deleted_byTousers         project_requirements[]     @relation("project_requirements_deleted_byTousers")
+  project_requirements_project_requirements_done_byTousers            project_requirements[]     @relation("project_requirements_done_byTousers")
+  projects_projects_completed_byTousers                               projects[]                 @relation("projects_completed_byTousers")
+  projects_projects_created_byTousers                                 projects[]                 @relation("projects_created_byTousers")
+  projects_projects_deleted_byTousers                                 projects[]                 @relation("projects_deleted_byTousers")
+  site_assets_site_assets_deleted_byTousers                           site_assets[]              @relation("site_assets_deleted_byTousers")
+  site_assets_site_assets_uploaded_byTousers                          site_assets[]              @relation("site_assets_uploaded_byTousers")
+  site_memberships_site_memberships_deleted_byTousers                 site_memberships[]         @relation("site_memberships_deleted_byTousers")
+  site_memberships_site_memberships_invited_byTousers                 site_memberships[]         @relation("site_memberships_invited_byTousers")
+  site_memberships_site_memberships_user_idTousers                    site_memberships[]         @relation("site_memberships_user_idTousers")
+  sites_sites_created_byTousers                                       sites[]                    @relation("sites_created_byTousers")
+  sites_sites_deleted_byTousers                                       sites[]                    @relation("sites_deleted_byTousers")
+  users                                                               users?                     @relation("usersTousers", fields: [deleted_by], references: [user_id], onUpdate: NoAction)
+  other_users                                                         users[]                    @relation("usersTousers")
+}
+
+enum actor_type {
+  tenant_user
+  platform_user
+}
+
+enum asset_type {
+  file
+  image
+}
+
+enum audit_action {
+  U
+  I
+  D
+}
+
+enum bug_status {
+  open
+  acknowledged
+  investigating
+  fixed
+  rejected
+}
+
+enum issue_priority {
+  lowest
+  low
+  medium
+  high
+  highest
+}
+
+enum issue_role {
+  contributor
+  reviewer
+  watcher
+}
+
+enum issue_status {
+  open
+  in_progress
+  in_review
+  fixed
+  rejected
+  closed
+}
+
+enum issue_type {
+  task
+  bug
+  story
+  epic
+}
+
+enum org_role {
+  owner
+  admin
+  member
+  viewer
+}
+
+enum org_status {
+  active
+  completed
+  archived
+}
+
+enum platform_role {
+  super_admin
+  support_admin
+  billing_admin
+}
+
+enum priority_level {
+  low
+  medium
+  high
+  critical
+}
+
+enum project_role {
+  project_admin
+  contributor
+  reviewer
+  viewer
+}
+
+enum project_status {
+  active
+  completed
+  archived
+}
+
+enum site_role {
+  admin
+  contrubitor
+  viewer
+}
+
+enum site_status {
+  active
+  archived
+  suspended
+}
