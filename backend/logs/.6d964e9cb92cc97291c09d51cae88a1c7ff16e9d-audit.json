@@ -59,6 +59,16 @@
             "date": 1780218412442,
             "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-05-31.log",
             "hash": "237ee4a9624242a45af70ec89ac34ed6a3112ee2881e6f04ef1e3a4af87916ec"
+        },
+        {
+            "date": 1780311351981,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-06-01.log",
+            "hash": "8ae2d7e33855af1f71fac9fcbf136883c07700a3e5e11b71088095948ab1c8f7"
+        },
+        {
+            "date": 1780401837051,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-06-02.log",
+            "hash": "877a0222aafc894bda5e76b50ee1bb580f835feca739f044258c74106edf1ea6"
         }
     ],
     "hashType": "sha256"

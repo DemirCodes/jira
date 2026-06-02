@@ -5,7 +5,7 @@ import { AppError, ErrorCodes } from '../utils/errorCodes';
 import { log } from '../utils/logger';
 import { isValidUUID } from '../utils/regexValidator';
 
-// CREATE
+// ==================== CREATE ====================
 export const create = async (req: Request, res: Response): Promise<void> => {
     try {
         const userId = req.userId!;
@@ -26,8 +26,9 @@ export const create = async (req: Request, res: Response): Promise<void> => {
         // Yetki kontrolü
         await authService.requireOrgAdminOrOwner(userId, org_id);
 
+        // userId parametresi eklendi
         const invitationId = await invitationService.createInvitation(
-            org_id, friendshipCode, entity_type, role, entity_id
+            org_id, friendshipCode, entity_type as any, role, entity_id, userId
         );
         res.status(201).json({ invitation_id: invitationId });
     } catch (error: any) {
@@ -40,15 +41,19 @@ export const create = async (req: Request, res: Response): Promise<void> => {
     }
 };
 
-// ACCEPT
+// ==================== ACCEPT ====================
 export const accept = async (req: Request, res: Response): Promise<void> => {
     try {
+        const userId = req.userId!;
         const { invitation_id } = req.body;
+        
         if (!invitation_id) {
             res.status(400).json({ error: 'invitation_id is required' });
             return;
         }
-        await invitationService.acceptInvitation(invitation_id);
+        
+        // userId parametresi eklendi
+        await invitationService.acceptInvitation(invitation_id, userId);
         res.json({ message: 'Invitation accepted' });
     } catch (error: any) {
         if (error instanceof AppError) {
@@ -59,15 +64,19 @@ export const accept = async (req: Request, res: Response): Promise<void> => {
     }
 };
 
-// REJECT
+// ==================== REJECT ====================
 export const reject = async (req: Request, res: Response): Promise<void> => {
     try {
+        const userId = req.userId!;
         const { invitation_id } = req.body;
+        
         if (!invitation_id) {
             res.status(400).json({ error: 'invitation_id is required' });
             return;
         }
-        await invitationService.rejectInvitation(invitation_id);
+        
+        // userId parametresi eklendi
+        await invitationService.rejectInvitation(invitation_id, userId);
         res.json({ message: 'Invitation rejected' });
     } catch (error: any) {
         if (error instanceof AppError) {
@@ -78,15 +87,19 @@ export const reject = async (req: Request, res: Response): Promise<void> => {
     }
 };
 
-// CANCEL
+// ==================== CANCEL ====================
 export const cancel = async (req: Request, res: Response): Promise<void> => {
     try {
+        const userId = req.userId!;
         const { invitation_id } = req.body;
+        
         if (!invitation_id) {
             res.status(400).json({ error: 'invitation_id is required' });
             return;
         }
-        await invitationService.cancelInvitation(invitation_id);
+        
+        // userId parametresi eklendi
+        await invitationService.cancelInvitation(invitation_id, userId);
         res.json({ message: 'Invitation cancelled' });
     } catch (error: any) {
         if (error instanceof AppError) {
@@ -97,10 +110,13 @@ export const cancel = async (req: Request, res: Response): Promise<void> => {
     }
 };
 
-// LIST (kullanıcının kendi davetleri)
+// ==================== LIST (kullanıcının kendi davetleri) ====================
 export const listMyInvitations = async (req: Request, res: Response): Promise<void> => {
     try {
-        const invitations = await invitationService.getPendingInvitationsForUser();
+        const userId = req.userId!;
+        
+        // userId parametresi eklendi
+        const invitations = await invitationService.getPendingInvitationsForUser(userId);
         res.json(invitations);
     } catch (error: any) {
         if (error instanceof AppError) {
@@ -111,7 +127,7 @@ export const listMyInvitations = async (req: Request, res: Response): Promise<vo
     }
 };
 
-// LIST (organizasyonun bekleyen davetleri - admin/owner)
+// ==================== LIST (organizasyonun bekleyen davetleri) ====================
 export const listOrgInvitations = async (req: Request, res: Response): Promise<void> => {
     try {
         const { orgId } = req.params;
@@ -124,7 +140,8 @@ export const listOrgInvitations = async (req: Request, res: Response): Promise<v
         // Yetki: org admin/owner
         await authService.requireOrgAdminOrOwner(userId, orgId);
 
-        const invitations = await invitationService.getPendingInvitationsForOrg(orgId);
+        // userId parametresi eklendi
+        const invitations = await invitationService.getPendingInvitationsForOrg(orgId, userId);
         res.json(invitations);
     } catch (error: any) {
         if (error instanceof AppError) {

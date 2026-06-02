@@ -1,19 +1,18 @@
 /**
- * AUTH MIDDLEWARE (GÜVENLİK GELİŞTİRİLMİŞ - FINAL)
- * 
- * JWT token'ı doğrular ve RLS için current_user_id set eder.
- * 
- * Güvenlik önlemleri:
+ * AUTH MIDDLEWARE (GÜVENLİK GELİŞTİRİLMİŞ - K8S SCALABLE - FINAL)
+ * * JWT token'ı doğrular ve RLS için current_user_id set eder.
+ * * Güvenlik önlemleri:
  * 1. Bearer token formatı kontrolü
  * 2. Token uzunluğu kontrolü (DoS koruması)
  * 3. XSS koruması (userId sanitize)
- * 4. Rate limiting entegrasyonu (IP + token bazlı)
+ * 4. Redis tabanlı Rate Limiting (IP bazlı - Ölçeklenebilir)
  * 5. Audit log (GDPR uyumlu)
- * 6. Token blacklist desteği
+ * 6. Redis tabanlı Token Blacklist
  * 7. Device fingerprint eşleştirme
  * 8. Token version ile revocation (şifre değişikliği)
  * 9. Algorithm restriction (HS256 only)
  * 10. Production'da detaylı log kapatma
+ * 11. KRİTİK: Session Bleeding Koruması (req.dbClient üzerinden Transaction scope RLS)
  */
 
 import { Request, Response, NextFunction } from 'express';
@@ -23,18 +22,15 @@ import { tenantPool } from '../db/tenantPool';
 import { log } from '../utils/logger';
 import { sanitizeInput, containsDangerousChars, isValidUUID } from '../utils/regexValidator';
 
+// Redis bağlantısını doğru şekilde içeri alıyoruz
+import { getRedisClient } from '../cache/redis';
+const redisClient = getRedisClient();
+
 // ============================================
 // KONFİGÜRASYON
 // ============================================
 const isProduction = process.env.NODE_ENV === 'production';
-const RATE_LIMIT_WINDOW = 60 * 1000; // 1 dakika
 const RATE_LIMIT_MAX = 100; // Dakikada maksimum istek
-
-// Rate limiting için memory store (production'da Redis kullan)
-const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
-
-// Token blacklist için memory store (production'da Redis kullan)
-const tokenBlacklist = new Map<string, number>();
 
 declare global {
     namespace Express {
@@ -47,6 +43,7 @@ declare global {
                 tokenVersion?: number;
             };
             deviceFingerprint?: string;
+            dbClient?: any; // RLS güvenliği için isteğe özel DB Client
         }
     }
 }
@@ -65,24 +62,18 @@ interface JwtPayload {
 // ============================================
 
 /**
- * Rate limiting kontrolü (IP bazlı - daha güvenli)
+ * Rate limiting kontrolü (Redis IP bazlı - daha güvenli ve ölçeklenebilir)
  */
-const checkRateLimit = (key: string): { allowed: boolean; remaining: number } => {
-    const now = Date.now();
-    const record = rateLimitStore.get(key);
+const checkRateLimitRedis = async (ip: string): Promise<boolean> => {
+    const key = `rate_limit:${ip}`;
+    const current = await redisClient.incr(key);
 
-    if (!record || now > record.resetTime) {
-        rateLimitStore.set(key, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
-        return { allowed: true, remaining: RATE_LIMIT_MAX - 1 };
+    if (current === 1) {
+        // Anahtarın ömrünü 60 saniye (1 dakika) olarak ayarla
+        await redisClient.expire(key, 60);
     }
 
-    if (record.count >= RATE_LIMIT_MAX) {
-        return { allowed: false, remaining: 0 };
-    }
-
-    record.count++;
-    rateLimitStore.set(key, record);
-    return { allowed: true, remaining: RATE_LIMIT_MAX - record.count };
+    return current <= RATE_LIMIT_MAX;
 };
 
 /**
@@ -133,21 +124,6 @@ const checkTokenVersion = async (userId: string, tokenVersion: number): Promise<
     }
 };
 
-// Test ortamında bu döngüyü başlatma ki Jest kapanabilsin
-if (process.env.NODE_ENV !== 'test') {
-    setInterval(() => {
-        const now = Date.now();
-
-        for (const [key, record] of rateLimitStore.entries()) {
-            if (now > record.resetTime) rateLimitStore.delete(key);
-        }
-
-        for (const [token, expiry] of tokenBlacklist.entries()) {
-            if (now > expiry) tokenBlacklist.delete(token);
-        }
-    }, 60 * 60 * 1000);
-}
-
 // ============================================
 // ANA AUTH MIDDLEWARE
 // ============================================
@@ -160,13 +136,12 @@ export const authMiddleware = async (
 
     try {
         // ============================================
-        // 1. RATE LIMITING (IP BAZLI - ÖNCE)
+        // 1. RATE LIMITING (REDIS BAZLI)
         // ============================================
-        const ipRateLimitKey = `rate:${req.ip}`;
-        const ipRateLimit = checkRateLimit(ipRateLimitKey);
+        const isAllowed = await checkRateLimitRedis(req.ip || 'unknown');
 
-        if (!ipRateLimit.allowed) {
-            log.warn('Rate limit exceeded (IP)', { ip: req.ip, path: req.path });
+        if (!isAllowed) {
+            log.warn('Rate limit exceeded (Redis IP)', { ip: req.ip, path: req.path });
             res.status(429).json({ error: 'Too many requests. Please try again later.' });
             return;
         }
@@ -199,9 +174,10 @@ export const authMiddleware = async (
         }
 
         // ============================================
-        // 3. TOKEN BLACKLIST KONTROLÜ
+        // 3. TOKEN BLACKLIST KONTROLÜ (REDIS BAZLI)
         // ============================================
-        if (tokenBlacklist.has(token)) {
+        const isBlacklisted = await redisClient.get(`blacklist:${token}`);
+        if (isBlacklisted) {
             log.warn('Auth failed: Token blacklisted', { ip: req.ip });
             res.status(401).json({ error: 'Token has been revoked. Please login again.' });
             return;
@@ -217,7 +193,6 @@ export const authMiddleware = async (
                 algorithms: ['HS256']
             }) as JwtPayload;
         } catch (error: any) {
-            // Production'da detaylı hata mesajı verme
             if (isProduction) {
                 if (error.name === 'TokenExpiredError') {
                     res.status(401).json({ error: 'Token expired' });
@@ -225,7 +200,6 @@ export const authMiddleware = async (
                     res.status(401).json({ error: 'Invalid token' });
                 }
             } else {
-                // Development'da detaylı hata
                 if (error.name === 'TokenExpiredError') {
                     log.warn('Auth failed: Token expired', { ip: req.ip });
                     res.status(401).json({ error: 'Token expired. Please refresh your token.' });
@@ -249,7 +223,6 @@ export const authMiddleware = async (
             return;
         }
 
-        // UUID format kontrolü
         if (!isValidUUID(decoded.userId)) {
             const safeUserId = safeLogUserId(decoded.userId);
             log.warn('Auth failed: Invalid UUID format in token', { userId: safeUserId });
@@ -257,9 +230,8 @@ export const authMiddleware = async (
             return;
         }
 
-        // Token yaşı kontrolü (opsiyonel)
-        const now = Math.floor(Date.now() / 1000);
-        const tokenAge = now - decoded.iat;
+        const nowSeconds = Math.floor(Date.now() / 1000);
+        const tokenAge = nowSeconds - decoded.iat;
         const maxTokenAge = 30 * 24 * 60 * 60; // 30 gün
 
         if (tokenAge > maxTokenAge) {
@@ -276,8 +248,12 @@ export const authMiddleware = async (
         if (!isValidVersion) {
             const safeUserId = safeLogUserId(decoded.userId);
             log.warn('Auth failed: Token version mismatch - revoked', { userId: safeUserId });
-            // Token'ı blacklist'e ekle
-            tokenBlacklist.set(token, decoded.exp * 1000);
+
+            // Token'ı kalan ömrü kadar Redis'e ekle
+            const expiresIn = Math.max(0, decoded.exp - nowSeconds);
+            if (expiresIn > 0) {
+                await redisClient.setex(`blacklist:${token}`, expiresIn, 'revoked');
+            }
             res.status(401).json({ error: 'Session expired. Please login again.' });
             return;
         }
@@ -304,7 +280,7 @@ export const authMiddleware = async (
         }
 
         // ============================================
-        // 8. DEVICE FINGERPRINT KONTROLÜ (Opsiyonel)
+        // 8. DEVICE FINGERPRINT KONTROLÜ
         // ============================================
         const currentFingerprint = generateDeviceFingerprint(req);
         if (decoded.fingerprint && decoded.fingerprint !== currentFingerprint) {
@@ -314,22 +290,44 @@ export const authMiddleware = async (
                 expected: decoded.fingerprint,
                 actual: currentFingerprint
             });
-            // Token'ı blacklist'e ekle
-            tokenBlacklist.set(token, decoded.exp * 1000);
+
+            // Cihaz uyuşmazlığında da token'ı blacklist'e al
+            const expiresIn = Math.max(0, decoded.exp - nowSeconds);
+            if (expiresIn > 0) {
+                await redisClient.setex(`blacklist:${token}`, expiresIn, 'revoked');
+            }
             res.status(401).json({ error: 'Device mismatch. Please login again.' });
             return;
         }
 
         // ============================================
-        // 9. RLS İÇİN current_user_id SET ET
+        // 9. RLS İÇİN İZOLE BAĞLANTI (SESSION BLEEDING FIX)
         // ============================================
-        // 9. RLS İÇİN current_user_id SET ET (set_config ile - DÜZELTİLDİ)
+        const dbClient = await tenantPool.connect();
+        let connectionReleased = false;
+
+        const releaseConnection = () => {
+            if (!connectionReleased) {
+                dbClient.release();
+                connectionReleased = true;
+            }
+        };
+
         try {
-            // set_config fonksiyonu parametre alır ve daha güvenlidir
-            await tenantPool.query('SELECT set_config($1, $2, false)', ['app.current_user_id', sanitizedUserId]);
-            await tenantPool.query('SELECT set_config($1, $2, false)', ['app.current_token_iat', decoded.iat.toString()]);
-            await tenantPool.query('SELECT set_config($1, $2, false)', ['app.current_token_version', decoded.tokenVersion.toString()]);
+            // true parametresi ile ayarları SADECE bu transaction/local scope için uyguluyoruz
+            await dbClient.query('SELECT set_config($1, $2, true)', ['app.current_user_id', sanitizedUserId]);
+            await dbClient.query('SELECT set_config($1, $2, true)', ['app.current_token_iat', decoded.iat.toString()]);
+            await dbClient.query('SELECT set_config($1, $2, true)', ['app.current_token_version', decoded.tokenVersion.toString()]);
+
+            // Route/Service katmanında RLS işlemleri için req üzerinden bu client kullanılacak
+            req.dbClient = dbClient;
+
+            // İstek başarıyla bittiğinde veya bağlantı koptuğunda pool'a geri bırak
+            res.on('finish', releaseConnection);
+            res.on('close', releaseConnection);
+
         } catch (error: any) {
+            releaseConnection();
             log.error('Auth failed: RLS setup error', {
                 error: error.message,
                 userId: safeLogUserId(sanitizedUserId)
@@ -367,7 +365,7 @@ export const authMiddleware = async (
 
     } catch (error: any) {
         // ============================================
-        // 12. BEKLENMEYEN HATALAR (Production'da detaysız)
+        // 12. BEKLENMEYEN HATALAR
         // ============================================
         const duration = Date.now() - startTime;
 
@@ -394,26 +392,30 @@ export const authMiddleware = async (
 /**
  * Token'ı blacklist'e ekle (logout işleminde kullanılır)
  */
-export const blacklistToken = (token: string, expiresAt?: number): void => {
-    const expiry = expiresAt || Date.now() + 7 * 24 * 60 * 60 * 1000;
-    tokenBlacklist.set(token, expiry);
-    log.info('Token blacklisted', { tokenHash: token.substring(0, 10) });
+export const blacklistToken = async (token: string, expiresAt?: number): Promise<void> => {
+    const expirySeconds = expiresAt
+        ? Math.floor((expiresAt - Date.now()) / 1000)
+        : 7 * 24 * 60 * 60; // Default 7 gün
+
+    if (expirySeconds > 0) {
+        await redisClient.setex(`blacklist:${token}`, expirySeconds, 'revoked');
+        log.info('Token blacklisted', { tokenHash: token.substring(0, 10) });
+    }
 };
 
 /**
  * Token blacklist'te mi kontrol et
  */
-export const isTokenBlacklisted = (token: string): boolean => {
-    return tokenBlacklist.has(token);
+export const isTokenBlacklisted = async (token: string): Promise<boolean> => {
+    const result = await redisClient.get(`blacklist:${token}`);
+    return result !== null;
 };
 
 /**
  * Kullanıcının tüm token'larını revoke et (şifre değişikliği, hesap ele geçirme vb.)
- * KRİTİK: Şifre değişince BUNU ÇAĞIR!
  */
 export const revokeAllUserTokens = async (userId: string): Promise<void> => {
     try {
-        // Token version'ı artır - bu tüm eski token'ları geçersiz kılar
         const result = await tenantPool.query(
             'UPDATE users SET token_version = COALESCE(token_version, 0) + 1, updated_at = NOW() WHERE user_id = $1 RETURNING token_version',
             [userId]
@@ -426,14 +428,6 @@ export const revokeAllUserTokens = async (userId: string): Promise<void> => {
             userId: safeUserId,
             newTokenVersion: newVersion
         });
-
-        // Opsiyonel: Kullanıcının aktif token'larını memory'den temizle
-        // Not: Production'da Redis kullanıyorsanız, burada Redis'ten de temizleyin
-        for (const [token, expiry] of tokenBlacklist.entries()) {
-            // Token'dan userId çıkarmak mümkün değil, bu yüzden sadece log
-            // Gerçek çözüm: Redis'te userId -> token list tutmak
-        }
-
     } catch (error) {
         log.error('Failed to revoke user tokens', { userId: safeLogUserId(userId), error });
         throw new Error('Token revocation failed');
