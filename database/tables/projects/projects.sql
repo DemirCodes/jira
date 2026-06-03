@@ -15,3 +15,8 @@ CREATE TABLE public.projects (
     deleted_by uuid,
     is_private boolean DEFAULT false NOT NULL
 );
+
+ALTER TABLE projects 
+ADD COLUMN project_key VARCHAR(10) UNIQUE, -- API, FRONT, MOBIL vb. (Unique olmalı!)
+ADD COLUMN board_type VARCHAR(20) DEFAULT 'scrum',
+ADD COLUMN icon_url TEXT;

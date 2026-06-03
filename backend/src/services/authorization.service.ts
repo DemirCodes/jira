@@ -49,6 +49,47 @@ const isOrgOwnerOrAdmin = async (userId: string, orgId: string): Promise<boolean
     return (result.rowCount ?? 0) > 0;
 };
 
+
+// ORG OWNER SİTE İÇERİSİNDE ADMİN OLMASI GEREKMEKTE 
+const isSiteAdmin = async (userId: string, siteId: string): Promise<boolean> => {
+    const result = await tenantPool.query(
+        `SELECT 1 FROM site_memberships 
+         WHERE site_id = $1 
+           AND user_id = $2 
+           AND role = 'admin'
+           AND membership_is_active = true 
+           AND deleted_at IS NULL`,
+        [siteId, userId]
+    );
+    return (result.rowCount ?? 0) > 0;
+};
+
+const isProjectAdmin = async (userId: string, projectId: string): Promise<boolean> => {
+    const result = await tenantPool.query(
+        `SELECT 1 FROM project_memberships 
+         WHERE project_id = $1 
+           AND user_id = $2 
+           AND role = 'project_admin'
+           AND membership_is_active = true 
+           AND deleted_at IS NULL`,
+        [projectId, userId]
+    );
+    return (result.rowCount ?? 0) > 0;
+};
+
+const isIssueAdmin = async (userId: string, issueId: string): Promise<boolean> => {
+    const result = await tenantPool.query(
+        `SELECT 1 FROM issue_memberships 
+         WHERE issue_id = $1 
+           AND user_id = $2 
+           AND role = 'contributor' -- Issue admin rolü yok, contributor kabul ediliyor
+           AND membership_is_active = true 
+           AND deleted_at IS NULL`,
+        [issueId, userId]
+    );
+    return (result.rowCount ?? 0) > 0;
+}
+
 const getEntityOrgId = async (tableName: string, columnName: string, entityId: string): Promise<string | null> => {
     let query = '';
     if (tableName === 'projects') {
@@ -79,6 +120,28 @@ const getDeniedMessage = (baseMessage: string, currentRole: string, allowedRoles
 };
 
 // ==================== MERKEZİ YETKİ KONTROL MOTORU ====================
+
+
+// YENİ: Proje oluşturma yetkisi - Senin kuralın (Org Owner OR (Org Admin + Site Admin))
+// Site Admin de kendi başına oluşturabilsin istiyorsan burayı genişletebiliriz.
+export const checkProjectCreationPermission = async (userId: string, siteId: string): Promise<void> => {
+    const siteOrgId = await getSiteOrgId(siteId);
+    if (!siteOrgId) throw new AppError(ErrorCodes.SITE_NOT_FOUND);
+
+    // 1. Org Owner mı?
+    const orgRole = await getOrganizationRole(userId, siteOrgId);
+    if (orgRole === OrgRole.OWNER) return;
+
+    // 2. Site Admin mi?
+    const siteRole = await getSiteRole(userId, siteId);
+    if (siteRole === SiteRole.ADMIN) return;
+
+    // 3. Org Admin + Site Admin birleşimi mi?
+    if (orgRole === OrgRole.ADMIN && siteRole === SiteRole.ADMIN) return;
+
+    throw new AppError(ErrorCodes.PROJECT_PERMISSION_DENIED, 'Permission denied: Insufficient privileges to create project');
+};
+
 
 const enforcePermission = async (
     tableName: MembershipTable,
@@ -338,4 +401,52 @@ export const isIssueReporter = async (userId: string, issueId: string): Promise<
         [issueId, userId]
     );
     return (result.rowCount ?? 0) > 0;
+};
+
+// ============================================================================
+// YENİ: PROJECT AUTH & ACCESS POLICY (KATI KURALLAR)
+// ============================================================================
+
+export const ProjectAccessPolicy = {
+    
+    // 1. CREATE: [SiteAdmin]
+    async validateCreation(userId: string, siteId: string): Promise<void> {
+        const result = await tenantPool.query(
+            `SELECT 1 FROM site_memberships 
+             WHERE site_id = $1 AND user_id = $2 AND role = 'admin' 
+             AND membership_is_active = true AND deleted_at IS NULL`,
+            [siteId, userId]
+        );
+        
+        if ((result.rowCount ?? 0) === 0) {
+            throw new AppError(ErrorCodes.PROJECT_PERMISSION_DENIED, 'Sadece Site Admin proje oluşturabilir.');
+        }
+    },
+
+    // 2 & 3. READ (List & Get): [SiteMember]
+    async validateRead(userId: string, siteId: string): Promise<void> {
+        const result = await tenantPool.query(
+            `SELECT 1 FROM site_memberships 
+             WHERE site_id = $1 AND user_id = $2 
+             AND membership_is_active = true AND deleted_at IS NULL`,
+            [siteId, userId]
+        );
+
+        if ((result.rowCount ?? 0) === 0) {
+            throw new AppError(ErrorCodes.PROJECT_PERMISSION_DENIED, 'Bu siteye ve projelere erişiminiz yok.');
+        }
+    },
+
+    // 4, 5, 6, 7. WRITE/MANAGE (Update, Delete, Restore, Invite): [ProjectAdmin]
+    async validateManagement(userId: string, projectId: string): Promise<void> {
+        const result = await tenantPool.query(
+            `SELECT 1 FROM project_memberships 
+             WHERE project_id = $1 AND user_id = $2 AND role = 'project_admin'`,
+            [projectId, userId]
+        );
+
+        if ((result.rowCount ?? 0) === 0) {
+            throw new AppError(ErrorCodes.PROJECT_PERMISSION_DENIED, 'Bu işlem için Proje Admin yetkiniz olması gerekmektedir.');
+        }
+    }
 };

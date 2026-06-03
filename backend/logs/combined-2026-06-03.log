@@ -1,0 +1,353 @@
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 14:37:56"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 14:37:56"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 14:37:56"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 14:37:56"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 14:38:23"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 14:38:23"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 14:38:23"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 14:38:23"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 14:39:10"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 14:39:10"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 14:39:10"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-06-03 14:39:10"}
+{"duration":"4ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 14:39:10","userId":"44a5cb6a-a138-478e-ab09-8b589bdee99e"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":260,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create project","siteId":"59d9e304-1b29-4c15-ae68-8c3ca7dd823d","timestamp":"2026-06-03 14:39:10"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 14:39:10","userId":"44a5cb6a-a138-478e-ab09-8b589bdee99e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 14:39:10","userId":"895ed22a-cbcf-43af-bcd1-3377b4f9afba"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 14:39:10","userId":"895ed22a-cbcf-43af-bcd1-3377b4f9afba"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 14:39:10","userId":"44a5cb6a-a138-478e-ab09-8b589bdee99e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/undefined","timestamp":"2026-06-03 14:39:10","userId":"44a5cb6a-a138-478e-ab09-8b589bdee99e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/3e079d15-e8d3-4b4b-ae9f-7a91dbe9163b","timestamp":"2026-06-03 14:39:10","userId":"44a5cb6a-a138-478e-ab09-8b589bdee99e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 14:39:10","userId":"44a5cb6a-a138-478e-ab09-8b589bdee99e"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 14:39:10","userId":"895ed22a-cbcf-43af-bcd1-3377b4f9afba"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 14:39:10","userId":"895ed22a-cbcf-43af-bcd1-3377b4f9afba"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 14:39:10","userId":"44a5cb6a-a138-478e-ab09-8b589bdee99e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 14:39:10","userId":"44a5cb6a-a138-478e-ab09-8b589bdee99e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/undefined/restore","timestamp":"2026-06-03 14:39:10","userId":"44a5cb6a-a138-478e-ab09-8b589bdee99e"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 14:39:10"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 15:56:07"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 15:56:07"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 15:56:07"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-06-03 15:56:07"}
+{"duration":"5ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 15:56:07","userId":"96745f04-3a2f-4395-bd02-56ae5a53e8cf"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":260,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create project","siteId":"8ab4ca1e-948f-4e61-a8a7-11f8b4f03ac8","timestamp":"2026-06-03 15:56:07"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 15:56:07","userId":"96745f04-3a2f-4395-bd02-56ae5a53e8cf"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 15:56:07","userId":"581d0b82-39de-4515-ae95-e41f52184b34"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 15:56:07","userId":"581d0b82-39de-4515-ae95-e41f52184b34"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 15:56:07","userId":"96745f04-3a2f-4395-bd02-56ae5a53e8cf"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/undefined","timestamp":"2026-06-03 15:56:07","userId":"96745f04-3a2f-4395-bd02-56ae5a53e8cf"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/97f1f678-3270-4d46-b41d-729de8c25e8e","timestamp":"2026-06-03 15:56:07","userId":"96745f04-3a2f-4395-bd02-56ae5a53e8cf"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 15:56:07","userId":"96745f04-3a2f-4395-bd02-56ae5a53e8cf"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 15:56:07","userId":"581d0b82-39de-4515-ae95-e41f52184b34"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 15:56:07","userId":"581d0b82-39de-4515-ae95-e41f52184b34"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 15:56:07","userId":"96745f04-3a2f-4395-bd02-56ae5a53e8cf"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 15:56:07","userId":"96745f04-3a2f-4395-bd02-56ae5a53e8cf"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/undefined/restore","timestamp":"2026-06-03 15:56:07","userId":"96745f04-3a2f-4395-bd02-56ae5a53e8cf"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 15:56:07"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 15:58:58"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 15:58:58"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 15:58:58"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-06-03 15:58:58"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 15:58:58","userId":"61fb4906-87e1-46bf-ba74-f30415f917bc"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":260,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create project","siteId":"2a3b3507-c5c3-4df7-9638-540cc367633b","timestamp":"2026-06-03 15:58:58"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 15:58:58","userId":"61fb4906-87e1-46bf-ba74-f30415f917bc"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 15:58:58","userId":"b88569d9-2020-4b80-a967-f165c1d1cf53"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 15:58:58","userId":"b88569d9-2020-4b80-a967-f165c1d1cf53"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 15:58:58","userId":"61fb4906-87e1-46bf-ba74-f30415f917bc"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/undefined","timestamp":"2026-06-03 15:58:58","userId":"61fb4906-87e1-46bf-ba74-f30415f917bc"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/470a4567-dcac-4a3a-8f9a-e368a79b1ca8","timestamp":"2026-06-03 15:58:58","userId":"61fb4906-87e1-46bf-ba74-f30415f917bc"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 15:58:58","userId":"61fb4906-87e1-46bf-ba74-f30415f917bc"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 15:58:58","userId":"b88569d9-2020-4b80-a967-f165c1d1cf53"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 15:58:58","userId":"b88569d9-2020-4b80-a967-f165c1d1cf53"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 15:58:58","userId":"61fb4906-87e1-46bf-ba74-f30415f917bc"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 15:58:58","userId":"61fb4906-87e1-46bf-ba74-f30415f917bc"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/undefined/restore","timestamp":"2026-06-03 15:58:58","userId":"61fb4906-87e1-46bf-ba74-f30415f917bc"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 15:58:58"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 16:02:18"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 16:02:18"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 16:02:18"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 16:03:17"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 16:03:17"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 16:03:17"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 16:04:25"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 16:04:25"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 16:04:25"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-06-03 16:04:25"}
+{"duration":"5ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 16:04:25","userId":"e9e98d42-c156-49f9-9fbe-5aab3f215a63"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":260,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create project","siteId":"72fa36fe-3b00-4e32-aabb-13b39901fa4e","timestamp":"2026-06-03 16:04:25"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 16:04:25","userId":"e9e98d42-c156-49f9-9fbe-5aab3f215a63"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 16:04:25","userId":"717bfdaf-e390-4ed3-b0f1-64478a1fe454"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 16:04:25","userId":"717bfdaf-e390-4ed3-b0f1-64478a1fe454"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 16:04:25","userId":"e9e98d42-c156-49f9-9fbe-5aab3f215a63"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/undefined","timestamp":"2026-06-03 16:04:25","userId":"e9e98d42-c156-49f9-9fbe-5aab3f215a63"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/6371297e-5091-435d-90bc-6bb8fa1bcc9a","timestamp":"2026-06-03 16:04:25","userId":"e9e98d42-c156-49f9-9fbe-5aab3f215a63"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 16:04:25","userId":"e9e98d42-c156-49f9-9fbe-5aab3f215a63"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 16:04:25","userId":"717bfdaf-e390-4ed3-b0f1-64478a1fe454"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 16:04:25","userId":"717bfdaf-e390-4ed3-b0f1-64478a1fe454"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 16:04:25","userId":"e9e98d42-c156-49f9-9fbe-5aab3f215a63"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 16:04:25","userId":"e9e98d42-c156-49f9-9fbe-5aab3f215a63"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/undefined/restore","timestamp":"2026-06-03 16:04:25","userId":"e9e98d42-c156-49f9-9fbe-5aab3f215a63"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 16:04:25"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 16:42:41"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 16:42:41"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 16:42:41"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-06-03 16:42:41"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 16:42:41","userId":"53ba534e-2a37-4520-95cf-c65257136306"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":260,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create project","siteId":"54b1a632-0fba-4ef1-a568-b2cc542eb437","timestamp":"2026-06-03 16:42:41"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 16:42:41","userId":"53ba534e-2a37-4520-95cf-c65257136306"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 16:42:41","userId":"66106891-c7c5-4339-9cba-657a555d8568"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 16:42:41","userId":"66106891-c7c5-4339-9cba-657a555d8568"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 16:42:41","userId":"53ba534e-2a37-4520-95cf-c65257136306"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/undefined","timestamp":"2026-06-03 16:42:41","userId":"53ba534e-2a37-4520-95cf-c65257136306"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/f81a9a0d-7313-4935-80b7-b69f9f69b1be","timestamp":"2026-06-03 16:42:41","userId":"53ba534e-2a37-4520-95cf-c65257136306"}
+{"duration":"4ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 16:42:41","userId":"53ba534e-2a37-4520-95cf-c65257136306"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 16:42:41","userId":"66106891-c7c5-4339-9cba-657a555d8568"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 16:42:41","userId":"66106891-c7c5-4339-9cba-657a555d8568"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 16:42:41","userId":"53ba534e-2a37-4520-95cf-c65257136306"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 16:42:41","userId":"53ba534e-2a37-4520-95cf-c65257136306"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/undefined/restore","timestamp":"2026-06-03 16:42:41","userId":"53ba534e-2a37-4520-95cf-c65257136306"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 16:42:41"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 16:43:04"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 16:43:04"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 16:43:04"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-06-03 16:43:04"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 16:43:04","userId":"1149de5f-6b3d-49bf-95f0-91b2d1dd776e"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":260,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create project","siteId":"95b12cf9-1afb-4227-bb3a-1d264e861150","timestamp":"2026-06-03 16:43:04"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 16:43:04","userId":"1149de5f-6b3d-49bf-95f0-91b2d1dd776e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 16:43:04","userId":"9a6846a6-1476-4e7e-87b2-71328980d37e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 16:43:04","userId":"9a6846a6-1476-4e7e-87b2-71328980d37e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 16:43:04","userId":"1149de5f-6b3d-49bf-95f0-91b2d1dd776e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/undefined","timestamp":"2026-06-03 16:43:04","userId":"1149de5f-6b3d-49bf-95f0-91b2d1dd776e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/6b857c86-9ead-4927-aa8f-8b25ca95d55c","timestamp":"2026-06-03 16:43:04","userId":"1149de5f-6b3d-49bf-95f0-91b2d1dd776e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 16:43:04","userId":"1149de5f-6b3d-49bf-95f0-91b2d1dd776e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 16:43:04","userId":"9a6846a6-1476-4e7e-87b2-71328980d37e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 16:43:04","userId":"9a6846a6-1476-4e7e-87b2-71328980d37e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 16:43:04","userId":"1149de5f-6b3d-49bf-95f0-91b2d1dd776e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 16:43:04","userId":"1149de5f-6b3d-49bf-95f0-91b2d1dd776e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/undefined/restore","timestamp":"2026-06-03 16:43:05","userId":"1149de5f-6b3d-49bf-95f0-91b2d1dd776e"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 16:43:05"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 21:54:58"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 21:54:58"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 21:54:58"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-06-03 21:54:58"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 21:54:58","userId":"c879f534-a457-42d8-ad6b-937a69c7dda1"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":260,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create project","siteId":"68dc6a27-d1b3-4202-9d55-f29309aa5846","timestamp":"2026-06-03 21:54:58"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 21:54:58","userId":"c879f534-a457-42d8-ad6b-937a69c7dda1"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 21:54:58","userId":"f067d9e8-b803-4d22-bda5-1ef1cf7e58a2"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 21:54:58","userId":"f067d9e8-b803-4d22-bda5-1ef1cf7e58a2"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 21:54:58","userId":"c879f534-a457-42d8-ad6b-937a69c7dda1"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/undefined","timestamp":"2026-06-03 21:54:58","userId":"c879f534-a457-42d8-ad6b-937a69c7dda1"}
+{"duration":"5ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/180003d0-1ac1-4867-84e6-eb10bb46f4e9","timestamp":"2026-06-03 21:54:58","userId":"c879f534-a457-42d8-ad6b-937a69c7dda1"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 21:54:58","userId":"c879f534-a457-42d8-ad6b-937a69c7dda1"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 21:54:58","userId":"f067d9e8-b803-4d22-bda5-1ef1cf7e58a2"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 21:54:58","userId":"f067d9e8-b803-4d22-bda5-1ef1cf7e58a2"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 21:54:58","userId":"c879f534-a457-42d8-ad6b-937a69c7dda1"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 21:54:58","userId":"c879f534-a457-42d8-ad6b-937a69c7dda1"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/undefined/restore","timestamp":"2026-06-03 21:54:58","userId":"c879f534-a457-42d8-ad6b-937a69c7dda1"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 21:54:58"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 21:58:10"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 21:58:10"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 21:58:10"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-06-03 21:58:10"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 21:58:10","userId":"b7485633-2ca5-4246-aa01-2e003126a2a4"}
+{"error":{"code":"42703","file":"parse_target.c","length":132,"line":"1066","name":"error","position":"46","routine":"checkInsertTargets","severity":"ERROR"},"level":"error","message":"Failed to create project","siteId":"0ba7e8ab-da84-47ce-8284-89321837e367","timestamp":"2026-06-03 21:58:10"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 21:58:10","userId":"b7485633-2ca5-4246-aa01-2e003126a2a4"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 21:58:10","userId":"0b9e5b58-f522-411a-985e-0f7edead40cd"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 21:58:10","userId":"0b9e5b58-f522-411a-985e-0f7edead40cd"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 21:58:10","userId":"b7485633-2ca5-4246-aa01-2e003126a2a4"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/undefined","timestamp":"2026-06-03 21:58:10","userId":"b7485633-2ca5-4246-aa01-2e003126a2a4"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/e66193de-8434-465a-bef4-034ddc7fef73","timestamp":"2026-06-03 21:58:10","userId":"b7485633-2ca5-4246-aa01-2e003126a2a4"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 21:58:10","userId":"b7485633-2ca5-4246-aa01-2e003126a2a4"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 21:58:10","userId":"0b9e5b58-f522-411a-985e-0f7edead40cd"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 21:58:10","userId":"0b9e5b58-f522-411a-985e-0f7edead40cd"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 21:58:10","userId":"b7485633-2ca5-4246-aa01-2e003126a2a4"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 21:58:10","userId":"b7485633-2ca5-4246-aa01-2e003126a2a4"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/undefined/restore","timestamp":"2026-06-03 21:58:10","userId":"b7485633-2ca5-4246-aa01-2e003126a2a4"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 21:58:10"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 21:59:48"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 21:59:48"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 21:59:48"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-06-03 21:59:48"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 21:59:48","userId":"cced0fcc-2727-4f08-abc6-88562c487154"}
+{"error":{"code":"42703","file":"parse_target.c","length":125,"line":"1066","name":"error","position":"32","routine":"checkInsertTargets","severity":"ERROR"},"level":"error","message":"Failed to create project","siteId":"f0a28607-9351-43cb-b4c3-d1ab8ca08560","timestamp":"2026-06-03 21:59:48"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 21:59:48","userId":"cced0fcc-2727-4f08-abc6-88562c487154"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 21:59:48","userId":"660fce2a-b7c8-478b-9a3c-8b611fd0089d"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 21:59:48","userId":"660fce2a-b7c8-478b-9a3c-8b611fd0089d"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 21:59:48","userId":"cced0fcc-2727-4f08-abc6-88562c487154"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/undefined","timestamp":"2026-06-03 21:59:48","userId":"cced0fcc-2727-4f08-abc6-88562c487154"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/32556bd7-55a5-43c2-9c74-9dfb75174e30","timestamp":"2026-06-03 21:59:48","userId":"cced0fcc-2727-4f08-abc6-88562c487154"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 21:59:48","userId":"cced0fcc-2727-4f08-abc6-88562c487154"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 21:59:48","userId":"660fce2a-b7c8-478b-9a3c-8b611fd0089d"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 21:59:48","userId":"660fce2a-b7c8-478b-9a3c-8b611fd0089d"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 21:59:48","userId":"cced0fcc-2727-4f08-abc6-88562c487154"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 21:59:48","userId":"cced0fcc-2727-4f08-abc6-88562c487154"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/undefined/restore","timestamp":"2026-06-03 21:59:48","userId":"cced0fcc-2727-4f08-abc6-88562c487154"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 21:59:48"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 22:11:56"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 22:11:56"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 22:11:56"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-06-03 22:11:56"}
+{"duration":"5ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:11:56","userId":"b8b7b001-9cbd-4387-ba47-030b4e7ff902"}
+{"error":{"code":"42703","file":"parse_target.c","length":125,"line":"1066","name":"error","position":"32","routine":"checkInsertTargets","severity":"ERROR"},"level":"error","message":"Failed to create project","siteId":"d197c36b-2bc7-40d1-aef6-dda3d49705b4","timestamp":"2026-06-03 22:11:56"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:11:56","userId":"b8b7b001-9cbd-4387-ba47-030b4e7ff902"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:11:56","userId":"5ca0602a-6460-40ad-acc4-0c9dd4f90638"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 22:11:56","userId":"5ca0602a-6460-40ad-acc4-0c9dd4f90638"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 22:11:56","userId":"b8b7b001-9cbd-4387-ba47-030b4e7ff902"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/undefined","timestamp":"2026-06-03 22:11:56","userId":"b8b7b001-9cbd-4387-ba47-030b4e7ff902"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/1168dd2c-71ca-487f-ac3e-376ee0c30a5a","timestamp":"2026-06-03 22:11:56","userId":"b8b7b001-9cbd-4387-ba47-030b4e7ff902"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 22:11:56","userId":"b8b7b001-9cbd-4387-ba47-030b4e7ff902"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-03 22:11:56","userId":"5ca0602a-6460-40ad-acc4-0c9dd4f90638"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 22:11:56","userId":"5ca0602a-6460-40ad-acc4-0c9dd4f90638"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 22:11:56","userId":"b8b7b001-9cbd-4387-ba47-030b4e7ff902"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-03 22:11:56","userId":"b8b7b001-9cbd-4387-ba47-030b4e7ff902"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/undefined/restore","timestamp":"2026-06-03 22:11:56","userId":"b8b7b001-9cbd-4387-ba47-030b4e7ff902"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 22:11:56"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 22:13:58"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 22:13:58"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 22:13:58"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-06-03 22:13:58"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:13:58","userId":"ce383282-1687-4340-a104-f6f12b234b2c"}
+{"level":"info","message":"Project created","projectId":"017b01ca-0893-465a-8be4-6b654df1b434","projectKey":"ECOMM","siteId":"0c30e95a-856a-4a82-a7a5-0b322560f4ab","timestamp":"2026-06-03 22:13:58"}
+{"duration":"4ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:13:58","userId":"ce383282-1687-4340-a104-f6f12b234b2c"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:13:58","userId":"0709ecc4-2f48-444d-9f13-41f34d70f830"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 22:13:58","userId":"0709ecc4-2f48-444d-9f13-41f34d70f830"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 22:13:58","userId":"ce383282-1687-4340-a104-f6f12b234b2c"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/017b01ca-0893-465a-8be4-6b654df1b434","timestamp":"2026-06-03 22:13:58","userId":"ce383282-1687-4340-a104-f6f12b234b2c"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/01566664-edaf-4d75-ae6c-68d3ebe36a6b","timestamp":"2026-06-03 22:13:58","userId":"ce383282-1687-4340-a104-f6f12b234b2c"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/017b01ca-0893-465a-8be4-6b654df1b434","timestamp":"2026-06-03 22:13:58","userId":"ce383282-1687-4340-a104-f6f12b234b2c"}
+{"error":{"code":"42703","file":"parse_relation.c","length":104,"line":"3722","name":"error","position":"59","routine":"errorMissingColumn","severity":"ERROR"},"level":"error","message":"Failed to update project","projectId":"017b01ca-0893-465a-8be4-6b654df1b434","timestamp":"2026-06-03 22:13:58"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/017b01ca-0893-465a-8be4-6b654df1b434","timestamp":"2026-06-03 22:13:58","userId":"0709ecc4-2f48-444d-9f13-41f34d70f830"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/017b01ca-0893-465a-8be4-6b654df1b434","timestamp":"2026-06-03 22:13:58","userId":"0709ecc4-2f48-444d-9f13-41f34d70f830"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/017b01ca-0893-465a-8be4-6b654df1b434","timestamp":"2026-06-03 22:13:58","userId":"ce383282-1687-4340-a104-f6f12b234b2c"}
+{"level":"info","message":"Project deleted","projectId":"017b01ca-0893-465a-8be4-6b654df1b434","timestamp":"2026-06-03 22:13:58"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/017b01ca-0893-465a-8be4-6b654df1b434","timestamp":"2026-06-03 22:13:58","userId":"ce383282-1687-4340-a104-f6f12b234b2c"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/017b01ca-0893-465a-8be4-6b654df1b434/restore","timestamp":"2026-06-03 22:13:58","userId":"ce383282-1687-4340-a104-f6f12b234b2c"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 22:13:58"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 22:31:36"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 22:31:36"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 22:31:36"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-06-03 22:31:37"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:31:37","userId":"52b70098-9bf5-4419-a33a-c6c1045e94b4"}
+{"level":"info","message":"Project created","projectId":"72e6e6f2-906a-4c82-b9d2-671fa5fca60f","projectKey":"ECOMM","siteId":"8ea41b14-824a-47be-aa4b-44d3ea350c1b","timestamp":"2026-06-03 22:31:37"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:31:37","userId":"52b70098-9bf5-4419-a33a-c6c1045e94b4"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:31:37","userId":"aa883043-0ea7-402a-ae9a-ea8215c49381"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 22:31:37","userId":"aa883043-0ea7-402a-ae9a-ea8215c49381"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 22:31:37","userId":"52b70098-9bf5-4419-a33a-c6c1045e94b4"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/72e6e6f2-906a-4c82-b9d2-671fa5fca60f","timestamp":"2026-06-03 22:31:37","userId":"52b70098-9bf5-4419-a33a-c6c1045e94b4"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/a74db75d-dcfe-43ca-a86c-4daa7e17f971","timestamp":"2026-06-03 22:31:37","userId":"52b70098-9bf5-4419-a33a-c6c1045e94b4"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/72e6e6f2-906a-4c82-b9d2-671fa5fca60f","timestamp":"2026-06-03 22:31:37","userId":"52b70098-9bf5-4419-a33a-c6c1045e94b4"}
+{"error":{"code":"42703","file":"parse_relation.c","length":104,"line":"3722","name":"error","position":"59","routine":"errorMissingColumn","severity":"ERROR"},"level":"error","message":"Failed to update project","projectId":"72e6e6f2-906a-4c82-b9d2-671fa5fca60f","timestamp":"2026-06-03 22:31:37"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/72e6e6f2-906a-4c82-b9d2-671fa5fca60f","timestamp":"2026-06-03 22:31:37","userId":"aa883043-0ea7-402a-ae9a-ea8215c49381"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/72e6e6f2-906a-4c82-b9d2-671fa5fca60f","timestamp":"2026-06-03 22:31:37","userId":"aa883043-0ea7-402a-ae9a-ea8215c49381"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/72e6e6f2-906a-4c82-b9d2-671fa5fca60f","timestamp":"2026-06-03 22:31:37","userId":"52b70098-9bf5-4419-a33a-c6c1045e94b4"}
+{"level":"info","message":"Project deleted","projectId":"72e6e6f2-906a-4c82-b9d2-671fa5fca60f","timestamp":"2026-06-03 22:31:37"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/72e6e6f2-906a-4c82-b9d2-671fa5fca60f","timestamp":"2026-06-03 22:31:37","userId":"52b70098-9bf5-4419-a33a-c6c1045e94b4"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/72e6e6f2-906a-4c82-b9d2-671fa5fca60f/restore","timestamp":"2026-06-03 22:31:37","userId":"52b70098-9bf5-4419-a33a-c6c1045e94b4"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 22:31:37"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 22:32:13"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 22:32:13"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 22:32:13"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-06-03 22:32:13"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:32:13","userId":"25b5ce12-b5da-4d7a-a34c-f5fdbdbf3777"}
+{"level":"info","message":"Project created","projectId":"dba69281-161a-4527-9e0f-433059eb406b","projectKey":"ECOMM","siteId":"8fd2d955-7819-4ead-829c-3acc163b6531","timestamp":"2026-06-03 22:32:13"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:32:13","userId":"25b5ce12-b5da-4d7a-a34c-f5fdbdbf3777"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:32:13","userId":"ec302fc5-a826-436e-b069-3e54d4c5206a"}
+{"duration":"5ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 22:32:13","userId":"ec302fc5-a826-436e-b069-3e54d4c5206a"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 22:32:13","userId":"25b5ce12-b5da-4d7a-a34c-f5fdbdbf3777"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/dba69281-161a-4527-9e0f-433059eb406b","timestamp":"2026-06-03 22:32:13","userId":"25b5ce12-b5da-4d7a-a34c-f5fdbdbf3777"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/96260e9f-cb3d-4553-b26c-1382d7e8df6e","timestamp":"2026-06-03 22:32:13","userId":"25b5ce12-b5da-4d7a-a34c-f5fdbdbf3777"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/dba69281-161a-4527-9e0f-433059eb406b","timestamp":"2026-06-03 22:32:13","userId":"25b5ce12-b5da-4d7a-a34c-f5fdbdbf3777"}
+{"error":{"code":"42703","file":"parse_relation.c","length":104,"line":"3722","name":"error","position":"59","routine":"errorMissingColumn","severity":"ERROR"},"level":"error","message":"Failed to update project","projectId":"dba69281-161a-4527-9e0f-433059eb406b","timestamp":"2026-06-03 22:32:13"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/dba69281-161a-4527-9e0f-433059eb406b","timestamp":"2026-06-03 22:32:13","userId":"ec302fc5-a826-436e-b069-3e54d4c5206a"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/dba69281-161a-4527-9e0f-433059eb406b","timestamp":"2026-06-03 22:32:13","userId":"ec302fc5-a826-436e-b069-3e54d4c5206a"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/dba69281-161a-4527-9e0f-433059eb406b","timestamp":"2026-06-03 22:32:13","userId":"25b5ce12-b5da-4d7a-a34c-f5fdbdbf3777"}
+{"level":"info","message":"Project deleted","projectId":"dba69281-161a-4527-9e0f-433059eb406b","timestamp":"2026-06-03 22:32:13"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/dba69281-161a-4527-9e0f-433059eb406b","timestamp":"2026-06-03 22:32:13","userId":"25b5ce12-b5da-4d7a-a34c-f5fdbdbf3777"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/dba69281-161a-4527-9e0f-433059eb406b/restore","timestamp":"2026-06-03 22:32:13","userId":"25b5ce12-b5da-4d7a-a34c-f5fdbdbf3777"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 22:32:13"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 22:33:10"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 22:33:10"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 22:33:10"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-06-03 22:33:10"}
+{"duration":"6ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:33:10","userId":"980a0ece-84df-42c6-8eb8-09df3e827cd1"}
+{"level":"info","message":"Project created","projectId":"b5740cdb-fda5-437b-aff2-a57ce12c34d3","projectKey":"ECOMM","siteId":"3464827b-6a99-4e7d-a130-34020664f381","timestamp":"2026-06-03 22:33:10"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:33:10","userId":"980a0ece-84df-42c6-8eb8-09df3e827cd1"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:33:10","userId":"bdc923c7-1c5e-44d4-be29-4b5d293e8ad0"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 22:33:10","userId":"bdc923c7-1c5e-44d4-be29-4b5d293e8ad0"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 22:33:10","userId":"980a0ece-84df-42c6-8eb8-09df3e827cd1"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/b5740cdb-fda5-437b-aff2-a57ce12c34d3","timestamp":"2026-06-03 22:33:10","userId":"980a0ece-84df-42c6-8eb8-09df3e827cd1"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/32d13eec-a3f7-47d8-a4ed-24e96b8d1a11","timestamp":"2026-06-03 22:33:10","userId":"980a0ece-84df-42c6-8eb8-09df3e827cd1"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/b5740cdb-fda5-437b-aff2-a57ce12c34d3","timestamp":"2026-06-03 22:33:10","userId":"980a0ece-84df-42c6-8eb8-09df3e827cd1"}
+{"error":{"code":"42703","file":"parse_relation.c","length":104,"line":"3722","name":"error","position":"59","routine":"errorMissingColumn","severity":"ERROR"},"level":"error","message":"Failed to update project","projectId":"b5740cdb-fda5-437b-aff2-a57ce12c34d3","timestamp":"2026-06-03 22:33:11"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/b5740cdb-fda5-437b-aff2-a57ce12c34d3","timestamp":"2026-06-03 22:33:11","userId":"bdc923c7-1c5e-44d4-be29-4b5d293e8ad0"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/b5740cdb-fda5-437b-aff2-a57ce12c34d3","timestamp":"2026-06-03 22:33:11","userId":"bdc923c7-1c5e-44d4-be29-4b5d293e8ad0"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/b5740cdb-fda5-437b-aff2-a57ce12c34d3","timestamp":"2026-06-03 22:33:11","userId":"980a0ece-84df-42c6-8eb8-09df3e827cd1"}
+{"level":"info","message":"Project deleted","projectId":"b5740cdb-fda5-437b-aff2-a57ce12c34d3","timestamp":"2026-06-03 22:33:11"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/b5740cdb-fda5-437b-aff2-a57ce12c34d3","timestamp":"2026-06-03 22:33:11","userId":"980a0ece-84df-42c6-8eb8-09df3e827cd1"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/b5740cdb-fda5-437b-aff2-a57ce12c34d3/restore","timestamp":"2026-06-03 22:33:11","userId":"980a0ece-84df-42c6-8eb8-09df3e827cd1"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 22:33:11"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 22:34:05"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 22:34:05"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 22:34:05"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-06-03 22:34:05"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:34:05","userId":"f6e0a265-c053-45b2-8c29-8c17226c6155"}
+{"level":"info","message":"Project created","projectId":"9070dce7-fb5b-4fc9-b88d-b0e706f026a5","projectKey":"ECOMM","siteId":"bd83cdbb-afc2-45d6-853a-d11c0afc9f48","timestamp":"2026-06-03 22:34:05"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:34:05","userId":"f6e0a265-c053-45b2-8c29-8c17226c6155"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:34:05","userId":"ee9d8a1e-62fd-4878-ba56-621b3e0c67e5"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 22:34:05","userId":"ee9d8a1e-62fd-4878-ba56-621b3e0c67e5"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 22:34:05","userId":"f6e0a265-c053-45b2-8c29-8c17226c6155"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/9070dce7-fb5b-4fc9-b88d-b0e706f026a5","timestamp":"2026-06-03 22:34:05","userId":"f6e0a265-c053-45b2-8c29-8c17226c6155"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/2d49aaae-6029-49f0-9ed8-cad4e68984af","timestamp":"2026-06-03 22:34:05","userId":"f6e0a265-c053-45b2-8c29-8c17226c6155"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/9070dce7-fb5b-4fc9-b88d-b0e706f026a5","timestamp":"2026-06-03 22:34:05","userId":"f6e0a265-c053-45b2-8c29-8c17226c6155"}
+{"level":"info","message":"Project updated","projectId":"9070dce7-fb5b-4fc9-b88d-b0e706f026a5","timestamp":"2026-06-03 22:34:05"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/9070dce7-fb5b-4fc9-b88d-b0e706f026a5","timestamp":"2026-06-03 22:34:05","userId":"ee9d8a1e-62fd-4878-ba56-621b3e0c67e5"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/9070dce7-fb5b-4fc9-b88d-b0e706f026a5","timestamp":"2026-06-03 22:34:05","userId":"ee9d8a1e-62fd-4878-ba56-621b3e0c67e5"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/9070dce7-fb5b-4fc9-b88d-b0e706f026a5","timestamp":"2026-06-03 22:34:05","userId":"f6e0a265-c053-45b2-8c29-8c17226c6155"}
+{"level":"info","message":"Project deleted","projectId":"9070dce7-fb5b-4fc9-b88d-b0e706f026a5","timestamp":"2026-06-03 22:34:05"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/9070dce7-fb5b-4fc9-b88d-b0e706f026a5","timestamp":"2026-06-03 22:34:05","userId":"f6e0a265-c053-45b2-8c29-8c17226c6155"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/9070dce7-fb5b-4fc9-b88d-b0e706f026a5/restore","timestamp":"2026-06-03 22:34:05","userId":"f6e0a265-c053-45b2-8c29-8c17226c6155"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 22:34:05"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 22:37:30"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 22:37:30"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 22:37:30"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-06-03 22:37:30"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:37:30","userId":"07d58a94-a411-46cf-b94e-e64b51596827"}
+{"level":"info","message":"Project created","projectId":"7fb2384d-b673-4d37-880d-a40609461205","projectKey":"ECOMM","siteId":"b21a2f87-366d-48a8-b54c-7ccf6c61acf3","timestamp":"2026-06-03 22:37:30"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:37:30","userId":"07d58a94-a411-46cf-b94e-e64b51596827"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:37:30","userId":"c9382c45-4483-488a-8de4-5176dc53be19"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 22:37:30","userId":"c9382c45-4483-488a-8de4-5176dc53be19"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 22:37:30","userId":"07d58a94-a411-46cf-b94e-e64b51596827"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/7fb2384d-b673-4d37-880d-a40609461205","timestamp":"2026-06-03 22:37:30","userId":"07d58a94-a411-46cf-b94e-e64b51596827"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/de4606de-98b7-42ff-b8a5-6ac303d231c9","timestamp":"2026-06-03 22:37:30","userId":"07d58a94-a411-46cf-b94e-e64b51596827"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/7fb2384d-b673-4d37-880d-a40609461205","timestamp":"2026-06-03 22:37:30","userId":"07d58a94-a411-46cf-b94e-e64b51596827"}
+{"level":"info","message":"Project updated","projectId":"7fb2384d-b673-4d37-880d-a40609461205","timestamp":"2026-06-03 22:37:30"}
+{"duration":"4ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/7fb2384d-b673-4d37-880d-a40609461205","timestamp":"2026-06-03 22:37:30","userId":"c9382c45-4483-488a-8de4-5176dc53be19"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/7fb2384d-b673-4d37-880d-a40609461205","timestamp":"2026-06-03 22:37:30","userId":"c9382c45-4483-488a-8de4-5176dc53be19"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/7fb2384d-b673-4d37-880d-a40609461205","timestamp":"2026-06-03 22:37:30","userId":"07d58a94-a411-46cf-b94e-e64b51596827"}
+{"level":"info","message":"Project deleted","projectId":"7fb2384d-b673-4d37-880d-a40609461205","timestamp":"2026-06-03 22:37:30"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/7fb2384d-b673-4d37-880d-a40609461205","timestamp":"2026-06-03 22:37:30","userId":"07d58a94-a411-46cf-b94e-e64b51596827"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/7fb2384d-b673-4d37-880d-a40609461205/restore","timestamp":"2026-06-03 22:37:30","userId":"07d58a94-a411-46cf-b94e-e64b51596827"}
+{"level":"info","message":"Project restored successfully","projectId":"7fb2384d-b673-4d37-880d-a40609461205","timestamp":"2026-06-03 22:37:30"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 22:37:30"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-03.log","timestamp":"2026-06-03 22:40:18"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-03.log","timestamp":"2026-06-03 22:40:18"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-03 22:40:18"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-06-03 22:40:18"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:40:18","userId":"0a374b8c-4652-490b-aaf9-3316e0ea21c3"}
+{"level":"info","message":"Project created","projectId":"f1abfe86-a066-4e55-85b0-3c3895bd270b","projectKey":"ECOMM","siteId":"4ecf7d51-a1f5-4fde-b6ed-66aa465f876d","timestamp":"2026-06-03 22:40:18"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:40:18","userId":"0a374b8c-4652-490b-aaf9-3316e0ea21c3"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-03 22:40:18","userId":"745015bd-1dda-4250-a073-44d61c324975"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 22:40:18","userId":"0a374b8c-4652-490b-aaf9-3316e0ea21c3"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-03 22:40:18","userId":"0a374b8c-4652-490b-aaf9-3316e0ea21c3"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/f1abfe86-a066-4e55-85b0-3c3895bd270b","timestamp":"2026-06-03 22:40:18","userId":"0a374b8c-4652-490b-aaf9-3316e0ea21c3"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/1bdb45c6-caac-4404-b37a-b26bda45f592","timestamp":"2026-06-03 22:40:18","userId":"0a374b8c-4652-490b-aaf9-3316e0ea21c3"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/f1abfe86-a066-4e55-85b0-3c3895bd270b","timestamp":"2026-06-03 22:40:18","userId":"0a374b8c-4652-490b-aaf9-3316e0ea21c3"}
+{"level":"info","message":"Project updated","projectId":"f1abfe86-a066-4e55-85b0-3c3895bd270b","timestamp":"2026-06-03 22:40:18"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/f1abfe86-a066-4e55-85b0-3c3895bd270b","timestamp":"2026-06-03 22:40:18","userId":"745015bd-1dda-4250-a073-44d61c324975"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/f1abfe86-a066-4e55-85b0-3c3895bd270b","timestamp":"2026-06-03 22:40:18","userId":"745015bd-1dda-4250-a073-44d61c324975"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/f1abfe86-a066-4e55-85b0-3c3895bd270b","timestamp":"2026-06-03 22:40:18","userId":"0a374b8c-4652-490b-aaf9-3316e0ea21c3"}
+{"level":"info","message":"Project deleted","projectId":"f1abfe86-a066-4e55-85b0-3c3895bd270b","timestamp":"2026-06-03 22:40:18"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/f1abfe86-a066-4e55-85b0-3c3895bd270b","timestamp":"2026-06-03 22:40:18","userId":"0a374b8c-4652-490b-aaf9-3316e0ea21c3"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/f1abfe86-a066-4e55-85b0-3c3895bd270b/restore","timestamp":"2026-06-03 22:40:18","userId":"0a374b8c-4652-490b-aaf9-3316e0ea21c3"}
+{"level":"info","message":"Project restored successfully","projectId":"f1abfe86-a066-4e55-85b0-3c3895bd270b","timestamp":"2026-06-03 22:40:18"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-03 22:40:18"}

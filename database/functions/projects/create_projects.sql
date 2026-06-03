@@ -44,50 +44,63 @@ WHERE
 ORDER BY 
     e.enumsortorder;
 
-
-create or replace function create_project(
+CREATE OR REPLACE FUNCTION create_project(
     p_site_id uuid,
     p_project_name text,
+    p_project_key text,
+    p_board_type text,
     p_project_description text default null,
     p_is_private boolean default false
 )
-returns uuid
-language plpgsql
-security definer
-set search_path = public
-as $$
-declare
+RETURNS uuid
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+DECLARE
     v_user_id uuid;
     v_org_id uuid;
     v_project_id uuid;
     v_project_name text;
+    v_project_key text;
+    v_board_type text;
     v_is_org_owner boolean;
     v_is_org_admin boolean;
     v_is_site_admin boolean;
-begin
+BEGIN
     -- 1. Kullanıcı kontrolü
     v_user_id := auth_current_user_id();
     
-    if v_user_id is null then
-        raise exception 'User not authenticated';
-    end if;
+    IF v_user_id IS NULL THEN
+        RAISE EXCEPTION 'User not authenticated';
+    END IF;
     
-    -- 2. Project name validasyonu
+    -- 2. Validasyonlar
     v_project_name := trim(p_project_name);
+    v_project_key := upper(trim(p_project_key));
+    v_board_type := trim(p_board_type);
     
-    if v_project_name is null or length(v_project_name) = 0 then
-        raise exception 'Project name cannot be empty';
-    end if;
+    IF v_project_name IS NULL OR length(v_project_name) = 0 THEN
+        RAISE EXCEPTION 'Project name cannot be empty';
+    END IF;
+
+    IF v_project_key IS NULL OR length(v_project_key) = 0 THEN
+        RAISE EXCEPTION 'Project key cannot be empty';
+    END IF;
+
+    IF v_board_type IS NULL OR length(v_board_type) = 0 THEN
+        RAISE EXCEPTION 'Board type cannot be empty';
+    END IF;
     
     -- 3. Site var mı ve organization ID'sini al
-    select org_id into v_org_id
-    from sites
-    where site_id = p_site_id
-        and deleted_at is null;
+    SELECT org_id INTO v_org_id
+    FROM sites
+    WHERE site_id = p_site_id
+        AND deleted_at IS NULL;
     
-    if v_org_id is null then
-        raise exception 'Site not found';
-    end if;
+    IF v_org_id IS NULL THEN
+        RAISE EXCEPTION 'Site not found';
+    END IF;
     
     -- 4. Yetki flag'lerini al
     v_is_org_owner := auth_is_org_owner(v_org_id);
@@ -95,32 +108,28 @@ begin
     v_is_site_admin := auth_is_site_admin(p_site_id);
     
     -- 5. Yetki kontrolü
-    -- Yetkisiz durumları kontrol et, yetkili durumlar otomatik geçer
-    if not (v_is_org_owner or (v_is_org_admin and v_is_site_admin)) then
-        -- Yetkili değil, neden yetkisiz olduğunu bul
-        if v_is_org_admin and not v_is_site_admin then
-            raise exception 'Permission denied: Org admin must be site admin to create a project';
-        else
-            raise exception 'Permission denied: Only org owner, org admin (with site admin), or site admin can create projects';
-        end if;
-    end if;
+    IF NOT (v_is_org_owner OR v_is_site_admin) THEN
+        RAISE EXCEPTION 'Permission denied: Only org owner or site admin can create projects';
+    END IF;
     
-    -- 6. Aynı site içinde aynı isimde proje var mı?
-    if exists (
-        select 1
-        from projects
-        where site_id = p_site_id
-            and project_name = v_project_name
-            and deleted_at is null
-    ) then
-        raise exception 'Project with name "%" already exists in this site', v_project_name;
-    end if;
+    -- 6. Aynı site içinde aynı isimde veya anahtarda proje var mı?
+    IF EXISTS (
+        SELECT 1
+        FROM projects
+        WHERE site_id = p_site_id
+            AND (project_name = v_project_name OR project_key = v_project_key)
+            AND deleted_at IS NULL
+    ) THEN
+        RAISE EXCEPTION 'Project with name "%" or key "%" already exists in this site', v_project_name, v_project_key;
+    END IF;
     
     -- 7. Proje oluştur
-    insert into projects (
+    INSERT INTO projects (
         site_id,
         project_check_id,
         project_name,
+        project_key,
+        board_type,
         project_description,
         slug,
         project_status,
@@ -129,10 +138,12 @@ begin
         created_at,
         updated_at
     )
-    values (
+    VALUES (
         p_site_id,
         encode(gen_random_bytes(6), 'hex'),  -- random check id
         v_project_name,
+        v_project_key,
+        v_board_type,
         p_project_description,
         lower(regexp_replace(v_project_name, '[^a-zA-Z0-9]', '-', 'g')),  -- slug oluştur
         'active',
@@ -141,10 +152,10 @@ begin
         now(),
         now()
     )
-    returning project_id into v_project_id;
+    RETURNING project_id INTO v_project_id;
     
     -- 8. Project membership - oluşturan kişiyi project_admin yap
-    insert into project_memberships (
+    INSERT INTO project_memberships (
         project_id,
         user_id,
         role,
@@ -154,7 +165,7 @@ begin
         created_at,
         updated_at
     )
-    values (
+    VALUES (
         v_project_id,
         v_user_id,
         'project_admin',
@@ -166,7 +177,7 @@ begin
     );
     
     -- 9. Audit log
-    insert into system_audit_logs (
+    INSERT INTO system_audit_logs (
         actor_type,
         actor_id,
         entity_type,
@@ -175,7 +186,7 @@ begin
         new_value,
         created_at
     )
-    values (
+    VALUES (
         'tenant_user',
         v_user_id,
         'project',
@@ -183,13 +194,15 @@ begin
         'CREATE',
         jsonb_build_object(
             'project_name', v_project_name,
+            'project_key', v_project_key,
+            'board_type', v_board_type,
             'site_id', p_site_id,
             'is_private', p_is_private
         ),
         now()
     );
     
-    return v_project_id;
+    RETURN v_project_id;
     
-end;
+END;
 $$;

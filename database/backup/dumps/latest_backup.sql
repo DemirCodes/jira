@@ -2,10 +2,12 @@
 -- PostgreSQL database dump
 --
 
-\restrict YpCkfHSLRgKmnILrJIf5bh2kuHM6dnVwmrcum4yuYpGTauIeV9EiiOCslZkrBbT
+\restrict GWNcwL6GDUqvDgHXS2erq5imFDy8IaFfRVhfAI74CEjOs7pCoXhFaFqdbnjQs78
 
--- Dumped from database version 15.18 (Debian 15.18-1.pgdg13+1)
--- Dumped by pg_dump version 15.18 (Debian 15.18-1.pgdg13+1)
+-- Dumped from database version 16.14 (Ubuntu 16.14-0ubuntu0.24.04.1)
+-- Dumped by pg_dump version 16.14 (Ubuntu 16.14-0ubuntu0.24.04.1)
+
+-- Started on 2026-06-03 22:05:12 +03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -19,6 +21,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
+-- TOC entry 3 (class 3079 OID 17237)
 -- Name: citext; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -26,6 +29,8 @@ CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA public;
 
 
 --
+-- TOC entry 4064 (class 0 OID 0)
+-- Dependencies: 3
 -- Name: EXTENSION citext; Type: COMMENT; Schema: -; Owner: 
 --
 
@@ -33,6 +38,7 @@ COMMENT ON EXTENSION citext IS 'data type for case-insensitive character strings
 
 
 --
+-- TOC entry 2 (class 3079 OID 17200)
 -- Name: pgcrypto; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -40,6 +46,8 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
 
 
 --
+-- TOC entry 4065 (class 0 OID 0)
+-- Dependencies: 2
 -- Name: EXTENSION pgcrypto; Type: COMMENT; Schema: -; Owner: 
 --
 
@@ -47,7 +55,8 @@ COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
 
 
 --
--- Name: actor_type; Type: TYPE; Schema: public; Owner: jira
+-- TOC entry 1047 (class 1247 OID 17484)
+-- Name: actor_type; Type: TYPE; Schema: public; Owner: postgres
 --
 
 CREATE TYPE public.actor_type AS ENUM (
@@ -56,10 +65,11 @@ CREATE TYPE public.actor_type AS ENUM (
 );
 
 
-ALTER TYPE public.actor_type OWNER TO jira;
+ALTER TYPE public.actor_type OWNER TO postgres;
 
 --
--- Name: asset_type; Type: TYPE; Schema: public; Owner: jira
+-- TOC entry 1068 (class 1247 OID 17550)
+-- Name: asset_type; Type: TYPE; Schema: public; Owner: postgres
 --
 
 CREATE TYPE public.asset_type AS ENUM (
@@ -68,10 +78,11 @@ CREATE TYPE public.asset_type AS ENUM (
 );
 
 
-ALTER TYPE public.asset_type OWNER TO jira;
+ALTER TYPE public.asset_type OWNER TO postgres;
 
 --
--- Name: audit_action; Type: TYPE; Schema: public; Owner: jira
+-- TOC entry 1038 (class 1247 OID 17364)
+-- Name: audit_action; Type: TYPE; Schema: public; Owner: postgres
 --
 
 CREATE TYPE public.audit_action AS ENUM (
@@ -81,10 +92,11 @@ CREATE TYPE public.audit_action AS ENUM (
 );
 
 
-ALTER TYPE public.audit_action OWNER TO jira;
+ALTER TYPE public.audit_action OWNER TO postgres;
 
 --
--- Name: bug_status; Type: TYPE; Schema: public; Owner: jira
+-- TOC entry 1044 (class 1247 OID 17472)
+-- Name: bug_status; Type: TYPE; Schema: public; Owner: postgres
 --
 
 CREATE TYPE public.bug_status AS ENUM (
@@ -96,10 +108,11 @@ CREATE TYPE public.bug_status AS ENUM (
 );
 
 
-ALTER TYPE public.bug_status OWNER TO jira;
+ALTER TYPE public.bug_status OWNER TO postgres;
 
 --
--- Name: issue_priority; Type: TYPE; Schema: public; Owner: jira
+-- TOC entry 1035 (class 1247 OID 17352)
+-- Name: issue_priority; Type: TYPE; Schema: public; Owner: postgres
 --
 
 CREATE TYPE public.issue_priority AS ENUM (
@@ -111,10 +124,11 @@ CREATE TYPE public.issue_priority AS ENUM (
 );
 
 
-ALTER TYPE public.issue_priority OWNER TO jira;
+ALTER TYPE public.issue_priority OWNER TO postgres;
 
 --
--- Name: issue_role; Type: TYPE; Schema: public; Owner: jira
+-- TOC entry 1056 (class 1247 OID 17510)
+-- Name: issue_role; Type: TYPE; Schema: public; Owner: postgres
 --
 
 CREATE TYPE public.issue_role AS ENUM (
@@ -124,10 +138,11 @@ CREATE TYPE public.issue_role AS ENUM (
 );
 
 
-ALTER TYPE public.issue_role OWNER TO jira;
+ALTER TYPE public.issue_role OWNER TO postgres;
 
 --
--- Name: issue_status; Type: TYPE; Schema: public; Owner: jira
+-- TOC entry 1062 (class 1247 OID 17526)
+-- Name: issue_status; Type: TYPE; Schema: public; Owner: postgres
 --
 
 CREATE TYPE public.issue_status AS ENUM (
@@ -140,10 +155,11 @@ CREATE TYPE public.issue_status AS ENUM (
 );
 
 
-ALTER TYPE public.issue_status OWNER TO jira;
+ALTER TYPE public.issue_status OWNER TO postgres;
 
 --
--- Name: issue_type; Type: TYPE; Schema: public; Owner: jira
+-- TOC entry 1032 (class 1247 OID 17343)
+-- Name: issue_type; Type: TYPE; Schema: public; Owner: postgres
 --
 
 CREATE TYPE public.issue_type AS ENUM (
@@ -154,10 +170,11 @@ CREATE TYPE public.issue_type AS ENUM (
 );
 
 
-ALTER TYPE public.issue_type OWNER TO jira;
+ALTER TYPE public.issue_type OWNER TO postgres;
 
 --
--- Name: org_role; Type: TYPE; Schema: public; Owner: jira
+-- TOC entry 1050 (class 1247 OID 17490)
+-- Name: org_role; Type: TYPE; Schema: public; Owner: postgres
 --
 
 CREATE TYPE public.org_role AS ENUM (
@@ -168,10 +185,11 @@ CREATE TYPE public.org_role AS ENUM (
 );
 
 
-ALTER TYPE public.org_role OWNER TO jira;
+ALTER TYPE public.org_role OWNER TO postgres;
 
 --
--- Name: org_status; Type: TYPE; Schema: public; Owner: jira
+-- TOC entry 1125 (class 1247 OID 18100)
+-- Name: org_status; Type: TYPE; Schema: public; Owner: postgres
 --
 
 CREATE TYPE public.org_status AS ENUM (
@@ -181,10 +199,11 @@ CREATE TYPE public.org_status AS ENUM (
 );
 
 
-ALTER TYPE public.org_status OWNER TO jira;
+ALTER TYPE public.org_status OWNER TO postgres;
 
 --
--- Name: platform_role; Type: TYPE; Schema: public; Owner: jira
+-- TOC entry 1041 (class 1247 OID 17464)
+-- Name: platform_role; Type: TYPE; Schema: public; Owner: postgres
 --
 
 CREATE TYPE public.platform_role AS ENUM (
@@ -194,10 +213,11 @@ CREATE TYPE public.platform_role AS ENUM (
 );
 
 
-ALTER TYPE public.platform_role OWNER TO jira;
+ALTER TYPE public.platform_role OWNER TO postgres;
 
 --
--- Name: priority_level; Type: TYPE; Schema: public; Owner: jira
+-- TOC entry 1065 (class 1247 OID 17540)
+-- Name: priority_level; Type: TYPE; Schema: public; Owner: postgres
 --
 
 CREATE TYPE public.priority_level AS ENUM (
@@ -208,10 +228,11 @@ CREATE TYPE public.priority_level AS ENUM (
 );
 
 
-ALTER TYPE public.priority_level OWNER TO jira;
+ALTER TYPE public.priority_level OWNER TO postgres;
 
 --
--- Name: project_role; Type: TYPE; Schema: public; Owner: jira
+-- TOC entry 1053 (class 1247 OID 17500)
+-- Name: project_role; Type: TYPE; Schema: public; Owner: postgres
 --
 
 CREATE TYPE public.project_role AS ENUM (
@@ -222,10 +243,11 @@ CREATE TYPE public.project_role AS ENUM (
 );
 
 
-ALTER TYPE public.project_role OWNER TO jira;
+ALTER TYPE public.project_role OWNER TO postgres;
 
 --
--- Name: project_status; Type: TYPE; Schema: public; Owner: jira
+-- TOC entry 1059 (class 1247 OID 17518)
+-- Name: project_status; Type: TYPE; Schema: public; Owner: postgres
 --
 
 CREATE TYPE public.project_status AS ENUM (
@@ -235,10 +257,11 @@ CREATE TYPE public.project_status AS ENUM (
 );
 
 
-ALTER TYPE public.project_status OWNER TO jira;
+ALTER TYPE public.project_status OWNER TO postgres;
 
 --
--- Name: site_role; Type: TYPE; Schema: public; Owner: jira
+-- TOC entry 1116 (class 1247 OID 18026)
+-- Name: site_role; Type: TYPE; Schema: public; Owner: postgres
 --
 
 CREATE TYPE public.site_role AS ENUM (
@@ -248,10 +271,11 @@ CREATE TYPE public.site_role AS ENUM (
 );
 
 
-ALTER TYPE public.site_role OWNER TO jira;
+ALTER TYPE public.site_role OWNER TO postgres;
 
 --
--- Name: site_status; Type: TYPE; Schema: public; Owner: jira
+-- TOC entry 1071 (class 1247 OID 17556)
+-- Name: site_status; Type: TYPE; Schema: public; Owner: postgres
 --
 
 CREATE TYPE public.site_status AS ENUM (
@@ -261,10 +285,11 @@ CREATE TYPE public.site_status AS ENUM (
 );
 
 
-ALTER TYPE public.site_status OWNER TO jira;
+ALTER TYPE public.site_status OWNER TO postgres;
 
 --
--- Name: accept_invitation(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 408 (class 1255 OID 18652)
+-- Name: accept_invitation(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.accept_invitation(p_invitation_id uuid) RETURNS boolean
@@ -320,10 +345,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.accept_invitation(p_invitation_id uuid) OWNER TO jira;
+ALTER FUNCTION public.accept_invitation(p_invitation_id uuid) OWNER TO postgres;
 
 --
--- Name: auth_current_user_id(); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 284 (class 1255 OID 17999)
+-- Name: auth_current_user_id(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.auth_current_user_id() RETURNS uuid
@@ -333,10 +359,11 @@ select current_setting('app.current_user_id')::uuid;
 $$;
 
 
-ALTER FUNCTION public.auth_current_user_id() OWNER TO jira;
+ALTER FUNCTION public.auth_current_user_id() OWNER TO postgres;
 
 --
--- Name: auth_is_issue_contributor(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 383 (class 1255 OID 18008)
+-- Name: auth_is_issue_contributor(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.auth_is_issue_contributor(p_issue_id uuid) RETURNS boolean
@@ -358,10 +385,11 @@ select exists
 $$;
 
 
-ALTER FUNCTION public.auth_is_issue_contributor(p_issue_id uuid) OWNER TO jira;
+ALTER FUNCTION public.auth_is_issue_contributor(p_issue_id uuid) OWNER TO postgres;
 
 --
--- Name: auth_is_issue_reviewer(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 246 (class 1255 OID 18009)
+-- Name: auth_is_issue_reviewer(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.auth_is_issue_reviewer(p_issue_id uuid) RETURNS boolean
@@ -384,10 +412,11 @@ select exists
 $$;
 
 
-ALTER FUNCTION public.auth_is_issue_reviewer(p_issue_id uuid) OWNER TO jira;
+ALTER FUNCTION public.auth_is_issue_reviewer(p_issue_id uuid) OWNER TO postgres;
 
 --
--- Name: auth_is_issue_watcher(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 326 (class 1255 OID 18010)
+-- Name: auth_is_issue_watcher(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.auth_is_issue_watcher(p_issue_id uuid) RETURNS boolean
@@ -409,10 +438,11 @@ select exists
 $$;
 
 
-ALTER FUNCTION public.auth_is_issue_watcher(p_issue_id uuid) OWNER TO jira;
+ALTER FUNCTION public.auth_is_issue_watcher(p_issue_id uuid) OWNER TO postgres;
 
 --
--- Name: auth_is_org_admin(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 244 (class 1255 OID 18002)
+-- Name: auth_is_org_admin(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.auth_is_org_admin(p_org_id uuid) RETURNS boolean
@@ -437,10 +467,11 @@ SELECT
 $$;
 
 
-ALTER FUNCTION public.auth_is_org_admin(p_org_id uuid) OWNER TO jira;
+ALTER FUNCTION public.auth_is_org_admin(p_org_id uuid) OWNER TO postgres;
 
 --
--- Name: auth_is_org_member(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 401 (class 1255 OID 18000)
+-- Name: auth_is_org_member(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.auth_is_org_member(p_org_id uuid) RETURNS boolean
@@ -462,10 +493,11 @@ select exists
 $$;
 
 
-ALTER FUNCTION public.auth_is_org_member(p_org_id uuid) OWNER TO jira;
+ALTER FUNCTION public.auth_is_org_member(p_org_id uuid) OWNER TO postgres;
 
 --
--- Name: auth_is_org_owner(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 242 (class 1255 OID 18003)
+-- Name: auth_is_org_owner(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.auth_is_org_owner(p_org_id uuid) RETURNS boolean
@@ -490,10 +522,11 @@ SELECT
 $$;
 
 
-ALTER FUNCTION public.auth_is_org_owner(p_org_id uuid) OWNER TO jira;
+ALTER FUNCTION public.auth_is_org_owner(p_org_id uuid) OWNER TO postgres;
 
 --
--- Name: auth_is_org_viewer(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 257 (class 1255 OID 18001)
+-- Name: auth_is_org_viewer(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.auth_is_org_viewer(p_org_id uuid) RETURNS boolean
@@ -518,10 +551,11 @@ SELECT
 $$;
 
 
-ALTER FUNCTION public.auth_is_org_viewer(p_org_id uuid) OWNER TO jira;
+ALTER FUNCTION public.auth_is_org_viewer(p_org_id uuid) OWNER TO postgres;
 
 --
--- Name: auth_is_project_admin(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 287 (class 1255 OID 18004)
+-- Name: auth_is_project_admin(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.auth_is_project_admin(p_project_id uuid) RETURNS boolean
@@ -546,10 +580,11 @@ select
 $$;
 
 
-ALTER FUNCTION public.auth_is_project_admin(p_project_id uuid) OWNER TO jira;
+ALTER FUNCTION public.auth_is_project_admin(p_project_id uuid) OWNER TO postgres;
 
 --
--- Name: auth_is_project_contributor(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 302 (class 1255 OID 18005)
+-- Name: auth_is_project_contributor(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.auth_is_project_contributor(p_project_id uuid) RETURNS boolean
@@ -574,10 +609,11 @@ select
 $$;
 
 
-ALTER FUNCTION public.auth_is_project_contributor(p_project_id uuid) OWNER TO jira;
+ALTER FUNCTION public.auth_is_project_contributor(p_project_id uuid) OWNER TO postgres;
 
 --
--- Name: auth_is_project_reviewer(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 338 (class 1255 OID 18006)
+-- Name: auth_is_project_reviewer(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.auth_is_project_reviewer(p_project_id uuid) RETURNS boolean
@@ -602,10 +638,11 @@ SELECT
 $$;
 
 
-ALTER FUNCTION public.auth_is_project_reviewer(p_project_id uuid) OWNER TO jira;
+ALTER FUNCTION public.auth_is_project_reviewer(p_project_id uuid) OWNER TO postgres;
 
 --
--- Name: auth_is_project_viewer(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 393 (class 1255 OID 18007)
+-- Name: auth_is_project_viewer(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.auth_is_project_viewer(p_project_id uuid) RETURNS boolean
@@ -630,10 +667,11 @@ SELECT
 $$;
 
 
-ALTER FUNCTION public.auth_is_project_viewer(p_project_id uuid) OWNER TO jira;
+ALTER FUNCTION public.auth_is_project_viewer(p_project_id uuid) OWNER TO postgres;
 
 --
--- Name: auth_is_site_admin(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 362 (class 1255 OID 18092)
+-- Name: auth_is_site_admin(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.auth_is_site_admin(p_site_id uuid) RETURNS boolean
@@ -659,10 +697,11 @@ CREATE FUNCTION public.auth_is_site_admin(p_site_id uuid) RETURNS boolean
 $$;
 
 
-ALTER FUNCTION public.auth_is_site_admin(p_site_id uuid) OWNER TO jira;
+ALTER FUNCTION public.auth_is_site_admin(p_site_id uuid) OWNER TO postgres;
 
 --
--- Name: auth_is_site_contributor(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 240 (class 1255 OID 18323)
+-- Name: auth_is_site_contributor(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.auth_is_site_contributor(p_site_id uuid) RETURNS boolean
@@ -687,10 +726,11 @@ CREATE FUNCTION public.auth_is_site_contributor(p_site_id uuid) RETURNS boolean
 $$;
 
 
-ALTER FUNCTION public.auth_is_site_contributor(p_site_id uuid) OWNER TO jira;
+ALTER FUNCTION public.auth_is_site_contributor(p_site_id uuid) OWNER TO postgres;
 
 --
--- Name: auth_is_site_contrubitor(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 394 (class 1255 OID 18095)
+-- Name: auth_is_site_contrubitor(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.auth_is_site_contrubitor(p_site_id uuid) RETURNS boolean
@@ -716,10 +756,11 @@ CREATE FUNCTION public.auth_is_site_contrubitor(p_site_id uuid) RETURNS boolean
 $$;
 
 
-ALTER FUNCTION public.auth_is_site_contrubitor(p_site_id uuid) OWNER TO jira;
+ALTER FUNCTION public.auth_is_site_contrubitor(p_site_id uuid) OWNER TO postgres;
 
 --
--- Name: auth_is_site_viewer(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 352 (class 1255 OID 18094)
+-- Name: auth_is_site_viewer(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.auth_is_site_viewer(p_site_id uuid) RETURNS boolean
@@ -745,10 +786,11 @@ CREATE FUNCTION public.auth_is_site_viewer(p_site_id uuid) RETURNS boolean
 $$;
 
 
-ALTER FUNCTION public.auth_is_site_viewer(p_site_id uuid) OWNER TO jira;
+ALTER FUNCTION public.auth_is_site_viewer(p_site_id uuid) OWNER TO postgres;
 
 --
--- Name: can_assign_project_role(public.org_role, public.project_role); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 243 (class 1255 OID 17988)
+-- Name: can_assign_project_role(public.org_role, public.project_role); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.can_assign_project_role(p_org_role public.org_role, p_project_role public.project_role) RETURNS boolean
@@ -774,10 +816,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.can_assign_project_role(p_org_role public.org_role, p_project_role public.project_role) OWNER TO jira;
+ALTER FUNCTION public.can_assign_project_role(p_org_role public.org_role, p_project_role public.project_role) OWNER TO postgres;
 
 --
--- Name: cancel_invitation(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 370 (class 1255 OID 18635)
+-- Name: cancel_invitation(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.cancel_invitation(p_invitation_id uuid) RETURNS boolean
@@ -799,10 +842,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.cancel_invitation(p_invitation_id uuid) OWNER TO jira;
+ALTER FUNCTION public.cancel_invitation(p_invitation_id uuid) OWNER TO postgres;
 
 --
--- Name: change_platform_password(uuid, text, text); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 282 (class 1255 OID 18594)
+-- Name: change_platform_password(uuid, text, text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.change_platform_password(p_user_id uuid, p_old_password_hash text, p_new_password_hash text) RETURNS boolean
@@ -846,10 +890,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.change_platform_password(p_user_id uuid, p_old_password_hash text, p_new_password_hash text) OWNER TO jira;
+ALTER FUNCTION public.change_platform_password(p_user_id uuid, p_old_password_hash text, p_new_password_hash text) OWNER TO postgres;
 
 --
--- Name: create_api_key(uuid, text); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 298 (class 1255 OID 18595)
+-- Name: create_api_key(uuid, text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.create_api_key(p_platform_user_id uuid, p_key_name text) RETURNS text
@@ -873,10 +918,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.create_api_key(p_platform_user_id uuid, p_key_name text) OWNER TO jira;
+ALTER FUNCTION public.create_api_key(p_platform_user_id uuid, p_key_name text) OWNER TO postgres;
 
 --
--- Name: create_issues(uuid, text, text, boolean); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 345 (class 1255 OID 18185)
+-- Name: create_issues(uuid, text, text, boolean); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.create_issues(p_project_id uuid, p_issue_title text, p_issue_description text DEFAULT NULL::text, p_is_private boolean DEFAULT false) RETURNS uuid
@@ -1051,10 +1097,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.create_issues(p_project_id uuid, p_issue_title text, p_issue_description text, p_is_private boolean) OWNER TO jira;
+ALTER FUNCTION public.create_issues(p_project_id uuid, p_issue_title text, p_issue_description text, p_is_private boolean) OWNER TO postgres;
 
 --
--- Name: create_organization(uuid, text, text, text); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 351 (class 1255 OID 18639)
+-- Name: create_organization(uuid, text, text, text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.create_organization(p_user_id uuid, p_org_name text, p_slug text, p_description text DEFAULT NULL::text) RETURNS uuid
@@ -1196,10 +1243,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.create_organization(p_user_id uuid, p_org_name text, p_slug text, p_description text) OWNER TO jira;
+ALTER FUNCTION public.create_organization(p_user_id uuid, p_org_name text, p_slug text, p_description text) OWNER TO postgres;
 
 --
--- Name: create_organization_asset(uuid, public.asset_type, text, text, bigint, text, text, jsonb); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 398 (class 1255 OID 18640)
+-- Name: create_organization_asset(uuid, public.asset_type, text, text, bigint, text, text, jsonb); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.create_organization_asset(p_org_id uuid, p_asset_type public.asset_type, p_file_name text, p_mime_type text, p_byte_size bigint, p_storage_key text, p_checksum text DEFAULT NULL::text, p_metadata jsonb DEFAULT '{}'::jsonb) RETURNS uuid
@@ -1253,10 +1301,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.create_organization_asset(p_org_id uuid, p_asset_type public.asset_type, p_file_name text, p_mime_type text, p_byte_size bigint, p_storage_key text, p_checksum text, p_metadata jsonb) OWNER TO jira;
+ALTER FUNCTION public.create_organization_asset(p_org_id uuid, p_asset_type public.asset_type, p_file_name text, p_mime_type text, p_byte_size bigint, p_storage_key text, p_checksum text, p_metadata jsonb) OWNER TO postgres;
 
 --
--- Name: create_platorm_user(public.citext, text, public.platform_role); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 410 (class 1255 OID 18596)
+-- Name: create_platorm_user(public.citext, text, public.platform_role); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.create_platorm_user(p_email public.citext, p_password_hash text, p_role public.platform_role) RETURNS uuid
@@ -1303,48 +1352,61 @@ end;
 $$;
 
 
-ALTER FUNCTION public.create_platorm_user(p_email public.citext, p_password_hash text, p_role public.platform_role) OWNER TO jira;
+ALTER FUNCTION public.create_platorm_user(p_email public.citext, p_password_hash text, p_role public.platform_role) OWNER TO postgres;
 
 --
--- Name: create_project(uuid, text, text, boolean); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 363 (class 1255 OID 18723)
+-- Name: create_project(uuid, text, text, text, text, boolean); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION public.create_project(p_site_id uuid, p_project_name text, p_project_description text DEFAULT NULL::text, p_is_private boolean DEFAULT false) RETURNS uuid
+CREATE FUNCTION public.create_project(p_site_id uuid, p_project_name text, p_project_key text, p_board_type text, p_project_description text DEFAULT NULL::text, p_is_private boolean DEFAULT false) RETURNS uuid
     LANGUAGE plpgsql SECURITY DEFINER
     SET search_path TO 'public'
     AS $$
-declare
+DECLARE
     v_user_id uuid;
     v_org_id uuid;
     v_project_id uuid;
     v_project_name text;
+    v_project_key text;
+    v_board_type text;
     v_is_org_owner boolean;
     v_is_org_admin boolean;
     v_is_site_admin boolean;
-begin
+BEGIN
     -- 1. Kullanıcı kontrolü
     v_user_id := auth_current_user_id();
     
-    if v_user_id is null then
-        raise exception 'User not authenticated';
-    end if;
+    IF v_user_id IS NULL THEN
+        RAISE EXCEPTION 'User not authenticated';
+    END IF;
     
-    -- 2. Project name validasyonu
+    -- 2. Validasyonlar
     v_project_name := trim(p_project_name);
+    v_project_key := upper(trim(p_project_key));
+    v_board_type := trim(p_board_type);
     
-    if v_project_name is null or length(v_project_name) = 0 then
-        raise exception 'Project name cannot be empty';
-    end if;
+    IF v_project_name IS NULL OR length(v_project_name) = 0 THEN
+        RAISE EXCEPTION 'Project name cannot be empty';
+    END IF;
+
+    IF v_project_key IS NULL OR length(v_project_key) = 0 THEN
+        RAISE EXCEPTION 'Project key cannot be empty';
+    END IF;
+
+    IF v_board_type IS NULL OR length(v_board_type) = 0 THEN
+        RAISE EXCEPTION 'Board type cannot be empty';
+    END IF;
     
     -- 3. Site var mı ve organization ID'sini al
-    select org_id into v_org_id
-    from sites
-    where site_id = p_site_id
-        and deleted_at is null;
+    SELECT org_id INTO v_org_id
+    FROM sites
+    WHERE site_id = p_site_id
+        AND deleted_at IS NULL;
     
-    if v_org_id is null then
-        raise exception 'Site not found';
-    end if;
+    IF v_org_id IS NULL THEN
+        RAISE EXCEPTION 'Site not found';
+    END IF;
     
     -- 4. Yetki flag'lerini al
     v_is_org_owner := auth_is_org_owner(v_org_id);
@@ -1352,32 +1414,32 @@ begin
     v_is_site_admin := auth_is_site_admin(p_site_id);
     
     -- 5. Yetki kontrolü
-    -- Yetkisiz durumları kontrol et, yetkili durumlar otomatik geçer
-    if not (v_is_org_owner or (v_is_org_admin and v_is_site_admin)) then
-        -- Yetkili değil, neden yetkisiz olduğunu bul
-        if v_is_org_admin and not v_is_site_admin then
-            raise exception 'Permission denied: Org admin must be site admin to create a project';
-        else
-            raise exception 'Permission denied: Only org owner, org admin (with site admin), or site admin can create projects';
-        end if;
-    end if;
+    IF NOT (v_is_org_owner OR (v_is_org_admin AND v_is_site_admin)) THEN
+        IF v_is_org_admin AND NOT v_is_site_admin THEN
+            RAISE EXCEPTION 'Permission denied: Org admin must be site admin to create a project';
+        ELSE
+            RAISE EXCEPTION 'Permission denied: Only org owner, org admin (with site admin), or site admin can create projects';
+        END IF;
+    END IF;
     
-    -- 6. Aynı site içinde aynı isimde proje var mı?
-    if exists (
-        select 1
-        from projects
-        where site_id = p_site_id
-            and project_name = v_project_name
-            and deleted_at is null
-    ) then
-        raise exception 'Project with name "%" already exists in this site', v_project_name;
-    end if;
+    -- 6. Aynı site içinde aynı isimde veya anahtarda proje var mı?
+    IF EXISTS (
+        SELECT 1
+        FROM projects
+        WHERE site_id = p_site_id
+            AND (project_name = v_project_name OR project_key = v_project_key)
+            AND deleted_at IS NULL
+    ) THEN
+        RAISE EXCEPTION 'Project with name "%" or key "%" already exists in this site', v_project_name, v_project_key;
+    END IF;
     
     -- 7. Proje oluştur
-    insert into projects (
+    INSERT INTO projects (
         site_id,
         project_check_id,
         project_name,
+        project_key,
+        board_type,
         project_description,
         slug,
         project_status,
@@ -1386,10 +1448,12 @@ begin
         created_at,
         updated_at
     )
-    values (
+    VALUES (
         p_site_id,
         encode(gen_random_bytes(6), 'hex'),  -- random check id
         v_project_name,
+        v_project_key,
+        v_board_type,
         p_project_description,
         lower(regexp_replace(v_project_name, '[^a-zA-Z0-9]', '-', 'g')),  -- slug oluştur
         'active',
@@ -1398,10 +1462,10 @@ begin
         now(),
         now()
     )
-    returning project_id into v_project_id;
+    RETURNING project_id INTO v_project_id;
     
     -- 8. Project membership - oluşturan kişiyi project_admin yap
-    insert into project_memberships (
+    INSERT INTO project_memberships (
         project_id,
         user_id,
         role,
@@ -1411,7 +1475,7 @@ begin
         created_at,
         updated_at
     )
-    values (
+    VALUES (
         v_project_id,
         v_user_id,
         'project_admin',
@@ -1423,7 +1487,7 @@ begin
     );
     
     -- 9. Audit log
-    insert into system_audit_logs (
+    INSERT INTO system_audit_logs (
         actor_type,
         actor_id,
         entity_type,
@@ -1432,7 +1496,7 @@ begin
         new_value,
         created_at
     )
-    values (
+    VALUES (
         'tenant_user',
         v_user_id,
         'project',
@@ -1440,22 +1504,25 @@ begin
         'CREATE',
         jsonb_build_object(
             'project_name', v_project_name,
+            'project_key', v_project_key,
+            'board_type', v_board_type,
             'site_id', p_site_id,
             'is_private', p_is_private
         ),
         now()
     );
     
-    return v_project_id;
+    RETURN v_project_id;
     
-end;
+END;
 $$;
 
 
-ALTER FUNCTION public.create_project(p_site_id uuid, p_project_name text, p_project_description text, p_is_private boolean) OWNER TO jira;
+ALTER FUNCTION public.create_project(p_site_id uuid, p_project_name text, p_project_key text, p_board_type text, p_project_description text, p_is_private boolean) OWNER TO postgres;
 
 --
--- Name: create_sites(text, text, uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 334 (class 1255 OID 18206)
+-- Name: create_sites(text, text, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.create_sites(p_site_name text, p_site_slug text, p_org_id uuid DEFAULT NULL::uuid) RETURNS uuid
@@ -1541,7 +1608,7 @@ begin
     values (
         v_site_id,
         v_user_id,
-        'admin',              -- 👈 DÜZELTİLDİ: role buraya gelmeli
+        'site_admin',              -- 👈 DÜZELTİLDİ: role buraya gelmeli
         v_user_id,                 -- 👈 invited_by
         true,
         now(),
@@ -1554,10 +1621,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.create_sites(p_site_name text, p_site_slug text, p_org_id uuid) OWNER TO jira;
+ALTER FUNCTION public.create_sites(p_site_name text, p_site_slug text, p_org_id uuid) OWNER TO postgres;
 
 --
--- Name: delete_issues(uuid, uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 368 (class 1255 OID 18188)
+-- Name: delete_issues(uuid, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.delete_issues(p_issue_id uuid, p_project_id uuid DEFAULT NULL::uuid) RETURNS boolean
@@ -1710,10 +1778,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.delete_issues(p_issue_id uuid, p_project_id uuid) OWNER TO jira;
+ALTER FUNCTION public.delete_issues(p_issue_id uuid, p_project_id uuid) OWNER TO postgres;
 
 --
--- Name: delete_organization_asset(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 415 (class 1255 OID 18641)
+-- Name: delete_organization_asset(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.delete_organization_asset(p_asset_id uuid) RETURNS boolean
@@ -1763,10 +1832,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.delete_organization_asset(p_asset_id uuid) OWNER TO jira;
+ALTER FUNCTION public.delete_organization_asset(p_asset_id uuid) OWNER TO postgres;
 
 --
--- Name: delete_platform_user(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 344 (class 1255 OID 18597)
+-- Name: delete_platform_user(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.delete_platform_user(p_user_id uuid) RETURNS boolean
@@ -1786,10 +1856,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.delete_platform_user(p_user_id uuid) OWNER TO jira;
+ALTER FUNCTION public.delete_platform_user(p_user_id uuid) OWNER TO postgres;
 
 --
--- Name: delete_project(uuid, uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 382 (class 1255 OID 18198)
+-- Name: delete_project(uuid, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.delete_project(p_project_id uuid, p_site_id uuid DEFAULT NULL::uuid) RETURNS boolean
@@ -1914,10 +1985,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.delete_project(p_project_id uuid, p_site_id uuid) OWNER TO jira;
+ALTER FUNCTION public.delete_project(p_project_id uuid, p_site_id uuid) OWNER TO postgres;
 
 --
--- Name: delete_site(uuid, uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 411 (class 1255 OID 18207)
+-- Name: delete_site(uuid, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.delete_site(p_site_id uuid, p_org_id uuid DEFAULT NULL::uuid) RETURNS boolean
@@ -2011,10 +2083,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.delete_site(p_site_id uuid, p_org_id uuid) OWNER TO jira;
+ALTER FUNCTION public.delete_site(p_site_id uuid, p_org_id uuid) OWNER TO postgres;
 
 --
--- Name: get_issue_id(uuid, uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 277 (class 1255 OID 18190)
+-- Name: get_issue_id(uuid, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.get_issue_id(p_issue_id uuid, p_project_id uuid DEFAULT NULL::uuid) RETURNS TABLE(issue_id uuid, issue_no bigint, issue_title text, issue_description text, status public.issue_status, priority public.priority_level, reporter_id uuid, assignee_id uuid, parent_issue_id uuid, blocking_issue_id uuid, is_private boolean, is_editable boolean, created_at timestamp with time zone, updated_at timestamp with time zone, project_id uuid, project_name text, site_id uuid, site_name text, org_id uuid, org_name text, reporter_name text, assignee_name text)
@@ -2078,10 +2151,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.get_issue_id(p_issue_id uuid, p_project_id uuid) OWNER TO jira;
+ALTER FUNCTION public.get_issue_id(p_issue_id uuid, p_project_id uuid) OWNER TO postgres;
 
 --
--- Name: get_issues(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 292 (class 1255 OID 18191)
+-- Name: get_issues(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.get_issues(p_project_id uuid DEFAULT NULL::uuid) RETURNS TABLE(issue_id uuid, issue_title text, issue_no bigint, status public.issue_status, priority public.priority_level, created_at timestamp with time zone)
@@ -2129,10 +2203,37 @@ end;
 $$;
 
 
-ALTER FUNCTION public.get_issues(p_project_id uuid) OWNER TO jira;
+ALTER FUNCTION public.get_issues(p_project_id uuid) OWNER TO postgres;
 
 --
--- Name: get_organization_asset(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 357 (class 1255 OID 18722)
+-- Name: get_next_project_issue_number(uuid); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION public.get_next_project_issue_number(p_project_id uuid) RETURNS integer
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+    v_next_val INT;
+BEGIN
+    INSERT INTO project_issue_counters (project_id, last_value)
+    VALUES (p_project_id, 1)
+    ON CONFLICT (project_id) 
+    DO UPDATE SET 
+        last_value = project_issue_counters.last_value + 1,
+        updated_at = now()
+    RETURNING last_value INTO v_next_val;
+
+    RETURN v_next_val;
+END;
+$$;
+
+
+ALTER FUNCTION public.get_next_project_issue_number(p_project_id uuid) OWNER TO postgres;
+
+--
+-- TOC entry 318 (class 1255 OID 18642)
+-- Name: get_organization_asset(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.get_organization_asset(p_asset_id uuid) RETURNS TABLE(org_asset_id uuid, org_id uuid, org_name text, uploaded_by uuid, uploader_name text, asset_type public.asset_type, file_name text, mime_type text, byte_size bigint, storage_key text, checksum text, metadata jsonb, is_active boolean, created_at timestamp with time zone, updated_at timestamp with time zone)
@@ -2182,10 +2283,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.get_organization_asset(p_asset_id uuid) OWNER TO jira;
+ALTER FUNCTION public.get_organization_asset(p_asset_id uuid) OWNER TO postgres;
 
 --
--- Name: get_organization_by_id(uuid, uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 251 (class 1255 OID 18643)
+-- Name: get_organization_by_id(uuid, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.get_organization_by_id(p_org_id uuid, p_uid uuid) RETURNS TABLE(org_id uuid, org_name text, org_description text, slug text, org_status text, created_at timestamp with time zone, created_by uuid, user_role text)
@@ -2225,10 +2327,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.get_organization_by_id(p_org_id uuid, p_uid uuid) OWNER TO jira;
+ALTER FUNCTION public.get_organization_by_id(p_org_id uuid, p_uid uuid) OWNER TO postgres;
 
 --
--- Name: get_organization_id(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 329 (class 1255 OID 18644)
+-- Name: get_organization_id(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.get_organization_id(p_org_id uuid) RETURNS uuid
@@ -2280,10 +2383,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.get_organization_id(p_org_id uuid) OWNER TO jira;
+ALTER FUNCTION public.get_organization_id(p_org_id uuid) OWNER TO postgres;
 
 --
--- Name: get_organization_members(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 270 (class 1255 OID 18638)
+-- Name: get_organization_members(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.get_organization_members(p_org_id uuid) RETURNS TABLE(user_id uuid, user_name text, user_email text, role text, joined_at timestamp with time zone, invited_by uuid)
@@ -2331,10 +2435,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.get_organization_members(p_org_id uuid) OWNER TO jira;
+ALTER FUNCTION public.get_organization_members(p_org_id uuid) OWNER TO postgres;
 
 --
--- Name: get_organization_stats(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 306 (class 1255 OID 18636)
+-- Name: get_organization_stats(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.get_organization_stats(p_org_id uuid) RETURNS TABLE(total_members bigint, total_projects bigint, total_issues bigint, active_invitations bigint, created_at timestamp with time zone)
@@ -2378,10 +2483,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.get_organization_stats(p_org_id uuid) OWNER TO jira;
+ALTER FUNCTION public.get_organization_stats(p_org_id uuid) OWNER TO postgres;
 
 --
--- Name: get_organizations(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 273 (class 1255 OID 18024)
+-- Name: get_organizations(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.get_organizations(p_org_id uuid) RETURNS TABLE(org_id uuid, org_name text, org_description text, slug text, org_status text, created_at timestamp with time zone, created_by uuid)
@@ -2435,10 +2541,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.get_organizations(p_org_id uuid) OWNER TO jira;
+ALTER FUNCTION public.get_organizations(p_org_id uuid) OWNER TO postgres;
 
 --
--- Name: get_pending_invitations(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 376 (class 1255 OID 18634)
+-- Name: get_pending_invitations(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.get_pending_invitations(p_org_id uuid) RETURNS TABLE(invitation_id uuid, organization_id uuid, invited_user_id uuid, invited_by_user_id uuid, role text, status text, created_at timestamp with time zone, expires_at timestamp with time zone)
@@ -2483,10 +2590,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.get_pending_invitations(p_org_id uuid) OWNER TO jira;
+ALTER FUNCTION public.get_pending_invitations(p_org_id uuid) OWNER TO postgres;
 
 --
--- Name: get_platform_user(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 337 (class 1255 OID 18598)
+-- Name: get_platform_user(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.get_platform_user(p_user_id uuid) RETURNS TABLE(platform_user_id uuid, email public.citext, role public.platform_role, is_active boolean, created_at timestamp with time zone)
@@ -2514,10 +2622,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.get_platform_user(p_user_id uuid) OWNER TO jira;
+ALTER FUNCTION public.get_platform_user(p_user_id uuid) OWNER TO postgres;
 
 --
--- Name: get_projects(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 309 (class 1255 OID 18200)
+-- Name: get_projects(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.get_projects(p_site_id uuid) RETURNS TABLE(project_id uuid, project_name text)
@@ -2552,10 +2661,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.get_projects(p_site_id uuid) OWNER TO jira;
+ALTER FUNCTION public.get_projects(p_site_id uuid) OWNER TO postgres;
 
 --
--- Name: get_site_id(uuid, uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 407 (class 1255 OID 18199)
+-- Name: get_site_id(uuid, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.get_site_id(p_site_id uuid, p_project_id uuid) RETURNS uuid
@@ -2614,10 +2724,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.get_site_id(p_site_id uuid, p_project_id uuid) OWNER TO jira;
+ALTER FUNCTION public.get_site_id(p_site_id uuid, p_project_id uuid) OWNER TO postgres;
 
 --
--- Name: get_sites(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 297 (class 1255 OID 18208)
+-- Name: get_sites(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.get_sites(p_org_id uuid) RETURNS TABLE(site_id uuid, site_name text)
@@ -2646,10 +2757,11 @@ BEGIN
 END;$$;
 
 
-ALTER FUNCTION public.get_sites(p_org_id uuid) OWNER TO jira;
+ALTER FUNCTION public.get_sites(p_org_id uuid) OWNER TO postgres;
 
 --
--- Name: get_user_organizations(); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 312 (class 1255 OID 18637)
+-- Name: get_user_organizations(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.get_user_organizations() RETURNS TABLE(org_id uuid, org_name text, org_description text, slug text, org_status text, created_at timestamp with time zone, created_by uuid, user_role text)
@@ -2685,10 +2797,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.get_user_organizations() OWNER TO jira;
+ALTER FUNCTION public.get_user_organizations() OWNER TO postgres;
 
 --
--- Name: invite_issue(uuid, uuid, uuid, uuid, uuid, public.issue_role); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 413 (class 1255 OID 18192)
+-- Name: invite_issue(uuid, uuid, uuid, uuid, uuid, public.issue_role); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.invite_issue(p_friendship_code uuid, p_org_id uuid, p_site_id uuid, p_project_id uuid, p_issue_id uuid, p_issue_role public.issue_role) RETURNS void
@@ -2871,10 +2984,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.invite_issue(p_friendship_code uuid, p_org_id uuid, p_site_id uuid, p_project_id uuid, p_issue_id uuid, p_issue_role public.issue_role) OWNER TO jira;
+ALTER FUNCTION public.invite_issue(p_friendship_code uuid, p_org_id uuid, p_site_id uuid, p_project_id uuid, p_issue_id uuid, p_issue_role public.issue_role) OWNER TO postgres;
 
 --
--- Name: invite_project(uuid, uuid, uuid, uuid, public.project_role); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 283 (class 1255 OID 18201)
+-- Name: invite_project(uuid, uuid, uuid, uuid, public.project_role); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.invite_project(p_friendship_code uuid, p_org_id uuid, p_site_id uuid, p_project_id uuid, p_project_role public.project_role) RETURNS void
@@ -3037,10 +3151,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.invite_project(p_friendship_code uuid, p_org_id uuid, p_site_id uuid, p_project_id uuid, p_project_role public.project_role) OWNER TO jira;
+ALTER FUNCTION public.invite_project(p_friendship_code uuid, p_org_id uuid, p_site_id uuid, p_project_id uuid, p_project_role public.project_role) OWNER TO postgres;
 
 --
--- Name: invite_site(uuid, uuid, uuid, public.site_role); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 384 (class 1255 OID 18209)
+-- Name: invite_site(uuid, uuid, uuid, public.site_role); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.invite_site(p_friendship_code uuid, p_org_id uuid, p_site_id uuid, p_site_role public.site_role) RETURNS void
@@ -3176,10 +3291,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.invite_site(p_friendship_code uuid, p_org_id uuid, p_site_id uuid, p_site_role public.site_role) OWNER TO jira;
+ALTER FUNCTION public.invite_site(p_friendship_code uuid, p_org_id uuid, p_site_id uuid, p_site_role public.site_role) OWNER TO postgres;
 
 --
--- Name: invite_to_organization(uuid, uuid, text); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 331 (class 1255 OID 18633)
+-- Name: invite_to_organization(uuid, uuid, text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.invite_to_organization(p_org_id uuid, p_friendship_code uuid, p_role text) RETURNS uuid
@@ -3280,10 +3396,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.invite_to_organization(p_org_id uuid, p_friendship_code uuid, p_role text) OWNER TO jira;
+ALTER FUNCTION public.invite_to_organization(p_org_id uuid, p_friendship_code uuid, p_role text) OWNER TO postgres;
 
 --
--- Name: invite_user_to_organization(uuid, uuid, public.org_role); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 281 (class 1255 OID 18645)
+-- Name: invite_user_to_organization(uuid, uuid, public.org_role); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.invite_user_to_organization(p_user_friendship_code uuid, p_org_id uuid, p_role public.org_role) RETURNS void
@@ -3401,10 +3518,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.invite_user_to_organization(p_user_friendship_code uuid, p_org_id uuid, p_role public.org_role) OWNER TO jira;
+ALTER FUNCTION public.invite_user_to_organization(p_user_friendship_code uuid, p_org_id uuid, p_role public.org_role) OWNER TO postgres;
 
 --
--- Name: leave_organization(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 247 (class 1255 OID 18646)
+-- Name: leave_organization(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.leave_organization(p_org_id uuid) RETURNS boolean
@@ -3458,10 +3576,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.leave_organization(p_org_id uuid) OWNER TO jira;
+ALTER FUNCTION public.leave_organization(p_org_id uuid) OWNER TO postgres;
 
 --
--- Name: list_api_keys(uuid, integer, integer); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 271 (class 1255 OID 18599)
+-- Name: list_api_keys(uuid, integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.list_api_keys(p_platform_user_id uuid DEFAULT NULL::uuid, p_limit integer DEFAULT 50, p_offset integer DEFAULT 0) RETURNS TABLE(api_key_id uuid, platform_user_id uuid, key_name text, last_used_at timestamp with time zone, expires_at timestamp with time zone, is_active boolean, created_at timestamp with time zone)
@@ -3487,10 +3606,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.list_api_keys(p_platform_user_id uuid, p_limit integer, p_offset integer) OWNER TO jira;
+ALTER FUNCTION public.list_api_keys(p_platform_user_id uuid, p_limit integer, p_offset integer) OWNER TO postgres;
 
 --
--- Name: list_issues(uuid, public.issue_status, public.priority_level, uuid, uuid, text, integer, integer); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 332 (class 1255 OID 18193)
+-- Name: list_issues(uuid, public.issue_status, public.priority_level, uuid, uuid, text, integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.list_issues(p_project_id uuid DEFAULT NULL::uuid, p_status public.issue_status DEFAULT NULL::public.issue_status, p_priority public.priority_level DEFAULT NULL::public.priority_level, p_assignee_id uuid DEFAULT NULL::uuid, p_reporter_id uuid DEFAULT NULL::uuid, p_search text DEFAULT NULL::text, p_limit integer DEFAULT 50, p_offset integer DEFAULT 0) RETURNS TABLE(issue_id uuid, issue_no bigint, issue_title text, status public.issue_status, priority public.priority_level, reporter_id uuid, assignee_id uuid, created_at timestamp with time zone, updated_at timestamp with time zone, comment_count bigint, member_count bigint)
@@ -3657,10 +3777,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.list_issues(p_project_id uuid, p_status public.issue_status, p_priority public.priority_level, p_assignee_id uuid, p_reporter_id uuid, p_search text, p_limit integer, p_offset integer) OWNER TO jira;
+ALTER FUNCTION public.list_issues(p_project_id uuid, p_status public.issue_status, p_priority public.priority_level, p_assignee_id uuid, p_reporter_id uuid, p_search text, p_limit integer, p_offset integer) OWNER TO postgres;
 
 --
--- Name: list_notifications(uuid, boolean, integer, integer); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 254 (class 1255 OID 18591)
+-- Name: list_notifications(uuid, boolean, integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.list_notifications(p_user_id uuid, p_unread_only boolean DEFAULT false, p_limit integer DEFAULT 50, p_offset integer DEFAULT 0) RETURNS TABLE(notification_id uuid, type text, title text, content text, is_read boolean, created_at timestamp with time zone)
@@ -3683,10 +3804,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.list_notifications(p_user_id uuid, p_unread_only boolean, p_limit integer, p_offset integer) OWNER TO jira;
+ALTER FUNCTION public.list_notifications(p_user_id uuid, p_unread_only boolean, p_limit integer, p_offset integer) OWNER TO postgres;
 
 --
--- Name: list_organization_assets(uuid, public.asset_type, integer, integer); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 373 (class 1255 OID 18647)
+-- Name: list_organization_assets(uuid, public.asset_type, integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.list_organization_assets(p_org_id uuid, p_asset_type public.asset_type DEFAULT NULL::public.asset_type, p_limit integer DEFAULT 50, p_offset integer DEFAULT 0) RETURNS TABLE(org_asset_id uuid, file_name text, mime_type text, byte_size bigint, asset_type public.asset_type, uploaded_by uuid, uploader_name text, created_at timestamp with time zone)
@@ -3732,10 +3854,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.list_organization_assets(p_org_id uuid, p_asset_type public.asset_type, p_limit integer, p_offset integer) OWNER TO jira;
+ALTER FUNCTION public.list_organization_assets(p_org_id uuid, p_asset_type public.asset_type, p_limit integer, p_offset integer) OWNER TO postgres;
 
 --
--- Name: list_platform_users(public.platform_role, integer, integer); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 293 (class 1255 OID 18600)
+-- Name: list_platform_users(public.platform_role, integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.list_platform_users(p_role public.platform_role DEFAULT NULL::public.platform_role, p_limit integer DEFAULT 50, p_offset integer DEFAULT 0) RETURNS TABLE(platform_user_id uuid, email public.citext, role public.platform_role, is_active boolean, created_at timestamp with time zone)
@@ -3768,10 +3891,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.list_platform_users(p_role public.platform_role, p_limit integer, p_offset integer) OWNER TO jira;
+ALTER FUNCTION public.list_platform_users(p_role public.platform_role, p_limit integer, p_offset integer) OWNER TO postgres;
 
 --
--- Name: list_projects(uuid, public.project_status, text, boolean, integer, integer); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 354 (class 1255 OID 18202)
+-- Name: list_projects(uuid, public.project_status, text, boolean, integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.list_projects(p_site_id uuid DEFAULT NULL::uuid, p_status public.project_status DEFAULT NULL::public.project_status, p_search text DEFAULT NULL::text, p_is_private boolean DEFAULT NULL::boolean, p_limit integer DEFAULT 50, p_offset integer DEFAULT 0) RETURNS TABLE(project_id uuid, project_name text, project_description text, slug text, project_status public.project_status, is_private boolean, created_at timestamp with time zone, created_by uuid, completed_at timestamp with time zone, completed_by uuid, site_id uuid, site_name text, member_count bigint, issue_count bigint, requirement_count bigint)
@@ -3925,10 +4049,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.list_projects(p_site_id uuid, p_status public.project_status, p_search text, p_is_private boolean, p_limit integer, p_offset integer) OWNER TO jira;
+ALTER FUNCTION public.list_projects(p_site_id uuid, p_status public.project_status, p_search text, p_is_private boolean, p_limit integer, p_offset integer) OWNER TO postgres;
 
 --
--- Name: list_sites(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 392 (class 1255 OID 18210)
+-- Name: list_sites(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.list_sites(p_org_id uuid DEFAULT NULL::uuid) RETURNS TABLE(site_id uuid, site_name text)
@@ -3958,10 +4083,11 @@ BEGIN
 END;$$;
 
 
-ALTER FUNCTION public.list_sites(p_org_id uuid) OWNER TO jira;
+ALTER FUNCTION public.list_sites(p_org_id uuid) OWNER TO postgres;
 
 --
--- Name: list_user_organizations(); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 399 (class 1255 OID 18023)
+-- Name: list_user_organizations(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.list_user_organizations() RETURNS TABLE(org_id uuid, org_name text, slug text, org_status text, joined_at timestamp with time zone, role public.org_role)
@@ -4004,10 +4130,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.list_user_organizations() OWNER TO jira;
+ALTER FUNCTION public.list_user_organizations() OWNER TO postgres;
 
 --
--- Name: mark_notification_read(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 353 (class 1255 OID 18592)
+-- Name: mark_notification_read(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.mark_notification_read(p_notification_id uuid) RETURNS boolean
@@ -4025,10 +4152,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.mark_notification_read(p_notification_id uuid) OWNER TO jira;
+ALTER FUNCTION public.mark_notification_read(p_notification_id uuid) OWNER TO postgres;
 
 --
--- Name: refresh_platform_token(text); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 307 (class 1255 OID 18601)
+-- Name: refresh_platform_token(text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.refresh_platform_token(p_old_token text) RETURNS text
@@ -4065,10 +4193,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.refresh_platform_token(p_old_token text) OWNER TO jira;
+ALTER FUNCTION public.refresh_platform_token(p_old_token text) OWNER TO postgres;
 
 --
--- Name: reject_invitation(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 294 (class 1255 OID 18651)
+-- Name: reject_invitation(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.reject_invitation(p_invitation_id uuid) RETURNS boolean
@@ -4108,34 +4237,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.reject_invitation(p_invitation_id uuid) OWNER TO jira;
+ALTER FUNCTION public.reject_invitation(p_invitation_id uuid) OWNER TO postgres;
 
 --
--- Name: remove_member(uuid, uuid); Type: FUNCTION; Schema: public; Owner: jira
---
-
-CREATE FUNCTION public.remove_member(p_org_id uuid, p_member_id uuid) RETURNS boolean
-    LANGUAGE plpgsql SECURITY DEFINER
-    SET search_path TO 'public'
-    AS $$
-DECLARE v_user_id uuid; v_user_role text; v_target_role text;
-BEGIN
-    v_user_id := auth_current_user_id();
-    IF v_user_id IS NULL THEN RAISE EXCEPTION 'User not authenticated'; END IF;
-    SELECT om.role::text INTO v_user_role FROM organization_memberships om WHERE om.org_id = p_org_id AND om.user_id = v_user_id AND om.membership_is_active = true AND om.deleted_at IS NULL;
-    IF v_user_role IS NULL OR v_user_role NOT IN ('owner', 'admin') THEN RAISE EXCEPTION 'PERMISSION_DENIED'; END IF;
-    SELECT om.role::text INTO v_target_role FROM organization_memberships om WHERE om.org_id = p_org_id AND om.user_id = p_member_id AND om.membership_is_active = true AND om.deleted_at IS NULL;
-    IF v_target_role IS NULL THEN RAISE EXCEPTION 'Member not found'; END IF;
-    IF v_target_role = 'owner' THEN RAISE EXCEPTION 'Cannot remove owner'; END IF;
-    UPDATE organization_memberships SET deleted_at = now(), deleted_by = v_user_id, membership_is_active = false, updated_at = now() WHERE org_id = p_org_id AND user_id = p_member_id AND deleted_at IS NULL;
-    RETURN FOUND;
-END; $$;
-
-
-ALTER FUNCTION public.remove_member(p_org_id uuid, p_member_id uuid) OWNER TO jira;
-
---
--- Name: reset_platform_password_confirm(text, text); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 308 (class 1255 OID 18602)
+-- Name: reset_platform_password_confirm(text, text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.reset_platform_password_confirm(p_token text, p_new_password_hash text) RETURNS boolean
@@ -4175,10 +4281,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.reset_platform_password_confirm(p_token text, p_new_password_hash text) OWNER TO jira;
+ALTER FUNCTION public.reset_platform_password_confirm(p_token text, p_new_password_hash text) OWNER TO postgres;
 
 --
--- Name: reset_platform_password_request(public.citext); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 248 (class 1255 OID 18603)
+-- Name: reset_platform_password_request(public.citext); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.reset_platform_password_request(p_email public.citext) RETURNS text
@@ -4212,10 +4319,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.reset_platform_password_request(p_email public.citext) OWNER TO jira;
+ALTER FUNCTION public.reset_platform_password_request(p_email public.citext) OWNER TO postgres;
 
 --
--- Name: revoke_api_key(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 316 (class 1255 OID 18604)
+-- Name: revoke_api_key(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.revoke_api_key(p_api_key uuid) RETURNS boolean
@@ -4261,10 +4369,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.revoke_api_key(p_api_key uuid) OWNER TO jira;
+ALTER FUNCTION public.revoke_api_key(p_api_key uuid) OWNER TO postgres;
 
 --
--- Name: soft_delete_organization(uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 259 (class 1255 OID 18212)
+-- Name: soft_delete_organization(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.soft_delete_organization(p_org_id uuid) RETURNS void
@@ -4311,10 +4420,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.soft_delete_organization(p_org_id uuid) OWNER TO jira;
+ALTER FUNCTION public.soft_delete_organization(p_org_id uuid) OWNER TO postgres;
 
 --
--- Name: trg_assets_update(); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 272 (class 1255 OID 18292)
+-- Name: trg_assets_update(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.trg_assets_update() RETURNS trigger
@@ -4328,10 +4438,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.trg_assets_update() OWNER TO jira;
+ALTER FUNCTION public.trg_assets_update() OWNER TO postgres;
 
 --
--- Name: trg_issue_activity(); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 285 (class 1255 OID 18286)
+-- Name: trg_issue_activity(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.trg_issue_activity() RETURNS trigger
@@ -4402,10 +4513,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.trg_issue_activity() OWNER TO jira;
+ALTER FUNCTION public.trg_issue_activity() OWNER TO postgres;
 
 --
--- Name: trg_issue_memberships_role_guard(); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 275 (class 1255 OID 18289)
+-- Name: trg_issue_memberships_role_guard(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.trg_issue_memberships_role_guard() RETURNS trigger
@@ -4500,10 +4612,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.trg_issue_memberships_role_guard() OWNER TO jira;
+ALTER FUNCTION public.trg_issue_memberships_role_guard() OWNER TO postgres;
 
 --
--- Name: trg_prevent_issue_delete_if_has_children(); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 296 (class 1255 OID 18303)
+-- Name: trg_prevent_issue_delete_if_has_children(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.trg_prevent_issue_delete_if_has_children() RETURNS trigger
@@ -4529,10 +4642,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.trg_prevent_issue_delete_if_has_children() OWNER TO jira;
+ALTER FUNCTION public.trg_prevent_issue_delete_if_has_children() OWNER TO postgres;
 
 --
--- Name: trg_prevent_org_delete_if_has_sites(); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 241 (class 1255 OID 18301)
+-- Name: trg_prevent_org_delete_if_has_sites(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.trg_prevent_org_delete_if_has_sites() RETURNS trigger
@@ -4558,10 +4672,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.trg_prevent_org_delete_if_has_sites() OWNER TO jira;
+ALTER FUNCTION public.trg_prevent_org_delete_if_has_sites() OWNER TO postgres;
 
 --
--- Name: trg_prevent_project_delete_if_has_issues(); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 378 (class 1255 OID 18299)
+-- Name: trg_prevent_project_delete_if_has_issues(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.trg_prevent_project_delete_if_has_issues() RETURNS trigger
@@ -4588,10 +4703,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.trg_prevent_project_delete_if_has_issues() OWNER TO jira;
+ALTER FUNCTION public.trg_prevent_project_delete_if_has_issues() OWNER TO postgres;
 
 --
--- Name: trg_prevent_site_delete_if_has_projects(); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 391 (class 1255 OID 18297)
+-- Name: trg_prevent_site_delete_if_has_projects(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.trg_prevent_site_delete_if_has_projects() RETURNS trigger
@@ -4618,10 +4734,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.trg_prevent_site_delete_if_has_projects() OWNER TO jira;
+ALTER FUNCTION public.trg_prevent_site_delete_if_has_projects() OWNER TO postgres;
 
 --
--- Name: trg_project_memberships_role_guard(); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 397 (class 1255 OID 17989)
+-- Name: trg_project_memberships_role_guard(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.trg_project_memberships_role_guard() RETURNS trigger
@@ -4666,10 +4783,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.trg_project_memberships_role_guard() OWNER TO jira;
+ALTER FUNCTION public.trg_project_memberships_role_guard() OWNER TO postgres;
 
 --
--- Name: trg_site_memberships_role_guard(); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 367 (class 1255 OID 18097)
+-- Name: trg_site_memberships_role_guard(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.trg_site_memberships_role_guard() RETURNS trigger
@@ -4679,61 +4797,50 @@ DECLARE
     v_org_id uuid;
     v_org_role org_role;
 BEGIN
-    
-    SELECT
-        s.org_id
-    INTO
-        v_org_id
-    from
-        public.sites as s
-    where
-        s.site_id = NEW.site_id;
+    SELECT s.org_id INTO v_org_id
+    FROM public.sites AS s
+    WHERE s.site_id = NEW.site_id;
 
-    if v_org_id is null THEN
-        raise exception 'Organization not found for site %',
-                        NEW.site_id;
-    end if;
+    IF v_org_id IS NULL THEN
+        RAISE EXCEPTION 'Organization not found for site %', NEW.site_id;
+    END IF;
 
-    
+    SELECT om.role INTO v_org_role
+    FROM public.organization_memberships AS om
+    WHERE om.org_id = v_org_id
+      AND om.user_id = NEW.user_id
+      AND om.membership_is_active = TRUE
+      AND om.deleted_at IS NULL;
 
-    SELECT
-        om.role
-    INTO
-        v_org_role
-    from
-        public.organization_memberships as om 
-    where
-        om.org_id = v_org_id
-        AND
-        om.user_id = NEW.user_id
-        AND
-        om.membership_is_active = TRUE
-        AND
-        om.deleted_at is null;
+    IF v_org_role IS NULL THEN
+        RAISE EXCEPTION 'User % is not an active member of organization %', NEW.user_id, v_org_id;
+    END IF;
 
-    
-    if v_org_role is null THEN
-        RAISE exception 'User % is not an active member of organization %',
-                        NEW.user_id,v_org_id;
-    end if;
+    -- Owner ve admin için kısıtlama yok
+    IF v_org_role IN ('owner', 'admin') THEN
+        RETURN NEW;
+    END IF;
 
-    if v_org_role = 'viewer' and NEW.role != 'viewer' THEN
-        raise exception 'Role escalation blocked: org_role=viewer cannot be assigned site_role=%',NEW.role;
-    end if;
+    -- Viewer sadece viewer olabilir
+    IF v_org_role = 'viewer' AND NEW.role != 'viewer' THEN
+        RAISE EXCEPTION 'Role escalation blocked: org_role=viewer cannot be assigned site_role=%', NEW.role;
+    END IF;
 
-    if v_org_role = 'member' and NEW.role = 'admin' THEN
-        raise EXCEPTION 'Role escalation blocked: org_role=member cannot assigned admin';
-    end if;
+    -- Member admin olamaz
+    IF v_org_role = 'member' AND NEW.role = 'admin' THEN
+        RAISE EXCEPTION 'Role escalation blocked: org_role=member cannot be assigned admin';
+    END IF;
 
-    return new;
+    RETURN NEW;
 END;
 $$;
 
 
-ALTER FUNCTION public.trg_site_memberships_role_guard() OWNER TO jira;
+ALTER FUNCTION public.trg_site_memberships_role_guard() OWNER TO postgres;
 
 --
--- Name: trigger_notify_issue_assigned(); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 249 (class 1255 OID 18589)
+-- Name: trigger_notify_issue_assigned(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.trigger_notify_issue_assigned() RETURNS trigger
@@ -4755,10 +4862,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.trigger_notify_issue_assigned() OWNER TO jira;
+ALTER FUNCTION public.trigger_notify_issue_assigned() OWNER TO postgres;
 
 --
--- Name: update_issues(uuid, text, text, public.issue_status, public.priority_level, uuid, boolean, uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 264 (class 1255 OID 18195)
+-- Name: update_issues(uuid, text, text, public.issue_status, public.priority_level, uuid, boolean, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.update_issues(p_issue_id uuid, p_issue_title text DEFAULT NULL::text, p_issue_description text DEFAULT NULL::text, p_status public.issue_status DEFAULT NULL::public.issue_status, p_priority public.priority_level DEFAULT NULL::public.priority_level, p_assignee_id uuid DEFAULT NULL::uuid, p_is_private boolean DEFAULT NULL::boolean, p_project_id uuid DEFAULT NULL::uuid) RETURNS boolean
@@ -4963,36 +5071,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.update_issues(p_issue_id uuid, p_issue_title text, p_issue_description text, p_status public.issue_status, p_priority public.priority_level, p_assignee_id uuid, p_is_private boolean, p_project_id uuid) OWNER TO jira;
+ALTER FUNCTION public.update_issues(p_issue_id uuid, p_issue_title text, p_issue_description text, p_status public.issue_status, p_priority public.priority_level, p_assignee_id uuid, p_is_private boolean, p_project_id uuid) OWNER TO postgres;
 
 --
--- Name: update_member_role(uuid, uuid, text); Type: FUNCTION; Schema: public; Owner: jira
---
-
-CREATE FUNCTION public.update_member_role(p_org_id uuid, p_member_id uuid, p_new_role text) RETURNS boolean
-    LANGUAGE plpgsql SECURITY DEFINER
-    SET search_path TO 'public'
-    AS $$
-DECLARE v_user_id uuid; v_user_role text; v_target_role text;
-BEGIN
-    v_user_id := auth_current_user_id();
-    IF v_user_id IS NULL THEN RAISE EXCEPTION 'User not authenticated'; END IF;
-    SELECT om.role::text INTO v_user_role FROM organization_memberships om WHERE om.org_id = p_org_id AND om.user_id = v_user_id AND om.membership_is_active = true AND om.deleted_at IS NULL;
-    IF v_user_role IS NULL OR v_user_role NOT IN ('owner', 'admin') THEN RAISE EXCEPTION 'PERMISSION_DENIED'; END IF;
-    SELECT om.role::text INTO v_target_role FROM organization_memberships om WHERE om.org_id = p_org_id AND om.user_id = p_member_id AND om.membership_is_active = true AND om.deleted_at IS NULL;
-    IF v_target_role IS NULL THEN RAISE EXCEPTION 'Member not found'; END IF;
-    IF v_user_id = p_member_id THEN RAISE EXCEPTION 'Cannot change your own role'; END IF;
-    IF v_target_role = 'owner' AND v_user_role != 'owner' THEN RAISE EXCEPTION 'PERMISSION_DENIED'; END IF;
-    IF v_user_role = 'admin' AND p_new_role NOT IN ('member', 'viewer') THEN RAISE EXCEPTION 'PERMISSION_DENIED'; END IF;
-    UPDATE organization_memberships SET role = p_new_role::org_role, updated_at = now() WHERE org_id = p_org_id AND user_id = p_member_id AND deleted_at IS NULL;
-    RETURN FOUND;
-END; $$;
-
-
-ALTER FUNCTION public.update_member_role(p_org_id uuid, p_member_id uuid, p_new_role text) OWNER TO jira;
-
---
--- Name: update_organization(uuid, text, text, text, text); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 314 (class 1255 OID 18630)
+-- Name: update_organization(uuid, text, text, text, text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.update_organization(p_org_id uuid, p_org_name text DEFAULT NULL::text, p_org_description text DEFAULT NULL::text, p_slug text DEFAULT NULL::text, p_org_status text DEFAULT NULL::text) RETURNS void
@@ -5035,10 +5118,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.update_organization(p_org_id uuid, p_org_name text, p_org_description text, p_slug text, p_org_status text) OWNER TO jira;
+ALTER FUNCTION public.update_organization(p_org_id uuid, p_org_name text, p_org_description text, p_slug text, p_org_status text) OWNER TO postgres;
 
 --
--- Name: update_organization_asset(uuid, text, text, jsonb); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 310 (class 1255 OID 18648)
+-- Name: update_organization_asset(uuid, text, text, jsonb); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.update_organization_asset(p_asset_id uuid, p_file_name text DEFAULT NULL::text, p_mime_type text DEFAULT NULL::text, p_metadata jsonb DEFAULT NULL::jsonb) RETURNS boolean
@@ -5130,10 +5214,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.update_organization_asset(p_asset_id uuid, p_file_name text, p_mime_type text, p_metadata jsonb) OWNER TO jira;
+ALTER FUNCTION public.update_organization_asset(p_asset_id uuid, p_file_name text, p_mime_type text, p_metadata jsonb) OWNER TO postgres;
 
 --
--- Name: update_platform_user(uuid, public.citext, public.platform_role, boolean); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 360 (class 1255 OID 18605)
+-- Name: update_platform_user(uuid, public.citext, public.platform_role, boolean); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.update_platform_user(p_user_id uuid, p_email public.citext DEFAULT NULL::public.citext, p_role public.platform_role DEFAULT NULL::public.platform_role, p_is_active boolean DEFAULT NULL::boolean) RETURNS boolean
@@ -5158,10 +5243,11 @@ END;
 $$;
 
 
-ALTER FUNCTION public.update_platform_user(p_user_id uuid, p_email public.citext, p_role public.platform_role, p_is_active boolean) OWNER TO jira;
+ALTER FUNCTION public.update_platform_user(p_user_id uuid, p_email public.citext, p_role public.platform_role, p_is_active boolean) OWNER TO postgres;
 
 --
--- Name: update_project_status(uuid, public.project_status, uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 253 (class 1255 OID 18204)
+-- Name: update_project_status(uuid, public.project_status, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.update_project_status(p_project_id uuid, p_new_status public.project_status, p_site_id uuid DEFAULT NULL::uuid) RETURNS boolean
@@ -5311,73 +5397,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.update_project_status(p_project_id uuid, p_new_status public.project_status, p_site_id uuid) OWNER TO jira;
+ALTER FUNCTION public.update_project_status(p_project_id uuid, p_new_status public.project_status, p_site_id uuid) OWNER TO postgres;
 
 --
--- Name: update_site(uuid, text, text, boolean); Type: FUNCTION; Schema: public; Owner: jira
---
-
-CREATE FUNCTION public.update_site(p_site_id uuid, p_site_name text DEFAULT NULL::text, p_site_slug text DEFAULT NULL::text, p_is_private boolean DEFAULT NULL::boolean) RETURNS boolean
-    LANGUAGE plpgsql SECURITY DEFINER
-    SET search_path TO 'public'
-    AS $$
-DECLARE
-    v_user_id uuid;
-    v_org_id uuid;
-    v_is_org_owner boolean;
-    v_is_site_admin boolean;
-BEGIN
-    v_user_id := auth_current_user_id();
-    IF v_user_id IS NULL THEN
-        RAISE EXCEPTION 'User not authenticated';
-    END IF;
-
-    -- Site'nin organizasyonunu bul
-    SELECT org_id INTO v_org_id
-    FROM sites
-    WHERE site_id = p_site_id AND deleted_at IS NULL;
-
-    IF v_org_id IS NULL THEN
-        RAISE EXCEPTION 'Site not found';
-    END IF;
-
-    -- Yetki kontrolü: org_owner veya site_admin
-    v_is_org_owner := auth_is_org_owner(v_org_id);
-    v_is_site_admin := auth_is_site_admin(p_site_id);
-
-    IF NOT (v_is_org_owner OR v_is_site_admin) THEN
-        RAISE EXCEPTION 'PERMISSION_DENIED';
-    END IF;
-
-    -- Slug benzersizlik kontrolü
-    IF p_site_slug IS NOT NULL THEN
-        IF EXISTS (
-            SELECT 1 FROM sites
-            WHERE org_id = v_org_id
-              AND site_slug = lower(trim(p_site_slug))
-              AND site_id != p_site_id
-              AND deleted_at IS NULL
-        ) THEN
-            RAISE EXCEPTION 'Slug already exists';
-        END IF;
-    END IF;
-
-    UPDATE sites
-    SET site_name = COALESCE(p_site_name, site_name),
-        site_slug = COALESCE(lower(trim(p_site_slug)), site_slug),
-        is_private = COALESCE(p_is_private, is_private),
-        updated_at = now()
-    WHERE site_id = p_site_id;
-
-    RETURN FOUND;
-END;
-$$;
-
-
-ALTER FUNCTION public.update_site(p_site_id uuid, p_site_name text, p_site_slug text, p_is_private boolean) OWNER TO jira;
-
---
--- Name: update_site_status(uuid, public.site_status, uuid); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 366 (class 1255 OID 18211)
+-- Name: update_site_status(uuid, public.site_status, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.update_site_status(p_site_id uuid, p_new_status public.site_status, p_org_id uuid DEFAULT NULL::uuid) RETURNS boolean
@@ -5466,10 +5490,11 @@ end;
 $$;
 
 
-ALTER FUNCTION public.update_site_status(p_site_id uuid, p_new_status public.site_status, p_org_id uuid) OWNER TO jira;
+ALTER FUNCTION public.update_site_status(p_site_id uuid, p_new_status public.site_status, p_org_id uuid) OWNER TO postgres;
 
 --
--- Name: verify_platform_token(text); Type: FUNCTION; Schema: public; Owner: jira
+-- TOC entry 402 (class 1255 OID 18606)
+-- Name: verify_platform_token(text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION public.verify_platform_token(p_token text) RETURNS TABLE(platform_user_id uuid, role public.platform_role)
@@ -5489,14 +5514,15 @@ END;
 $$;
 
 
-ALTER FUNCTION public.verify_platform_token(p_token text) OWNER TO jira;
+ALTER FUNCTION public.verify_platform_token(p_token text) OWNER TO postgres;
 
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
 --
--- Name: application_bugs; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 230 (class 1259 OID 17945)
+-- Name: application_bugs; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.application_bugs (
@@ -5516,10 +5542,11 @@ CREATE TABLE public.application_bugs (
 );
 
 
-ALTER TABLE public.application_bugs OWNER TO jira;
+ALTER TABLE public.application_bugs OWNER TO postgres;
 
 --
--- Name: invitations; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 236 (class 1259 OID 18653)
+-- Name: invitations; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.invitations (
@@ -5542,10 +5569,11 @@ CREATE TABLE public.invitations (
 );
 
 
-ALTER TABLE public.invitations OWNER TO jira;
+ALTER TABLE public.invitations OWNER TO postgres;
 
 --
--- Name: issue_activity; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 233 (class 1259 OID 18215)
+-- Name: issue_activity; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.issue_activity (
@@ -5559,10 +5587,11 @@ CREATE TABLE public.issue_activity (
 );
 
 
-ALTER TABLE public.issue_activity OWNER TO jira;
+ALTER TABLE public.issue_activity OWNER TO postgres;
 
 --
--- Name: issue_assets; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 229 (class 1259 OID 17918)
+-- Name: issue_assets; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.issue_assets (
@@ -5584,10 +5613,11 @@ CREATE TABLE public.issue_assets (
 );
 
 
-ALTER TABLE public.issue_assets OWNER TO jira;
+ALTER TABLE public.issue_assets OWNER TO postgres;
 
 --
--- Name: issue_memberships; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 226 (class 1259 OID 17840)
+-- Name: issue_memberships; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.issue_memberships (
@@ -5603,10 +5633,11 @@ CREATE TABLE public.issue_memberships (
 );
 
 
-ALTER TABLE public.issue_memberships OWNER TO jira;
+ALTER TABLE public.issue_memberships OWNER TO postgres;
 
 --
--- Name: issues; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 225 (class 1259 OID 17795)
+-- Name: issues; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.issues (
@@ -5631,10 +5662,11 @@ CREATE TABLE public.issues (
 );
 
 
-ALTER TABLE public.issues OWNER TO jira;
+ALTER TABLE public.issues OWNER TO postgres;
 
 --
--- Name: organizations; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 219 (class 1259 OID 17612)
+-- Name: organizations; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.organizations (
@@ -5652,10 +5684,11 @@ CREATE TABLE public.organizations (
 );
 
 
-ALTER TABLE public.organizations OWNER TO jira;
+ALTER TABLE public.organizations OWNER TO postgres;
 
 --
--- Name: projects; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 222 (class 1259 OID 17697)
+-- Name: projects; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.projects (
@@ -5673,14 +5706,18 @@ CREATE TABLE public.projects (
     updated_at timestamp with time zone DEFAULT now() NOT NULL,
     deleted_at timestamp with time zone,
     deleted_by uuid,
-    is_private boolean DEFAULT false NOT NULL
+    is_private boolean DEFAULT false NOT NULL,
+    project_key character varying(6) NOT NULL,
+    board_type character varying(20) DEFAULT 'scrum'::character varying,
+    icon_url text
 );
 
 
-ALTER TABLE public.projects OWNER TO jira;
+ALTER TABLE public.projects OWNER TO postgres;
 
 --
--- Name: sites; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 221 (class 1259 OID 17669)
+-- Name: sites; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.sites (
@@ -5698,10 +5735,11 @@ CREATE TABLE public.sites (
 );
 
 
-ALTER TABLE public.sites OWNER TO jira;
+ALTER TABLE public.sites OWNER TO postgres;
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 218 (class 1259 OID 17590)
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.users (
@@ -5730,10 +5768,11 @@ CREATE TABLE public.users (
 );
 
 
-ALTER TABLE public.users OWNER TO jira;
+ALTER TABLE public.users OWNER TO postgres;
 
 --
--- Name: issue_summary; Type: VIEW; Schema: public; Owner: jira
+-- TOC entry 234 (class 1259 OID 18305)
+-- Name: issue_summary; Type: VIEW; Schema: public; Owner: postgres
 --
 
 CREATE VIEW public.issue_summary AS
@@ -5783,10 +5822,11 @@ CREATE VIEW public.issue_summary AS
   WHERE (i.deleted_at IS NULL);
 
 
-ALTER TABLE public.issue_summary OWNER TO jira;
+ALTER VIEW public.issue_summary OWNER TO postgres;
 
 --
--- Name: notifications; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 235 (class 1259 OID 18570)
+-- Name: notifications; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.notifications (
@@ -5803,10 +5843,11 @@ CREATE TABLE public.notifications (
 );
 
 
-ALTER TABLE public.notifications OWNER TO jira;
+ALTER TABLE public.notifications OWNER TO postgres;
 
 --
--- Name: organization_assets; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 227 (class 1259 OID 17864)
+-- Name: organization_assets; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.organization_assets (
@@ -5828,10 +5869,11 @@ CREATE TABLE public.organization_assets (
 );
 
 
-ALTER TABLE public.organization_assets OWNER TO jira;
+ALTER TABLE public.organization_assets OWNER TO postgres;
 
 --
--- Name: organization_memberships; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 220 (class 1259 OID 17637)
+-- Name: organization_memberships; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.organization_memberships (
@@ -5849,10 +5891,28 @@ CREATE TABLE public.organization_memberships (
 );
 
 
-ALTER TABLE public.organization_memberships OWNER TO jira;
+ALTER TABLE public.organization_memberships OWNER TO postgres;
 
 --
--- Name: project_assets; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 237 (class 1259 OID 18687)
+-- Name: project_activities; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.project_activities (
+    activity_id uuid DEFAULT gen_random_uuid() NOT NULL,
+    project_id uuid NOT NULL,
+    user_id uuid,
+    action_type character varying(50) NOT NULL,
+    details jsonb DEFAULT '{}'::jsonb,
+    created_at timestamp with time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.project_activities OWNER TO postgres;
+
+--
+-- TOC entry 228 (class 1259 OID 17891)
+-- Name: project_assets; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.project_assets (
@@ -5874,10 +5934,11 @@ CREATE TABLE public.project_assets (
 );
 
 
-ALTER TABLE public.project_assets OWNER TO jira;
+ALTER TABLE public.project_assets OWNER TO postgres;
 
 --
--- Name: project_memberships; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 223 (class 1259 OID 17732)
+-- Name: project_memberships; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.project_memberships (
@@ -5895,10 +5956,11 @@ CREATE TABLE public.project_memberships (
 );
 
 
-ALTER TABLE public.project_memberships OWNER TO jira;
+ALTER TABLE public.project_memberships OWNER TO postgres;
 
 --
--- Name: project_requirements; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 224 (class 1259 OID 17764)
+-- Name: project_requirements; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.project_requirements (
@@ -5917,14 +5979,18 @@ CREATE TABLE public.project_requirements (
 );
 
 
-ALTER TABLE public.project_requirements OWNER TO jira;
+ALTER TABLE public.project_requirements OWNER TO postgres;
 
 --
--- Name: project_summary; Type: VIEW; Schema: public; Owner: jira
+-- TOC entry 238 (class 1259 OID 18717)
+-- Name: project_summary; Type: VIEW; Schema: public; Owner: postgres
 --
 
 CREATE VIEW public.project_summary AS
  SELECT p.project_id,
+    p.project_key,
+    p.board_type,
+    p.icon_url,
     p.project_name,
     p.project_description,
     p.slug,
@@ -5959,10 +6025,11 @@ CREATE VIEW public.project_summary AS
   WHERE (p.deleted_at IS NULL);
 
 
-ALTER TABLE public.project_summary OWNER TO jira;
+ALTER VIEW public.project_summary OWNER TO postgres;
 
 --
--- Name: site_assets; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 232 (class 1259 OID 18045)
+-- Name: site_assets; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.site_assets (
@@ -5984,10 +6051,11 @@ CREATE TABLE public.site_assets (
 );
 
 
-ALTER TABLE public.site_assets OWNER TO jira;
+ALTER TABLE public.site_assets OWNER TO postgres;
 
 --
--- Name: site_memberships; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 231 (class 1259 OID 18033)
+-- Name: site_memberships; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.site_memberships (
@@ -6005,10 +6073,11 @@ CREATE TABLE public.site_memberships (
 );
 
 
-ALTER TABLE public.site_memberships OWNER TO jira;
+ALTER TABLE public.site_memberships OWNER TO postgres;
 
 --
--- Name: system_audit_logs; Type: TABLE; Schema: public; Owner: jira
+-- TOC entry 217 (class 1259 OID 17581)
+-- Name: system_audit_logs; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.system_audit_logs (
@@ -6024,10 +6093,12 @@ CREATE TABLE public.system_audit_logs (
 );
 
 
-ALTER TABLE public.system_audit_logs OWNER TO jira;
+ALTER TABLE public.system_audit_logs OWNER TO postgres;
 
 --
--- Data for Name: application_bugs; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4052 (class 0 OID 17945)
+-- Dependencies: 230
+-- Data for Name: application_bugs; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.application_bugs (bug_id, reported_by, org_id, project_id, title, description, status, priority, assigned_to, created_at, resolved_at, deleted_at, deleted_by) FROM stdin;
@@ -6035,7 +6106,9 @@ COPY public.application_bugs (bug_id, reported_by, org_id, project_id, title, de
 
 
 --
--- Data for Name: invitations; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4057 (class 0 OID 18653)
+-- Dependencies: 236
+-- Data for Name: invitations; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.invitations (invitation_id, org_id, invited_by, invited_user_id, entity_type, entity_id, role, status, created_at, expires_at, accepted_at, rejected_at, cancelled_at, deleted_at) FROM stdin;
@@ -6043,7 +6116,9 @@ COPY public.invitations (invitation_id, org_id, invited_by, invited_user_id, ent
 
 
 --
--- Data for Name: issue_activity; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4055 (class 0 OID 18215)
+-- Dependencies: 233
+-- Data for Name: issue_activity; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.issue_activity (activity_id, issue_id, user_id, field_name, old_value, new_value, created_at) FROM stdin;
@@ -6051,7 +6126,9 @@ COPY public.issue_activity (activity_id, issue_id, user_id, field_name, old_valu
 
 
 --
--- Data for Name: issue_assets; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4051 (class 0 OID 17918)
+-- Dependencies: 229
+-- Data for Name: issue_assets; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.issue_assets (issue_asset_id, issue_id, uploaded_by, asset_type, file_name, mime_type, byte_size, storage_key, checksum, metadata, is_active, created_at, updated_at, deleted_at, deleted_by) FROM stdin;
@@ -6059,7 +6136,9 @@ COPY public.issue_assets (issue_asset_id, issue_id, uploaded_by, asset_type, fil
 
 
 --
--- Data for Name: issue_memberships; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4048 (class 0 OID 17840)
+-- Dependencies: 226
+-- Data for Name: issue_memberships; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.issue_memberships (issue_membership_id, issue_id, user_id, role, membership_is_active, created_at, updated_at, deleted_at, deleted_by) FROM stdin;
@@ -6067,7 +6146,9 @@ COPY public.issue_memberships (issue_membership_id, issue_id, user_id, role, mem
 
 
 --
--- Data for Name: issues; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4047 (class 0 OID 17795)
+-- Dependencies: 225
+-- Data for Name: issues; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.issues (issue_id, project_id, issue_no, issue_title, issue_description, status, priority, reporter_id, assignee_id, parent_issue_id, blocking_issue_id, issue_is_active, created_at, updated_at, deleted_at, deleted_by, is_private, is_editable) FROM stdin;
@@ -6075,7 +6156,9 @@ COPY public.issues (issue_id, project_id, issue_no, issue_title, issue_descripti
 
 
 --
--- Data for Name: notifications; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4056 (class 0 OID 18570)
+-- Dependencies: 235
+-- Data for Name: notifications; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.notifications (notification_id, user_id, type, title, content, metadata, is_read, created_at, read_at, deleted_at) FROM stdin;
@@ -6083,7 +6166,9 @@ COPY public.notifications (notification_id, user_id, type, title, content, metad
 
 
 --
--- Data for Name: organization_assets; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4049 (class 0 OID 17864)
+-- Dependencies: 227
+-- Data for Name: organization_assets; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.organization_assets (org_asset_id, org_id, uploaded_by, asset_type, file_name, mime_type, byte_size, storage_key, checksum, metadata, is_active, created_at, updated_at, deleted_at, deleted_by) FROM stdin;
@@ -6091,26 +6176,42 @@ COPY public.organization_assets (org_asset_id, org_id, uploaded_by, asset_type, 
 
 
 --
--- Data for Name: organization_memberships; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4042 (class 0 OID 17637)
+-- Dependencies: 220
+-- Data for Name: organization_memberships; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.organization_memberships (org_membership_id, org_id, user_id, role, invited_by, membership_is_active, joined_at, created_at, updated_at, deleted_at, deleted_by) FROM stdin;
-3b064a4f-2c3d-4682-9a5c-d53628b3a516	c3f5e9c9-7323-436d-b209-b0eeab2f3596	11111111-1111-1111-1111-111111111111	owner	\N	t	2026-05-09 14:55:39.790178+00	2026-05-09 14:55:39.790178+00	2026-05-09 14:55:39.790178+00	\N	\N
-61eecd40-fde2-44c3-a77a-ba385b734f32	c3f5e9c9-7323-436d-b209-b0eeab2f3596	22222222-2222-2222-2222-222222222222	member	\N	t	2026-05-09 14:57:28.930407+00	2026-05-09 14:57:28.930407+00	2026-05-09 14:57:28.930407+00	\N	\N
+3b064a4f-2c3d-4682-9a5c-d53628b3a516	c3f5e9c9-7323-436d-b209-b0eeab2f3596	11111111-1111-1111-1111-111111111111	owner	\N	t	2026-05-09 17:55:39.790178+03	2026-05-09 17:55:39.790178+03	2026-05-09 17:55:39.790178+03	\N	\N
+61eecd40-fde2-44c3-a77a-ba385b734f32	c3f5e9c9-7323-436d-b209-b0eeab2f3596	22222222-2222-2222-2222-222222222222	member	\N	t	2026-05-09 17:57:28.930407+03	2026-05-09 17:57:28.930407+03	2026-05-09 17:57:28.930407+03	\N	\N
 \.
 
 
 --
--- Data for Name: organizations; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4041 (class 0 OID 17612)
+-- Dependencies: 219
+-- Data for Name: organizations; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.organizations (org_id, org_check_id, org_name, org_description, slug, org_status, created_by, created_at, updated_at, deleted_at, deleted_by) FROM stdin;
-c3f5e9c9-7323-436d-b209-b0eeab2f3596	3512a68fabf8	Test Organization	Test Description	test-org	active	11111111-1111-1111-1111-111111111111	2026-05-09 14:55:39.790178+00	2026-05-09 14:55:39.790178+00	\N	\N
+c3f5e9c9-7323-436d-b209-b0eeab2f3596	3512a68fabf8	Test Organization	Test Description	test-org	active	11111111-1111-1111-1111-111111111111	2026-05-09 17:55:39.790178+03	2026-05-09 17:55:39.790178+03	\N	\N
 \.
 
 
 --
--- Data for Name: project_assets; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4058 (class 0 OID 18687)
+-- Dependencies: 237
+-- Data for Name: project_activities; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.project_activities (activity_id, project_id, user_id, action_type, details, created_at) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4050 (class 0 OID 17891)
+-- Dependencies: 228
+-- Data for Name: project_assets; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.project_assets (project_asset_id, project_id, uploaded_by, asset_type, file_name, mime_type, byte_size, storage_key, checksum, metadata, is_active, created_at, updated_at, deleted_at, deleted_by) FROM stdin;
@@ -6118,7 +6219,9 @@ COPY public.project_assets (project_asset_id, project_id, uploaded_by, asset_typ
 
 
 --
--- Data for Name: project_memberships; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4045 (class 0 OID 17732)
+-- Dependencies: 223
+-- Data for Name: project_memberships; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.project_memberships (project_membership_id, project_id, user_id, role, invited_by, membership_is_active, joined_at, created_at, updated_at, deleted_at, deleted_by) FROM stdin;
@@ -6126,7 +6229,9 @@ COPY public.project_memberships (project_membership_id, project_id, user_id, rol
 
 
 --
--- Data for Name: project_requirements; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4046 (class 0 OID 17764)
+-- Dependencies: 224
+-- Data for Name: project_requirements; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.project_requirements (requirement_id, project_id, title, description, priority, is_done, created_by, created_at, done_by, done_at, deleted_at, deleted_by) FROM stdin;
@@ -6134,15 +6239,19 @@ COPY public.project_requirements (requirement_id, project_id, title, description
 
 
 --
--- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4044 (class 0 OID 17697)
+-- Dependencies: 222
+-- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.projects (project_id, site_id, project_check_id, project_name, project_description, slug, project_status, created_by, completed_at, completed_by, created_at, updated_at, deleted_at, deleted_by, is_private) FROM stdin;
+COPY public.projects (project_id, site_id, project_check_id, project_name, project_description, slug, project_status, created_by, completed_at, completed_by, created_at, updated_at, deleted_at, deleted_by, is_private, project_key, board_type, icon_url) FROM stdin;
 \.
 
 
 --
--- Data for Name: site_assets; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4054 (class 0 OID 18045)
+-- Dependencies: 232
+-- Data for Name: site_assets; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.site_assets (site_asset_id, site_id, uploaded_by, asset_type, file_name, mime_type, byte_size, storage_key, checksum, metadata, is_active, created_at, updated_at, deleted_at, deleted_by) FROM stdin;
@@ -6150,7 +6259,9 @@ COPY public.site_assets (site_asset_id, site_id, uploaded_by, asset_type, file_n
 
 
 --
--- Data for Name: site_memberships; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4053 (class 0 OID 18033)
+-- Dependencies: 231
+-- Data for Name: site_memberships; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.site_memberships (site_membership_id, site_id, user_id, role, invited_by, membership_is_active, joined_at, created_at, updated_at, deleted_at, deleted_by) FROM stdin;
@@ -6158,7 +6269,9 @@ COPY public.site_memberships (site_membership_id, site_id, user_id, role, invite
 
 
 --
--- Data for Name: sites; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4043 (class 0 OID 17669)
+-- Dependencies: 221
+-- Data for Name: sites; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.sites (site_id, org_id, site_name, site_slug, site_status, created_by, created_at, updated_at, deleted_at, deleted_by, is_private) FROM stdin;
@@ -6166,26 +6279,31 @@ COPY public.sites (site_id, org_id, site_name, site_slug, site_status, created_b
 
 
 --
--- Data for Name: system_audit_logs; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4039 (class 0 OID 17581)
+-- Dependencies: 217
+-- Data for Name: system_audit_logs; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.system_audit_logs (audit_id, actor_type, actor_id, entity_type, entity_id, action_type, old_value, new_value, created_at) FROM stdin;
-e071b65d-b561-4054-9692-62c4cee2970f	tenant_user	11111111-1111-1111-1111-111111111111	organization	c3f5e9c9-7323-436d-b209-b0eeab2f3596	CREATE	\N	{"slug": "test-org", "org_name": "Test Organization"}	2026-05-09 14:55:39.790178+00
+e071b65d-b561-4054-9692-62c4cee2970f	tenant_user	11111111-1111-1111-1111-111111111111	organization	c3f5e9c9-7323-436d-b209-b0eeab2f3596	CREATE	\N	{"slug": "test-org", "org_name": "Test Organization"}	2026-05-09 17:55:39.790178+03
 \.
 
 
 --
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: jira
+-- TOC entry 4040 (class 0 OID 17590)
+-- Dependencies: 218
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.users (user_id, user_name, user_last_name, user_display_name, user_email, user_password, user_is_active, last_login_at, user_friendship_code, metadata, created_at, updated_at, deleted_at, deleted_by, email_verified_at, email_verification_token, password_reset_token, password_reset_expires_at, two_factor_secret, two_factor_enabled, last_password_change_at, token_version) FROM stdin;
-11111111-1111-1111-1111-111111111111	Test User	\N	\N	test@example.com	hashed_password	t	\N	e90b6f31-4f54-4a19-a9c2-4043c9370ac6	{}	2026-05-09 14:55:38.824914+00	2026-05-09 14:55:38.824914+00	\N	\N	\N	\N	\N	\N	\N	f	2026-05-09 14:55:38.824914+00	1
-22222222-2222-2222-2222-222222222222	Member User	\N	\N	member@example.com	hashed_password	t	\N	bd3d75fd-6ce7-430e-b58f-26da3d2150a2	{}	2026-05-09 14:57:21.429323+00	2026-05-09 14:57:21.429323+00	\N	\N	\N	\N	\N	\N	\N	f	2026-05-09 14:57:21.429323+00	1
+11111111-1111-1111-1111-111111111111	Test User	\N	\N	test@example.com	hashed_password	t	\N	e90b6f31-4f54-4a19-a9c2-4043c9370ac6	{}	2026-05-09 17:55:38.824914+03	2026-05-09 17:55:38.824914+03	\N	\N	\N	\N	\N	\N	\N	f	2026-05-09 17:55:38.824914+03	1
+22222222-2222-2222-2222-222222222222	Member User	\N	\N	member@example.com	hashed_password	t	\N	bd3d75fd-6ce7-430e-b58f-26da3d2150a2	{}	2026-05-09 17:57:21.429323+03	2026-05-09 17:57:21.429323+03	\N	\N	\N	\N	\N	\N	\N	f	2026-05-09 17:57:21.429323+03	1
 \.
 
 
 --
--- Name: application_bugs application_bugs_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3783 (class 2606 OID 17955)
+-- Name: application_bugs application_bugs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.application_bugs
@@ -6193,7 +6311,8 @@ ALTER TABLE ONLY public.application_bugs
 
 
 --
--- Name: invitations invitations_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3811 (class 2606 OID 18665)
+-- Name: invitations invitations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.invitations
@@ -6201,7 +6320,8 @@ ALTER TABLE ONLY public.invitations
 
 
 --
--- Name: issue_activity issue_activity_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3801 (class 2606 OID 18223)
+-- Name: issue_activity issue_activity_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_activity
@@ -6209,7 +6329,8 @@ ALTER TABLE ONLY public.issue_activity
 
 
 --
--- Name: issue_assets issue_assets_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3781 (class 2606 OID 17929)
+-- Name: issue_assets issue_assets_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_assets
@@ -6217,7 +6338,8 @@ ALTER TABLE ONLY public.issue_assets
 
 
 --
--- Name: issue_memberships issue_memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3775 (class 2606 OID 17848)
+-- Name: issue_memberships issue_memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_memberships
@@ -6225,7 +6347,8 @@ ALTER TABLE ONLY public.issue_memberships
 
 
 --
--- Name: issues issues_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3764 (class 2606 OID 17807)
+-- Name: issues issues_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issues
@@ -6233,7 +6356,8 @@ ALTER TABLE ONLY public.issues
 
 
 --
--- Name: issues issues_project_id_issue_no_key; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3766 (class 2606 OID 17809)
+-- Name: issues issues_project_id_issue_no_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issues
@@ -6241,7 +6365,8 @@ ALTER TABLE ONLY public.issues
 
 
 --
--- Name: notifications notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3806 (class 2606 OID 18580)
+-- Name: notifications notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.notifications
@@ -6249,7 +6374,8 @@ ALTER TABLE ONLY public.notifications
 
 
 --
--- Name: organization_assets organization_assets_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3777 (class 2606 OID 17875)
+-- Name: organization_assets organization_assets_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_assets
@@ -6257,7 +6383,8 @@ ALTER TABLE ONLY public.organization_assets
 
 
 --
--- Name: organization_memberships organization_memberships_org_id_user_id_key; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3722 (class 2606 OID 17648)
+-- Name: organization_memberships organization_memberships_org_id_user_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_memberships
@@ -6265,7 +6392,8 @@ ALTER TABLE ONLY public.organization_memberships
 
 
 --
--- Name: organization_memberships organization_memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3724 (class 2606 OID 17646)
+-- Name: organization_memberships organization_memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_memberships
@@ -6273,7 +6401,8 @@ ALTER TABLE ONLY public.organization_memberships
 
 
 --
--- Name: organizations organizations_org_check_id_key; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3706 (class 2606 OID 17624)
+-- Name: organizations organizations_org_check_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organizations
@@ -6281,7 +6410,8 @@ ALTER TABLE ONLY public.organizations
 
 
 --
--- Name: organizations organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3708 (class 2606 OID 17622)
+-- Name: organizations organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organizations
@@ -6289,7 +6419,8 @@ ALTER TABLE ONLY public.organizations
 
 
 --
--- Name: organizations organizations_slug_key; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3710 (class 2606 OID 17626)
+-- Name: organizations organizations_slug_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organizations
@@ -6297,7 +6428,17 @@ ALTER TABLE ONLY public.organizations
 
 
 --
--- Name: project_assets project_assets_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3814 (class 2606 OID 18696)
+-- Name: project_activities project_activities_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.project_activities
+    ADD CONSTRAINT project_activities_pkey PRIMARY KEY (activity_id);
+
+
+--
+-- TOC entry 3779 (class 2606 OID 17902)
+-- Name: project_assets project_assets_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_assets
@@ -6305,7 +6446,8 @@ ALTER TABLE ONLY public.project_assets
 
 
 --
--- Name: project_memberships project_memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3747 (class 2606 OID 17741)
+-- Name: project_memberships project_memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_memberships
@@ -6313,7 +6455,8 @@ ALTER TABLE ONLY public.project_memberships
 
 
 --
--- Name: project_memberships project_memberships_project_id_user_id_key; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3749 (class 2606 OID 17743)
+-- Name: project_memberships project_memberships_project_id_user_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_memberships
@@ -6321,7 +6464,8 @@ ALTER TABLE ONLY public.project_memberships
 
 
 --
--- Name: project_requirements project_requirements_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3751 (class 2606 OID 17774)
+-- Name: project_requirements project_requirements_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_requirements
@@ -6329,7 +6473,8 @@ ALTER TABLE ONLY public.project_requirements
 
 
 --
--- Name: projects projects_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3730 (class 2606 OID 17707)
+-- Name: projects projects_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.projects
@@ -6337,7 +6482,8 @@ ALTER TABLE ONLY public.projects
 
 
 --
--- Name: projects projects_project_check_id_key; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3732 (class 2606 OID 17709)
+-- Name: projects projects_project_check_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.projects
@@ -6345,7 +6491,17 @@ ALTER TABLE ONLY public.projects
 
 
 --
--- Name: projects projects_site_id_project_name_key; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3734 (class 2606 OID 18686)
+-- Name: projects projects_site_id_project_key_unique; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.projects
+    ADD CONSTRAINT projects_site_id_project_key_unique UNIQUE (site_id, project_key);
+
+
+--
+-- TOC entry 3736 (class 2606 OID 17711)
+-- Name: projects projects_site_id_project_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.projects
@@ -6353,7 +6509,8 @@ ALTER TABLE ONLY public.projects
 
 
 --
--- Name: site_assets site_assets_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3799 (class 2606 OID 18056)
+-- Name: site_assets site_assets_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_assets
@@ -6361,7 +6518,8 @@ ALTER TABLE ONLY public.site_assets
 
 
 --
--- Name: site_memberships site_memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3795 (class 2606 OID 18042)
+-- Name: site_memberships site_memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_memberships
@@ -6369,7 +6527,8 @@ ALTER TABLE ONLY public.site_memberships
 
 
 --
--- Name: site_memberships site_memberships_site_id_user_id_key; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3797 (class 2606 OID 18044)
+-- Name: site_memberships site_memberships_site_id_user_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_memberships
@@ -6377,7 +6536,8 @@ ALTER TABLE ONLY public.site_memberships
 
 
 --
--- Name: sites sites_org_id_site_slug_key; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3726 (class 2606 OID 17681)
+-- Name: sites sites_org_id_site_slug_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.sites
@@ -6385,7 +6545,8 @@ ALTER TABLE ONLY public.sites
 
 
 --
--- Name: sites sites_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3728 (class 2606 OID 17679)
+-- Name: sites sites_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.sites
@@ -6393,7 +6554,8 @@ ALTER TABLE ONLY public.sites
 
 
 --
--- Name: system_audit_logs system_audit_logs_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3693 (class 2606 OID 17589)
+-- Name: system_audit_logs system_audit_logs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.system_audit_logs
@@ -6401,7 +6563,8 @@ ALTER TABLE ONLY public.system_audit_logs
 
 
 --
--- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3700 (class 2606 OID 17602)
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users
@@ -6409,7 +6572,8 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: users users_user_email_key; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3702 (class 2606 OID 17604)
+-- Name: users users_user_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users
@@ -6417,7 +6581,8 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: users users_user_friendship_code_key; Type: CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3704 (class 2606 OID 17606)
+-- Name: users users_user_friendship_code_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users
@@ -6425,518 +6590,600 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: idx_invitations_invited_user; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3807 (class 1259 OID 18682)
+-- Name: idx_invitations_invited_user; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_invitations_invited_user ON public.invitations USING btree (invited_user_id) WHERE ((deleted_at IS NULL) AND (status = 'pending'::text));
 
 
 --
--- Name: idx_invitations_org_id; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3808 (class 1259 OID 18681)
+-- Name: idx_invitations_org_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_invitations_org_id ON public.invitations USING btree (org_id) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_invitations_status; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3809 (class 1259 OID 18683)
+-- Name: idx_invitations_status; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_invitations_status ON public.invitations USING btree (status) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_issue_memberships_is_active; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3767 (class 1259 OID 18240)
+-- Name: idx_issue_memberships_is_active; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_issue_memberships_is_active ON public.issue_memberships USING btree (membership_is_active) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_issue_memberships_issue_id; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3768 (class 1259 OID 18238)
+-- Name: idx_issue_memberships_issue_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_issue_memberships_issue_id ON public.issue_memberships USING btree (issue_id) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_issue_memberships_issue_role; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3769 (class 1259 OID 18242)
+-- Name: idx_issue_memberships_issue_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_issue_memberships_issue_role ON public.issue_memberships USING btree (issue_id, role) WHERE ((membership_is_active = true) AND (deleted_at IS NULL));
 
 
 --
--- Name: idx_issue_memberships_role; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3770 (class 1259 OID 18239)
+-- Name: idx_issue_memberships_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_issue_memberships_role ON public.issue_memberships USING btree (role) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_issue_memberships_user_id; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3771 (class 1259 OID 18237)
+-- Name: idx_issue_memberships_user_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_issue_memberships_user_id ON public.issue_memberships USING btree (user_id) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_issue_memberships_user_issue; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3772 (class 1259 OID 18241)
+-- Name: idx_issue_memberships_user_issue; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_issue_memberships_user_issue ON public.issue_memberships USING btree (user_id, issue_id) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_issue_memberships_user_role; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3773 (class 1259 OID 18243)
+-- Name: idx_issue_memberships_user_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_issue_memberships_user_role ON public.issue_memberships USING btree (user_id, role) WHERE ((membership_is_active = true) AND (deleted_at IS NULL));
 
 
 --
--- Name: idx_issues_assignee_id; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3752 (class 1259 OID 18234)
+-- Name: idx_issues_assignee_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_issues_assignee_id ON public.issues USING btree (assignee_id) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_issues_assignee_id_priority; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3753 (class 1259 OID 18236)
+-- Name: idx_issues_assignee_id_priority; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_issues_assignee_id_priority ON public.issues USING btree (assignee_id, priority) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_issues_assignee_id_status; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3754 (class 1259 OID 18235)
+-- Name: idx_issues_assignee_id_status; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_issues_assignee_id_status ON public.issues USING btree (assignee_id, status) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_issues_created_at; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3755 (class 1259 OID 18249)
+-- Name: idx_issues_created_at; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_issues_created_at ON public.issues USING btree (created_at DESC) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_issues_parent_issue_id; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3756 (class 1259 OID 18248)
+-- Name: idx_issues_parent_issue_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_issues_parent_issue_id ON public.issues USING btree (parent_issue_id) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_issues_priority; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3757 (class 1259 OID 18246)
+-- Name: idx_issues_priority; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_issues_priority ON public.issues USING btree (priority) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_issues_project_id; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3758 (class 1259 OID 18244)
+-- Name: idx_issues_project_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_issues_project_id ON public.issues USING btree (project_id) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_issues_project_id_priority; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3759 (class 1259 OID 18251)
+-- Name: idx_issues_project_id_priority; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_issues_project_id_priority ON public.issues USING btree (project_id, priority) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_issues_project_id_status; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3760 (class 1259 OID 18250)
+-- Name: idx_issues_project_id_status; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_issues_project_id_status ON public.issues USING btree (project_id, status) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_issues_reporter_id; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3761 (class 1259 OID 18247)
+-- Name: idx_issues_reporter_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_issues_reporter_id ON public.issues USING btree (reporter_id) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_issues_status; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3762 (class 1259 OID 18245)
+-- Name: idx_issues_status; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_issues_status ON public.issues USING btree (status) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_notifications_created_at; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3802 (class 1259 OID 18588)
+-- Name: idx_notifications_created_at; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_notifications_created_at ON public.notifications USING btree (created_at DESC) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_notifications_is_read; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3803 (class 1259 OID 18587)
+-- Name: idx_notifications_is_read; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_notifications_is_read ON public.notifications USING btree (is_read) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_notifications_user_id; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3804 (class 1259 OID 18586)
+-- Name: idx_notifications_user_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_notifications_user_id ON public.notifications USING btree (user_id) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_organization_memberships_invited_by; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3711 (class 1259 OID 18256)
+-- Name: idx_organization_memberships_invited_by; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_organization_memberships_invited_by ON public.organization_memberships USING btree (invited_by) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_organization_memberships_is_active; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3712 (class 1259 OID 18255)
+-- Name: idx_organization_memberships_is_active; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_organization_memberships_is_active ON public.organization_memberships USING btree (membership_is_active) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_organization_memberships_joined_at; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3713 (class 1259 OID 18257)
+-- Name: idx_organization_memberships_joined_at; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_organization_memberships_joined_at ON public.organization_memberships USING btree (joined_at DESC) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_organization_memberships_org_active; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3714 (class 1259 OID 18261)
+-- Name: idx_organization_memberships_org_active; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_organization_memberships_org_active ON public.organization_memberships USING btree (org_id, membership_is_active) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_organization_memberships_org_id; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3715 (class 1259 OID 18253)
+-- Name: idx_organization_memberships_org_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_organization_memberships_org_id ON public.organization_memberships USING btree (org_id) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_organization_memberships_org_role; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3716 (class 1259 OID 18259)
+-- Name: idx_organization_memberships_org_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_organization_memberships_org_role ON public.organization_memberships USING btree (org_id, role) WHERE ((membership_is_active = true) AND (deleted_at IS NULL));
 
 
 --
--- Name: idx_organization_memberships_role; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3717 (class 1259 OID 18254)
+-- Name: idx_organization_memberships_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_organization_memberships_role ON public.organization_memberships USING btree (role) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_organization_memberships_user_id; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3718 (class 1259 OID 18252)
+-- Name: idx_organization_memberships_user_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_organization_memberships_user_id ON public.organization_memberships USING btree (user_id) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_organization_memberships_user_org; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3719 (class 1259 OID 18258)
+-- Name: idx_organization_memberships_user_org; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_organization_memberships_user_org ON public.organization_memberships USING btree (user_id, org_id) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_organization_memberships_user_role; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3720 (class 1259 OID 18260)
+-- Name: idx_organization_memberships_user_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_organization_memberships_user_role ON public.organization_memberships USING btree (user_id, role) WHERE ((membership_is_active = true) AND (deleted_at IS NULL));
 
 
 --
--- Name: idx_project_memberships_invited_by; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3812 (class 1259 OID 18707)
+-- Name: idx_project_activities_project_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX idx_project_activities_project_id ON public.project_activities USING btree (project_id);
+
+
+--
+-- TOC entry 3737 (class 1259 OID 18266)
+-- Name: idx_project_memberships_invited_by; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_project_memberships_invited_by ON public.project_memberships USING btree (invited_by) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_project_memberships_is_active; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3738 (class 1259 OID 18265)
+-- Name: idx_project_memberships_is_active; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_project_memberships_is_active ON public.project_memberships USING btree (membership_is_active) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_project_memberships_project_active; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3739 (class 1259 OID 18270)
+-- Name: idx_project_memberships_project_active; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_project_memberships_project_active ON public.project_memberships USING btree (project_id, membership_is_active) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_project_memberships_project_id; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3740 (class 1259 OID 18263)
+-- Name: idx_project_memberships_project_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_project_memberships_project_id ON public.project_memberships USING btree (project_id) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_project_memberships_project_role; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3741 (class 1259 OID 18268)
+-- Name: idx_project_memberships_project_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_project_memberships_project_role ON public.project_memberships USING btree (project_id, role) WHERE ((membership_is_active = true) AND (deleted_at IS NULL));
 
 
 --
--- Name: idx_project_memberships_role; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3742 (class 1259 OID 18264)
+-- Name: idx_project_memberships_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_project_memberships_role ON public.project_memberships USING btree (role) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_project_memberships_user_id; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3743 (class 1259 OID 18262)
+-- Name: idx_project_memberships_user_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_project_memberships_user_id ON public.project_memberships USING btree (user_id) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_project_memberships_user_project; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3744 (class 1259 OID 18267)
+-- Name: idx_project_memberships_user_project; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_project_memberships_user_project ON public.project_memberships USING btree (user_id, project_id) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_project_memberships_user_role; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3745 (class 1259 OID 18269)
+-- Name: idx_project_memberships_user_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_project_memberships_user_role ON public.project_memberships USING btree (user_id, role) WHERE ((membership_is_active = true) AND (deleted_at IS NULL));
 
 
 --
--- Name: idx_site_memberships_invited_by; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3784 (class 1259 OID 18275)
+-- Name: idx_site_memberships_invited_by; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_site_memberships_invited_by ON public.site_memberships USING btree (invited_by) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_site_memberships_is_active; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3785 (class 1259 OID 18274)
+-- Name: idx_site_memberships_is_active; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_site_memberships_is_active ON public.site_memberships USING btree (membership_is_active) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_site_memberships_joined_at; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3786 (class 1259 OID 18276)
+-- Name: idx_site_memberships_joined_at; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_site_memberships_joined_at ON public.site_memberships USING btree (joined_at DESC) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_site_memberships_role; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3787 (class 1259 OID 18273)
+-- Name: idx_site_memberships_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_site_memberships_role ON public.site_memberships USING btree (role) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_site_memberships_site_active; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3788 (class 1259 OID 18280)
+-- Name: idx_site_memberships_site_active; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_site_memberships_site_active ON public.site_memberships USING btree (site_id, membership_is_active) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_site_memberships_site_id; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3789 (class 1259 OID 18272)
+-- Name: idx_site_memberships_site_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_site_memberships_site_id ON public.site_memberships USING btree (site_id) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_site_memberships_site_role; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3790 (class 1259 OID 18278)
+-- Name: idx_site_memberships_site_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_site_memberships_site_role ON public.site_memberships USING btree (site_id, role) WHERE ((membership_is_active = true) AND (deleted_at IS NULL));
 
 
 --
--- Name: idx_site_memberships_user_id; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3791 (class 1259 OID 18271)
+-- Name: idx_site_memberships_user_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_site_memberships_user_id ON public.site_memberships USING btree (user_id) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_site_memberships_user_role; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3792 (class 1259 OID 18279)
+-- Name: idx_site_memberships_user_role; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_site_memberships_user_role ON public.site_memberships USING btree (user_id, role) WHERE ((membership_is_active = true) AND (deleted_at IS NULL));
 
 
 --
--- Name: idx_site_memberships_user_site; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3793 (class 1259 OID 18277)
+-- Name: idx_site_memberships_user_site; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_site_memberships_user_site ON public.site_memberships USING btree (user_id, site_id) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_users_active; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3694 (class 1259 OID 18285)
+-- Name: idx_users_active; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_users_active ON public.users USING btree (user_is_active) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_users_created_at; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3695 (class 1259 OID 18284)
+-- Name: idx_users_created_at; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_users_created_at ON public.users USING btree (created_at DESC) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: idx_users_email; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3696 (class 1259 OID 18281)
+-- Name: idx_users_email; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_users_email ON public.users USING btree (user_email) WHERE ((deleted_at IS NULL) AND (user_is_active = true));
 
 
 --
--- Name: idx_users_friendship_code; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3697 (class 1259 OID 18282)
+-- Name: idx_users_friendship_code; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_users_friendship_code ON public.users USING btree (user_friendship_code) WHERE ((deleted_at IS NULL) AND (user_is_active = true));
 
 
 --
--- Name: idx_users_name; Type: INDEX; Schema: public; Owner: jira
+-- TOC entry 3698 (class 1259 OID 18283)
+-- Name: idx_users_name; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_users_name ON public.users USING btree (user_name) WHERE (deleted_at IS NULL);
 
 
 --
--- Name: issues issue_activity_trigger; Type: TRIGGER; Schema: public; Owner: jira
+-- TOC entry 3878 (class 2620 OID 18287)
+-- Name: issues issue_activity_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER issue_activity_trigger AFTER INSERT OR DELETE OR UPDATE ON public.issues FOR EACH ROW EXECUTE FUNCTION public.trg_issue_activity();
 
 
 --
--- Name: issue_assets issue_assets_update_trigger; Type: TRIGGER; Schema: public; Owner: jira
+-- TOC entry 3884 (class 2620 OID 18296)
+-- Name: issue_assets issue_assets_update_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER issue_assets_update_trigger BEFORE UPDATE ON public.issue_assets FOR EACH ROW EXECUTE FUNCTION public.trg_assets_update();
 
 
 --
--- Name: issues issue_assigned_notification; Type: TRIGGER; Schema: public; Owner: jira
+-- TOC entry 3879 (class 2620 OID 18590)
+-- Name: issues issue_assigned_notification; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER issue_assigned_notification AFTER UPDATE ON public.issues FOR EACH ROW EXECUTE FUNCTION public.trigger_notify_issue_assigned();
 
 
 --
--- Name: issue_memberships issue_memberships_role_guard_trigger; Type: TRIGGER; Schema: public; Owner: jira
+-- TOC entry 3881 (class 2620 OID 18290)
+-- Name: issue_memberships issue_memberships_role_guard_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER issue_memberships_role_guard_trigger BEFORE INSERT OR UPDATE OF role ON public.issue_memberships FOR EACH ROW EXECUTE FUNCTION public.trg_issue_memberships_role_guard();
 
 
 --
--- Name: organization_assets organization_assets_update_trigger; Type: TRIGGER; Schema: public; Owner: jira
+-- TOC entry 3882 (class 2620 OID 18293)
+-- Name: organization_assets organization_assets_update_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER organization_assets_update_trigger BEFORE UPDATE ON public.organization_assets FOR EACH ROW EXECUTE FUNCTION public.trg_assets_update();
 
 
 --
--- Name: issues prevent_issue_delete_trigger; Type: TRIGGER; Schema: public; Owner: jira
+-- TOC entry 3880 (class 2620 OID 18304)
+-- Name: issues prevent_issue_delete_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER prevent_issue_delete_trigger BEFORE UPDATE ON public.issues FOR EACH ROW EXECUTE FUNCTION public.trg_prevent_issue_delete_if_has_children();
 
 
 --
--- Name: organizations prevent_org_delete_trigger; Type: TRIGGER; Schema: public; Owner: jira
+-- TOC entry 3873 (class 2620 OID 18302)
+-- Name: organizations prevent_org_delete_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER prevent_org_delete_trigger BEFORE UPDATE ON public.organizations FOR EACH ROW EXECUTE FUNCTION public.trg_prevent_org_delete_if_has_sites();
 
 
 --
--- Name: projects prevent_project_delete_trigger; Type: TRIGGER; Schema: public; Owner: jira
+-- TOC entry 3875 (class 2620 OID 18300)
+-- Name: projects prevent_project_delete_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER prevent_project_delete_trigger BEFORE UPDATE ON public.projects FOR EACH ROW EXECUTE FUNCTION public.trg_prevent_project_delete_if_has_issues();
 
 
 --
--- Name: sites prevent_site_delete_trigger; Type: TRIGGER; Schema: public; Owner: jira
+-- TOC entry 3874 (class 2620 OID 18298)
+-- Name: sites prevent_site_delete_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER prevent_site_delete_trigger BEFORE UPDATE ON public.sites FOR EACH ROW EXECUTE FUNCTION public.trg_prevent_site_delete_if_has_projects();
 
 
 --
--- Name: project_assets project_assets_update_trigger; Type: TRIGGER; Schema: public; Owner: jira
+-- TOC entry 3883 (class 2620 OID 18295)
+-- Name: project_assets project_assets_update_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER project_assets_update_trigger BEFORE UPDATE ON public.project_assets FOR EACH ROW EXECUTE FUNCTION public.trg_assets_update();
 
 
 --
--- Name: project_memberships project_memberships_role_guard; Type: TRIGGER; Schema: public; Owner: jira
+-- TOC entry 3876 (class 2620 OID 17990)
+-- Name: project_memberships project_memberships_role_guard; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER project_memberships_role_guard BEFORE INSERT OR UPDATE OF role ON public.project_memberships FOR EACH ROW EXECUTE FUNCTION public.trg_project_memberships_role_guard();
 
 
 --
--- Name: project_memberships project_memberships_role_guard_trigger; Type: TRIGGER; Schema: public; Owner: jira
+-- TOC entry 3877 (class 2620 OID 18291)
+-- Name: project_memberships project_memberships_role_guard_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER project_memberships_role_guard_trigger BEFORE INSERT OR UPDATE OF role ON public.project_memberships FOR EACH ROW EXECUTE FUNCTION public.trg_project_memberships_role_guard();
 
 
 --
--- Name: site_assets site_assets_update_trigger; Type: TRIGGER; Schema: public; Owner: jira
+-- TOC entry 3887 (class 2620 OID 18294)
+-- Name: site_assets site_assets_update_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER site_assets_update_trigger BEFORE UPDATE ON public.site_assets FOR EACH ROW EXECUTE FUNCTION public.trg_assets_update();
 
 
 --
--- Name: site_memberships site_memberships_role_guard; Type: TRIGGER; Schema: public; Owner: jira
+-- TOC entry 3885 (class 2620 OID 18098)
+-- Name: site_memberships site_memberships_role_guard; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER site_memberships_role_guard BEFORE INSERT OR UPDATE OF role ON public.site_memberships FOR EACH ROW EXECUTE FUNCTION public.trg_site_memberships_role_guard();
 
 
 --
--- Name: site_memberships site_memberships_role_guard_trigger; Type: TRIGGER; Schema: public; Owner: jira
+-- TOC entry 3886 (class 2620 OID 18650)
+-- Name: site_memberships site_memberships_role_guard_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE TRIGGER site_memberships_role_guard_trigger BEFORE INSERT OR UPDATE OF role ON public.site_memberships FOR EACH ROW EXECUTE FUNCTION public.trg_site_memberships_role_guard();
 
 
 --
--- Name: application_bugs application_bugs_org_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3855 (class 2606 OID 17961)
+-- Name: application_bugs application_bugs_org_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.application_bugs
@@ -6944,7 +7191,8 @@ ALTER TABLE ONLY public.application_bugs
 
 
 --
--- Name: application_bugs application_bugs_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3856 (class 2606 OID 17966)
+-- Name: application_bugs application_bugs_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.application_bugs
@@ -6952,7 +7200,8 @@ ALTER TABLE ONLY public.application_bugs
 
 
 --
--- Name: application_bugs application_bugs_reported_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3857 (class 2606 OID 17956)
+-- Name: application_bugs application_bugs_reported_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.application_bugs
@@ -6960,7 +7209,8 @@ ALTER TABLE ONLY public.application_bugs
 
 
 --
--- Name: invitations invitations_invited_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3868 (class 2606 OID 18671)
+-- Name: invitations invitations_invited_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.invitations
@@ -6968,7 +7218,8 @@ ALTER TABLE ONLY public.invitations
 
 
 --
--- Name: invitations invitations_invited_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3869 (class 2606 OID 18676)
+-- Name: invitations invitations_invited_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.invitations
@@ -6976,7 +7227,8 @@ ALTER TABLE ONLY public.invitations
 
 
 --
--- Name: invitations invitations_org_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3870 (class 2606 OID 18666)
+-- Name: invitations invitations_org_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.invitations
@@ -6984,7 +7236,8 @@ ALTER TABLE ONLY public.invitations
 
 
 --
--- Name: issue_activity issue_activity_issue_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3865 (class 2606 OID 18224)
+-- Name: issue_activity issue_activity_issue_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_activity
@@ -6992,7 +7245,8 @@ ALTER TABLE ONLY public.issue_activity
 
 
 --
--- Name: issue_activity issue_activity_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3866 (class 2606 OID 18229)
+-- Name: issue_activity issue_activity_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_activity
@@ -7000,7 +7254,8 @@ ALTER TABLE ONLY public.issue_activity
 
 
 --
--- Name: issue_assets issue_assets_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3852 (class 2606 OID 17940)
+-- Name: issue_assets issue_assets_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_assets
@@ -7008,7 +7263,8 @@ ALTER TABLE ONLY public.issue_assets
 
 
 --
--- Name: issue_assets issue_assets_issue_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3853 (class 2606 OID 17930)
+-- Name: issue_assets issue_assets_issue_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_assets
@@ -7016,7 +7272,8 @@ ALTER TABLE ONLY public.issue_assets
 
 
 --
--- Name: issue_assets issue_assets_uploaded_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3854 (class 2606 OID 17935)
+-- Name: issue_assets issue_assets_uploaded_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_assets
@@ -7024,7 +7281,8 @@ ALTER TABLE ONLY public.issue_assets
 
 
 --
--- Name: issue_memberships issue_memberships_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3843 (class 2606 OID 17859)
+-- Name: issue_memberships issue_memberships_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_memberships
@@ -7032,7 +7290,8 @@ ALTER TABLE ONLY public.issue_memberships
 
 
 --
--- Name: issue_memberships issue_memberships_issue_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3844 (class 2606 OID 17849)
+-- Name: issue_memberships issue_memberships_issue_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_memberships
@@ -7040,7 +7299,8 @@ ALTER TABLE ONLY public.issue_memberships
 
 
 --
--- Name: issue_memberships issue_memberships_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3845 (class 2606 OID 17854)
+-- Name: issue_memberships issue_memberships_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issue_memberships
@@ -7048,7 +7308,8 @@ ALTER TABLE ONLY public.issue_memberships
 
 
 --
--- Name: issues issues_assignee_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3837 (class 2606 OID 17820)
+-- Name: issues issues_assignee_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issues
@@ -7056,7 +7317,8 @@ ALTER TABLE ONLY public.issues
 
 
 --
--- Name: issues issues_blocking_issue_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3838 (class 2606 OID 17830)
+-- Name: issues issues_blocking_issue_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issues
@@ -7064,7 +7326,8 @@ ALTER TABLE ONLY public.issues
 
 
 --
--- Name: issues issues_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3839 (class 2606 OID 17835)
+-- Name: issues issues_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issues
@@ -7072,7 +7335,8 @@ ALTER TABLE ONLY public.issues
 
 
 --
--- Name: issues issues_parent_issue_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3840 (class 2606 OID 17825)
+-- Name: issues issues_parent_issue_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issues
@@ -7080,7 +7344,8 @@ ALTER TABLE ONLY public.issues
 
 
 --
--- Name: issues issues_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3841 (class 2606 OID 17810)
+-- Name: issues issues_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issues
@@ -7088,7 +7353,8 @@ ALTER TABLE ONLY public.issues
 
 
 --
--- Name: issues issues_reporter_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3842 (class 2606 OID 17815)
+-- Name: issues issues_reporter_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.issues
@@ -7096,7 +7362,8 @@ ALTER TABLE ONLY public.issues
 
 
 --
--- Name: notifications notifications_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3867 (class 2606 OID 18581)
+-- Name: notifications notifications_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.notifications
@@ -7104,7 +7371,8 @@ ALTER TABLE ONLY public.notifications
 
 
 --
--- Name: organization_assets organization_assets_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3846 (class 2606 OID 17886)
+-- Name: organization_assets organization_assets_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_assets
@@ -7112,7 +7380,8 @@ ALTER TABLE ONLY public.organization_assets
 
 
 --
--- Name: organization_assets organization_assets_org_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3847 (class 2606 OID 17876)
+-- Name: organization_assets organization_assets_org_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_assets
@@ -7120,7 +7389,8 @@ ALTER TABLE ONLY public.organization_assets
 
 
 --
--- Name: organization_assets organization_assets_uploaded_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3848 (class 2606 OID 17881)
+-- Name: organization_assets organization_assets_uploaded_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_assets
@@ -7128,7 +7398,8 @@ ALTER TABLE ONLY public.organization_assets
 
 
 --
--- Name: organization_memberships organization_memberships_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3818 (class 2606 OID 17664)
+-- Name: organization_memberships organization_memberships_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_memberships
@@ -7136,7 +7407,8 @@ ALTER TABLE ONLY public.organization_memberships
 
 
 --
--- Name: organization_memberships organization_memberships_invited_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3819 (class 2606 OID 17659)
+-- Name: organization_memberships organization_memberships_invited_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_memberships
@@ -7144,7 +7416,8 @@ ALTER TABLE ONLY public.organization_memberships
 
 
 --
--- Name: organization_memberships organization_memberships_org_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3820 (class 2606 OID 17649)
+-- Name: organization_memberships organization_memberships_org_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_memberships
@@ -7152,7 +7425,8 @@ ALTER TABLE ONLY public.organization_memberships
 
 
 --
--- Name: organization_memberships organization_memberships_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3821 (class 2606 OID 17654)
+-- Name: organization_memberships organization_memberships_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_memberships
@@ -7160,7 +7434,8 @@ ALTER TABLE ONLY public.organization_memberships
 
 
 --
--- Name: organizations organizations_created_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3816 (class 2606 OID 17627)
+-- Name: organizations organizations_created_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organizations
@@ -7168,7 +7443,8 @@ ALTER TABLE ONLY public.organizations
 
 
 --
--- Name: organizations organizations_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3817 (class 2606 OID 17632)
+-- Name: organizations organizations_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organizations
@@ -7176,7 +7452,26 @@ ALTER TABLE ONLY public.organizations
 
 
 --
--- Name: project_assets project_assets_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3871 (class 2606 OID 18697)
+-- Name: project_activities project_activities_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.project_activities
+    ADD CONSTRAINT project_activities_project_id_fkey FOREIGN KEY (project_id) REFERENCES public.projects(project_id) ON DELETE CASCADE;
+
+
+--
+-- TOC entry 3872 (class 2606 OID 18702)
+-- Name: project_activities project_activities_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.project_activities
+    ADD CONSTRAINT project_activities_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON DELETE SET NULL;
+
+
+--
+-- TOC entry 3849 (class 2606 OID 17913)
+-- Name: project_assets project_assets_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_assets
@@ -7184,7 +7479,8 @@ ALTER TABLE ONLY public.project_assets
 
 
 --
--- Name: project_assets project_assets_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3850 (class 2606 OID 17903)
+-- Name: project_assets project_assets_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_assets
@@ -7192,7 +7488,8 @@ ALTER TABLE ONLY public.project_assets
 
 
 --
--- Name: project_assets project_assets_uploaded_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3851 (class 2606 OID 17908)
+-- Name: project_assets project_assets_uploaded_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_assets
@@ -7200,7 +7497,8 @@ ALTER TABLE ONLY public.project_assets
 
 
 --
--- Name: project_memberships project_memberships_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3829 (class 2606 OID 17759)
+-- Name: project_memberships project_memberships_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_memberships
@@ -7208,7 +7506,8 @@ ALTER TABLE ONLY public.project_memberships
 
 
 --
--- Name: project_memberships project_memberships_invited_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3830 (class 2606 OID 17754)
+-- Name: project_memberships project_memberships_invited_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_memberships
@@ -7216,7 +7515,8 @@ ALTER TABLE ONLY public.project_memberships
 
 
 --
--- Name: project_memberships project_memberships_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3831 (class 2606 OID 17744)
+-- Name: project_memberships project_memberships_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_memberships
@@ -7224,7 +7524,8 @@ ALTER TABLE ONLY public.project_memberships
 
 
 --
--- Name: project_memberships project_memberships_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3832 (class 2606 OID 17749)
+-- Name: project_memberships project_memberships_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_memberships
@@ -7232,7 +7533,8 @@ ALTER TABLE ONLY public.project_memberships
 
 
 --
--- Name: project_requirements project_requirements_created_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3833 (class 2606 OID 17780)
+-- Name: project_requirements project_requirements_created_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_requirements
@@ -7240,7 +7542,8 @@ ALTER TABLE ONLY public.project_requirements
 
 
 --
--- Name: project_requirements project_requirements_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3834 (class 2606 OID 17790)
+-- Name: project_requirements project_requirements_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_requirements
@@ -7248,7 +7551,8 @@ ALTER TABLE ONLY public.project_requirements
 
 
 --
--- Name: project_requirements project_requirements_done_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3835 (class 2606 OID 17785)
+-- Name: project_requirements project_requirements_done_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_requirements
@@ -7256,7 +7560,8 @@ ALTER TABLE ONLY public.project_requirements
 
 
 --
--- Name: project_requirements project_requirements_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3836 (class 2606 OID 17775)
+-- Name: project_requirements project_requirements_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.project_requirements
@@ -7264,7 +7569,8 @@ ALTER TABLE ONLY public.project_requirements
 
 
 --
--- Name: projects projects_completed_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3825 (class 2606 OID 17722)
+-- Name: projects projects_completed_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.projects
@@ -7272,7 +7578,8 @@ ALTER TABLE ONLY public.projects
 
 
 --
--- Name: projects projects_created_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3826 (class 2606 OID 17717)
+-- Name: projects projects_created_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.projects
@@ -7280,7 +7587,8 @@ ALTER TABLE ONLY public.projects
 
 
 --
--- Name: projects projects_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3827 (class 2606 OID 17727)
+-- Name: projects projects_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.projects
@@ -7288,7 +7596,8 @@ ALTER TABLE ONLY public.projects
 
 
 --
--- Name: projects projects_site_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3828 (class 2606 OID 17712)
+-- Name: projects projects_site_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.projects
@@ -7296,7 +7605,8 @@ ALTER TABLE ONLY public.projects
 
 
 --
--- Name: site_assets site_assets_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3862 (class 2606 OID 18087)
+-- Name: site_assets site_assets_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_assets
@@ -7304,7 +7614,8 @@ ALTER TABLE ONLY public.site_assets
 
 
 --
--- Name: site_assets site_assets_site_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3863 (class 2606 OID 18077)
+-- Name: site_assets site_assets_site_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_assets
@@ -7312,7 +7623,8 @@ ALTER TABLE ONLY public.site_assets
 
 
 --
--- Name: site_assets site_assets_uploaded_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3864 (class 2606 OID 18082)
+-- Name: site_assets site_assets_uploaded_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_assets
@@ -7320,7 +7632,8 @@ ALTER TABLE ONLY public.site_assets
 
 
 --
--- Name: site_memberships site_memberships_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3858 (class 2606 OID 18072)
+-- Name: site_memberships site_memberships_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_memberships
@@ -7328,7 +7641,8 @@ ALTER TABLE ONLY public.site_memberships
 
 
 --
--- Name: site_memberships site_memberships_invited_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3859 (class 2606 OID 18067)
+-- Name: site_memberships site_memberships_invited_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_memberships
@@ -7336,7 +7650,8 @@ ALTER TABLE ONLY public.site_memberships
 
 
 --
--- Name: site_memberships site_memberships_site_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3860 (class 2606 OID 18057)
+-- Name: site_memberships site_memberships_site_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_memberships
@@ -7344,7 +7659,8 @@ ALTER TABLE ONLY public.site_memberships
 
 
 --
--- Name: site_memberships site_memberships_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3861 (class 2606 OID 18062)
+-- Name: site_memberships site_memberships_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.site_memberships
@@ -7352,7 +7668,8 @@ ALTER TABLE ONLY public.site_memberships
 
 
 --
--- Name: sites sites_created_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3822 (class 2606 OID 17687)
+-- Name: sites sites_created_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.sites
@@ -7360,7 +7677,8 @@ ALTER TABLE ONLY public.sites
 
 
 --
--- Name: sites sites_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3823 (class 2606 OID 17692)
+-- Name: sites sites_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.sites
@@ -7368,7 +7686,8 @@ ALTER TABLE ONLY public.sites
 
 
 --
--- Name: sites sites_org_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3824 (class 2606 OID 17682)
+-- Name: sites sites_org_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.sites
@@ -7376,7 +7695,8 @@ ALTER TABLE ONLY public.sites
 
 
 --
--- Name: users users_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jira
+-- TOC entry 3815 (class 2606 OID 17607)
+-- Name: users users_deleted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users
@@ -7384,48 +7704,58 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: organizations; Type: ROW SECURITY; Schema: public; Owner: jira
+-- TOC entry 4033 (class 0 OID 17612)
+-- Dependencies: 219
+-- Name: organizations; Type: ROW SECURITY; Schema: public; Owner: postgres
 --
 
 ALTER TABLE public.organizations ENABLE ROW LEVEL SECURITY;
 
 --
--- Name: organizations organizations_delete_policy; Type: POLICY; Schema: public; Owner: jira
+-- TOC entry 4037 (class 3256 OID 18017)
+-- Name: organizations organizations_delete_policy; Type: POLICY; Schema: public; Owner: postgres
 --
 
 CREATE POLICY organizations_delete_policy ON public.organizations FOR DELETE USING (public.auth_is_org_owner(org_id));
 
 
 --
--- Name: organizations organizations_insert_policy; Type: POLICY; Schema: public; Owner: jira
+-- TOC entry 4038 (class 3256 OID 18018)
+-- Name: organizations organizations_insert_policy; Type: POLICY; Schema: public; Owner: postgres
 --
 
 CREATE POLICY organizations_insert_policy ON public.organizations FOR INSERT WITH CHECK ((created_by = public.auth_current_user_id()));
 
 
 --
--- Name: organizations organizations_select_policy; Type: POLICY; Schema: public; Owner: jira
+-- TOC entry 4035 (class 3256 OID 18015)
+-- Name: organizations organizations_select_policy; Type: POLICY; Schema: public; Owner: postgres
 --
 
 CREATE POLICY organizations_select_policy ON public.organizations FOR SELECT USING ((public.auth_is_org_owner(org_id) OR public.auth_is_org_admin(org_id) OR public.auth_is_org_member(org_id) OR public.auth_is_org_viewer(org_id)));
 
 
 --
--- Name: organizations organizations_update_policy; Type: POLICY; Schema: public; Owner: jira
+-- TOC entry 4036 (class 3256 OID 18016)
+-- Name: organizations organizations_update_policy; Type: POLICY; Schema: public; Owner: postgres
 --
 
 CREATE POLICY organizations_update_policy ON public.organizations FOR UPDATE USING ((public.auth_is_org_owner(org_id) OR public.auth_is_org_admin(org_id))) WITH CHECK ((public.auth_is_org_owner(org_id) OR public.auth_is_org_admin(org_id)));
 
 
 --
--- Name: projects; Type: ROW SECURITY; Schema: public; Owner: jira
+-- TOC entry 4034 (class 0 OID 17697)
+-- Dependencies: 222
+-- Name: projects; Type: ROW SECURITY; Schema: public; Owner: postgres
 --
 
 ALTER TABLE public.projects ENABLE ROW LEVEL SECURITY;
+
+-- Completed on 2026-06-03 22:05:12 +03
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict YpCkfHSLRgKmnILrJIf5bh2kuHM6dnVwmrcum4yuYpGTauIeV9EiiOCslZkrBbT
+\unrestrict GWNcwL6GDUqvDgHXS2erq5imFDy8IaFfRVhfAI74CEjOs7pCoXhFaFqdbnjQs78
 

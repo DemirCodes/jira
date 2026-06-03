@@ -1,19 +1,42 @@
+/**
+ * PROJECT CONTROLLER
+ * Zero-Trust & RBAC (Role-Based Access Control) mimarisine göre güncellendi.
+ * Yetki kontrolleri ProjectAccessPolicy üzerinden merkezi olarak yapılır.
+ */
+
 import { Request, Response } from 'express';
 import * as projectService from '../services/project.service';
-import * as authService from '../services/authorization.service';
+import { ProjectAccessPolicy } from '../services/authorization.service';
 import { AppError, ErrorCodes } from '../utils/errorCodes';
 import { log } from '../utils/logger';
+import { isValidUUID } from '../utils/regexValidator';
 
 // ==================== CREATE ====================
 export const create = async (req: Request, res: Response): Promise<void> => {
     try {
         const userId = req.userId!;
-        const { site_id, name, description, is_private } = req.body;
+        const { site_id, name, project_key, board_type, description, is_private } = req.body;
 
-        // Yetki: Site admin veya Org Owner
-        await authService.requireSiteAdminOrOrgOwner(userId, site_id);
+        if (!site_id || !name || !project_key || !board_type) {
+            res.status(400).json({ error: 'site_id, name, project_key, and board_type are required' });
+            return;
+        }
 
-        const projectId = await projectService.createProject(site_id, name, description, is_private);
+        if (!isValidUUID(site_id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid site_id format');
+
+        // YETKİ KONTROLÜ: Sadece Site Admin oluşturabilir
+        await ProjectAccessPolicy.validateCreation(userId, site_id);
+
+        const projectId = await projectService.createProject(
+            site_id, 
+            name, 
+            project_key, 
+            board_type, 
+            userId, 
+            description, 
+            is_private
+        );
+        
         res.status(201).json({ project_id: projectId });
     } catch (error: any) {
         if (error instanceof AppError) {
@@ -25,24 +48,27 @@ export const create = async (req: Request, res: Response): Promise<void> => {
     }
 };
 
-// ==================== READ ====================
-export const listBySite = async (req: Request, res: Response): Promise<void> => {
+// ==================== READ (LIST & GET) ====================
+export const list = async (req: Request, res: Response): Promise<void> => {
     try {
-        const { siteId } = req.params;
-        const { status, search, is_private, limit, offset } = req.query;
         const userId = req.userId!;
+        const site_id = req.query.site_id as string;
+        const status = req.query.status as string;
+        const search = req.query.search as string;
+        const is_private = req.query.is_private ? req.query.is_private === 'true' : undefined;
+        const limit = req.query.limit ? parseInt(req.query.limit as string) : 50;
+        const offset = req.query.offset ? parseInt(req.query.offset as string) : 0;
 
-        // Yetki: Site üyesi olmalı
-        await authService.requireSiteMember(userId, siteId);
+        if (!site_id) {
+            res.status(400).json({ error: 'site_id query parameter is required' });
+            return;
+        }
+        if (!isValidUUID(site_id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid site_id format');
 
-        const projects = await projectService.listProjects(
-            siteId,
-            status as string,
-            search as string,
-            is_private === 'true' ? true : (is_private === 'false' ? false : undefined),
-            limit ? parseInt(limit as string, 10) : 50,
-            offset ? parseInt(offset as string, 10) : 0
-        );
+        // YETKİ KONTROLÜ: Sitede olan herkes projeleri listeleyebilir
+        await ProjectAccessPolicy.validateRead(userId, site_id);
+
+        const projects = await projectService.listProjects(site_id, userId, status, search, is_private, limit, offset);
         res.json(projects);
     } catch (error: any) {
         if (error instanceof AppError) {
@@ -56,16 +82,20 @@ export const listBySite = async (req: Request, res: Response): Promise<void> => 
 
 export const getById = async (req: Request, res: Response): Promise<void> => {
     try {
-        const { id } = req.params;
-        const { site_id } = req.query; // Query params'dan alıyoruz
+        const { id } = req.params; // projectId
         const userId = req.userId!;
+        const site_id = req.query.site_id as string;
 
-        if (!site_id) throw new AppError(ErrorCodes.VALIDATION_MISSING_FIELD, 'site_id query parameter is required');
+        if (!site_id) {
+            res.status(400).json({ error: 'site_id query parameter is required' });
+            return;
+        }
+        if (!isValidUUID(id) || !isValidUUID(site_id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID);
 
-        // Yetki: Project member, Site Admin veya Org Owner
-        await authService.requireSiteMember(userId, site_id as string);
+        // YETKİ KONTROLÜ: Site üyesi projeyi görüntüleyebilir
+        await ProjectAccessPolicy.validateRead(userId, site_id);
 
-        const project = await projectService.getProjectSummary(id, site_id as string);
+        const project = await projectService.getProjectSummary(id, site_id, userId);
         if (!project) {
             res.status(404).json({ error: 'Project not found' });
             return;
@@ -81,17 +111,23 @@ export const getById = async (req: Request, res: Response): Promise<void> => {
     }
 };
 
-// ==================== UPDATE ====================
+// ==================== WRITE (UPDATE, STATUS, INVITE, DELETE, RESTORE) ====================
 export const update = async (req: Request, res: Response): Promise<void> => {
     try {
-        const { id } = req.params;
+        const { id } = req.params; // projectId
         const userId = req.userId!;
-        const { site_id, name, description, is_private } = req.body;
+        const { site_id, name, description, is_private, icon_url } = req.body;
 
-        // Yetki: Project Admin
-        await authService.requireProjectAdmin(userId, id);
+        if (!site_id) {
+            res.status(400).json({ error: 'site_id is required in body' });
+            return;
+        }
+        if (!isValidUUID(id) || !isValidUUID(site_id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID);
 
-        await projectService.updateProject(id, site_id, name, description, is_private);
+        // YETKİ KONTROLÜ: Sadece Project Admin değiştirebilir
+        await ProjectAccessPolicy.validateManagement(userId, id); 
+
+        await projectService.updateProject(id, site_id, userId, name, description, is_private, icon_url);
         res.json({ message: 'Project updated successfully' });
     } catch (error: any) {
         if (error instanceof AppError) {
@@ -109,10 +145,16 @@ export const updateStatus = async (req: Request, res: Response): Promise<void> =
         const userId = req.userId!;
         const { site_id, status } = req.body;
 
-        // Yetki: Project Admin
-        await authService.requireProjectAdmin(userId, id);
+        if (!site_id || !status) {
+            res.status(400).json({ error: 'site_id and status are required' });
+            return;
+        }
+        if (!isValidUUID(id) || !isValidUUID(site_id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID);
 
-        await projectService.updateProjectStatus(id, site_id, status);
+        // YETKİ KONTROLÜ: Sadece Project Admin
+        await ProjectAccessPolicy.validateManagement(userId, id);
+
+        await projectService.updateProjectStatus(id, site_id, status, userId);
         res.json({ message: 'Project status updated successfully' });
     } catch (error: any) {
         if (error instanceof AppError) {
@@ -124,20 +166,51 @@ export const updateStatus = async (req: Request, res: Response): Promise<void> =
     }
 };
 
-// ==================== DELETE ====================
+export const invite = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { id } = req.params;
+        const userId = req.userId!;
+        const { friendshipCode, orgId, site_id, role } = req.body;
+
+        if (!friendshipCode || !orgId || !site_id || !role) {
+            res.status(400).json({ error: 'friendshipCode, orgId, site_id, and role are required' });
+            return;
+        }
+        if (!isValidUUID(id) || !isValidUUID(site_id) || !isValidUUID(orgId)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID);
+
+        // YETKİ KONTROLÜ: Sadece Project Admin
+        await ProjectAccessPolicy.validateManagement(userId, id);
+
+        await projectService.inviteToProject(friendshipCode, orgId, site_id, id, role, userId);
+        res.status(201).json({ message: 'User invited to project successfully' });
+    } catch (error: any) {
+        if (error instanceof AppError) {
+            res.status(error.statusCode).json({ error: error.message, code: error.errorCode });
+            return;
+        }
+        log.error('Controller: Failed to invite user', { error });
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
 export const remove = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
         const userId = req.userId!;
-        const { site_id } = req.body;
+        
+        const site_id = req.query.site_id as string || req.body.site_id;
 
-        if (!site_id) throw new AppError(ErrorCodes.VALIDATION_MISSING_FIELD, 'site_id is required');
+        if (!site_id) {
+            res.status(400).json({ error: 'site_id is required' });
+            return;
+        }
+        if (!isValidUUID(id) || !isValidUUID(site_id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID);
 
-        // Yetki: Project Admin
-        await authService.requireProjectAdmin(userId, id);
+        // YETKİ KONTROLÜ: Sadece Project Admin
+        await ProjectAccessPolicy.validateManagement(userId, id);
 
-        await projectService.deleteProject(id, site_id);
-        res.json({ message: 'Project deleted successfully' });
+        await projectService.deleteProject(id, site_id, userId);
+        res.json({ message: 'Project soft deleted successfully' });
     } catch (error: any) {
         if (error instanceof AppError) {
             res.status(error.statusCode).json({ error: error.message, code: error.errorCode });
@@ -148,48 +221,59 @@ export const remove = async (req: Request, res: Response): Promise<void> => {
     }
 };
 
-// ==================== INVITE & MEMBERS ====================
-export const invite = async (req: Request, res: Response): Promise<void> => {
+export const restore = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
         const userId = req.userId!;
-        const { org_id, site_id, friendshipCode, role } = req.body;
+        const { site_id } = req.body;
 
-        // DB fonksiyonu yetki kontrolünü çok kapsamlı yapıyor, 
-        // Ancak biz Controller katmanında en azından kullanıcının bu site'nin bir parçası olduğundan emin olalım.
-        await authService.requireSiteMember(userId, site_id);
+        if (!site_id) {
+            res.status(400).json({ error: 'site_id is required' });
+            return;
+        }
+        if (!isValidUUID(id) || !isValidUUID(site_id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID);
 
-        await projectService.inviteToProject(friendshipCode, org_id, site_id, id, role);
-        res.status(201).json({ message: 'User invited to project' });
+        // YETKİ KONTROLÜ: Sadece Project Admin
+        await ProjectAccessPolicy.validateManagement(userId, id);
+
+        await projectService.restoreProject(id, site_id, userId);
+        res.json({ message: 'Project restored successfully' });
     } catch (error: any) {
         if (error instanceof AppError) {
             res.status(error.statusCode).json({ error: error.message, code: error.errorCode });
             return;
         }
-        log.error('Controller: Failed to invite to project', { error });
+        log.error('Controller: Failed to restore project', { error });
         res.status(500).json({ error: 'Internal server error' });
     }
 };
 
+// ==================== MEMBERS ====================
 export const listMembers = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const { site_id } = req.query;
         const userId = req.userId!;
+        const site_id = req.query.site_id as string;
+        const limit = req.query.limit ? parseInt(req.query.limit as string) : 50;
+        const offset = req.query.offset ? parseInt(req.query.offset as string) : 0;
 
-        if (!site_id) throw new AppError(ErrorCodes.VALIDATION_MISSING_FIELD, 'site_id query param is required');
+        if (!site_id) {
+            res.status(400).json({ error: 'site_id query parameter is required' });
+            return;
+        }
+        if (!isValidUUID(id) || !isValidUUID(site_id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID);
 
-        // Yetki: Project member
-        await authService.requireProjectMember(userId, id);
+        // YETKİ KONTROLÜ: Proje üyelerini görmek için site üyesi olmak yeterli
+        await ProjectAccessPolicy.validateRead(userId, site_id);
 
-        const members = await projectService.getProjectMembers(id, site_id as string);
+        const members = await projectService.getProjectMembers(id, site_id, userId, limit, offset);
         res.json(members);
     } catch (error: any) {
         if (error instanceof AppError) {
             res.status(error.statusCode).json({ error: error.message, code: error.errorCode });
             return;
         }
-        log.error('Controller: Failed to list members', { error });
+        log.error('Controller: Failed to list project members', { error });
         res.status(500).json({ error: 'Internal server error' });
     }
 };

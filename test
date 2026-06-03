@@ -1,0 +1,14 @@
+/**
+ * PROJECT AUTH & ACCESS POLICY
+ * * Fonksiyon Listesi & Yetki Matrisi:
+ * 1. createProject(siteId)       -> Yetki: [SiteAdmin]
+ * 2. listProjects(siteId)        -> Yetki: [SiteMember]
+ * 3. getProject(projectId)       -> Yetki: [SiteMember] 
+ * 4. updateProject(projectId)    -> Yetki: [ProjectAdmin]
+ * 5. deleteProject(projectId)    -> Yetki: [ProjectAdmin]
+ * 6. restoreProject(projectId)   -> Yetki: [ProjectAdmin]
+ * 7. inviteMember(projectId)     -> Yetki: [ProjectAdmin]
+ */
+
+
+ 
