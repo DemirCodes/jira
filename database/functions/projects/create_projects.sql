@@ -44,6 +44,8 @@ WHERE
 ORDER BY 
     e.enumsortorder;
 
+drop function if exists create_project;
+
 CREATE OR REPLACE FUNCTION create_project(
     p_site_id uuid,
     p_project_name text,

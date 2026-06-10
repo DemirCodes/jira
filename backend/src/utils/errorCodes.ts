@@ -53,6 +53,7 @@ export const ErrorCodes = {
     ISSUE_NOT_FOUND: '500-001-001',             // 404
     ISSUE_PERMISSION_DENIED: '500-002-001',     // 403
     ISSUE_CANNOT_DELETE_HAS_CHILDREN: '500-003-001', // 409
+    ISSUE_ALREADY_EXISTS: '500-003-002',           // 409 
     ISSUE_INVALID_STATUS: '500-004-001',        // 422
 
     // DATABASE MODULE (600)
@@ -117,6 +118,7 @@ export const ErrorMessages: Partial<Record<ErrorCode, string>> = {
 
     [ErrorCodes.ISSUE_NOT_FOUND]: 'Issue not found.',
     [ErrorCodes.ISSUE_PERMISSION_DENIED]: 'You do not have permission to perform this action on this issue.',
+    [ErrorCodes.ISSUE_ALREADY_EXISTS]: 'Issue with this name already exists.',
     [ErrorCodes.ISSUE_CANNOT_DELETE_HAS_CHILDREN]: 'Cannot delete issue with child issues.',
     [ErrorCodes.ISSUE_INVALID_STATUS]: 'Invalid status transition.',
 

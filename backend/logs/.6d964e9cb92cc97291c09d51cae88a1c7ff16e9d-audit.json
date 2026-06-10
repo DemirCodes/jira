@@ -6,11 +6,6 @@
     "auditLog": "/home/dmrcode/Desktop/jira/backend/logs/.6d964e9cb92cc97291c09d51cae88a1c7ff16e9d-audit.json",
     "files": [
         {
-            "date": 1778338826315,
-            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-05-09.log",
-            "hash": "f6334b6efa810ce224ee01879436629444cb6a9440623d1cc3dbaaac035f2389"
-        },
-        {
             "date": 1778506215810,
             "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-05-11.log",
             "hash": "892363f5fe39780f962a34d95eee539c15c5197a9e2de286851fbc0b0543cf28"
@@ -74,6 +69,11 @@
             "date": 1780486676603,
             "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-06-03.log",
             "hash": "8ee7dc9d29ad01987c11cb6916080702c3337f4a60a550fd9e71acdefcc2d822"
+        },
+        {
+            "date": 1781091607335,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-06-10.log",
+            "hash": "00b44e9baceb03e1531ca3c0a8b21b0d8f17ef62b828860af38fbbcd80ec2e38"
         }
     ],
     "hashType": "sha256"

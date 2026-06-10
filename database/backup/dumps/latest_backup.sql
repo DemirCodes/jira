@@ -2,12 +2,12 @@
 -- PostgreSQL database dump
 --
 
-\restrict GWNcwL6GDUqvDgHXS2erq5imFDy8IaFfRVhfAI74CEjOs7pCoXhFaFqdbnjQs78
+\restrict dp63WLIcYMEyzlPLEbvOaD0N3oqN8u94r7N9Aam0BQwG4q8rBkpoThKJ4Ns4RnC
 
 -- Dumped from database version 16.14 (Ubuntu 16.14-0ubuntu0.24.04.1)
 -- Dumped by pg_dump version 16.14 (Ubuntu 16.14-0ubuntu0.24.04.1)
 
--- Started on 2026-06-03 22:05:12 +03
+-- Started on 2026-06-08 15:06:41 +03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -288,7 +288,7 @@ CREATE TYPE public.site_status AS ENUM (
 ALTER TYPE public.site_status OWNER TO postgres;
 
 --
--- TOC entry 408 (class 1255 OID 18652)
+-- TOC entry 409 (class 1255 OID 18652)
 -- Name: accept_invitation(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -362,7 +362,7 @@ $$;
 ALTER FUNCTION public.auth_current_user_id() OWNER TO postgres;
 
 --
--- TOC entry 383 (class 1255 OID 18008)
+-- TOC entry 384 (class 1255 OID 18008)
 -- Name: auth_is_issue_contributor(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -415,7 +415,7 @@ $$;
 ALTER FUNCTION public.auth_is_issue_reviewer(p_issue_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 326 (class 1255 OID 18010)
+-- TOC entry 329 (class 1255 OID 18010)
 -- Name: auth_is_issue_watcher(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -470,7 +470,7 @@ $$;
 ALTER FUNCTION public.auth_is_org_admin(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 401 (class 1255 OID 18000)
+-- TOC entry 402 (class 1255 OID 18000)
 -- Name: auth_is_org_member(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -583,7 +583,7 @@ $$;
 ALTER FUNCTION public.auth_is_project_admin(p_project_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 302 (class 1255 OID 18005)
+-- TOC entry 305 (class 1255 OID 18005)
 -- Name: auth_is_project_contributor(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -612,7 +612,7 @@ $$;
 ALTER FUNCTION public.auth_is_project_contributor(p_project_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 338 (class 1255 OID 18006)
+-- TOC entry 341 (class 1255 OID 18006)
 -- Name: auth_is_project_reviewer(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -641,7 +641,7 @@ $$;
 ALTER FUNCTION public.auth_is_project_reviewer(p_project_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 393 (class 1255 OID 18007)
+-- TOC entry 394 (class 1255 OID 18007)
 -- Name: auth_is_project_viewer(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -670,7 +670,7 @@ $$;
 ALTER FUNCTION public.auth_is_project_viewer(p_project_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 362 (class 1255 OID 18092)
+-- TOC entry 365 (class 1255 OID 18092)
 -- Name: auth_is_site_admin(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -729,7 +729,7 @@ $$;
 ALTER FUNCTION public.auth_is_site_contributor(p_site_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 394 (class 1255 OID 18095)
+-- TOC entry 395 (class 1255 OID 18095)
 -- Name: auth_is_site_contrubitor(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -759,7 +759,7 @@ $$;
 ALTER FUNCTION public.auth_is_site_contrubitor(p_site_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 352 (class 1255 OID 18094)
+-- TOC entry 355 (class 1255 OID 18094)
 -- Name: auth_is_site_viewer(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -819,7 +819,7 @@ $$;
 ALTER FUNCTION public.can_assign_project_role(p_org_role public.org_role, p_project_role public.project_role) OWNER TO postgres;
 
 --
--- TOC entry 370 (class 1255 OID 18635)
+-- TOC entry 371 (class 1255 OID 18635)
 -- Name: cancel_invitation(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -893,7 +893,7 @@ $$;
 ALTER FUNCTION public.change_platform_password(p_user_id uuid, p_old_password_hash text, p_new_password_hash text) OWNER TO postgres;
 
 --
--- TOC entry 298 (class 1255 OID 18595)
+-- TOC entry 301 (class 1255 OID 18595)
 -- Name: create_api_key(uuid, text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -921,7 +921,7 @@ $$;
 ALTER FUNCTION public.create_api_key(p_platform_user_id uuid, p_key_name text) OWNER TO postgres;
 
 --
--- TOC entry 345 (class 1255 OID 18185)
+-- TOC entry 274 (class 1255 OID 18726)
 -- Name: create_issues(uuid, text, text, boolean); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -929,170 +929,62 @@ CREATE FUNCTION public.create_issues(p_project_id uuid, p_issue_title text, p_is
     LANGUAGE plpgsql SECURITY DEFINER
     SET search_path TO 'public'
     AS $$
-declare
+DECLARE
     v_user_id uuid;
-    v_org_id uuid;
     v_site_id uuid;
     v_issue_id uuid;
     v_issue_no bigint;
     v_issue_title text;
-    v_is_org_owner boolean;
-    v_is_org_admin boolean;
-    v_is_site_admin boolean;
-    v_is_project_admin boolean;
     v_is_project_private boolean;
-    v_is_site_private boolean;
     v_project_name text;
-    v_site_name text;
 BEGIN
     -- 1. Kullanıcı kontrolü
     v_user_id := auth_current_user_id();
-
-    if v_user_id is NULL THEN
-        raise exception 'User not authenticated';
-    end if;
+    IF v_user_id IS NULL THEN RAISE EXCEPTION 'User not authenticated'; END IF;
 
     -- 2. Issue title validasyonu
     v_issue_title := trim(p_issue_title);
-
-    if v_issue_title is null or length(v_issue_title) = 0 THEN
-        raise EXCEPTION 'Issue title cannot be empty';
-    end if;
+    IF v_issue_title IS NULL OR length(v_issue_title) = 0 THEN RAISE EXCEPTION 'Issue title cannot be empty'; END IF;
 
     -- 3. Project kontrolü ve bilgileri al
-    SELECT 
-        p.site_id,
-        p.project_name,
-        p.is_private,
-        s.org_id,
-        s.is_private as site_is_private,
-        s.site_name
-    INTO 
-        v_site_id,
-        v_project_name,
-        v_is_project_private,
-        v_org_id,
-        v_is_site_private,
-        v_site_name
+    SELECT p.site_id, p.project_name, p.is_private
+    INTO v_site_id, v_project_name, v_is_project_private
     FROM projects p
-    JOIN sites s ON s.site_id = p.site_id
-    WHERE p.project_id = p_project_id
-        AND p.deleted_at IS NULL
-        AND s.deleted_at IS NULL;
+    WHERE p.project_id = p_project_id AND p.deleted_at IS NULL;
 
-    if v_site_id is null THEN
-        raise exception 'Project not found';
-    end if;
+    IF v_site_id IS NULL THEN RAISE EXCEPTION 'Project not found'; END IF;
 
-    -- 4. Yetki flag'lerini al
-    v_is_org_owner := auth_is_org_owner(v_org_id);
-    v_is_org_admin := auth_is_org_admin(v_org_id);
-    v_is_site_admin := auth_is_site_admin(v_site_id);
-    v_is_project_admin := auth_is_project_admin(p_project_id);
-
-    -- 5. Yetki kontrolü
-    -- Org owner: her şeyi yapabilir
-    -- Site admin: her şeyi yapabilir
-    -- Project admin: her şeyi yapabilir
-    -- Org admin: sadece site ve project private DEĞİLSE issue oluşturabilir
-    
-    IF v_is_org_owner OR v_is_site_admin OR v_is_project_admin THEN
-        -- Tam yetkililer, devam et
-        NULL;
-    ELSIF v_is_org_admin THEN
-        -- Org admin: site ve project private kontrolü
-        IF v_is_site_private = true OR v_is_project_private = true THEN
-            RAISE EXCEPTION 'Permission denied: Org admin cannot create issues in private sites or private projects';
-        END IF;
-        -- Devam et, yetkili
-        NULL;
-    ELSE
-        RAISE EXCEPTION 'Permission denied: You are not authorized to create issues in this project';
+    -- 4. YETKİ KONTROLÜ: Sadece Project Admin veya Project Contributor
+    IF NOT EXISTS (
+        SELECT 1 FROM project_memberships 
+        WHERE project_id = p_project_id 
+          AND user_id = v_user_id 
+          AND role IN ('project_admin', 'contributor') 
+          AND membership_is_active = true 
+          AND deleted_at IS NULL
+    ) THEN
+        RAISE EXCEPTION 'Permission denied: Only Project Admin or Contributor can create issues in this project';
     END IF;
 
-    -- 6. Issue number'ı bul (proje bazında sıralı)
+    -- 5. Issue number'ı bul
     SELECT COALESCE(MAX(issue_no), 0) + 1 INTO v_issue_no
     FROM issues
-    WHERE project_id = p_project_id
-        AND deleted_at IS NULL;
+    WHERE project_id = p_project_id AND deleted_at IS NULL;
 
-    -- 7. Issue oluştur
-    INSERT INTO issues (
-        project_id,
-        issue_no,
-        issue_title,
-        issue_description,
-        status,
-        priority,
-        reporter_id,
-        is_private,
-        is_editable,
-        created_at,
-        updated_at
-    )
-    VALUES (
-        p_project_id,
-        v_issue_no,
-        v_issue_title,
-        p_issue_description,
-        'open',
-        'medium',
-        v_user_id,
-        p_is_private,
-        true,
-        now(),
-        now()
-    )
+    -- 6. Issue oluştur
+    INSERT INTO issues (project_id, issue_no, issue_title, issue_description, status, priority, reporter_id, is_private, is_editable, created_at, updated_at)
+    VALUES (p_project_id, v_issue_no, v_issue_title, p_issue_description, 'open', 'medium', v_user_id, p_is_private, true, now(), now())
     RETURNING issue_id INTO v_issue_id;
 
-    -- 8. Issue membership - oluşturan kişiyi contributor olarak ekle
-    INSERT INTO issue_memberships (
-        issue_id,
-        user_id,
-        role,
-        membership_is_active,
-        created_at,
-        updated_at
-    )
-    VALUES (
-        v_issue_id,
-        v_user_id,
-        'contributor',
-        true,
-        now(),
-        now()
-    );
+    -- 7. Issue membership - oluşturan kişiyi contributor olarak ekle
+    INSERT INTO issue_memberships (issue_id, user_id, role, membership_is_active, created_at, updated_at)
+    VALUES (v_issue_id, v_user_id, 'contributor', true, now(), now());
 
-    -- 9. Audit log
-    INSERT INTO system_audit_logs (
-        actor_type,
-        actor_id,
-        entity_type,
-        entity_id,
-        action_type,
-        new_value,
-        created_at
-    )
-    VALUES (
-        'tenant_user',
-        v_user_id,
-        'issue',
-        v_issue_id,
-        'CREATE',
-        jsonb_build_object(
-            'issue_title', v_issue_title,
-            'issue_no', v_issue_no,
-            'project_id', p_project_id,
-            'project_name', v_project_name,
-            'site_id', v_site_id,
-            'site_name', v_site_name,
-            'is_private', p_is_private
-        ),
-        now()
-    );
+    -- 8. Audit log
+    INSERT INTO system_audit_logs (actor_type, actor_id, entity_type, entity_id, action_type, new_value, created_at)
+    VALUES ('tenant_user', v_user_id, 'issue', v_issue_id, 'CREATE', jsonb_build_object('issue_title', v_issue_title, 'issue_no', v_issue_no, 'project_id', p_project_id, 'is_private', p_is_private), now());
 
     RETURN v_issue_id;
-    
 END;
 $$;
 
@@ -1100,7 +992,7 @@ $$;
 ALTER FUNCTION public.create_issues(p_project_id uuid, p_issue_title text, p_issue_description text, p_is_private boolean) OWNER TO postgres;
 
 --
--- TOC entry 351 (class 1255 OID 18639)
+-- TOC entry 354 (class 1255 OID 18639)
 -- Name: create_organization(uuid, text, text, text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1246,7 +1138,7 @@ $$;
 ALTER FUNCTION public.create_organization(p_user_id uuid, p_org_name text, p_slug text, p_description text) OWNER TO postgres;
 
 --
--- TOC entry 398 (class 1255 OID 18640)
+-- TOC entry 399 (class 1255 OID 18640)
 -- Name: create_organization_asset(uuid, public.asset_type, text, text, bigint, text, text, jsonb); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1304,7 +1196,7 @@ $$;
 ALTER FUNCTION public.create_organization_asset(p_org_id uuid, p_asset_type public.asset_type, p_file_name text, p_mime_type text, p_byte_size bigint, p_storage_key text, p_checksum text, p_metadata jsonb) OWNER TO postgres;
 
 --
--- TOC entry 410 (class 1255 OID 18596)
+-- TOC entry 411 (class 1255 OID 18596)
 -- Name: create_platorm_user(public.citext, text, public.platform_role); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1355,7 +1247,7 @@ $$;
 ALTER FUNCTION public.create_platorm_user(p_email public.citext, p_password_hash text, p_role public.platform_role) OWNER TO postgres;
 
 --
--- TOC entry 363 (class 1255 OID 18723)
+-- TOC entry 293 (class 1255 OID 18725)
 -- Name: create_project(uuid, text, text, text, text, boolean); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1414,12 +1306,8 @@ BEGIN
     v_is_site_admin := auth_is_site_admin(p_site_id);
     
     -- 5. Yetki kontrolü
-    IF NOT (v_is_org_owner OR (v_is_org_admin AND v_is_site_admin)) THEN
-        IF v_is_org_admin AND NOT v_is_site_admin THEN
-            RAISE EXCEPTION 'Permission denied: Org admin must be site admin to create a project';
-        ELSE
-            RAISE EXCEPTION 'Permission denied: Only org owner, org admin (with site admin), or site admin can create projects';
-        END IF;
+    IF NOT (v_is_org_owner OR v_is_site_admin) THEN
+        RAISE EXCEPTION 'Permission denied: Only org owner or site admin can create projects';
     END IF;
     
     -- 6. Aynı site içinde aynı isimde veya anahtarda proje var mı?
@@ -1521,7 +1409,7 @@ $$;
 ALTER FUNCTION public.create_project(p_site_id uuid, p_project_name text, p_project_key text, p_board_type text, p_project_description text, p_is_private boolean) OWNER TO postgres;
 
 --
--- TOC entry 334 (class 1255 OID 18206)
+-- TOC entry 337 (class 1255 OID 18206)
 -- Name: create_sites(text, text, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1624,7 +1512,7 @@ $$;
 ALTER FUNCTION public.create_sites(p_site_name text, p_site_slug text, p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 368 (class 1255 OID 18188)
+-- TOC entry 347 (class 1255 OID 18727)
 -- Name: delete_issues(uuid, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1632,148 +1520,43 @@ CREATE FUNCTION public.delete_issues(p_issue_id uuid, p_project_id uuid DEFAULT 
     LANGUAGE plpgsql SECURITY DEFINER
     SET search_path TO 'public'
     AS $$
-declare
+DECLARE
     v_user_id uuid;
-    v_org_id uuid;
-    v_site_id uuid;
     v_issue_title text;
     v_issue_status issue_status;
-    v_project_name text;           -- 👈 EKSİK OLAN SATIR
-    v_is_org_owner boolean;
-    v_is_org_admin boolean;
-    v_is_site_admin boolean;
-    v_is_project_admin boolean;
-    v_is_project_private boolean;
-    v_is_site_private boolean;
+    v_actual_project_id uuid;
 BEGIN
-    -- 1. Kullanıcı kontrolü
     v_user_id := auth_current_user_id();
+    IF v_user_id IS NULL THEN RAISE EXCEPTION 'User not authenticated'; END IF;
 
-    if v_user_id is NULL THEN
-        raise exception 'User not authenticated';
-    end if;
-
-    -- 2. Issue kontrolü ve bilgileri al
-    SELECT 
-        i.issue_title,
-        i.status,
-        p.site_id,
-        p.project_name,
-        p.is_private as project_is_private,
-        s.org_id,
-        s.is_private as site_is_private
-    INTO 
-        v_issue_title,
-        v_issue_status,
-        v_site_id,
-        v_project_name,            -- 👈 ARTIK TANIMLI
-        v_is_project_private,
-        v_org_id,
-        v_is_site_private
+    SELECT i.issue_title, i.status, i.project_id
+    INTO v_issue_title, v_issue_status, v_actual_project_id
     FROM issues i
-    JOIN projects p ON p.project_id = i.project_id
-    JOIN sites s ON s.site_id = p.site_id
-    WHERE i.issue_id = p_issue_id
-        AND i.deleted_at IS NULL
-        AND p.deleted_at IS NULL
-        AND s.deleted_at IS NULL;
+    WHERE i.issue_id = p_issue_id AND i.deleted_at IS NULL;
 
-    if v_site_id is NULL THEN
-        raise exception 'Issue not found or already deleted';
-    end if;
+    IF v_actual_project_id IS NULL THEN RAISE EXCEPTION 'Issue not found or already deleted'; END IF;
+    IF p_project_id IS NOT NULL AND p_project_id != v_actual_project_id THEN RAISE EXCEPTION 'Issue does not belong to the specified project'; END IF;
 
-    -- 3. Project ID kontrolü (parametre varsa)
-    if p_project_id is not null and p_project_id != (SELECT project_id FROM issues WHERE issue_id = p_issue_id) then
-        raise exception 'Issue does not belong to the specified project';
-    end if;
-
-    -- 4. Yetki flag'lerini al
-    v_is_org_owner := auth_is_org_owner(v_org_id);
-    v_is_org_admin := auth_is_org_admin(v_org_id);
-    v_is_site_admin := auth_is_site_admin(v_site_id);
-    v_is_project_admin := auth_is_project_admin((SELECT project_id FROM issues WHERE issue_id = p_issue_id));
-
-    -- 5. Yetki kontrolü
-    IF v_is_org_owner OR v_is_site_admin OR v_is_project_admin THEN
-        -- Tam yetkililer, devam et
-        NULL;
-    ELSIF v_is_org_admin THEN
-        -- Org admin: site ve project private kontrolü
-        IF v_is_site_private = true OR v_is_project_private = true THEN
-            RAISE EXCEPTION 'Permission denied: Org admin cannot delete issues in private sites or private projects';
-        END IF;
-        -- Devam et, yetkili
-        NULL;
-    ELSE
-        RAISE EXCEPTION 'Permission denied: You are not authorized to delete issues';
+    -- YETKİ KONTROLÜ: Sadece Project Admin silebilir
+    IF NOT EXISTS (
+        SELECT 1 FROM project_memberships 
+        WHERE project_id = v_actual_project_id AND user_id = v_user_id AND role = 'project_admin' AND membership_is_active = true AND deleted_at IS NULL
+    ) THEN
+        RAISE EXCEPTION 'Permission denied: Only Project Admin can delete issues';
     END IF;
 
-    -- 6. Issue status kontrolü (isteğe bağlı)
-    -- open/in_progress/in_review durumundaki issue'lar için uyarı (ama yine de silebilir)
     IF v_issue_status IN ('open', 'in_progress', 'in_review') THEN
-        -- Sadece uyarı ver, silmeyi engelleme
         RAISE NOTICE 'Warning: Deleting an issue with status "%"', v_issue_status;
     END IF;
 
-    -- 7. Soft delete - issue'yu sil
-    UPDATE issues
-    SET 
-        deleted_at = now(),
-        deleted_by = v_user_id,
-        updated_at = now()
-    WHERE issue_id = p_issue_id;
+    UPDATE issues SET deleted_at = now(), deleted_by = v_user_id, updated_at = now() WHERE issue_id = p_issue_id;
+    UPDATE issue_memberships SET deleted_at = now(), deleted_by = v_user_id, membership_is_active = false, updated_at = now() WHERE issue_id = p_issue_id AND deleted_at IS NULL;
+    UPDATE issue_assets SET deleted_at = now(), deleted_by = v_user_id, is_active = false, updated_at = now() WHERE issue_id = p_issue_id AND deleted_at IS NULL;
 
-    -- 8. Issue memberships'leri soft delete
-    UPDATE issue_memberships
-    SET 
-        deleted_at = now(),
-        deleted_by = v_user_id,
-        membership_is_active = false,
-        updated_at = now()
-    WHERE issue_id = p_issue_id
-        AND deleted_at IS NULL;
-
-    -- 9. Issue assets'leri soft delete
-    UPDATE issue_assets
-    SET 
-        deleted_at = now(),
-        deleted_by = v_user_id,
-        is_active = false,
-        updated_at = now()
-    WHERE issue_id = p_issue_id
-        AND deleted_at IS NULL;
-
-    -- 10. Audit log
-    INSERT INTO system_audit_logs (
-        actor_type,
-        actor_id,
-        entity_type,
-        entity_id,
-        action_type,
-        old_value,
-        new_value,
-        created_at
-    )
-    VALUES (
-        'tenant_user',
-        v_user_id,
-        'issue',
-        p_issue_id,
-        'DELETE',
-        jsonb_build_object(
-            'issue_title', v_issue_title,
-            'issue_status', v_issue_status
-        ),
-        jsonb_build_object(
-            'issue_id', p_issue_id,
-            'deleted_by', v_user_id,
-            'deleted_at', now()
-        ),
-        now()
-    );
+    INSERT INTO system_audit_logs (actor_type, actor_id, entity_type, entity_id, action_type, old_value, new_value, created_at)
+    VALUES ('tenant_user', v_user_id, 'issue', p_issue_id, 'DELETE', jsonb_build_object('issue_title', v_issue_title, 'issue_status', v_issue_status), jsonb_build_object('issue_id', p_issue_id, 'deleted_by', v_user_id, 'deleted_at', now()), now());
 
     RETURN true;
-    
 END;
 $$;
 
@@ -1835,7 +1618,7 @@ $$;
 ALTER FUNCTION public.delete_organization_asset(p_asset_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 344 (class 1255 OID 18597)
+-- TOC entry 348 (class 1255 OID 18597)
 -- Name: delete_platform_user(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1859,7 +1642,7 @@ $$;
 ALTER FUNCTION public.delete_platform_user(p_user_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 382 (class 1255 OID 18198)
+-- TOC entry 383 (class 1255 OID 18198)
 -- Name: delete_project(uuid, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1988,7 +1771,7 @@ $$;
 ALTER FUNCTION public.delete_project(p_project_id uuid, p_site_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 411 (class 1255 OID 18207)
+-- TOC entry 412 (class 1255 OID 18207)
 -- Name: delete_site(uuid, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2206,7 +1989,7 @@ $$;
 ALTER FUNCTION public.get_issues(p_project_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 357 (class 1255 OID 18722)
+-- TOC entry 360 (class 1255 OID 18722)
 -- Name: get_next_project_issue_number(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2232,7 +2015,7 @@ $$;
 ALTER FUNCTION public.get_next_project_issue_number(p_project_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 318 (class 1255 OID 18642)
+-- TOC entry 321 (class 1255 OID 18642)
 -- Name: get_organization_asset(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2330,7 +2113,7 @@ $$;
 ALTER FUNCTION public.get_organization_by_id(p_org_id uuid, p_uid uuid) OWNER TO postgres;
 
 --
--- TOC entry 329 (class 1255 OID 18644)
+-- TOC entry 332 (class 1255 OID 18644)
 -- Name: get_organization_id(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2386,7 +2169,7 @@ $$;
 ALTER FUNCTION public.get_organization_id(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 270 (class 1255 OID 18638)
+-- TOC entry 269 (class 1255 OID 18638)
 -- Name: get_organization_members(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2438,7 +2221,7 @@ $$;
 ALTER FUNCTION public.get_organization_members(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 306 (class 1255 OID 18636)
+-- TOC entry 309 (class 1255 OID 18636)
 -- Name: get_organization_stats(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2486,7 +2269,7 @@ $$;
 ALTER FUNCTION public.get_organization_stats(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 273 (class 1255 OID 18024)
+-- TOC entry 272 (class 1255 OID 18024)
 -- Name: get_organizations(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2544,7 +2327,7 @@ $$;
 ALTER FUNCTION public.get_organizations(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 376 (class 1255 OID 18634)
+-- TOC entry 377 (class 1255 OID 18634)
 -- Name: get_pending_invitations(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2593,7 +2376,7 @@ $$;
 ALTER FUNCTION public.get_pending_invitations(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 337 (class 1255 OID 18598)
+-- TOC entry 340 (class 1255 OID 18598)
 -- Name: get_platform_user(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2625,7 +2408,7 @@ $$;
 ALTER FUNCTION public.get_platform_user(p_user_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 309 (class 1255 OID 18200)
+-- TOC entry 312 (class 1255 OID 18200)
 -- Name: get_projects(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2664,7 +2447,7 @@ $$;
 ALTER FUNCTION public.get_projects(p_site_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 407 (class 1255 OID 18199)
+-- TOC entry 408 (class 1255 OID 18199)
 -- Name: get_site_id(uuid, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2727,7 +2510,7 @@ $$;
 ALTER FUNCTION public.get_site_id(p_site_id uuid, p_project_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 297 (class 1255 OID 18208)
+-- TOC entry 300 (class 1255 OID 18208)
 -- Name: get_sites(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2760,7 +2543,7 @@ END;$$;
 ALTER FUNCTION public.get_sites(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 312 (class 1255 OID 18637)
+-- TOC entry 315 (class 1255 OID 18637)
 -- Name: get_user_organizations(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2800,7 +2583,7 @@ $$;
 ALTER FUNCTION public.get_user_organizations() OWNER TO postgres;
 
 --
--- TOC entry 413 (class 1255 OID 18192)
+-- TOC entry 294 (class 1255 OID 18730)
 -- Name: invite_issue(uuid, uuid, uuid, uuid, uuid, public.issue_role); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -2811,175 +2594,34 @@ CREATE FUNCTION public.invite_issue(p_friendship_code uuid, p_org_id uuid, p_sit
 DECLARE
     v_actor uuid;
     v_target_user_id uuid;
-    v_is_issue_private boolean;
-    v_is_project_private boolean;
-    v_is_site_private boolean;
-    v_user_in_org boolean;
-    v_user_in_site boolean;
     v_user_in_project boolean;
-    v_is_org_owner boolean;
-    v_is_org_admin boolean;
-    v_is_site_admin boolean;
-    v_is_project_admin boolean;
 BEGIN
-    -- 1. Aktör kontrolü
     v_actor := auth_current_user_id();
-    
-    IF v_actor IS NULL THEN 
-        RAISE EXCEPTION 'User not authenticated';
-    END IF;
+    IF v_actor IS NULL THEN RAISE EXCEPTION 'User not authenticated'; END IF;
 
-    -- 2. Friendship code ile hedef kullanıcıyı bul
-    SELECT user_id INTO v_target_user_id
-    FROM users
-    WHERE user_friendship_code = p_friendship_code
-        AND deleted_at IS NULL
-        AND user_is_active = true;
-    
-    IF v_target_user_id IS NULL THEN
-        RAISE EXCEPTION 'Invalid friendship code or user not found';
-    END IF;
-
-    -- 3. Issue, project, site bilgilerini ve private durumlarını al
-    SELECT 
-        i.is_private as issue_is_private,
-        p.is_private as project_is_private,
-        s.is_private as site_is_private
-    INTO 
-        v_is_issue_private,
-        v_is_project_private,
-        v_is_site_private
-    FROM issues i
-    JOIN projects p ON p.project_id = i.project_id
-    JOIN sites s ON s.site_id = p.site_id
-    WHERE i.issue_id = p_issue_id
-        AND i.deleted_at IS NULL
-        AND p.deleted_at IS NULL
-        AND s.deleted_at IS NULL;
-    
-    IF v_is_issue_private IS NULL THEN
-        RAISE EXCEPTION 'Issue not found';
-    END IF;
-
-    -- 4. Yetki flag'lerini al
-    v_is_org_owner := auth_is_org_owner(p_org_id);
-    v_is_org_admin := auth_is_org_admin(p_org_id);
-    v_is_site_admin := auth_is_site_admin(p_site_id);
-    v_is_project_admin := auth_is_project_admin(p_project_id);
-
-    -- 5. Yetki kontrolü
-    IF v_is_org_owner OR v_is_site_admin OR v_is_project_admin THEN
-        -- Tam yetkililer, devam et
-        NULL;
-    ELSIF v_is_org_admin THEN
-        -- Org admin: site, project, issue private kontrolü
-        IF v_is_site_private = true OR v_is_project_private = true OR v_is_issue_private = true THEN
-            RAISE EXCEPTION 'Permission denied: Org admin cannot invite users to private sites, projects, or issues';
-        END IF;
-        -- Devam et, yetkili
-        NULL;
-    ELSE
+    -- Yetki: Ya Proje Admini ya da o issue'da yetkili olmalı
+    IF NOT EXISTS (SELECT 1 FROM project_memberships WHERE project_id = p_project_id AND user_id = v_actor AND role = 'project_admin' AND deleted_at IS NULL) AND
+       NOT EXISTS (SELECT 1 FROM issues WHERE issue_id = p_issue_id AND (reporter_id = v_actor OR assignee_id = v_actor) AND deleted_at IS NULL) AND
+       NOT EXISTS (SELECT 1 FROM issue_memberships WHERE issue_id = p_issue_id AND user_id = v_actor AND role = 'contributor' AND deleted_at IS NULL) THEN
         RAISE EXCEPTION 'Permission denied: You are not authorized to invite users to this issue';
     END IF;
 
-    -- 6. Hedef kullanıcının organization'da üye olup olmadığını kontrol et
-    SELECT EXISTS (
-        SELECT 1
-        FROM organization_memberships om
-        WHERE om.org_id = p_org_id
-            AND om.user_id = v_target_user_id
-            AND om.membership_is_active = true
-            AND om.deleted_at IS NULL
-    ) INTO v_user_in_org;
-    
-    IF NOT v_user_in_org THEN
-        RAISE EXCEPTION 'User must be an active member of the organization first';
-    END IF;
+    SELECT user_id INTO v_target_user_id FROM users WHERE user_friendship_code = p_friendship_code AND deleted_at IS NULL AND user_is_active = true;
+    IF v_target_user_id IS NULL THEN RAISE EXCEPTION 'Invalid friendship code or user not found'; END IF;
 
-    -- 7. Hedef kullanıcının site'de üye olup olmadığını kontrol et
-    SELECT EXISTS (
-        SELECT 1
-        FROM site_memberships sm
-        WHERE sm.site_id = p_site_id
-            AND sm.user_id = v_target_user_id
-            AND sm.membership_is_active = true
-            AND sm.deleted_at IS NULL
-    ) INTO v_user_in_site;
-    
-    IF NOT v_user_in_site THEN
-        RAISE EXCEPTION 'User must be an active member of the site first';
-    END IF;
+    -- Hedef kullanıcı projede mi? (Projede olmayan issue'ya giremez)
+    SELECT EXISTS (SELECT 1 FROM project_memberships WHERE project_id = p_project_id AND user_id = v_target_user_id AND membership_is_active = true AND deleted_at IS NULL) INTO v_user_in_project;
+    IF NOT v_user_in_project THEN RAISE EXCEPTION 'User must be an active member of the project first'; END IF;
 
-    -- 8. Hedef kullanıcının project'te üye olup olmadığını kontrol et
-    SELECT EXISTS (
-        SELECT 1
-        FROM project_memberships pm
-        WHERE pm.project_id = p_project_id
-            AND pm.user_id = v_target_user_id
-            AND pm.membership_is_active = true
-            AND pm.deleted_at IS NULL
-    ) INTO v_user_in_project;
-    
-    IF NOT v_user_in_project THEN
-        RAISE EXCEPTION 'User must be an active member of the project first';
-    END IF;
-
-    -- 9. Zaten issue membership var mı kontrol et
-    IF EXISTS (
-        SELECT 1
-        FROM issue_memberships im
-        WHERE im.issue_id = p_issue_id
-            AND im.user_id = v_target_user_id
-            AND im.deleted_at IS NULL
-    ) THEN
+    IF EXISTS (SELECT 1 FROM issue_memberships WHERE issue_id = p_issue_id AND user_id = v_target_user_id AND deleted_at IS NULL) THEN
         RAISE EXCEPTION 'User already has a membership in this issue';
     END IF;
 
-    -- 10. Issue membership ekle
-    INSERT INTO issue_memberships (
-        issue_id,
-        user_id,
-        role,
-        membership_is_active,
-        created_at,
-        updated_at
-    )
-    VALUES (
-        p_issue_id,
-        v_target_user_id,
-        p_issue_role,
-        true,
-        now(),
-        now()
-    );
+    INSERT INTO issue_memberships (issue_id, user_id, role, membership_is_active, created_at, updated_at)
+    VALUES (p_issue_id, v_target_user_id, p_issue_role, true, now(), now());
 
-    -- 11. Audit log
-    INSERT INTO system_audit_logs (
-        actor_type,
-        actor_id,
-        entity_type,
-        entity_id,
-        action_type,
-        new_value,
-        created_at
-    )
-    VALUES (
-        'tenant_user',
-        v_actor,
-        'issue_membership',
-        p_issue_id,
-        'INVITE',
-        jsonb_build_object(
-            'user_id', v_target_user_id,
-            'issue_id', p_issue_id,
-            'project_id', p_project_id,
-            'site_id', p_site_id,
-            'role', p_issue_role,
-            'invited_by', v_actor
-        ),
-        now()
-    );
-    
+    INSERT INTO system_audit_logs (actor_type, actor_id, entity_type, entity_id, action_type, new_value, created_at)
+    VALUES ('tenant_user', v_actor, 'issue_membership', p_issue_id, 'INVITE', jsonb_build_object('user_id', v_target_user_id, 'role', p_issue_role), now());
 END;
 $$;
 
@@ -3154,7 +2796,7 @@ $$;
 ALTER FUNCTION public.invite_project(p_friendship_code uuid, p_org_id uuid, p_site_id uuid, p_project_id uuid, p_project_role public.project_role) OWNER TO postgres;
 
 --
--- TOC entry 384 (class 1255 OID 18209)
+-- TOC entry 385 (class 1255 OID 18209)
 -- Name: invite_site(uuid, uuid, uuid, public.site_role); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -3294,7 +2936,7 @@ $$;
 ALTER FUNCTION public.invite_site(p_friendship_code uuid, p_org_id uuid, p_site_id uuid, p_site_role public.site_role) OWNER TO postgres;
 
 --
--- TOC entry 331 (class 1255 OID 18633)
+-- TOC entry 334 (class 1255 OID 18633)
 -- Name: invite_to_organization(uuid, uuid, text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -3579,7 +3221,7 @@ $$;
 ALTER FUNCTION public.leave_organization(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 271 (class 1255 OID 18599)
+-- TOC entry 270 (class 1255 OID 18599)
 -- Name: list_api_keys(uuid, integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -3609,7 +3251,7 @@ $$;
 ALTER FUNCTION public.list_api_keys(p_platform_user_id uuid, p_limit integer, p_offset integer) OWNER TO postgres;
 
 --
--- TOC entry 332 (class 1255 OID 18193)
+-- TOC entry 335 (class 1255 OID 18193)
 -- Name: list_issues(uuid, public.issue_status, public.priority_level, uuid, uuid, text, integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -3807,7 +3449,7 @@ $$;
 ALTER FUNCTION public.list_notifications(p_user_id uuid, p_unread_only boolean, p_limit integer, p_offset integer) OWNER TO postgres;
 
 --
--- TOC entry 373 (class 1255 OID 18647)
+-- TOC entry 374 (class 1255 OID 18647)
 -- Name: list_organization_assets(uuid, public.asset_type, integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -3857,7 +3499,7 @@ $$;
 ALTER FUNCTION public.list_organization_assets(p_org_id uuid, p_asset_type public.asset_type, p_limit integer, p_offset integer) OWNER TO postgres;
 
 --
--- TOC entry 293 (class 1255 OID 18600)
+-- TOC entry 295 (class 1255 OID 18600)
 -- Name: list_platform_users(public.platform_role, integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -3894,7 +3536,7 @@ $$;
 ALTER FUNCTION public.list_platform_users(p_role public.platform_role, p_limit integer, p_offset integer) OWNER TO postgres;
 
 --
--- TOC entry 354 (class 1255 OID 18202)
+-- TOC entry 357 (class 1255 OID 18202)
 -- Name: list_projects(uuid, public.project_status, text, boolean, integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4052,7 +3694,7 @@ $$;
 ALTER FUNCTION public.list_projects(p_site_id uuid, p_status public.project_status, p_search text, p_is_private boolean, p_limit integer, p_offset integer) OWNER TO postgres;
 
 --
--- TOC entry 392 (class 1255 OID 18210)
+-- TOC entry 393 (class 1255 OID 18210)
 -- Name: list_sites(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4086,7 +3728,7 @@ END;$$;
 ALTER FUNCTION public.list_sites(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 399 (class 1255 OID 18023)
+-- TOC entry 400 (class 1255 OID 18023)
 -- Name: list_user_organizations(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4133,7 +3775,7 @@ $$;
 ALTER FUNCTION public.list_user_organizations() OWNER TO postgres;
 
 --
--- TOC entry 353 (class 1255 OID 18592)
+-- TOC entry 356 (class 1255 OID 18592)
 -- Name: mark_notification_read(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4155,7 +3797,7 @@ $$;
 ALTER FUNCTION public.mark_notification_read(p_notification_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 307 (class 1255 OID 18601)
+-- TOC entry 310 (class 1255 OID 18601)
 -- Name: refresh_platform_token(text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4196,7 +3838,7 @@ $$;
 ALTER FUNCTION public.refresh_platform_token(p_old_token text) OWNER TO postgres;
 
 --
--- TOC entry 294 (class 1255 OID 18651)
+-- TOC entry 297 (class 1255 OID 18651)
 -- Name: reject_invitation(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4240,7 +3882,7 @@ $$;
 ALTER FUNCTION public.reject_invitation(p_invitation_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 308 (class 1255 OID 18602)
+-- TOC entry 311 (class 1255 OID 18602)
 -- Name: reset_platform_password_confirm(text, text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4322,7 +3964,7 @@ $$;
 ALTER FUNCTION public.reset_platform_password_request(p_email public.citext) OWNER TO postgres;
 
 --
--- TOC entry 316 (class 1255 OID 18604)
+-- TOC entry 319 (class 1255 OID 18604)
 -- Name: revoke_api_key(uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4423,7 +4065,7 @@ $$;
 ALTER FUNCTION public.soft_delete_organization(p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 272 (class 1255 OID 18292)
+-- TOC entry 271 (class 1255 OID 18292)
 -- Name: trg_assets_update(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4615,7 +4257,7 @@ $$;
 ALTER FUNCTION public.trg_issue_memberships_role_guard() OWNER TO postgres;
 
 --
--- TOC entry 296 (class 1255 OID 18303)
+-- TOC entry 299 (class 1255 OID 18303)
 -- Name: trg_prevent_issue_delete_if_has_children(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4675,7 +4317,7 @@ $$;
 ALTER FUNCTION public.trg_prevent_org_delete_if_has_sites() OWNER TO postgres;
 
 --
--- TOC entry 378 (class 1255 OID 18299)
+-- TOC entry 379 (class 1255 OID 18299)
 -- Name: trg_prevent_project_delete_if_has_issues(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4706,7 +4348,7 @@ $$;
 ALTER FUNCTION public.trg_prevent_project_delete_if_has_issues() OWNER TO postgres;
 
 --
--- TOC entry 391 (class 1255 OID 18297)
+-- TOC entry 392 (class 1255 OID 18297)
 -- Name: trg_prevent_site_delete_if_has_projects(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4737,7 +4379,7 @@ $$;
 ALTER FUNCTION public.trg_prevent_site_delete_if_has_projects() OWNER TO postgres;
 
 --
--- TOC entry 397 (class 1255 OID 17989)
+-- TOC entry 398 (class 1255 OID 17989)
 -- Name: trg_project_memberships_role_guard(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4786,7 +4428,7 @@ $$;
 ALTER FUNCTION public.trg_project_memberships_role_guard() OWNER TO postgres;
 
 --
--- TOC entry 367 (class 1255 OID 18097)
+-- TOC entry 369 (class 1255 OID 18097)
 -- Name: trg_site_memberships_role_guard(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4865,7 +4507,7 @@ $$;
 ALTER FUNCTION public.trigger_notify_issue_assigned() OWNER TO postgres;
 
 --
--- TOC entry 264 (class 1255 OID 18195)
+-- TOC entry 296 (class 1255 OID 18728)
 -- Name: update_issues(uuid, text, text, public.issue_status, public.priority_level, uuid, boolean, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -4873,154 +4515,61 @@ CREATE FUNCTION public.update_issues(p_issue_id uuid, p_issue_title text DEFAULT
     LANGUAGE plpgsql SECURITY DEFINER
     SET search_path TO 'public'
     AS $$
-declare
+DECLARE
     v_user_id uuid;
-    v_org_id uuid;
-    v_site_id uuid;
+    v_actual_project_id uuid;
     v_old_issue_title text;
     v_old_issue_description text;
     v_old_status issue_status;
     v_old_priority priority_level;
     v_old_assignee_id uuid;
     v_old_is_private boolean;
-    v_is_org_owner boolean;
-    v_is_org_admin boolean;
-    v_is_site_admin boolean;
-    v_is_project_admin boolean;
-    v_is_project_private boolean;
-    v_is_site_private boolean;
     v_issue_reporter_id uuid;
-    v_issue_assignee_id uuid;
-    v_update_parts text[];
-    v_update_query text;
+    v_is_project_admin boolean;
+    v_is_issue_contributor boolean;
     v_changes jsonb;
-begin
-    -- 1. Kullanıcı kontrolü
+BEGIN
     v_user_id := auth_current_user_id();
+    IF v_user_id IS NULL THEN RAISE EXCEPTION 'User not authenticated'; END IF;
 
-    if v_user_id is null then
-        raise exception 'User not authenticated';
-    end if;
+    SELECT i.issue_title, i.issue_description, i.status, i.priority, i.assignee_id, i.is_private, i.reporter_id, i.project_id
+    INTO v_old_issue_title, v_old_issue_description, v_old_status, v_old_priority, v_old_assignee_id, v_old_is_private, v_issue_reporter_id, v_actual_project_id
+    FROM issues i WHERE i.issue_id = p_issue_id AND i.deleted_at IS NULL;
 
-    -- 2. Issue bilgilerini al
-    select 
-        i.issue_title,
-        i.issue_description,
-        i.status,
-        i.priority,
-        i.assignee_id,
-        i.is_private,
-        i.reporter_id,
-        p.site_id,
-        p.is_private,
-        s.org_id,
-        s.is_private
-    into 
-        v_old_issue_title,
-        v_old_issue_description,
-        v_old_status,
-        v_old_priority,
-        v_old_assignee_id,
-        v_old_is_private,
-        v_issue_reporter_id,
-        v_site_id,
-        v_is_project_private,
-        v_org_id,
-        v_is_site_private
-    from issues i
-    join projects p on p.project_id = i.project_id
-    join sites s on s.site_id = p.site_id
-    where i.issue_id = p_issue_id
-        and i.deleted_at is null
-        and p.deleted_at is null
-        and s.deleted_at is null;
+    IF v_actual_project_id IS NULL THEN RAISE EXCEPTION 'Issue not found or already deleted'; END IF;
 
-    if v_site_id is null then
-        raise exception 'Issue not found or already deleted';
-    end if;
+    -- YETKİ KONTROLLERİ
+    v_is_project_admin := EXISTS (SELECT 1 FROM project_memberships WHERE project_id = v_actual_project_id AND user_id = v_user_id AND role = 'project_admin' AND membership_is_active = true AND deleted_at IS NULL);
+    v_is_issue_contributor := EXISTS (SELECT 1 FROM issue_memberships WHERE issue_id = p_issue_id AND user_id = v_user_id AND role = 'contributor' AND membership_is_active = true AND deleted_at IS NULL);
 
-    -- 3. Project ID kontrolü (parametre varsa)
-    if p_project_id is not null and p_project_id != (select project_id from issues where issue_id = p_issue_id) then
-        raise exception 'Issue does not belong to the specified project';
-    end if;
+    IF v_is_project_admin THEN
+        NULL; -- Admin can update everything
+    ELSIF v_old_assignee_id = v_user_id THEN
+        IF p_issue_title IS NOT NULL OR p_issue_description IS NOT NULL OR p_assignee_id IS NOT NULL OR p_is_private IS NOT NULL THEN
+            RAISE EXCEPTION 'Permission denied: Assignee can only update status and priority';
+        END IF;
+    ELSIF v_issue_reporter_id = v_user_id THEN
+        IF p_status IS NOT NULL OR p_priority IS NOT NULL OR p_assignee_id IS NOT NULL THEN
+            RAISE EXCEPTION 'Permission denied: Reporter can only update title, description, and privacy status';
+        END IF;
+    ELSIF v_is_issue_contributor THEN
+        NULL; -- Issue contributor can update fields
+    ELSE
+        RAISE EXCEPTION 'Permission denied: You are not authorized to update this issue';
+    END IF;
 
-    -- 4. Yetki flag'lerini al
-    v_is_org_owner := auth_is_org_owner(v_org_id);
-    v_is_org_admin := auth_is_org_admin(v_org_id);
-    v_is_site_admin := auth_is_site_admin(v_site_id);
-    v_is_project_admin := auth_is_project_admin((select project_id from issues where issue_id = p_issue_id));
-    v_issue_assignee_id := v_old_assignee_id;
-
-    -- 5. Yetki kontrolü
-    -- Tam yetkililer: org_owner, site_admin, project_admin
-    if v_is_org_owner or v_is_site_admin or v_is_project_admin then
-        -- Her şeyi güncelleyebilir
-        null;
-    
-    -- Org admin: sadece public site + public project + public issue
-    elsif v_is_org_admin then
-        if v_is_site_private = true or v_is_project_private = true or v_old_is_private = true then
-            raise exception 'Permission denied: Org admin cannot update issues in private sites, projects, or issues';
-        end if;
-        -- Her şeyi güncelleyebilir (public ise)
-        null;
-    
-    -- Assignee: sadece status ve priority güncelleyebilir
-    elsif v_issue_assignee_id = v_user_id then
-        -- Sadece status ve priority dışındaki güncellemeleri engelle
-        if p_issue_title is not null 
-            or p_issue_description is not null 
-            or p_assignee_id is not null 
-            or p_is_private is not null then
-            raise exception 'Permission denied: Assignee can only update status and priority';
-        end if;
-    
-    -- Reporter: sadece kendi açtığı issue'ları güncelleyebilir (title, description, is_private)
-    elsif v_issue_reporter_id = v_user_id then
-        -- Sadece izin verilen alanlar dışındaki güncellemeleri engelle
-        if p_status is not null or p_priority is not null or p_assignee_id is not null then
-            raise exception 'Permission denied: Reporter can only update title, description, and privacy status';
-        end if;
-    
-    else
-        raise exception 'Permission denied: You are not authorized to update this issue';
-    end if;
-
-    -- 6. Değişiklikleri hazırla (JSONB formatında)
+    -- Değişiklikleri hazırla
     v_changes := '{}'::jsonb;
-    
-    if p_issue_title is not null and p_issue_title != v_old_issue_title then
-        v_changes := v_changes || jsonb_build_object('issue_title', jsonb_build_object('old', v_old_issue_title, 'new', p_issue_title));
-    end if;
-    
-    if p_issue_description is not null and p_issue_description != v_old_issue_description then
-        v_changes := v_changes || jsonb_build_object('issue_description', jsonb_build_object('old', v_old_issue_description, 'new', p_issue_description));
-    end if;
-    
-    if p_status is not null and p_status != v_old_status then
-        v_changes := v_changes || jsonb_build_object('status', jsonb_build_object('old', v_old_status, 'new', p_status));
-    end if;
-    
-    if p_priority is not null and p_priority != v_old_priority then
-        v_changes := v_changes || jsonb_build_object('priority', jsonb_build_object('old', v_old_priority, 'new', p_priority));
-    end if;
-    
-    if p_assignee_id is not null and p_assignee_id != v_old_assignee_id then
-        v_changes := v_changes || jsonb_build_object('assignee_id', jsonb_build_object('old', v_old_assignee_id, 'new', p_assignee_id));
-    end if;
-    
-    if p_is_private is not null and p_is_private != v_old_is_private then
-        v_changes := v_changes || jsonb_build_object('is_private', jsonb_build_object('old', v_old_is_private, 'new', p_is_private));
-    end if;
+    IF p_issue_title IS NOT NULL AND p_issue_title != v_old_issue_title THEN v_changes := v_changes || jsonb_build_object('issue_title', jsonb_build_object('old', v_old_issue_title, 'new', p_issue_title)); END IF;
+    IF p_issue_description IS NOT NULL AND p_issue_description != v_old_issue_description THEN v_changes := v_changes || jsonb_build_object('issue_description', jsonb_build_object('old', v_old_issue_description, 'new', p_issue_description)); END IF;
+    IF p_status IS NOT NULL AND p_status != v_old_status THEN v_changes := v_changes || jsonb_build_object('status', jsonb_build_object('old', v_old_status, 'new', p_status)); END IF;
+    IF p_priority IS NOT NULL AND p_priority != v_old_priority THEN v_changes := v_changes || jsonb_build_object('priority', jsonb_build_object('old', v_old_priority, 'new', p_priority)); END IF;
+    IF p_assignee_id IS NOT NULL AND p_assignee_id != v_old_assignee_id THEN v_changes := v_changes || jsonb_build_object('assignee_id', jsonb_build_object('old', v_old_assignee_id, 'new', p_assignee_id)); END IF;
+    IF p_is_private IS NOT NULL AND p_is_private != v_old_is_private THEN v_changes := v_changes || jsonb_build_object('is_private', jsonb_build_object('old', v_old_is_private, 'new', p_is_private)); END IF;
 
-    -- 7. Güncelleme yoksa çık
-    if v_changes = '{}'::jsonb then
-        raise exception 'No changes to update';
-    end if;
+    IF v_changes = '{}'::jsonb THEN RAISE EXCEPTION 'No changes to update'; END IF;
 
-    -- 8. Issue güncelle
-    update issues
-    set 
+    UPDATE issues SET 
         issue_title = coalesce(p_issue_title, issue_title),
         issue_description = coalesce(p_issue_description, issue_description),
         status = coalesce(p_status, status),
@@ -5028,53 +4577,20 @@ begin
         assignee_id = coalesce(p_assignee_id, assignee_id),
         is_private = coalesce(p_is_private, is_private),
         updated_at = now()
-    where issue_id = p_issue_id;
+    WHERE issue_id = p_issue_id;
 
-    -- 9. Audit log
-    insert into system_audit_logs (
-        actor_type,
-        actor_id,
-        entity_type,
-        entity_id,
-        action_type,
-        old_value,
-        new_value,
-        created_at
-    )
-    values (
-        'tenant_user',
-        v_user_id,
-        'issue',
-        p_issue_id,
-        'UPDATE',
-        jsonb_build_object(
-            'issue_title', v_old_issue_title,
-            'issue_description', v_old_issue_description,
-            'status', v_old_status,
-            'priority', v_old_priority,
-            'assignee_id', v_old_assignee_id,
-            'is_private', v_old_is_private
-        ),
-        jsonb_build_object(
-            'issue_title', coalesce(p_issue_title, v_old_issue_title),
-            'issue_description', coalesce(p_issue_description, v_old_issue_description),
-            'status', coalesce(p_status, v_old_status),
-            'priority', coalesce(p_priority, v_old_priority),
-            'assignee_id', coalesce(p_assignee_id, v_old_assignee_id),
-            'is_private', coalesce(p_is_private, v_old_is_private)
-        ),
-        now()
-    );
+    INSERT INTO system_audit_logs (actor_type, actor_id, entity_type, entity_id, action_type, old_value, new_value, created_at)
+    VALUES ('tenant_user', v_user_id, 'issue', p_issue_id, 'UPDATE', v_changes, v_changes, now());
 
-    return true;
-end;
+    RETURN true;
+END;
 $$;
 
 
 ALTER FUNCTION public.update_issues(p_issue_id uuid, p_issue_title text, p_issue_description text, p_status public.issue_status, p_priority public.priority_level, p_assignee_id uuid, p_is_private boolean, p_project_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 314 (class 1255 OID 18630)
+-- TOC entry 317 (class 1255 OID 18630)
 -- Name: update_organization(uuid, text, text, text, text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -5121,7 +4637,7 @@ $$;
 ALTER FUNCTION public.update_organization(p_org_id uuid, p_org_name text, p_org_description text, p_slug text, p_org_status text) OWNER TO postgres;
 
 --
--- TOC entry 310 (class 1255 OID 18648)
+-- TOC entry 313 (class 1255 OID 18648)
 -- Name: update_organization_asset(uuid, text, text, jsonb); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -5217,7 +4733,7 @@ $$;
 ALTER FUNCTION public.update_organization_asset(p_asset_id uuid, p_file_name text, p_mime_type text, p_metadata jsonb) OWNER TO postgres;
 
 --
--- TOC entry 360 (class 1255 OID 18605)
+-- TOC entry 363 (class 1255 OID 18605)
 -- Name: update_platform_user(uuid, public.citext, public.platform_role, boolean); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -5400,7 +4916,7 @@ $$;
 ALTER FUNCTION public.update_project_status(p_project_id uuid, p_new_status public.project_status, p_site_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 366 (class 1255 OID 18211)
+-- TOC entry 368 (class 1255 OID 18211)
 -- Name: update_site_status(uuid, public.site_status, uuid); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -5493,7 +5009,7 @@ $$;
 ALTER FUNCTION public.update_site_status(p_site_id uuid, p_new_status public.site_status, p_org_id uuid) OWNER TO postgres;
 
 --
--- TOC entry 402 (class 1255 OID 18606)
+-- TOC entry 403 (class 1255 OID 18606)
 -- Name: verify_platform_token(text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -7751,11 +7267,11 @@ CREATE POLICY organizations_update_policy ON public.organizations FOR UPDATE USI
 
 ALTER TABLE public.projects ENABLE ROW LEVEL SECURITY;
 
--- Completed on 2026-06-03 22:05:12 +03
+-- Completed on 2026-06-08 15:06:41 +03
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict GWNcwL6GDUqvDgHXS2erq5imFDy8IaFfRVhfAI74CEjOs7pCoXhFaFqdbnjQs78
+\unrestrict dp63WLIcYMEyzlPLEbvOaD0N3oqN8u94r7N9Aam0BQwG4q8rBkpoThKJ4Ns4RnC
 

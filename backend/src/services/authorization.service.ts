@@ -450,3 +450,70 @@ export const ProjectAccessPolicy = {
         }
     }
 };
+
+
+
+// ============================================================================
+// YENİ: ISSUE AUTH & ACCESS POLICY (KATI KURALLAR)
+// ============================================================================
+
+export const IssueAccessPolicy = {
+    
+    // 1. CREATE: [ProjectAdmin, Contributor] (DB ile senkron)
+    async validateCreation(userId: string, projectId: string): Promise<void> {
+        const result = await tenantPool.query(
+            `SELECT 1 FROM project_memberships 
+             WHERE project_id = $1 AND user_id = $2 AND role IN ('project_admin', 'contributor') 
+             AND membership_is_active = true AND deleted_at IS NULL`,
+            [projectId, userId]
+        );
+        
+        if ((result.rowCount ?? 0) === 0) {
+            throw new AppError(ErrorCodes.PROJECT_PERMISSION_DENIED, 'Sadece Project Admin veya Contributor görev oluşturabilir.');
+        }
+    },
+
+    // 2 & 3. READ (List & Get): [ProjectMember]
+    async validateRead(userId: string, projectId: string): Promise<void> {
+        const result = await tenantPool.query(
+            `SELECT 1 FROM project_memberships 
+             WHERE project_id = $1 AND user_id = $2 
+             AND membership_is_active = true AND deleted_at IS NULL`,
+            [projectId, userId]
+        );
+
+        if ((result.rowCount ?? 0) === 0) {
+            throw new AppError(ErrorCodes.PROJECT_PERMISSION_DENIED, 'Bu projenin görevlerine erişiminiz yok.');
+        }
+    },
+
+    // 4. UPDATE & INVITE: [ProjectAdmin, Assignee, Reporter, Contributor]
+    async validateUpdate(userId: string, projectId: string, issueId: string): Promise<void> {
+        const result = await tenantPool.query(
+            `SELECT 1 FROM project_memberships WHERE project_id = $1 AND user_id = $2 AND role = 'project_admin' AND membership_is_active = true
+             UNION
+             SELECT 1 FROM issues WHERE issue_id = $3 AND (assignee_id = $2 OR reporter_id = $2) AND deleted_at IS NULL
+             UNION
+             SELECT 1 FROM issue_memberships WHERE issue_id = $3 AND user_id = $2 AND role = 'contributor' AND membership_is_active = true`,
+            [projectId, userId, issueId]
+        );
+
+        if ((result.rowCount ?? 0) === 0) {
+            throw new AppError(ErrorCodes.PROJECT_PERMISSION_DENIED, 'Bu görevi güncelleme veya atama yetkiniz yok.');
+        }
+    },
+
+    // 5 & 6. DELETE & RESTORE: [SADECE ProjectAdmin]
+    async validateManagement(userId: string, projectId: string): Promise<void> {
+        const result = await tenantPool.query(
+            `SELECT 1 FROM project_memberships 
+             WHERE project_id = $1 AND user_id = $2 AND role = 'project_admin' 
+             AND membership_is_active = true AND deleted_at IS NULL`,
+            [projectId, userId]
+        );
+
+        if ((result.rowCount ?? 0) === 0) {
+            throw new AppError(ErrorCodes.PROJECT_PERMISSION_DENIED, 'Görev silme/kurtarma işlemleri için Proje Yöneticisi (Admin) olmanız gerekmektedir.');
+        }
+    }
+};

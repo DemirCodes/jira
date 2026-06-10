@@ -22,7 +22,9 @@
     - is_private
 */
 
-create or replace function update_issues(
+drop function if Exists update_issues(uuid, text, text, issue_status, priority_level, uuid, boolean, uuid);
+
+CREATE OR REPLACE FUNCTION update_issues(
     p_issue_id uuid,
     p_issue_title text default null,
     p_issue_description text default null,
@@ -32,159 +34,66 @@ create or replace function update_issues(
     p_is_private boolean default null,
     p_project_id uuid default null
 )
-returns boolean
-language plpgsql
-security definer
-set search_path = PUBLIC
-as $$
-declare
+RETURNS boolean
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = PUBLIC
+AS $$
+DECLARE
     v_user_id uuid;
-    v_org_id uuid;
-    v_site_id uuid;
+    v_actual_project_id uuid;
     v_old_issue_title text;
     v_old_issue_description text;
     v_old_status issue_status;
     v_old_priority priority_level;
     v_old_assignee_id uuid;
     v_old_is_private boolean;
-    v_is_org_owner boolean;
-    v_is_org_admin boolean;
-    v_is_site_admin boolean;
-    v_is_project_admin boolean;
-    v_is_project_private boolean;
-    v_is_site_private boolean;
     v_issue_reporter_id uuid;
-    v_issue_assignee_id uuid;
-    v_update_parts text[];
-    v_update_query text;
+    v_is_project_admin boolean;
+    v_is_issue_contributor boolean;
     v_changes jsonb;
-begin
-    -- 1. Kullanıcı kontrolü
+BEGIN
     v_user_id := auth_current_user_id();
+    IF v_user_id IS NULL THEN RAISE EXCEPTION 'User not authenticated'; END IF;
 
-    if v_user_id is null then
-        raise exception 'User not authenticated';
-    end if;
+    SELECT i.issue_title, i.issue_description, i.status, i.priority, i.assignee_id, i.is_private, i.reporter_id, i.project_id
+    INTO v_old_issue_title, v_old_issue_description, v_old_status, v_old_priority, v_old_assignee_id, v_old_is_private, v_issue_reporter_id, v_actual_project_id
+    FROM issues i WHERE i.issue_id = p_issue_id AND i.deleted_at IS NULL;
 
-    -- 2. Issue bilgilerini al
-    select 
-        i.issue_title,
-        i.issue_description,
-        i.status,
-        i.priority,
-        i.assignee_id,
-        i.is_private,
-        i.reporter_id,
-        p.site_id,
-        p.is_private,
-        s.org_id,
-        s.is_private
-    into 
-        v_old_issue_title,
-        v_old_issue_description,
-        v_old_status,
-        v_old_priority,
-        v_old_assignee_id,
-        v_old_is_private,
-        v_issue_reporter_id,
-        v_site_id,
-        v_is_project_private,
-        v_org_id,
-        v_is_site_private
-    from issues i
-    join projects p on p.project_id = i.project_id
-    join sites s on s.site_id = p.site_id
-    where i.issue_id = p_issue_id
-        and i.deleted_at is null
-        and p.deleted_at is null
-        and s.deleted_at is null;
+    IF v_actual_project_id IS NULL THEN RAISE EXCEPTION 'Issue not found or already deleted'; END IF;
 
-    if v_site_id is null then
-        raise exception 'Issue not found or already deleted';
-    end if;
+    -- YETKİ KONTROLLERİ
+    v_is_project_admin := EXISTS (SELECT 1 FROM project_memberships WHERE project_id = v_actual_project_id AND user_id = v_user_id AND role = 'project_admin' AND membership_is_active = true AND deleted_at IS NULL);
+    v_is_issue_contributor := EXISTS (SELECT 1 FROM issue_memberships WHERE issue_id = p_issue_id AND user_id = v_user_id AND role = 'contributor' AND membership_is_active = true AND deleted_at IS NULL);
 
-    -- 3. Project ID kontrolü (parametre varsa)
-    if p_project_id is not null and p_project_id != (select project_id from issues where issue_id = p_issue_id) then
-        raise exception 'Issue does not belong to the specified project';
-    end if;
+    IF v_is_project_admin THEN
+        NULL; -- Admin can update everything
+    ELSIF v_old_assignee_id = v_user_id THEN
+        IF p_issue_title IS NOT NULL OR p_issue_description IS NOT NULL OR p_assignee_id IS NOT NULL OR p_is_private IS NOT NULL THEN
+            RAISE EXCEPTION 'Permission denied: Assignee can only update status and priority';
+        END IF;
+    ELSIF v_issue_reporter_id = v_user_id THEN
+        IF p_status IS NOT NULL OR p_priority IS NOT NULL OR p_assignee_id IS NOT NULL THEN
+            RAISE EXCEPTION 'Permission denied: Reporter can only update title, description, and privacy status';
+        END IF;
+    ELSIF v_is_issue_contributor THEN
+        NULL; -- Issue contributor can update fields
+    ELSE
+        RAISE EXCEPTION 'Permission denied: You are not authorized to update this issue';
+    END IF;
 
-    -- 4. Yetki flag'lerini al
-    v_is_org_owner := auth_is_org_owner(v_org_id);
-    v_is_org_admin := auth_is_org_admin(v_org_id);
-    v_is_site_admin := auth_is_site_admin(v_site_id);
-    v_is_project_admin := auth_is_project_admin((select project_id from issues where issue_id = p_issue_id));
-    v_issue_assignee_id := v_old_assignee_id;
-
-    -- 5. Yetki kontrolü
-    -- Tam yetkililer: org_owner, site_admin, project_admin
-    if v_is_org_owner or v_is_site_admin or v_is_project_admin then
-        -- Her şeyi güncelleyebilir
-        null;
-    
-    -- Org admin: sadece public site + public project + public issue
-    elsif v_is_org_admin then
-        if v_is_site_private = true or v_is_project_private = true or v_old_is_private = true then
-            raise exception 'Permission denied: Org admin cannot update issues in private sites, projects, or issues';
-        end if;
-        -- Her şeyi güncelleyebilir (public ise)
-        null;
-    
-    -- Assignee: sadece status ve priority güncelleyebilir
-    elsif v_issue_assignee_id = v_user_id then
-        -- Sadece status ve priority dışındaki güncellemeleri engelle
-        if p_issue_title is not null 
-            or p_issue_description is not null 
-            or p_assignee_id is not null 
-            or p_is_private is not null then
-            raise exception 'Permission denied: Assignee can only update status and priority';
-        end if;
-    
-    -- Reporter: sadece kendi açtığı issue'ları güncelleyebilir (title, description, is_private)
-    elsif v_issue_reporter_id = v_user_id then
-        -- Sadece izin verilen alanlar dışındaki güncellemeleri engelle
-        if p_status is not null or p_priority is not null or p_assignee_id is not null then
-            raise exception 'Permission denied: Reporter can only update title, description, and privacy status';
-        end if;
-    
-    else
-        raise exception 'Permission denied: You are not authorized to update this issue';
-    end if;
-
-    -- 6. Değişiklikleri hazırla (JSONB formatında)
+    -- Değişiklikleri hazırla
     v_changes := '{}'::jsonb;
-    
-    if p_issue_title is not null and p_issue_title != v_old_issue_title then
-        v_changes := v_changes || jsonb_build_object('issue_title', jsonb_build_object('old', v_old_issue_title, 'new', p_issue_title));
-    end if;
-    
-    if p_issue_description is not null and p_issue_description != v_old_issue_description then
-        v_changes := v_changes || jsonb_build_object('issue_description', jsonb_build_object('old', v_old_issue_description, 'new', p_issue_description));
-    end if;
-    
-    if p_status is not null and p_status != v_old_status then
-        v_changes := v_changes || jsonb_build_object('status', jsonb_build_object('old', v_old_status, 'new', p_status));
-    end if;
-    
-    if p_priority is not null and p_priority != v_old_priority then
-        v_changes := v_changes || jsonb_build_object('priority', jsonb_build_object('old', v_old_priority, 'new', p_priority));
-    end if;
-    
-    if p_assignee_id is not null and p_assignee_id != v_old_assignee_id then
-        v_changes := v_changes || jsonb_build_object('assignee_id', jsonb_build_object('old', v_old_assignee_id, 'new', p_assignee_id));
-    end if;
-    
-    if p_is_private is not null and p_is_private != v_old_is_private then
-        v_changes := v_changes || jsonb_build_object('is_private', jsonb_build_object('old', v_old_is_private, 'new', p_is_private));
-    end if;
+    IF p_issue_title IS NOT NULL AND p_issue_title != v_old_issue_title THEN v_changes := v_changes || jsonb_build_object('issue_title', jsonb_build_object('old', v_old_issue_title, 'new', p_issue_title)); END IF;
+    IF p_issue_description IS NOT NULL AND p_issue_description != v_old_issue_description THEN v_changes := v_changes || jsonb_build_object('issue_description', jsonb_build_object('old', v_old_issue_description, 'new', p_issue_description)); END IF;
+    IF p_status IS NOT NULL AND p_status != v_old_status THEN v_changes := v_changes || jsonb_build_object('status', jsonb_build_object('old', v_old_status, 'new', p_status)); END IF;
+    IF p_priority IS NOT NULL AND p_priority != v_old_priority THEN v_changes := v_changes || jsonb_build_object('priority', jsonb_build_object('old', v_old_priority, 'new', p_priority)); END IF;
+    IF p_assignee_id IS NOT NULL AND p_assignee_id != v_old_assignee_id THEN v_changes := v_changes || jsonb_build_object('assignee_id', jsonb_build_object('old', v_old_assignee_id, 'new', p_assignee_id)); END IF;
+    IF p_is_private IS NOT NULL AND p_is_private != v_old_is_private THEN v_changes := v_changes || jsonb_build_object('is_private', jsonb_build_object('old', v_old_is_private, 'new', p_is_private)); END IF;
 
-    -- 7. Güncelleme yoksa çık
-    if v_changes = '{}'::jsonb then
-        raise exception 'No changes to update';
-    end if;
+    IF v_changes = '{}'::jsonb THEN RAISE EXCEPTION 'No changes to update'; END IF;
 
-    -- 8. Issue güncelle
-    update issues
-    set 
+    UPDATE issues SET 
         issue_title = coalesce(p_issue_title, issue_title),
         issue_description = coalesce(p_issue_description, issue_description),
         status = coalesce(p_status, status),
@@ -192,44 +101,11 @@ begin
         assignee_id = coalesce(p_assignee_id, assignee_id),
         is_private = coalesce(p_is_private, is_private),
         updated_at = now()
-    where issue_id = p_issue_id;
+    WHERE issue_id = p_issue_id;
 
-    -- 9. Audit log
-    insert into system_audit_logs (
-        actor_type,
-        actor_id,
-        entity_type,
-        entity_id,
-        action_type,
-        old_value,
-        new_value,
-        created_at
-    )
-    values (
-        'tenant_user',
-        v_user_id,
-        'issue',
-        p_issue_id,
-        'UPDATE',
-        jsonb_build_object(
-            'issue_title', v_old_issue_title,
-            'issue_description', v_old_issue_description,
-            'status', v_old_status,
-            'priority', v_old_priority,
-            'assignee_id', v_old_assignee_id,
-            'is_private', v_old_is_private
-        ),
-        jsonb_build_object(
-            'issue_title', coalesce(p_issue_title, v_old_issue_title),
-            'issue_description', coalesce(p_issue_description, v_old_issue_description),
-            'status', coalesce(p_status, v_old_status),
-            'priority', coalesce(p_priority, v_old_priority),
-            'assignee_id', coalesce(p_assignee_id, v_old_assignee_id),
-            'is_private', coalesce(p_is_private, v_old_is_private)
-        ),
-        now()
-    );
+    INSERT INTO system_audit_logs (actor_type, actor_id, entity_type, entity_id, action_type, old_value, new_value, created_at)
+    VALUES ('tenant_user', v_user_id, 'issue', p_issue_id, 'UPDATE', v_changes, v_changes, now());
 
-    return true;
-end;
+    RETURN true;
+END;
 $$;
