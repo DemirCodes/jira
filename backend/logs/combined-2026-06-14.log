@@ -1,0 +1,53 @@
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-14.log","timestamp":"2026-06-14 17:45:54"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-14.log","timestamp":"2026-06-14 17:45:54"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-14.log","timestamp":"2026-06-14 17:47:19"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-14.log","timestamp":"2026-06-14 17:47:19"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-14 17:47:19"}
+{"level":"info","message":"Org Asset Test Setup Completed","timestamp":"2026-06-14 17:47:19"}
+{"duration":"4ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/61d9f8ff-9119-4a7f-8a3b-563969acfc68/assets","timestamp":"2026-06-14 17:47:19","userId":"d26800d2-7404-4217-8ca7-de0e76a2a6ba"}
+{"error":{"code":"3F000","file":"namespace.c","length":101,"line":"3096","name":"error","position":"232","routine":"get_namespace_oid","severity":"ERROR"},"level":"error","message":"DB Error: Failed to create organization asset","timestamp":"2026-06-14 17:47:19"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/61d9f8ff-9119-4a7f-8a3b-563969acfc68/assets","timestamp":"2026-06-14 17:47:19","userId":"d26800d2-7404-4217-8ca7-de0e76a2a6ba"}
+{"fileIndex":0,"level":"warn","message":"Zararlı dosya engellendi: malicious.png","reason":"Bilinmeyen dosya formatı (Magic Bytes uyuşmazlığı)","timestamp":"2026-06-14 17:47:19"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/61d9f8ff-9119-4a7f-8a3b-563969acfc68/assets","timestamp":"2026-06-14 17:47:19","userId":"f96b013c-38d8-46bd-8859-a16a97abf78a"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/61d9f8ff-9119-4a7f-8a3b-563969acfc68/assets","timestamp":"2026-06-14 17:47:19","userId":"15e6d062-5f6c-45a7-8496-2abbab0b280a"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/61d9f8ff-9119-4a7f-8a3b-563969acfc68/assets/undefined","timestamp":"2026-06-14 17:47:19","userId":"f96b013c-38d8-46bd-8859-a16a97abf78a"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/61d9f8ff-9119-4a7f-8a3b-563969acfc68/assets/undefined","timestamp":"2026-06-14 17:47:19","userId":"d26800d2-7404-4217-8ca7-de0e76a2a6ba"}
+{"level":"info","message":"Org Asset Test Cleanup Completed","timestamp":"2026-06-14 17:47:19"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-14.log","timestamp":"2026-06-14 17:49:07"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-14.log","timestamp":"2026-06-14 17:49:07"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-14 17:49:07"}
+{"level":"info","message":"Org Asset Test Setup Completed","timestamp":"2026-06-14 17:49:07"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/b0752344-7d47-4df9-9a12-f0736d018e9d/assets","timestamp":"2026-06-14 17:49:07","userId":"8dc20553-2a65-4ce2-a234-4336bbd8d121"}
+{"error":{"code":"22P02","file":"enum.c","length":134,"line":"129","name":"error","routine":"enum_in","severity":"ERROR","where":"unnamed portal parameter $4 = '...'"},"level":"error","message":"DB Error: Failed to create organization asset","timestamp":"2026-06-14 17:49:07"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/b0752344-7d47-4df9-9a12-f0736d018e9d/assets","timestamp":"2026-06-14 17:49:07","userId":"8dc20553-2a65-4ce2-a234-4336bbd8d121"}
+{"fileIndex":0,"level":"warn","message":"Zararlı dosya engellendi: malicious.png","reason":"Bilinmeyen dosya formatı (Magic Bytes uyuşmazlığı)","timestamp":"2026-06-14 17:49:07"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/b0752344-7d47-4df9-9a12-f0736d018e9d/assets","timestamp":"2026-06-14 17:49:07","userId":"9856fd7f-4cdb-43cf-bd96-19c9bedab2e9"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/b0752344-7d47-4df9-9a12-f0736d018e9d/assets","timestamp":"2026-06-14 17:49:07","userId":"a4da0fbb-a247-4fdc-9139-94e808c33982"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/b0752344-7d47-4df9-9a12-f0736d018e9d/assets/undefined","timestamp":"2026-06-14 17:49:07","userId":"9856fd7f-4cdb-43cf-bd96-19c9bedab2e9"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/b0752344-7d47-4df9-9a12-f0736d018e9d/assets/undefined","timestamp":"2026-06-14 17:49:07","userId":"8dc20553-2a65-4ce2-a234-4336bbd8d121"}
+{"level":"info","message":"Org Asset Test Cleanup Completed","timestamp":"2026-06-14 17:49:07"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-14.log","timestamp":"2026-06-14 17:52:29"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-14.log","timestamp":"2026-06-14 17:52:29"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-14 17:52:29"}
+{"level":"info","message":"Org Asset Test Setup Completed","timestamp":"2026-06-14 17:52:29"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/eda49acf-2e62-4975-8e07-a937c95ca6cb/assets","timestamp":"2026-06-14 17:52:29","userId":"2fd3e166-e9e2-46c8-b258-56f71972be07"}
+{"error":{"code":"22P02","file":"enum.c","length":147,"line":"129","name":"error","routine":"enum_in","severity":"ERROR","where":"unnamed portal parameter $4 = '...'"},"level":"error","message":"DB Error: Failed to create organization asset","timestamp":"2026-06-14 17:52:30"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/eda49acf-2e62-4975-8e07-a937c95ca6cb/assets","timestamp":"2026-06-14 17:52:30","userId":"2fd3e166-e9e2-46c8-b258-56f71972be07"}
+{"fileIndex":0,"level":"warn","message":"Zararlı dosya engellendi: malicious.png","reason":"Bilinmeyen dosya formatı (Magic Bytes uyuşmazlığı)","timestamp":"2026-06-14 17:52:30"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/eda49acf-2e62-4975-8e07-a937c95ca6cb/assets","timestamp":"2026-06-14 17:52:30","userId":"9721ce79-f010-4777-8e9d-d3ab76bb7a06"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/eda49acf-2e62-4975-8e07-a937c95ca6cb/assets","timestamp":"2026-06-14 17:52:30","userId":"56d5e1b7-b5ae-44c5-9440-4c612490df9e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/eda49acf-2e62-4975-8e07-a937c95ca6cb/assets/undefined","timestamp":"2026-06-14 17:52:30","userId":"9721ce79-f010-4777-8e9d-d3ab76bb7a06"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/eda49acf-2e62-4975-8e07-a937c95ca6cb/assets/undefined","timestamp":"2026-06-14 17:52:30","userId":"2fd3e166-e9e2-46c8-b258-56f71972be07"}
+{"level":"info","message":"Org Asset Test Cleanup Completed","timestamp":"2026-06-14 17:52:30"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-14.log","timestamp":"2026-06-14 17:54:42"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-14.log","timestamp":"2026-06-14 17:54:42"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-14 17:54:42"}
+{"level":"info","message":"Org Asset Test Setup Completed","timestamp":"2026-06-14 17:54:42"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/11b02b87-7f2f-458e-8e74-2e74ed25871b/assets","timestamp":"2026-06-14 17:54:42","userId":"5eb8817f-effd-4b08-ac52-9fc0b013ecc4"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/11b02b87-7f2f-458e-8e74-2e74ed25871b/assets","timestamp":"2026-06-14 17:54:43","userId":"5eb8817f-effd-4b08-ac52-9fc0b013ecc4"}
+{"fileIndex":0,"level":"warn","message":"Zararlı dosya engellendi: malicious.png","reason":"Bilinmeyen dosya formatı (Magic Bytes uyuşmazlığı)","timestamp":"2026-06-14 17:54:43"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/11b02b87-7f2f-458e-8e74-2e74ed25871b/assets","timestamp":"2026-06-14 17:54:43","userId":"07d9c0ce-6862-4a8c-9d08-805e602093e4"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/11b02b87-7f2f-458e-8e74-2e74ed25871b/assets","timestamp":"2026-06-14 17:54:43","userId":"4e0b13d1-fc19-4d12-8683-61dab2f75c1f"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/11b02b87-7f2f-458e-8e74-2e74ed25871b/assets/3a61f8c0-eecb-448d-a133-0ce51ff20627","timestamp":"2026-06-14 17:54:43","userId":"07d9c0ce-6862-4a8c-9d08-805e602093e4"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/11b02b87-7f2f-458e-8e74-2e74ed25871b/assets/3a61f8c0-eecb-448d-a133-0ce51ff20627","timestamp":"2026-06-14 17:54:43","userId":"5eb8817f-effd-4b08-ac52-9fc0b013ecc4"}
+{"level":"info","message":"Org Asset Test Cleanup Completed","timestamp":"2026-06-14 17:54:43"}

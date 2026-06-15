@@ -8,6 +8,7 @@ import * as authService from '../services/authorization.service';
 import { AppError, ErrorCodes } from '../utils/errorCodes';
 import { log } from '../utils/logger';
 import { isValidUUID } from '../utils/regexValidator';
+import * as siteAssetService from '../services/siteAsset.service';
 
 // ==================== CREATE ====================
 export const create = async (req: Request, res: Response): Promise<void> => {
@@ -311,6 +312,91 @@ export const getStats = async (req: Request, res: Response): Promise<void> => {
             return;
         }
         log.error('Controller: Failed to get stats', { error });
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+
+// ==================== 1. CREATE (SITE ASSET EKLEME) ====================
+export const uploadSiteAsset = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { id } = req.params; // site_id
+        const userId = req.userId!; // uploaded_by
+        const { asset_type, metadata } = req.body; 
+
+        if (!isValidUUID(id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid Site ID format');
+        if (!req.file) {
+            res.status(400).json({ error: 'No file uploaded' });
+            return;
+        }
+
+        const dummy_storage_key = `sites/${id}/assets/${Date.now()}_${req.file.originalname}`;
+
+        const assetId = await siteAssetService.createSiteAsset({
+            site_id: id,
+            uploaded_by: userId,
+            asset_type: asset_type || 'site_logo',
+            file_name: req.file.originalname,
+            mime_type: req.file.mimetype,
+            byte_size: req.file.size,
+            storage_key: dummy_storage_key,
+            checksum: (req.file as any).checksum, // Bizim paralel tarayıcının hesapladığı SHA-256
+            metadata: metadata ? JSON.parse(metadata) : null
+        });
+
+        res.status(201).json({ 
+            message: 'Site asset scanned, uploaded and saved successfully',
+            site_asset_id: assetId
+        });
+
+    } catch (error: any) {
+        if (error instanceof AppError) {
+            res.status(error.statusCode).json({ error: error.message, code: error.errorCode });
+            return;
+        }
+        log.error('Controller: Failed to handle site asset upload', { error });
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+export const listSiteAssets = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { id } = req.params; // site_id
+        const userId = req.userId!;
+        const limit = req.query.limit ? parseInt(req.query.limit as string, 10) : 50;
+        const offset = req.query.offset ? parseInt(req.query.offset as string, 10) : 0;
+
+        if (!isValidUUID(id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID);
+
+        const assets = await siteAssetService.listSiteAssets(id, userId, limit, offset);
+        res.json(assets);
+    } catch (error: any) {
+        if (error instanceof AppError) {
+            res.status(error.statusCode).json({ error: error.message, code: error.errorCode });
+            return;
+        }
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+export const removeSiteAsset = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { id, assetId } = req.params; // id = site_id, assetId = site_asset_id
+        const userId = req.userId!;
+
+        if (!isValidUUID(id) || !isValidUUID(assetId)) {
+            throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid format for Site ID or Asset ID');
+        }
+
+        await siteAssetService.deleteSiteAsset(assetId, id, userId);
+
+        res.status(200).json({ message: 'Site asset soft deleted successfully' });
+    } catch (error: any) {
+        if (error instanceof AppError) {
+            res.status(error.statusCode).json({ error: error.message, code: error.errorCode });
+            return;
+        }
+        log.error('Controller: Failed to delete site asset', { error });
         res.status(500).json({ error: 'Internal server error' });
     }
 };

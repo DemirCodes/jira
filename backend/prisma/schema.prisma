@@ -539,7 +539,7 @@ enum project_status {
 
 enum site_role {
   admin
-  contrubitor
+  contributor
   viewer
 }
 

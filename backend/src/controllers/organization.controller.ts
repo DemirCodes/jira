@@ -9,6 +9,7 @@ import { AppError, ErrorCodes } from '../utils/errorCodes';
 import { log } from '../utils/logger';
 import { isValidUUID } from '../utils/regexValidator';
 import * as invitationService from '../services/invitation.service';
+import * as orgAssetService from '../services/organizationAsset.service';
 
 // ==================== CREATE ====================
 export const create = async (req: Request, res: Response): Promise<void> => {
@@ -317,6 +318,91 @@ export const leave = async (req: Request, res: Response): Promise<void> => {
             return;
         }
         log.error('Controller: Failed to leave organization', { error });
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+
+// ==================== ASSETS ====================
+export const uploadAsset = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { id } = req.params; 
+        const userId = req.userId!; 
+        const { asset_type, metadata } = req.body; 
+
+        if (!isValidUUID(id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid organization ID format');
+        if (!req.file) {
+            res.status(400).json({ error: 'No file uploaded' });
+            return;
+        }
+
+        const dummy_storage_key = `organizations/${id}/assets/${Date.now()}_${req.file.originalname}`;
+
+        const assetId = await orgAssetService.createAsset({
+            org_id: id,
+            uploaded_by: userId,
+            asset_type: asset_type || 'document',
+            file_name: req.file.originalname,
+            mime_type: req.file.mimetype,
+            byte_size: req.file.size,
+            storage_key: dummy_storage_key,
+            checksum: (req.file as any).checksum, 
+            metadata: metadata ? JSON.parse(metadata) : null
+        });
+
+        res.status(201).json({ 
+            message: 'Asset scanned, uploaded and saved successfully',
+            org_asset_id: assetId
+        });
+
+    } catch (error: any) {
+        if (error instanceof AppError) {
+            res.status(error.statusCode).json({ error: error.message, code: error.errorCode });
+            return;
+        }
+        log.error('Controller: Failed to handle organization asset', { error });
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+export const listAssets = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { id } = req.params;
+        const userId = req.userId!;
+        const limit = req.query.limit ? parseInt(req.query.limit as string, 10) : 50;
+        const offset = req.query.offset ? parseInt(req.query.offset as string, 10) : 0;
+
+        if (!isValidUUID(id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID);
+
+        const assets = await orgAssetService.listAssets(id, userId, limit, offset);
+        res.json(assets);
+    } catch (error: any) {
+        if (error instanceof AppError) {
+            res.status(error.statusCode).json({ error: error.message, code: error.errorCode });
+            return;
+        }
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+export const removeAsset = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { id, assetId } = req.params;
+        const userId = req.userId!;
+
+        if (!isValidUUID(id) || !isValidUUID(assetId)) {
+            throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid ID format');
+        }
+
+        await orgAssetService.deleteAsset(assetId, id, userId);
+
+        res.status(200).json({ message: 'Organization asset soft deleted successfully' });
+    } catch (error: any) {
+        if (error instanceof AppError) {
+            res.status(error.statusCode).json({ error: error.message, code: error.errorCode });
+            return;
+        }
+        log.error('Controller: Failed to delete organization asset', { error });
         res.status(500).json({ error: 'Internal server error' });
     }
 };

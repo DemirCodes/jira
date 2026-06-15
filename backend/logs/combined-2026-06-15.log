@@ -1,0 +1,256 @@
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 14:42:02"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 14:42:02"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 14:42:02"}
+{"level":"info","message":"Org Asset Test Setup Completed","timestamp":"2026-06-15 14:42:02"}
+{"duration":"10ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/379c7969-21c4-4afa-8f70-9742dcbef414/assets","timestamp":"2026-06-15 14:42:02","userId":"a74d3af0-d218-437d-a94d-c7f1cde3c7bc"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/379c7969-21c4-4afa-8f70-9742dcbef414/assets","timestamp":"2026-06-15 14:42:02","userId":"a74d3af0-d218-437d-a94d-c7f1cde3c7bc"}
+{"fileIndex":0,"level":"warn","message":"Zararlı dosya engellendi: malicious.png","reason":"Bilinmeyen dosya formatı (Magic Bytes uyuşmazlığı)","timestamp":"2026-06-15 14:42:02"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/379c7969-21c4-4afa-8f70-9742dcbef414/assets","timestamp":"2026-06-15 14:42:02","userId":"4b050e38-f782-42a5-a2a4-08fb1a77a491"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/379c7969-21c4-4afa-8f70-9742dcbef414/assets","timestamp":"2026-06-15 14:42:02","userId":"7ed54411-7c88-4708-a716-f18678087321"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/379c7969-21c4-4afa-8f70-9742dcbef414/assets/aedc83dd-ce88-44c4-bb1f-a087b638e8ce","timestamp":"2026-06-15 14:42:02","userId":"4b050e38-f782-42a5-a2a4-08fb1a77a491"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/379c7969-21c4-4afa-8f70-9742dcbef414/assets/aedc83dd-ce88-44c4-bb1f-a087b638e8ce","timestamp":"2026-06-15 14:42:02","userId":"a74d3af0-d218-437d-a94d-c7f1cde3c7bc"}
+{"level":"info","message":"Org Asset Test Cleanup Completed","timestamp":"2026-06-15 14:42:02"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:03:31"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:03:31"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:03:31"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:03:31"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:06:52"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:06:52"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:06:52"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:06:52"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:08:28"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:08:28"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:08:28"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:08:28"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:10:23"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:10:23"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:10:23"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:10:23"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:12:07"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:12:07"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:12:07"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:12:07"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:14:07"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:14:07"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:14:07"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:14:07"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:14:34"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:14:34"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:14:34"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:14:34"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:15:26"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:15:26"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:15:26"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:15:26"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:16:54"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:16:54"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:16:54"}
+{"level":"info","message":"Site Asset Test Setup Completed","timestamp":"2026-06-15 15:16:54"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/37609627-1a44-430a-8e8d-aac26963b347/assets","timestamp":"2026-06-15 15:16:54","userId":"53e24362-375d-4660-aa18-4343d1152b8d"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:16:54"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/37609627-1a44-430a-8e8d-aac26963b347/assets","timestamp":"2026-06-15 15:16:54","userId":"8bcf8af8-ba55-4f77-9829-2a7f7cb899c2"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:16:54"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/37609627-1a44-430a-8e8d-aac26963b347/assets","timestamp":"2026-06-15 15:16:54","userId":"44f49087-3636-4d90-aac5-f882cb8b336f"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:16:54"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/37609627-1a44-430a-8e8d-aac26963b347/assets","timestamp":"2026-06-15 15:16:54","userId":"8bcf8af8-ba55-4f77-9829-2a7f7cb899c2"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/37609627-1a44-430a-8e8d-aac26963b347/assets/undefined","timestamp":"2026-06-15 15:16:54","userId":"8bcf8af8-ba55-4f77-9829-2a7f7cb899c2"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/37609627-1a44-430a-8e8d-aac26963b347/assets/undefined","timestamp":"2026-06-15 15:16:54","userId":"53e24362-375d-4660-aa18-4343d1152b8d"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:16:54"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:19:50"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:19:50"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:19:50"}
+{"level":"info","message":"Site Asset Test Setup Completed","timestamp":"2026-06-15 15:19:50"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/4966dd32-4df1-4f3a-81a5-36a89fed5a95/assets","timestamp":"2026-06-15 15:19:50","userId":"af76f04a-3286-4743-b328-be13293839e2"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:19:50"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/4966dd32-4df1-4f3a-81a5-36a89fed5a95/assets","timestamp":"2026-06-15 15:19:50","userId":"04694acd-2ae5-4c18-9cdc-e573f4dd38f1"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:19:50"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/4966dd32-4df1-4f3a-81a5-36a89fed5a95/assets","timestamp":"2026-06-15 15:19:50","userId":"e3a13aaf-58b0-4102-8ec4-4b67d2a2f940"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:19:50"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/4966dd32-4df1-4f3a-81a5-36a89fed5a95/assets","timestamp":"2026-06-15 15:19:50","userId":"04694acd-2ae5-4c18-9cdc-e573f4dd38f1"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/4966dd32-4df1-4f3a-81a5-36a89fed5a95/assets/undefined","timestamp":"2026-06-15 15:19:50","userId":"04694acd-2ae5-4c18-9cdc-e573f4dd38f1"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/4966dd32-4df1-4f3a-81a5-36a89fed5a95/assets/undefined","timestamp":"2026-06-15 15:19:50","userId":"af76f04a-3286-4743-b328-be13293839e2"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:19:50"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:20:12"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:20:12"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:20:12"}
+{"level":"info","message":"Site Asset Test Setup Completed","timestamp":"2026-06-15 15:20:12"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/d258ead9-7b05-4597-9586-e6f7fd13cea2/assets","timestamp":"2026-06-15 15:20:12","userId":"ace37e66-ac7f-4a73-9bfa-4ebc7b3cfe8e"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:20:12"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/d258ead9-7b05-4597-9586-e6f7fd13cea2/assets","timestamp":"2026-06-15 15:20:12","userId":"8f268631-65bc-46e8-ae31-b82c213d7075"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:20:12"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/d258ead9-7b05-4597-9586-e6f7fd13cea2/assets","timestamp":"2026-06-15 15:20:12","userId":"cc344dc0-a00d-412e-82d3-a5590141ac79"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:20:12"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/d258ead9-7b05-4597-9586-e6f7fd13cea2/assets","timestamp":"2026-06-15 15:20:12","userId":"8f268631-65bc-46e8-ae31-b82c213d7075"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/d258ead9-7b05-4597-9586-e6f7fd13cea2/assets/undefined","timestamp":"2026-06-15 15:20:12","userId":"8f268631-65bc-46e8-ae31-b82c213d7075"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/d258ead9-7b05-4597-9586-e6f7fd13cea2/assets/undefined","timestamp":"2026-06-15 15:20:12","userId":"ace37e66-ac7f-4a73-9bfa-4ebc7b3cfe8e"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:20:12"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:20:55"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:20:55"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:20:55"}
+{"level":"info","message":"Site Asset Test Setup Completed","timestamp":"2026-06-15 15:20:55"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/0ca36793-3503-4210-86af-0eb92583b3d7/assets","timestamp":"2026-06-15 15:20:55","userId":"13dfb2c8-6bbd-48ba-b3d1-96b611ebeb03"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:20:55"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/0ca36793-3503-4210-86af-0eb92583b3d7/assets","timestamp":"2026-06-15 15:20:55","userId":"c4a5f005-bfd9-4e91-8dad-1d3f81b85bd8"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:20:55"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/0ca36793-3503-4210-86af-0eb92583b3d7/assets","timestamp":"2026-06-15 15:20:55","userId":"31d487a9-ae07-4d51-9cbb-f55a4cd3977c"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:20:55"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/0ca36793-3503-4210-86af-0eb92583b3d7/assets","timestamp":"2026-06-15 15:20:55","userId":"c4a5f005-bfd9-4e91-8dad-1d3f81b85bd8"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/0ca36793-3503-4210-86af-0eb92583b3d7/assets/undefined","timestamp":"2026-06-15 15:20:55","userId":"c4a5f005-bfd9-4e91-8dad-1d3f81b85bd8"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/0ca36793-3503-4210-86af-0eb92583b3d7/assets/undefined","timestamp":"2026-06-15 15:20:55","userId":"13dfb2c8-6bbd-48ba-b3d1-96b611ebeb03"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:20:55"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:23:22"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:23:22"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:23:22"}
+{"level":"info","message":"Site Asset Test Setup Completed","timestamp":"2026-06-15 15:23:22"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/bf35a919-7877-4d11-a513-b40b44da5224/assets","timestamp":"2026-06-15 15:23:22","userId":"1deb68aa-ec55-473a-978f-46dfbca27387"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:23:22"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/bf35a919-7877-4d11-a513-b40b44da5224/assets","timestamp":"2026-06-15 15:23:22","userId":"195df762-4f43-4d59-a70a-b6060e47115f"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:23:22"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/bf35a919-7877-4d11-a513-b40b44da5224/assets","timestamp":"2026-06-15 15:23:22","userId":"915ca852-ae5b-4289-917d-66bb1c62f15a"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:23:22"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/bf35a919-7877-4d11-a513-b40b44da5224/assets","timestamp":"2026-06-15 15:23:22","userId":"195df762-4f43-4d59-a70a-b6060e47115f"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/bf35a919-7877-4d11-a513-b40b44da5224/assets/undefined","timestamp":"2026-06-15 15:23:22","userId":"195df762-4f43-4d59-a70a-b6060e47115f"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/bf35a919-7877-4d11-a513-b40b44da5224/assets/undefined","timestamp":"2026-06-15 15:23:22","userId":"1deb68aa-ec55-473a-978f-46dfbca27387"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:23:22"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:25:05"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:25:05"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:25:05"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:25:05"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:33:31"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:33:31"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:33:31"}
+{"level":"info","message":"Site Asset Test Setup Completed","timestamp":"2026-06-15 15:33:31"}
+{"duration":"5ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/8a197d53-fe19-442f-8900-cba5fb9ba610/assets","timestamp":"2026-06-15 15:33:31","userId":"fbad72f8-f80f-4332-9c0c-12b3b098a497"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:33:31"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/8a197d53-fe19-442f-8900-cba5fb9ba610/assets","timestamp":"2026-06-15 15:33:31","userId":"4e2542ec-4f8e-462e-89b3-793e5b071337"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:33:31"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/8a197d53-fe19-442f-8900-cba5fb9ba610/assets","timestamp":"2026-06-15 15:33:31","userId":"c1c1b680-060d-483a-9cb7-37e58e8c921f"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:33:31"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/8a197d53-fe19-442f-8900-cba5fb9ba610/assets","timestamp":"2026-06-15 15:33:31","userId":"4e2542ec-4f8e-462e-89b3-793e5b071337"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/8a197d53-fe19-442f-8900-cba5fb9ba610/assets/undefined","timestamp":"2026-06-15 15:33:31","userId":"4e2542ec-4f8e-462e-89b3-793e5b071337"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/8a197d53-fe19-442f-8900-cba5fb9ba610/assets/undefined","timestamp":"2026-06-15 15:33:31","userId":"fbad72f8-f80f-4332-9c0c-12b3b098a497"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:33:31"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:34:22"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:34:22"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:35:14"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:35:14"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:35:14"}
+{"level":"info","message":"Site Asset Test Setup Completed","timestamp":"2026-06-15 15:35:14"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/62858de3-a5de-4ee7-9b05-7bc0b2f89269/assets","timestamp":"2026-06-15 15:35:14","userId":"05377364-85d1-449d-8dd4-d42d783ee064"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:35:14"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/62858de3-a5de-4ee7-9b05-7bc0b2f89269/assets","timestamp":"2026-06-15 15:35:14","userId":"149f4606-8237-4ef5-83df-1cb1ab94ee7e"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:35:14"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/62858de3-a5de-4ee7-9b05-7bc0b2f89269/assets","timestamp":"2026-06-15 15:35:14","userId":"381edac9-e9f1-4be7-b8fe-87d76c1a7815"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:35:14"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/62858de3-a5de-4ee7-9b05-7bc0b2f89269/assets","timestamp":"2026-06-15 15:35:14","userId":"149f4606-8237-4ef5-83df-1cb1ab94ee7e"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/62858de3-a5de-4ee7-9b05-7bc0b2f89269/assets/undefined","timestamp":"2026-06-15 15:35:14","userId":"149f4606-8237-4ef5-83df-1cb1ab94ee7e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/62858de3-a5de-4ee7-9b05-7bc0b2f89269/assets/undefined","timestamp":"2026-06-15 15:35:14","userId":"05377364-85d1-449d-8dd4-d42d783ee064"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:35:14"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:37:58"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:37:58"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:37:58"}
+{"level":"info","message":"Site Asset Test Setup Completed","timestamp":"2026-06-15 15:37:58"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/b5c4825c-b70e-4d16-8015-51442a1215fa/assets","timestamp":"2026-06-15 15:37:58","userId":"96cfc50d-9fde-4837-b59d-c04a7c58e3ca"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:37:58"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/b5c4825c-b70e-4d16-8015-51442a1215fa/assets","timestamp":"2026-06-15 15:37:58","userId":"cb4631ea-b328-44c7-9e91-7b78bd3a384c"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:37:58"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/b5c4825c-b70e-4d16-8015-51442a1215fa/assets","timestamp":"2026-06-15 15:37:58","userId":"16936fbc-ef77-4991-b4cb-6e499efac641"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:37:58"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/b5c4825c-b70e-4d16-8015-51442a1215fa/assets","timestamp":"2026-06-15 15:37:58","userId":"cb4631ea-b328-44c7-9e91-7b78bd3a384c"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/b5c4825c-b70e-4d16-8015-51442a1215fa/assets/undefined","timestamp":"2026-06-15 15:37:58","userId":"cb4631ea-b328-44c7-9e91-7b78bd3a384c"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/b5c4825c-b70e-4d16-8015-51442a1215fa/assets/undefined","timestamp":"2026-06-15 15:37:58","userId":"96cfc50d-9fde-4837-b59d-c04a7c58e3ca"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:37:58"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:38:12"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:38:12"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:38:12"}
+{"level":"info","message":"Site Asset Test Setup Completed","timestamp":"2026-06-15 15:38:13"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/bdc2104c-f8cd-4e4b-9b81-c1bb531ab082/assets","timestamp":"2026-06-15 15:38:13","userId":"b1d00623-b840-4c91-9c0b-2e0316113079"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:38:13"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/bdc2104c-f8cd-4e4b-9b81-c1bb531ab082/assets","timestamp":"2026-06-15 15:38:13","userId":"e6ee582b-27b2-4e44-bda1-c9992ba2c80b"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:38:13"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/bdc2104c-f8cd-4e4b-9b81-c1bb531ab082/assets","timestamp":"2026-06-15 15:38:13","userId":"45a81015-d113-493d-8bb2-3838e8c4f3ca"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:38:13"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/bdc2104c-f8cd-4e4b-9b81-c1bb531ab082/assets","timestamp":"2026-06-15 15:38:13","userId":"e6ee582b-27b2-4e44-bda1-c9992ba2c80b"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/bdc2104c-f8cd-4e4b-9b81-c1bb531ab082/assets/undefined","timestamp":"2026-06-15 15:38:13","userId":"e6ee582b-27b2-4e44-bda1-c9992ba2c80b"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/bdc2104c-f8cd-4e4b-9b81-c1bb531ab082/assets/undefined","timestamp":"2026-06-15 15:38:13","userId":"b1d00623-b840-4c91-9c0b-2e0316113079"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:38:13"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:38:34"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:38:34"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:38:34"}
+{"level":"info","message":"Site Asset Test Setup Completed","timestamp":"2026-06-15 15:38:35"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/78353331-104d-4ad9-9e5c-b7f54c82df2b/assets","timestamp":"2026-06-15 15:38:35","userId":"9b91159f-8b2f-4409-9b5f-03e36a3bf02a"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:38:35"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/78353331-104d-4ad9-9e5c-b7f54c82df2b/assets","timestamp":"2026-06-15 15:38:35","userId":"66485119-0fb7-45fd-bdd8-f069b3cdc9dd"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:38:35"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/78353331-104d-4ad9-9e5c-b7f54c82df2b/assets","timestamp":"2026-06-15 15:38:35","userId":"2f0ed043-d215-4864-9353-70e4239361ed"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:38:35"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/78353331-104d-4ad9-9e5c-b7f54c82df2b/assets","timestamp":"2026-06-15 15:38:35","userId":"66485119-0fb7-45fd-bdd8-f069b3cdc9dd"}
+{"duration":"4ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/78353331-104d-4ad9-9e5c-b7f54c82df2b/assets/undefined","timestamp":"2026-06-15 15:38:35","userId":"66485119-0fb7-45fd-bdd8-f069b3cdc9dd"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/78353331-104d-4ad9-9e5c-b7f54c82df2b/assets/undefined","timestamp":"2026-06-15 15:38:35","userId":"9b91159f-8b2f-4409-9b5f-03e36a3bf02a"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:38:35"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:40:24"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:40:24"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:40:24"}
+{"level":"info","message":"Site Asset Test Setup Completed","timestamp":"2026-06-15 15:40:24"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/d68bae60-0068-4c94-bcee-874ac0b07dbe/assets","timestamp":"2026-06-15 15:40:24","userId":"f405d072-ad8b-4a0f-9f85-29008be85dbb"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:40:24"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/d68bae60-0068-4c94-bcee-874ac0b07dbe/assets","timestamp":"2026-06-15 15:40:24","userId":"f9dc3c7b-deec-46e9-afc8-c194699002c1"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:40:24"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/d68bae60-0068-4c94-bcee-874ac0b07dbe/assets","timestamp":"2026-06-15 15:40:24","userId":"7b9a8c5f-7265-45c4-ac9c-9519d653214c"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:40:24"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/d68bae60-0068-4c94-bcee-874ac0b07dbe/assets","timestamp":"2026-06-15 15:40:24","userId":"f9dc3c7b-deec-46e9-afc8-c194699002c1"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/d68bae60-0068-4c94-bcee-874ac0b07dbe/assets/undefined","timestamp":"2026-06-15 15:40:24","userId":"f9dc3c7b-deec-46e9-afc8-c194699002c1"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/d68bae60-0068-4c94-bcee-874ac0b07dbe/assets/undefined","timestamp":"2026-06-15 15:40:24","userId":"f405d072-ad8b-4a0f-9f85-29008be85dbb"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:40:24"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:41:35"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:41:35"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:41:35"}
+{"level":"info","message":"Site Asset Test Setup Completed","timestamp":"2026-06-15 15:41:35"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/cbeb2a49-bfe1-4bd5-ae54-08f93c3dd5b3/assets","timestamp":"2026-06-15 15:41:35","userId":"e756ca18-4a51-42d7-80fe-057b48bbe0d2"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:41:35"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/cbeb2a49-bfe1-4bd5-ae54-08f93c3dd5b3/assets","timestamp":"2026-06-15 15:41:35","userId":"17eafb72-cae9-4200-becb-a4cb5f99ae1c"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:41:35"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/cbeb2a49-bfe1-4bd5-ae54-08f93c3dd5b3/assets","timestamp":"2026-06-15 15:41:35","userId":"cb15a5a2-1a70-4ce3-90f1-7ce61499eb7d"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:41:35"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/cbeb2a49-bfe1-4bd5-ae54-08f93c3dd5b3/assets","timestamp":"2026-06-15 15:41:35","userId":"17eafb72-cae9-4200-becb-a4cb5f99ae1c"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/cbeb2a49-bfe1-4bd5-ae54-08f93c3dd5b3/assets/undefined","timestamp":"2026-06-15 15:41:35","userId":"17eafb72-cae9-4200-becb-a4cb5f99ae1c"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/cbeb2a49-bfe1-4bd5-ae54-08f93c3dd5b3/assets/undefined","timestamp":"2026-06-15 15:41:35","userId":"e756ca18-4a51-42d7-80fe-057b48bbe0d2"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:41:35"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:42:49"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:42:49"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:42:49"}
+{"level":"info","message":"Site Asset Test Setup Completed","timestamp":"2026-06-15 15:42:49"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/f14ae5ac-92c4-4434-be53-4b1ff33e9c24/assets","timestamp":"2026-06-15 15:42:49","userId":"6d824fe4-67f3-4c2e-94c1-eb53e99de936"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:42:49"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/f14ae5ac-92c4-4434-be53-4b1ff33e9c24/assets","timestamp":"2026-06-15 15:42:49","userId":"ff513385-a550-497b-8566-c906738ed710"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:42:49"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/f14ae5ac-92c4-4434-be53-4b1ff33e9c24/assets","timestamp":"2026-06-15 15:42:49","userId":"5157a65e-3b82-406d-91c1-5a785db56140"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:42:49"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/f14ae5ac-92c4-4434-be53-4b1ff33e9c24/assets","timestamp":"2026-06-15 15:42:49","userId":"ff513385-a550-497b-8566-c906738ed710"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/f14ae5ac-92c4-4434-be53-4b1ff33e9c24/assets/undefined","timestamp":"2026-06-15 15:42:49","userId":"ff513385-a550-497b-8566-c906738ed710"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/f14ae5ac-92c4-4434-be53-4b1ff33e9c24/assets/undefined","timestamp":"2026-06-15 15:42:49","userId":"6d824fe4-67f3-4c2e-94c1-eb53e99de936"}
+{"level":"info","message":"Site Asset Test Cleanup Completed","timestamp":"2026-06-15 15:42:49"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:44:09"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:44:09"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:44:09"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-15 15:44:09","userId":"48f13f0d-0dab-46f2-aef4-dea979bc1b37"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:44:09"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-15 15:44:09","userId":"c5d13ae9-5507-4489-8d64-f7cd6f852812"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:44:09"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-15 15:44:09","userId":"7f50bc28-9e40-43f8-9a7a-d23b9a4806f2"}
+{"error":{"code":"22P02","file":"enum.c","length":107,"line":"129","name":"error","position":"100","routine":"enum_in","severity":"ERROR"},"level":"error","message":"Controller: Failed to handle site asset upload","timestamp":"2026-06-15 15:44:09"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-15 15:44:09","userId":"c5d13ae9-5507-4489-8d64-f7cd6f852812"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-15 15:44:09","userId":"c5d13ae9-5507-4489-8d64-f7cd6f852812"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-15 15:44:09","userId":"48f13f0d-0dab-46f2-aef4-dea979bc1b37"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:48:27"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:48:27"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:48:27"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-15.log","timestamp":"2026-06-15 15:52:28"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log","timestamp":"2026-06-15 15:52:28"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-15 15:52:28"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-15 15:52:28","userId":"37fa096b-e8f6-4579-8870-5a72c651a66c"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-15 15:52:28","userId":"40bfc1c1-6570-414e-8925-ae1155ce7b7f"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-15 15:52:28","userId":"40bfc1c1-6570-414e-8925-ae1155ce7b7f"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-15 15:52:28","userId":"37fa096b-e8f6-4579-8870-5a72c651a66c"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/bcac5249-c195-475c-984c-a7170d091393","timestamp":"2026-06-15 15:52:28","userId":"40bfc1c1-6570-414e-8925-ae1155ce7b7f"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/bcac5249-c195-475c-984c-a7170d091393","timestamp":"2026-06-15 15:52:28","userId":"37fa096b-e8f6-4579-8870-5a72c651a66c"}

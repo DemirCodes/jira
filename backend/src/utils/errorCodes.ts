@@ -73,6 +73,10 @@ export const ErrorCodes = {
 
     // RATE LIMIT MODULE (800)
     RATE_LIMIT_EXCEEDED: '800-000-001',         // 429
+
+
+
+    INTERNAL_SERVER_ERROR: '600-000-999',        // 500 (genel hata, özel durumlar için kullanılabilir)
 } as const;
 
 // 2. TypeScript Tip Tanımları
@@ -136,6 +140,8 @@ export const ErrorMessages: Partial<Record<ErrorCode, string>> = {
     [ErrorCodes.VALIDATION_MISSING_FIELD]: 'Required field is missing.',
 
     [ErrorCodes.RATE_LIMIT_EXCEEDED]: 'Too many requests. Please try again later.',
+
+    [ErrorCodes.INTERNAL_SERVER_ERROR]: 'Internal server error. Please try again later.',
 };
 
 // 4. HTTP Durum Kodu Belirleyici

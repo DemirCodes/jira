@@ -6,21 +6,6 @@
     "auditLog": "/home/dmrcode/Desktop/jira/backend/logs/.439a7ecb15eb1ee8fecf00e0a3184b2325dd3d37-audit.json",
     "files": [
         {
-            "date": 1778506215809,
-            "name": "/home/dmrcode/Desktop/jira/backend/logs/exceptions-2026-05-11.log",
-            "hash": "c7a01d40d926db6af604bf2bc9c5692298fc41ace30b3b86f791a7af62e010d5"
-        },
-        {
-            "date": 1778760661561,
-            "name": "/home/dmrcode/Desktop/jira/backend/logs/exceptions-2026-05-14.log",
-            "hash": "362cb1c668dd60a74d9a10aa8ce10f199e3a55eff227bb5486d0dd9931dbd23e"
-        },
-        {
-            "date": 1778843920152,
-            "name": "/home/dmrcode/Desktop/jira/backend/logs/exceptions-2026-05-15.log",
-            "hash": "66d84dcd20805e1f4a45ff442657a7744ba4cf514166ab7d37caafe0ca2c3f68"
-        },
-        {
             "date": 1779203205252,
             "name": "/home/dmrcode/Desktop/jira/backend/logs/exceptions-2026-05-19.log",
             "hash": "9b1879cfa1b630e54eee530ba0cadf8c95d976ea0950b9b229a4067ed6b85392"
@@ -74,6 +59,16 @@
             "date": 1781091607334,
             "name": "/home/dmrcode/Desktop/jira/backend/logs/exceptions-2026-06-10.log",
             "hash": "4143f355885545ab7be6d040dedaf01da49805a05f5eee00d044186437fef77c"
+        },
+        {
+            "date": 1781448354081,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/exceptions-2026-06-14.log",
+            "hash": "a72cc37daef973c9a0ec01418b776204570e724b7f389062247554602601ed5a"
+        },
+        {
+            "date": 1781523721923,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/exceptions-2026-06-15.log",
+            "hash": "13cd1ebab79181527b08d2b73adb1f41d0ab05a05d0f1f5991ee84ab1ddfd188"
         }
     ],
     "hashType": "sha256"
