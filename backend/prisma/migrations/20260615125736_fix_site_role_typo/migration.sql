@@ -1,3 +1,6 @@
+CREATE EXTENSION IF NOT EXISTS citext;
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
 -- CreateEnum
 CREATE TYPE "actor_type" AS ENUM ('tenant_user', 'platform_user');
 

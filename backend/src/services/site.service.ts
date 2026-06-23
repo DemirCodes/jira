@@ -20,7 +20,6 @@ const withRLS = async <T>(userId: string, operation: (client: PoolClient) => Pro
     const client = await tenantPool.connect();
     try {
         await client.query('BEGIN');
-        // Sadece bu işleme özel (true) RLS bağlamını kur
         await client.query(`SELECT set_config('app.current_user_id', $1, true)`, [userId]);
         const result = await operation(client);
         await client.query('COMMIT');
@@ -198,8 +197,9 @@ export const updateSiteStatus = async (
 
     return withRLS(userId, async (client) => {
         try {
+            // DİKKAT: ::site_status cast eklendi
             await client.query(
-                'SELECT update_site_status($1, $2, $3)',
+                'SELECT update_site_status($1, $2::site_status, $3)',
                 [siteId, newStatus, orgId]
             );
             log.info('Site status updated', { siteId, newStatus });
@@ -245,8 +245,9 @@ export const inviteToSite = async (
 
     return withRLS(userId, async (client) => {
         try {
+            // DİKKAT: ::site_role cast eklendi
             const result = await client.query(
-                'SELECT invite_site($1, $2, $3, $4) as invitation_id',
+                'SELECT invite_site($1, $2, $3, $4::site_role) as invitation_id',
                 [friendshipCode, orgId, siteId, role]
             );
 
@@ -324,6 +325,7 @@ export const updateSiteMemberRole = async (
         await verifySiteBelongsToOrg(siteId, orgId, client);
 
         try {
+            // DİKKAT: ::site_role cast eklendi
             const result = await client.query(
                 'UPDATE site_memberships SET role = $1::site_role, updated_at = now() WHERE site_id = $2 AND user_id = $3 AND deleted_at IS NULL',
                 [role, siteId, memberId]

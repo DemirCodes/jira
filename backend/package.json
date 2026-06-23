@@ -15,7 +15,8 @@
     "clean": "rm -rf dist",
     "test": "jest --runInBand",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "db:sync": "chmod +x ../scripts/db-synch.sh && ../scripts/db-synch.sh"
   },
   "dependencies": {
     "@prisma/client": "^5.15.0",

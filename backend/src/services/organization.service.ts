@@ -25,15 +25,10 @@ import {
 } from '../types/organization.types';
 
 // ==================== GÜVENLİ RLS WRAPPER ====================
-/**
- * İşlemleri tek bir transaction içinde sarar ve RLS için userId'yi DB'ye bildirir.
- * Bu sayede PostgreSQL 42704 (app.current_user_id bulunamadı) hatası önlenir.
- */
 const withRLS = async <T>(userId: string, operation: (client: PoolClient) => Promise<T>): Promise<T> => {
     const client = await tenantPool.connect();
     try {
         await client.query('BEGIN');
-        // Sadece bu işleme özel (true) RLS bağlamını kur
         await client.query(`SELECT set_config('app.current_user_id', $1, true)`, [userId]);
         const result = await operation(client);
         await client.query('COMMIT');
@@ -319,8 +314,9 @@ export const inviteToOrganization = async (
 
     return withRLS(userId, async (client) => {
         try {
+            // DİKKAT: ::org_role cast eklendi
             const result = await client.query(
-                'SELECT invite_to_organization($1, $2, $3) as invitation_id',
+                'SELECT invite_to_organization($1, $2, $3::org_role) as invitation_id',
                 [orgId, friendshipCode, role]
             );
 
@@ -427,7 +423,8 @@ export const updateMemberRole = async (
 
     return withRLS(userId, async (client) => {
         try {
-            await client.query('SELECT update_member_role($1, $2, $3)', [orgId, memberId, role]);
+            // DİKKAT: ::org_role cast eklendi
+            await client.query('SELECT update_member_role($1, $2, $3::org_role)', [orgId, memberId, role]);
             log.info('Member role updated', { orgId, memberId, role });
         } catch (error: any) {
             if (error.message.includes('permission') || error.message.includes('PERMISSION_DENIED')) {

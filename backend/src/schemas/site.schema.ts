@@ -48,13 +48,15 @@ export const inviteToSiteSchema = z.object({
     friendshipCode: z.string()
         .uuid('Invalid friendship code format'),
 
-    role: z.enum(['admin', 'contrubitor', 'viewer'])
-        .default('contrubitor'),
+    // 🎯 TYPO DÜZELTİLDİ: "contrubitor" -> "contributor"
+    role: z.enum(['admin', 'contributor', 'viewer'])
+        .default('contributor'),
 });
 
 // Update Member Role Schema
 export const updateSiteMemberRoleSchema = z.object({
-    role: z.enum(['admin', 'contrubitor', 'viewer']),
+    // 🎯 TYPO DÜZELTİLDİ: "contrubitor" -> "contributor"
+    role: z.enum(['admin', 'contributor', 'viewer']),
 });
 
 // Type exports

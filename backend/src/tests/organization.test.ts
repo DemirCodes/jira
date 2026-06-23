@@ -10,7 +10,6 @@ const app = express();
 app.use(express.json());
 app.use('/api/organizations', authMiddleware, organizationRoutes);
 
-
 describe('Organization API Tests', () => {
     let authToken: string;
     let testUserId: string;
@@ -101,6 +100,10 @@ describe('Organization API Tests', () => {
         } catch (e) {
             // Cleanup hatalarını yoksay
         }
+        
+        // 🎯 JEST HANG FIX:
+        tenantPool.removeAllListeners('remove');
+        await tenantPool.end();
         log.info('Test cleanup completed');
     });
 
@@ -382,21 +385,19 @@ describe('Organization API Tests', () => {
 
     // ==================== AUTHORIZATION TESTS ====================
     describe('Organization Authorization', () => {
-        // Her yetki testi öncesi viewer ve member'ı organizasyona ekle
         beforeEach(async () => {
             if (!testOrgId) return;
-            // Viewer'ı ekle (eğer yoksa)
+            // DİKKAT: ::org_role cast eklendi
             await tenantPool.query(
                 `INSERT INTO organization_memberships (org_id, user_id, role, membership_is_active, joined_at)
-                 VALUES ($1, $2, 'viewer', true, now())
-                 ON CONFLICT (org_id, user_id) DO UPDATE SET role = 'viewer', deleted_at = NULL`,
+                 VALUES ($1, $2, 'viewer'::org_role, true, now())
+                 ON CONFLICT (org_id, user_id) DO UPDATE SET role = 'viewer'::org_role, deleted_at = NULL`,
                 [testOrgId, viewerUserId]
             );
-            // Member'ı ekle (eğer yoksa)
             await tenantPool.query(
                 `INSERT INTO organization_memberships (org_id, user_id, role, membership_is_active, joined_at)
-                 VALUES ($1, $2, 'member', true, now())
-                 ON CONFLICT (org_id, user_id) DO UPDATE SET role = 'member', deleted_at = NULL`,
+                 VALUES ($1, $2, 'member'::org_role, true, now())
+                 ON CONFLICT (org_id, user_id) DO UPDATE SET role = 'member'::org_role, deleted_at = NULL`,
                 [testOrgId, testMemberId]
             );
         });
@@ -436,9 +437,9 @@ describe('Organization API Tests', () => {
 
         it('should allow UPDATE for admin', async () => {
             if (!testOrgId) return;
-            // Member'ı admin yap
+            // DİKKAT: ::org_role cast eklendi
             await tenantPool.query(
-                'UPDATE organization_memberships SET role = $1 WHERE org_id = $2 AND user_id = $3',
+                'UPDATE organization_memberships SET role = $1::org_role WHERE org_id = $2 AND user_id = $3',
                 ['admin', testOrgId, testMemberId]
             );
 
@@ -463,9 +464,9 @@ describe('Organization API Tests', () => {
 
         it('should allow INVITE for admin', async () => {
             if (!testOrgId) return;
-            // Member'ı admin yap
+            // DİKKAT: ::org_role cast eklendi
             await tenantPool.query(
-                'UPDATE organization_memberships SET role = $1 WHERE org_id = $2 AND user_id = $3',
+                'UPDATE organization_memberships SET role = $1::org_role WHERE org_id = $2 AND user_id = $3',
                 ['admin', testOrgId, testMemberId]
             );
 
@@ -489,9 +490,9 @@ describe('Organization API Tests', () => {
 
         it('should allow VIEW_MEMBERS for admin', async () => {
             if (!testOrgId) return;
-            // Member'ı admin yap
+            // DİKKAT: ::org_role cast eklendi
             await tenantPool.query(
-                'UPDATE organization_memberships SET role = $1 WHERE org_id = $2 AND user_id = $3',
+                'UPDATE organization_memberships SET role = $1::org_role WHERE org_id = $2 AND user_id = $3',
                 ['admin', testOrgId, testMemberId]
             );
 

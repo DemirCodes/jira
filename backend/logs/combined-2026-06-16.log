@@ -1,0 +1,9 @@
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-16.log","timestamp":"2026-06-16 19:06:24"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-16.log","timestamp":"2026-06-16 19:06:24"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-16 19:06:24"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-16 19:06:24","userId":"65d8f7c2-f033-4f33-9274-53647abfb3cd"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-16 19:06:24","userId":"e253c0ff-584f-4cdd-855b-9e83f488686b"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-16 19:06:24","userId":"e253c0ff-584f-4cdd-855b-9e83f488686b"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-16 19:06:24","userId":"65d8f7c2-f033-4f33-9274-53647abfb3cd"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/451fdc8b-7ffe-4980-ae6b-8aef1d9ad1f3","timestamp":"2026-06-16 19:06:24","userId":"e253c0ff-584f-4cdd-855b-9e83f488686b"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/451fdc8b-7ffe-4980-ae6b-8aef1d9ad1f3","timestamp":"2026-06-16 19:06:24","userId":"65d8f7c2-f033-4f33-9274-53647abfb3cd"}

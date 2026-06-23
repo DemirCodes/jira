@@ -6,16 +6,6 @@
     "auditLog": "/home/dmrcode/Desktop/jira/backend/logs/.746a86e9fd3efc6c5f7e343385ce7a983798fb76-audit.json",
     "files": [
         {
-            "date": 1779203205251,
-            "name": "/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-19.log",
-            "hash": "40d66cc9437659f977b3736656a6c13f6f058a621ec83fa7b89f1e52098acf44"
-        },
-        {
-            "date": 1779358791439,
-            "name": "/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-21.log",
-            "hash": "62086316ec677a3daf28993087001b6931fba34d6a264340d1e4a0bfd17eba0b"
-        },
-        {
             "date": 1779720600551,
             "name": "/home/dmrcode/Desktop/jira/backend/logs/combined-2026-05-25.log",
             "hash": "a071ded9a4ee3662b1dcbbd8bb863403b621c1c3e6370701b7d16b54ea0f20aa"
@@ -69,6 +59,26 @@
             "date": 1781523721922,
             "name": "/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-15.log",
             "hash": "0ed14d1dcdff240ee761fa89eda60c7f583bbcf682a53fbaad0c04ad4392c0ec"
+        },
+        {
+            "date": 1781625984458,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-16.log",
+            "hash": "3b8dbe6ba4a617a67006ea41c49fa137977687a1fed96589346c01b2a36e8ab8"
+        },
+        {
+            "date": 1781694707825,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-17.log",
+            "hash": "b9d8ee262851c4b3bf98f1875b7bafec06cbf2c3a218e6511e4cad382519cc6c"
+        },
+        {
+            "date": 1781868910043,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-19.log",
+            "hash": "8bdd1a1bcdd73876013713297cf012543231ee262d09653543a89395052509d4"
+        },
+        {
+            "date": 1782126582125,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-22.log",
+            "hash": "822334ab5533f8cfdcaf1b8627d33ffde5ac454a971899898b5b0f4e60a932e8"
         }
     ],
     "hashType": "sha256"

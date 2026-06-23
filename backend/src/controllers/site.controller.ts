@@ -14,7 +14,9 @@ import * as siteAssetService from '../services/siteAsset.service';
 export const create = async (req: Request, res: Response): Promise<void> => {
     try {
         const userId = req.userId!;
-        const { name, slug, org_id } = req.body;
+        // Zod'dan geleni karşılamak için hem org_id hem orgId destekli
+        const org_id = req.body.org_id || req.body.orgId;
+        const { name, slug } = req.body;
 
         if (!name || !slug || !org_id) {
             res.status(400).json({ error: 'name, slug, and org_id are required' });
@@ -52,7 +54,7 @@ export const listByOrg = async (req: Request, res: Response): Promise<void> => {
     } catch (error: any) {
         if (error instanceof AppError) {
             res.status(error.statusCode).json({ error: error.message, code: error.errorCode });
-            return;
+            return; 
         }
         log.error('Controller: Failed to list sites', { error });
         res.status(500).json({ error: 'Internal server error' });
@@ -91,7 +93,8 @@ export const update = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
         const userId = req.userId!;
-        const { org_id, name, slug, is_private } = req.body;
+        const org_id = req.body.org_id || req.body.orgId;
+        const { name, slug, is_private } = req.body;
 
         if (!org_id) {
             res.status(400).json({ error: 'org_id is required' });
@@ -182,7 +185,7 @@ export const invite = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
         const userId = req.userId!;
-        const { org_id, friendshipCode, role = 'contrubitor' } = req.body;
+        const { org_id, friendshipCode, role = 'contributor' } = req.body;
 
         if (!friendshipCode || !org_id) {
             res.status(400).json({ error: 'friendshipCode and org_id are required' });

@@ -1,0 +1,143 @@
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-17.log","timestamp":"2026-06-17 14:11:47"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-17.log","timestamp":"2026-06-17 14:11:47"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-17 14:11:47"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:11:48","userId":"710d0757-5f1e-44f3-8f1d-09c7f7a544cd"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:11:48","userId":"0a720cf0-1977-47e5-8f44-b2d590d72726"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-17 14:11:48","userId":"0a720cf0-1977-47e5-8f44-b2d590d72726"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/f4527f64-8708-4ed2-80c4-c1cd2139a5c3","timestamp":"2026-06-17 14:11:48","userId":"0a720cf0-1977-47e5-8f44-b2d590d72726"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/f4527f64-8708-4ed2-80c4-c1cd2139a5c3","timestamp":"2026-06-17 14:11:48","userId":"710d0757-5f1e-44f3-8f1d-09c7f7a544cd"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-17.log","timestamp":"2026-06-17 14:38:09"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-17.log","timestamp":"2026-06-17 14:38:09"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-17 14:38:09"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:38:09","userId":"92f00b92-7d16-4b31-8ca9-dd5ed1abd56d"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:38:09","userId":"c259d8bb-3190-4f5e-b42b-9ef25a7851bd"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-17 14:38:09","userId":"c259d8bb-3190-4f5e-b42b-9ef25a7851bd"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-17 14:38:09","userId":"92f00b92-7d16-4b31-8ca9-dd5ed1abd56d"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/8a98f7c5-7f34-43bc-b55f-c7d624249883","timestamp":"2026-06-17 14:38:09","userId":"c259d8bb-3190-4f5e-b42b-9ef25a7851bd"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/8a98f7c5-7f34-43bc-b55f-c7d624249883","timestamp":"2026-06-17 14:38:09","userId":"92f00b92-7d16-4b31-8ca9-dd5ed1abd56d"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-17.log","timestamp":"2026-06-17 14:38:38"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-17.log","timestamp":"2026-06-17 14:38:38"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-17 14:38:38"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-06-17 14:38:38"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:38:38","userId":"781eac88-8c39-425d-b661-6728c851aaca"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":260,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create project","siteId":"6e65df48-5d40-4b8b-8cd6-14309a12196b","timestamp":"2026-06-17 14:38:38"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:38:38","userId":"781eac88-8c39-425d-b661-6728c851aaca"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:38:38","userId":"8296d760-c4f0-45c3-a450-420ea2cc14b7"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-17 14:38:38","userId":"781eac88-8c39-425d-b661-6728c851aaca"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":260,"line":"629","name":"error","position":"15","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to list projects","siteId":"6e65df48-5d40-4b8b-8cd6-14309a12196b","timestamp":"2026-06-17 14:38:38"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-17 14:38:38","userId":"781eac88-8c39-425d-b661-6728c851aaca"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/undefined","timestamp":"2026-06-17 14:38:38","userId":"781eac88-8c39-425d-b661-6728c851aaca"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/1185bfaf-a184-4bfe-b0a8-9c6839226e3c","timestamp":"2026-06-17 14:38:38","userId":"781eac88-8c39-425d-b661-6728c851aaca"}
+{"error":{"code":"42P01","file":"parse_relation.c","length":114,"line":"1449","name":"error","position":"15","routine":"parserOpenTable","severity":"ERROR"},"level":"error","message":"Failed to retrieve project summary","projectId":"1185bfaf-a184-4bfe-b0a8-9c6839226e3c","timestamp":"2026-06-17 14:38:38"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-17 14:38:38","userId":"781eac88-8c39-425d-b661-6728c851aaca"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/undefined","timestamp":"2026-06-17 14:38:38","userId":"8296d760-c4f0-45c3-a450-420ea2cc14b7"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-17 14:38:38","userId":"8296d760-c4f0-45c3-a450-420ea2cc14b7"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-17 14:38:38","userId":"781eac88-8c39-425d-b661-6728c851aaca"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/undefined","timestamp":"2026-06-17 14:38:38","userId":"781eac88-8c39-425d-b661-6728c851aaca"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/undefined/restore","timestamp":"2026-06-17 14:38:38","userId":"781eac88-8c39-425d-b661-6728c851aaca"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-06-17 14:38:38"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-17.log","timestamp":"2026-06-17 14:39:01"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-17.log","timestamp":"2026-06-17 14:39:01"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-17 14:39:01"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-06-17 14:39:01"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:39:01","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":247,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create organization","slug":"test-org-1781696341427","timestamp":"2026-06-17 14:39:01"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:39:01","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:39:01","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:39:01","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":247,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create organization","slug":"duplicate-slug-mqhzzzkl","timestamp":"2026-06-17 14:39:01"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:39:01","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":247,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create organization","slug":"duplicate-slug-mqhzzzkl","timestamp":"2026-06-17 14:39:01"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-06-17 14:39:01"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-17 14:39:01","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":217,"line":"629","name":"error","position":"15","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to retrieve user organizations","timestamp":"2026-06-17 14:39:01"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-06-17 14:39:01"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-06-17 14:39:01","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"currentRole":"none","entity":"organization_memberships/00000000-0000-4000-8000-000000000000","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin","member","viewer"],"timestamp":"2026-06-17 14:39:01","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/invalid-id","timestamp":"2026-06-17 14:39:01","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-06-17 14:39:01","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-06-17 14:39:01"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-17.log","timestamp":"2026-06-17 14:39:38"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-17.log","timestamp":"2026-06-17 14:39:38"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-17 14:39:38"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:39:38","userId":"48869354-6af0-4e12-974c-26c83f6171cd"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:39:38","userId":"7f6d561f-0676-4b1a-aadb-d46c5390111e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-17 14:39:38","userId":"7f6d561f-0676-4b1a-aadb-d46c5390111e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-17 14:39:38","userId":"48869354-6af0-4e12-974c-26c83f6171cd"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/b72720b7-67fe-4636-ab42-e54b73b779b4","timestamp":"2026-06-17 14:39:38","userId":"7f6d561f-0676-4b1a-aadb-d46c5390111e"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/b72720b7-67fe-4636-ab42-e54b73b779b4","timestamp":"2026-06-17 14:39:38","userId":"48869354-6af0-4e12-974c-26c83f6171cd"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-17.log","timestamp":"2026-06-17 14:40:48"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-17.log","timestamp":"2026-06-17 14:40:48"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-17 14:40:48"}
+{"level":"info","message":"Site test cleanup completed","timestamp":"2026-06-17 14:40:48"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-17.log","timestamp":"2026-06-17 14:41:53"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-17.log","timestamp":"2026-06-17 14:41:53"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-17 14:41:53"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-06-17 14:41:53"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:41:53","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":247,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create organization","slug":"test-org-1781696513803","timestamp":"2026-06-17 14:41:53"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:41:53","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:41:53","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:41:53","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":247,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create organization","slug":"duplicate-slug-mqi03okq","timestamp":"2026-06-17 14:41:53"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:41:53","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":247,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create organization","slug":"duplicate-slug-mqi03okq","timestamp":"2026-06-17 14:41:53"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-06-17 14:41:53"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-17 14:41:53","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":217,"line":"629","name":"error","position":"15","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to retrieve user organizations","timestamp":"2026-06-17 14:41:53"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-06-17 14:41:53"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-06-17 14:41:53","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"currentRole":"none","entity":"organization_memberships/00000000-0000-4000-8000-000000000000","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin","member","viewer"],"timestamp":"2026-06-17 14:41:53","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/invalid-id","timestamp":"2026-06-17 14:41:53","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-06-17 14:41:53","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-06-17 14:41:53"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-17.log","timestamp":"2026-06-17 14:46:18"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-17.log","timestamp":"2026-06-17 14:46:18"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-17 14:46:18"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-06-17 14:46:18"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:46:18","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":247,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create organization","slug":"test-org-1781696778338","timestamp":"2026-06-17 14:46:18"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:46:18","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:46:18","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:46:18","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":247,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create organization","slug":"duplicate-slug-mqi09cow","timestamp":"2026-06-17 14:46:18"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 14:46:18","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":247,"line":"629","name":"error","position":"8","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to create organization","slug":"duplicate-slug-mqi09cow","timestamp":"2026-06-17 14:46:18"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-06-17 14:46:18"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-17 14:46:18","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"code":"42883","file":"parse_func.c","hint":"No function matches the given name and argument types. You might need to add explicit type casts.","length":217,"line":"629","name":"error","position":"15","routine":"ParseFuncOrColumn","severity":"ERROR"},"level":"error","message":"Failed to retrieve user organizations","timestamp":"2026-06-17 14:46:18"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-06-17 14:46:18"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-06-17 14:46:18","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"currentRole":"none","entity":"organization_memberships/00000000-0000-4000-8000-000000000000","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin","member","viewer"],"timestamp":"2026-06-17 14:46:18","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/invalid-id","timestamp":"2026-06-17 14:46:18","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-06-17 14:46:18","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-06-17 14:46:18"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-17.log","timestamp":"2026-06-17 15:04:33"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-17.log","timestamp":"2026-06-17 15:04:33"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-17 15:04:33"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-06-17 15:04:33"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 15:04:33","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Organization created","orgId":"a945c90f-b4f9-4e2f-aebe-90c6c717236e","slug":"test-org-1781697873646","timestamp":"2026-06-17 15:04:33"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 15:04:33","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 15:04:33","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 15:04:33","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Organization created","orgId":"a5f77ea9-ad38-40da-abf9-0d46a2d1b5bb","slug":"duplicate-slug-mqi0wtwa","timestamp":"2026-06-17 15:04:33"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 15:04:33","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-06-17 15:04:33"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-17 15:04:33","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Retrieved 1 organizations","timestamp":"2026-06-17 15:04:33"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Auth failed: Invalid auth header format","path":"/","timestamp":"2026-06-17 15:04:33"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-06-17 15:04:33","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"currentRole":"none","entity":"organization_memberships/00000000-0000-4000-8000-000000000000","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin","member","viewer"],"timestamp":"2026-06-17 15:04:33","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/invalid-id","timestamp":"2026-06-17 15:04:33","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-06-17 15:04:33","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-06-17 15:04:33"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-17.log","timestamp":"2026-06-17 15:29:13"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-17.log","timestamp":"2026-06-17 15:29:13"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-17 15:29:13"}
+{"duration":"3ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 15:29:13","userId":"87138c33-f654-4be8-b715-2bec63549c1b"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/","timestamp":"2026-06-17 15:29:13","userId":"c2300ce5-489d-4728-b336-bd449a933234"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-17 15:29:13","userId":"c2300ce5-489d-4728-b336-bd449a933234"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/","timestamp":"2026-06-17 15:29:13","userId":"87138c33-f654-4be8-b715-2bec63549c1b"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/19250dcc-4b18-4fd5-b9b7-49a9323cc70d","timestamp":"2026-06-17 15:29:13","userId":"c2300ce5-489d-4728-b336-bd449a933234"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/19250dcc-4b18-4fd5-b9b7-49a9323cc70d","timestamp":"2026-06-17 15:29:13","userId":"87138c33-f654-4be8-b715-2bec63549c1b"}

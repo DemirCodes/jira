@@ -1,1 +1,0 @@
-{"error":{"code":"22P02","file":"uuid.c","length":142,"line":"133","name":"error","routine":"string_to_uuid","severity":"ERROR","where":"unnamed portal parameter $1 = '...'"},"level":"error","message":"Controller: Failed to get organization","timestamp":"2026-05-19 18:19:48"}
