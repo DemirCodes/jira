@@ -7,6 +7,8 @@ import * as projectController from '../controllers/project.controller';
 import { authMiddleware } from '../middlewares/auth';
 import { ErrorCodes } from '../utils/errorCodes';
 
+process.env.JWT_SECRET = 'test_secret_key_32_chars_long_for_jwt';
+
 const app = express();
 app.use(express.json());
 
@@ -49,6 +51,9 @@ describe('Project Assets API Tests', () => {
         testSiteId = crypto.randomUUID();
         testProjectId = crypto.randomUUID();
 
+        // 🎯 0. RLS Güvenliği için Context Ayarı
+        await tenantPool.query("SELECT set_config('app.current_user_id', $1, true)", [projectAdminId]);
+
         // 1. Kullanıcılar
         await tenantPool.query(
             `INSERT INTO users (user_id, user_name, user_email, user_password, user_is_active) VALUES ($1, $2, $3, $4, $5)`,
@@ -59,53 +64,81 @@ describe('Project Assets API Tests', () => {
             [projectViewerId, 'Project Viewer', `p-viewer-${ts}@test.com`, 'hashed', true]
         );
 
-        // 2. Org & Site & Project
+        // 2. Org & Site
         await tenantPool.query(
             `INSERT INTO organizations (org_id, org_check_id, org_name, slug) VALUES ($1, $2, $3, $4)`,
             [testOrgId, `ochk-${ts}`, 'Proj Test Org', `proj-org-${ts}`]
         );
+        
+        // 🎯 EKSİK ADIM 1: Organizasyon Üyelikleri
+        await tenantPool.query(
+            `INSERT INTO organization_memberships (org_membership_id, org_id, user_id, role, membership_is_active) 
+             VALUES (gen_random_uuid(), $1, $2, 'admin'::org_role, true)`,
+            [testOrgId, projectAdminId]
+        );
+        await tenantPool.query(
+            `INSERT INTO organization_memberships (org_membership_id, org_id, user_id, role, membership_is_active) 
+             VALUES (gen_random_uuid(), $1, $2, 'viewer'::org_role, true)`,
+            [testOrgId, projectViewerId]
+        );
+
         await tenantPool.query(
             `INSERT INTO sites (site_id, org_id, site_name, site_slug) VALUES ($1, $2, $3, $4)`,
             [testSiteId, testOrgId, 'Proj Test Site', `proj-site-${ts}`]
         );
+
+        // 🎯 EKSİK ADIM 2: Site Üyelikleri
         await tenantPool.query(
-            `INSERT INTO projects (project_id, site_id, project_check_id, project_name) VALUES ($1, $2, $3, $4)`,
-            [testProjectId, testSiteId, `pchk-${ts}`, 'Target Project']
+            `INSERT INTO site_memberships (site_membership_id, site_id, user_id, role, membership_is_active) 
+             VALUES (gen_random_uuid(), $1, $2, 'admin'::site_role, true)`,
+            [testSiteId, projectAdminId]
+        );
+        await tenantPool.query(
+            `INSERT INTO site_memberships (site_membership_id, site_id, user_id, role, membership_is_active) 
+             VALUES (gen_random_uuid(), $1, $2, 'viewer'::site_role, true)`,
+            [testSiteId, projectViewerId]
         );
 
-        // 3. Project Memberships (Biri Admin, Biri Viewer)
+        // 3. Proje (Yeni şemaya göre project_key ve board_type eklendi!)
+        await tenantPool.query(
+            `INSERT INTO projects (project_id, site_id, project_check_id, project_name, project_key, board_type, created_by) 
+             VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+            [testProjectId, testSiteId, `pchk-${ts}`, 'Target Project', 'ASSET', 'scrum', projectAdminId]
+        );
+
+        // 4. Project Memberships
         await tenantPool.query(
             `INSERT INTO project_memberships (project_membership_id, project_id, user_id, role, membership_is_active) 
-             VALUES ($1, $2, $3, CAST('project_admin' AS project_role), true)`,
+             VALUES ($1, $2, $3, 'project_admin'::project_role, true)`,
             [crypto.randomUUID(), testProjectId, projectAdminId]
         );
         await tenantPool.query(
             `INSERT INTO project_memberships (project_membership_id, project_id, user_id, role, membership_is_active) 
-             VALUES ($1, $2, $3, CAST('viewer' AS project_role), true)`,
+             VALUES ($1, $2, $3, 'viewer'::project_role, true)`,
             [crypto.randomUUID(), testProjectId, projectViewerId]
         );
 
-        const secret = process.env.JWT_SECRET || 'test_secret_key_32_chars_long_for_jwt';
-        projectAdminToken = jwt.sign({ userId: projectAdminId, tokenVersion: 1 }, secret);
-        projectViewerToken = jwt.sign({ userId: projectViewerId, tokenVersion: 1 }, secret);
+        const secret = process.env.JWT_SECRET;
+        projectAdminToken = jwt.sign({ userId: projectAdminId, tokenVersion: 1 }, secret!);
+        projectViewerToken = jwt.sign({ userId: projectViewerId, tokenVersion: 1 }, secret!);
 
         console.info('Project Asset Test Setup Completed');
     });
 
     afterAll(async () => {
         try {
-            // Hiyerarşik temizlik (Çocuklardan ebeveynlere doğru silme işlemi)
             await tenantPool.query('DELETE FROM project_assets WHERE project_id = $1', [testProjectId]);
             await tenantPool.query('DELETE FROM project_memberships WHERE project_id = $1', [testProjectId]);
             await tenantPool.query('DELETE FROM projects WHERE project_id = $1', [testProjectId]);
+            await tenantPool.query('DELETE FROM site_memberships WHERE site_id = $1', [testSiteId]);
             await tenantPool.query('DELETE FROM sites WHERE site_id = $1', [testSiteId]);
+            await tenantPool.query('DELETE FROM organization_memberships WHERE org_id = $1', [testOrgId]);
             await tenantPool.query('DELETE FROM organizations WHERE org_id = $1', [testOrgId]);
             await tenantPool.query('DELETE FROM users WHERE user_id IN ($1, $2)', [projectAdminId, projectViewerId]);
         } catch (e) {
             console.error('Project Asset Test Cleanup failed', { e });
         }
 
-        // 🎯 Jest'in terminalde takılı kalmasını engelleyen altın vuruş
         tenantPool.removeAllListeners('remove');
         await tenantPool.end();
         console.info('Project Asset Test Cleanup Completed');

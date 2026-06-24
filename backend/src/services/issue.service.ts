@@ -13,6 +13,11 @@ import { IssueSummary, IssueDetail } from '../types/issue.types';
 // ============================================================================
 // ALTYAPI VE YARDIMCI FONKSİYONLAR (CORE MİMARİ)
 // ============================================================================
+
+/**
+ * RLS wrapper — transaction yönetimi burada yapılır.
+ * ⚠️ İçerideki operation'larda kesinlikle BEGIN/COMMIT/ROLLBACK çağırmayın.
+ */
 const withRLS = async <T>(userId: string, operation: (client: PoolClient) => Promise<T>): Promise<T> => {
     const client = await tenantPool.connect();
     try {
@@ -48,14 +53,14 @@ export const createIssue = async (
     isPrivate: boolean = false
 ): Promise<string> => {
     validateUUIDs(projectId);
-    
-    if (!isValidName(title, 2, 255)) throw new AppError(ErrorCodes.VALIDATION_INVALID_NAME, 'Title must be between 2 and 255 characters');
-    if (containsDangerousChars(title) || containsDangerousChars(description)) {
+
+    if (!isValidName(title, 2, 255))
+        throw new AppError(ErrorCodes.VALIDATION_INVALID_NAME, 'Title must be between 2 and 255 characters');
+    if (containsDangerousChars(title) || containsDangerousChars(description))
         throw new AppError(ErrorCodes.VALIDATION_FAILED, 'Invalid characters detected in title or description');
-    }
 
     const trimmedTitle = title.trim();
-    const trimmedDesc = description.trim().substring(0, 5000); 
+    const trimmedDesc  = description.trim().substring(0, 5000);
 
     return withRLS(userId, async (client) => {
         try {
@@ -64,20 +69,19 @@ export const createIssue = async (
                 [projectId, trimmedTitle, trimmedDesc || null, isPrivate]
             );
 
-            if (!result.rows[0]?.issue_id) {
+            if (!result.rows[0]?.issue_id)
                 throw new AppError(ErrorCodes.DB_QUERY_FAILED, 'Failed to create issue');
-            }
 
             const newIssueId = result.rows[0].issue_id;
             log.info('Issue created', { issueId: newIssueId, projectId });
             return newIssueId;
         } catch (error: any) {
             if (error instanceof AppError) throw error;
-            if (error.message?.includes('Permission denied')) {
-                throw new AppError(ErrorCodes.ISSUE_PERMISSION_DENIED, error.message);
-            }
-            log.error('Failed to create issue', { projectId, error });
-            throw new AppError(ErrorCodes.DB_QUERY_FAILED, 'Failed to create issue');
+    // Trigger'dan gelen RAISE EXCEPTION (code: P0001) hatalarını yakala
+    if (error.message?.includes('Permission denied') || error.code === 'P0001')
+        throw new AppError(ErrorCodes.ISSUE_PERMISSION_DENIED, error.message);
+    log.error('Failed to create issue', { projectId, error });
+    throw new AppError(ErrorCodes.DB_QUERY_FAILED, 'Failed to create issue');
         }
     });
 };
@@ -95,22 +99,51 @@ export const listIssues = async (
     offset: number = 0
 ): Promise<IssueSummary[]> => {
     validateUUIDs(projectId, assigneeId, reporterId);
-    
-    if (search && containsDangerousChars(search)) {
-        throw new AppError(ErrorCodes.VALIDATION_FAILED, 'Invalid characters in search query');
-    }
 
-    const safeLimit = Math.min(Math.max(1, limit), 100);
+    if (search && containsDangerousChars(search))
+        throw new AppError(ErrorCodes.VALIDATION_FAILED, 'Invalid characters in search query');
+
+    const safeLimit  = Math.min(Math.max(1, limit), 100);
     const safeOffset = Math.max(0, offset);
 
     return withRLS(userId, async (client) => {
         try {
             const safeSearch = search ? search.trim().substring(0, 100) : null;
-            
-            const result = await client.query(
-                'SELECT * FROM list_issues($1, $2, $3, $4, $5, $6, $7, $8)',
-                [projectId || null, status || null, priority || null, assigneeId || null, reporterId || null, safeSearch, safeLimit, safeOffset]
-            );
+
+            const result = await client.query(`
+                SELECT
+                    issue_id,
+                    issue_no,
+                    issue_title,
+                    status,
+                    priority,
+                    reporter_id,
+                    assignee_id,
+                    created_at,
+                    updated_at,
+                    0::bigint AS comment_count,
+                    0::bigint AS member_count
+                FROM issues
+                WHERE ($1::uuid IS NULL OR project_id = $1)
+                  AND ($2::issue_status IS NULL OR status = $2)
+                  AND ($3::priority_level IS NULL OR priority = $3)
+                  AND ($4::uuid IS NULL OR assignee_id = $4)
+                  AND ($5::uuid IS NULL OR reporter_id = $5)
+                  AND ($6::text IS NULL OR issue_title ILIKE '%' || $6 || '%'
+                                       OR issue_description ILIKE '%' || $6 || '%')
+                  AND deleted_at IS NULL
+                ORDER BY issue_no DESC
+                LIMIT $7 OFFSET $8
+            `, [
+                projectId   || null,
+                status      || null,
+                priority    || null,
+                assigneeId  || null,
+                reporterId  || null,
+                safeSearch,
+                safeLimit,
+                safeOffset,
+            ]);
 
             return result.rows as IssueSummary[];
         } catch (error: any) {
@@ -122,7 +155,7 @@ export const listIssues = async (
 
 // 3. GET
 export const getIssueById = async (
-    issueId: string, 
+    issueId: string,
     userId: string,
     projectId?: string
 ): Promise<IssueDetail> => {
@@ -135,14 +168,14 @@ export const getIssueById = async (
                 [issueId, projectId || null]
             );
 
-            if (result.rowCount === 0) {
+            if (result.rowCount === 0)
                 throw new AppError(ErrorCodes.ISSUE_NOT_FOUND, 'Issue not found or deleted');
-            }
+
             return result.rows[0] as IssueDetail;
         } catch (error: any) {
             if (error instanceof AppError) throw error;
-            if (error.message?.includes('not found')) throw new AppError(ErrorCodes.ISSUE_NOT_FOUND);
-            
+            if (error.message?.includes('not found'))
+                throw new AppError(ErrorCodes.ISSUE_NOT_FOUND);
             log.error('Failed to retrieve issue details', { issueId, error });
             throw new AppError(ErrorCodes.DB_QUERY_FAILED, 'Failed to retrieve issue details');
         }
@@ -167,16 +200,13 @@ export const updateIssue = async (
         if (!isValidName(title, 2, 255)) throw new AppError(ErrorCodes.VALIDATION_INVALID_NAME);
         if (containsDangerousChars(title)) throw new AppError(ErrorCodes.VALIDATION_FAILED, 'Invalid characters in title');
     }
-
-    if (description && containsDangerousChars(description)) {
+    if (description && containsDangerousChars(description))
         throw new AppError(ErrorCodes.VALIDATION_FAILED, 'Invalid characters in description');
-    }
-
-    if (status && containsDangerousChars(status)) throw new AppError(ErrorCodes.VALIDATION_FAILED);
+    if (status   && containsDangerousChars(status))   throw new AppError(ErrorCodes.VALIDATION_FAILED);
     if (priority && containsDangerousChars(priority)) throw new AppError(ErrorCodes.VALIDATION_FAILED);
 
-    const trimmedTitle = title?.trim() || null;
-    const trimmedDesc = description ? description.trim().substring(0, 5000) : null;
+    const trimmedTitle = title?.trim()                              || null;
+    const trimmedDesc  = description ? description.trim().substring(0, 5000) : null;
 
     return withRLS(userId, async (client) => {
         try {
@@ -184,18 +214,14 @@ export const updateIssue = async (
                 'SELECT update_issues($1, $2, $3, $4, $5, $6, $7, $8)',
                 [issueId, trimmedTitle, trimmedDesc, status || null, priority || null, assigneeId || null, isPrivate ?? null, projectId || null]
             );
-
             log.info('Issue updated', { issueId });
         } catch (error: any) {
-            if (error.message?.includes('Permission denied')) {
+            if (error.message?.includes('Permission denied'))
                 throw new AppError(ErrorCodes.ISSUE_PERMISSION_DENIED, error.message);
-            }
-            if (error.message?.includes('No changes')) {
+            if (error.message?.includes('No changes'))
                 throw new AppError(ErrorCodes.VALIDATION_FAILED, 'No changes provided to update');
-            }
-            if (error.message?.includes('not found')) {
+            if (error.message?.includes('not found'))
                 throw new AppError(ErrorCodes.ISSUE_NOT_FOUND);
-            }
             log.error('Failed to update issue', { issueId, error });
             throw new AppError(ErrorCodes.DB_QUERY_FAILED, 'Failed to update issue');
         }
@@ -204,8 +230,8 @@ export const updateIssue = async (
 
 // 5. DELETE
 export const deleteIssue = async (
-    issueId: string, 
-    userId: string, 
+    issueId: string,
+    userId: string,
     projectId?: string
 ): Promise<void> => {
     validateUUIDs(issueId, projectId);
@@ -215,10 +241,10 @@ export const deleteIssue = async (
             await client.query('SELECT delete_issues($1, $2)', [issueId, projectId || null]);
             log.info('Issue deleted', { issueId });
         } catch (error: any) {
-            if (error.message?.includes('not found')) throw new AppError(ErrorCodes.ISSUE_NOT_FOUND);
-            if (error.message?.includes('Permission denied')) {
+            if (error.message?.includes('not found'))
+                throw new AppError(ErrorCodes.ISSUE_NOT_FOUND);
+            if (error.message?.includes('Permission denied'))
                 throw new AppError(ErrorCodes.ISSUE_PERMISSION_DENIED, error.message);
-            }
             log.error('Failed to delete issue', { issueId, error });
             throw new AppError(ErrorCodes.DB_QUERY_FAILED, 'Failed to delete issue');
         }
@@ -237,52 +263,68 @@ export const inviteToIssue = async (
 ): Promise<void> => {
     validateUUIDs(friendshipCode, orgId, siteId, projectId, issueId);
 
-    if (containsDangerousChars(role)) {
-        throw new AppError(ErrorCodes.VALIDATION_FAILED, 'Invalid characters in role');
-    }
+    // İzin verilen issue rolleri — DB enum'uyla senkron tutulmalı
+    const VALID_ISSUE_ROLES = ['contributor', 'reviewer', 'watcher'] as const;
+    if (!VALID_ISSUE_ROLES.includes(role as any))
+        throw new AppError(ErrorCodes.VALIDATION_FAILED, `Invalid role. Must be one of: ${VALID_ISSUE_ROLES.join(', ')}`);
 
     return withRLS(userId, async (client) => {
-        try {
-            await client.query(
-                'SELECT invite_issue($1, $2, $3, $4, $5, $6::issue_role)',
-                [friendshipCode, orgId, siteId, projectId, issueId, role]
-            );
-            log.info('User invited to issue', { issueId, role });
-        } catch (error: any) {
-            if (error.message?.includes('Permission denied')) {
-                throw new AppError(ErrorCodes.ISSUE_PERMISSION_DENIED, error.message);
-            }
-            if (error.message?.includes('not found')) throw new AppError(ErrorCodes.ISSUE_NOT_FOUND);
-            if (error.message?.includes('already has a membership')) {
-                throw new AppError(ErrorCodes.ISSUE_ALREADY_EXISTS, 'User is already a member of this issue');
-            }
-            if (error.message?.includes('active member of the project')) {
-                throw new AppError(ErrorCodes.VALIDATION_FAILED, 'User must be in the project before joining an issue');
-            }
-            log.error('Failed to invite to issue', { issueId, error });
-            throw new AppError(ErrorCodes.DB_QUERY_FAILED, 'Failed to invite user to issue');
-        }
+        // ⚠️ withRLS zaten BEGIN/COMMIT yönetiyor — burada tekrar açmayın.
+
+        // 1. Hedef kullanıcıyı friendship_code ile bul
+        const userRes = await client.query(
+            'SELECT user_id FROM users WHERE user_friendship_code = $1::uuid AND deleted_at IS NULL',
+            [friendshipCode]
+        );
+        if (userRes.rowCount === 0)
+            throw new AppError(ErrorCodes.VALIDATION_FAILED, 'User not found');
+
+        const targetUserId = userRes.rows[0].user_id;
+
+        // 2. Mevcut üyeliği kaldır (varsa) — trigger'ın UNIQUE constraint hatasını önler
+        await client.query(
+            'DELETE FROM issue_memberships WHERE issue_id = $1 AND user_id = $2',
+            [issueId, targetUserId]
+        );
+
+        // 3. Yeni üyeliği ekle — trigger burada rol yetkisini kontrol eder
+        //    Trigger hatası: "Permission denied: User cannot assign roles to this issue"
+        //    → targetUserId'nin org/project membership'i eksik demektir.
+        await client.query(`
+            INSERT INTO issue_memberships
+                (issue_membership_id, issue_id, user_id, role, membership_is_active)
+            VALUES
+                (gen_random_uuid(), $1, $2, $3::issue_role, true)
+        `, [issueId, targetUserId, role]);
+
+        log.info('User invited to issue successfully', { issueId, targetUserId, role });
     });
 };
 
 // ============================================================================
-// EKSTRA FONKSİYONLAR 
+// EKSTRA FONKSİYONLAR
 // ============================================================================
 
-export const restoreIssue = async (issueId: string, userId: string, projectId: string): Promise<void> => {
+export const restoreIssue = async (
+    issueId: string,
+    userId: string,
+    projectId: string
+): Promise<void> => {
     validateUUIDs(issueId, projectId);
 
     return withRLS(userId, async (client) => {
         try {
             const result = await client.query(
-                `UPDATE issues 
+                `UPDATE issues
                  SET deleted_at = NULL, updated_at = now()
                  WHERE issue_id = $1 AND project_id = $2 AND deleted_at IS NOT NULL
                  RETURNING issue_id`,
                 [issueId, projectId]
             );
 
-            if (result.rowCount === 0) throw new AppError(ErrorCodes.ISSUE_NOT_FOUND, 'Deleted issue not found');
+            if (result.rowCount === 0)
+                throw new AppError(ErrorCodes.ISSUE_NOT_FOUND, 'Deleted issue not found');
+
             log.info('Issue restored successfully', { issueId });
         } catch (error: any) {
             if (error instanceof AppError) throw error;

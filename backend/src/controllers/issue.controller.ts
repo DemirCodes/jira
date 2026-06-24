@@ -10,6 +10,8 @@ import { IssueAccessPolicy } from '../services/authorization.service';
 import { AppError, ErrorCodes } from '../utils/errorCodes';
 import { log } from '../utils/logger';
 import { isValidUUID } from '../utils/regexValidator';
+import * as issueAssetService from '../services/issueAssets.service';
+
 
 // ==================== CREATE ====================
 export const create = async (req: Request, res: Response): Promise<void> => {
@@ -226,3 +228,90 @@ export const restore = async (req: Request, res: Response): Promise<void> => {
         res.status(500).json({ error: 'Internal server error' });
     }
 };
+
+
+// ==================== ISSUE ASSET ENDPOINTS ====================
+
+export const uploadIssueAsset = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { id } = req.params; // issue_id
+        const userId = req.userId!;
+        const { asset_type, metadata } = req.body;
+
+        if (!isValidUUID(id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid Issue ID format');
+        if (!req.file) {
+            res.status(400).json({ error: 'No file uploaded' });
+            return;
+        }
+
+        const dummy_storage_key = `issues/${id}/assets/${Date.now()}_${req.file.originalname}`;
+
+        const assetId = await issueAssetService.createIssueAsset({
+            issue_id: id,
+            uploaded_by: userId,
+            asset_type: asset_type || 'file',
+            file_name: req.file.originalname,
+            mime_type: req.file.mimetype,
+            byte_size: req.file.size,
+            storage_key: dummy_storage_key,
+            checksum: (req.file as any).checksum,
+            metadata: metadata ? JSON.parse(metadata) : null
+        });
+
+        res.status(201).json({
+            message: 'Issue asset scanned, uploaded and saved successfully',
+            issue_asset_id: assetId
+        });
+
+    } catch (error: any) {
+        if (error instanceof AppError) {
+            res.status(error.statusCode).json({ error: error.message, code: error.errorCode });
+            return;
+        }
+        log.error('Controller: Failed to handle issue asset upload', { error });
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+export const listIssueAssets = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { id } = req.params; // issue_id
+        const userId = req.userId!;
+        const limit = req.query.limit ? parseInt(req.query.limit as string, 10) : 50;
+        const offset = req.query.offset ? parseInt(req.query.offset as string, 10) : 0;
+
+        if (!isValidUUID(id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID);
+
+        const assets = await issueAssetService.listIssueAssets(id, userId, limit, offset);
+        res.json(assets);
+    } catch (error: any) {
+        if (error instanceof AppError) {
+            res.status(error.statusCode).json({ error: error.message, code: error.errorCode });
+            return;
+        }
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+export const removeIssueAsset = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { id, assetId } = req.params; // id = issue_id
+        const userId = req.userId!;
+
+        if (!isValidUUID(id) || !isValidUUID(assetId)) {
+            throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid format for Issue ID or Asset ID');
+        }
+
+        await issueAssetService.deleteIssueAsset(assetId, id, userId);
+
+        res.status(200).json({ message: 'Issue asset soft deleted successfully' });
+    } catch (error: any) {
+        if (error instanceof AppError) {
+            res.status(error.statusCode).json({ error: error.message, code: error.errorCode });
+            return;
+        }
+        log.error('Controller: Failed to delete issue asset', { error });
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+

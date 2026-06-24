@@ -17863,6 +17863,9 @@ export namespace Prisma {
     deleted_at: Date | null
     deleted_by: string | null
     is_private: boolean | null
+    project_key: string | null
+    board_type: string | null
+    icon_url: string | null
   }
 
   export type ProjectsMaxAggregateOutputType = {
@@ -17881,6 +17884,9 @@ export namespace Prisma {
     deleted_at: Date | null
     deleted_by: string | null
     is_private: boolean | null
+    project_key: string | null
+    board_type: string | null
+    icon_url: string | null
   }
 
   export type ProjectsCountAggregateOutputType = {
@@ -17899,6 +17905,9 @@ export namespace Prisma {
     deleted_at: number
     deleted_by: number
     is_private: number
+    project_key: number
+    board_type: number
+    icon_url: number
     _all: number
   }
 
@@ -17919,6 +17928,9 @@ export namespace Prisma {
     deleted_at?: true
     deleted_by?: true
     is_private?: true
+    project_key?: true
+    board_type?: true
+    icon_url?: true
   }
 
   export type ProjectsMaxAggregateInputType = {
@@ -17937,6 +17949,9 @@ export namespace Prisma {
     deleted_at?: true
     deleted_by?: true
     is_private?: true
+    project_key?: true
+    board_type?: true
+    icon_url?: true
   }
 
   export type ProjectsCountAggregateInputType = {
@@ -17955,6 +17970,9 @@ export namespace Prisma {
     deleted_at?: true
     deleted_by?: true
     is_private?: true
+    project_key?: true
+    board_type?: true
+    icon_url?: true
     _all?: true
   }
 
@@ -18046,6 +18064,9 @@ export namespace Prisma {
     deleted_at: Date | null
     deleted_by: string | null
     is_private: boolean
+    project_key: string | null
+    board_type: string | null
+    icon_url: string | null
     _count: ProjectsCountAggregateOutputType | null
     _min: ProjectsMinAggregateOutputType | null
     _max: ProjectsMaxAggregateOutputType | null
@@ -18081,6 +18102,9 @@ export namespace Prisma {
     deleted_at?: boolean
     deleted_by?: boolean
     is_private?: boolean
+    project_key?: boolean
+    board_type?: boolean
+    icon_url?: boolean
     application_bugs?: boolean | projects$application_bugsArgs<ExtArgs>
     issues?: boolean | projects$issuesArgs<ExtArgs>
     project_assets?: boolean | projects$project_assetsArgs<ExtArgs>
@@ -18110,6 +18134,9 @@ export namespace Prisma {
     deleted_at?: boolean
     deleted_by?: boolean
     is_private?: boolean
+    project_key?: boolean
+    board_type?: boolean
+    icon_url?: boolean
     users_projects_completed_byTousers?: boolean | projects$users_projects_completed_byTousersArgs<ExtArgs>
     users_projects_created_byTousers?: boolean | projects$users_projects_created_byTousersArgs<ExtArgs>
     users_projects_deleted_byTousers?: boolean | projects$users_projects_deleted_byTousersArgs<ExtArgs>
@@ -18132,6 +18159,9 @@ export namespace Prisma {
     deleted_at?: boolean
     deleted_by?: boolean
     is_private?: boolean
+    project_key?: boolean
+    board_type?: boolean
+    icon_url?: boolean
   }
 
   export type projectsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -18184,6 +18214,9 @@ export namespace Prisma {
       deleted_at: Date | null
       deleted_by: string | null
       is_private: boolean
+      project_key: string | null
+      board_type: string | null
+      icon_url: string | null
     }, ExtArgs["result"]["projects"]>
     composites: {}
   }
@@ -18637,6 +18670,9 @@ export namespace Prisma {
     readonly deleted_at: FieldRef<"projects", 'DateTime'>
     readonly deleted_by: FieldRef<"projects", 'String'>
     readonly is_private: FieldRef<"projects", 'Boolean'>
+    readonly project_key: FieldRef<"projects", 'String'>
+    readonly board_type: FieldRef<"projects", 'String'>
+    readonly icon_url: FieldRef<"projects", 'String'>
   }
     
 
@@ -26862,7 +26898,10 @@ export namespace Prisma {
     updated_at: 'updated_at',
     deleted_at: 'deleted_at',
     deleted_by: 'deleted_by',
-    is_private: 'is_private'
+    is_private: 'is_private',
+    project_key: 'project_key',
+    board_type: 'board_type',
+    icon_url: 'icon_url'
   };
 
   export type ProjectsScalarFieldEnum = (typeof ProjectsScalarFieldEnum)[keyof typeof ProjectsScalarFieldEnum]
@@ -28601,6 +28640,9 @@ export namespace Prisma {
     deleted_at?: DateTimeNullableFilter<"projects"> | Date | string | null
     deleted_by?: UuidNullableFilter<"projects"> | string | null
     is_private?: BoolFilter<"projects"> | boolean
+    project_key?: StringNullableFilter<"projects"> | string | null
+    board_type?: StringNullableFilter<"projects"> | string | null
+    icon_url?: StringNullableFilter<"projects"> | string | null
     application_bugs?: Application_bugsListRelationFilter
     issues?: IssuesListRelationFilter
     project_assets?: Project_assetsListRelationFilter
@@ -28629,6 +28671,9 @@ export namespace Prisma {
     deleted_at?: SortOrderInput | SortOrder
     deleted_by?: SortOrderInput | SortOrder
     is_private?: SortOrder
+    project_key?: SortOrderInput | SortOrder
+    board_type?: SortOrderInput | SortOrder
+    icon_url?: SortOrderInput | SortOrder
     application_bugs?: application_bugsOrderByRelationAggregateInput
     issues?: issuesOrderByRelationAggregateInput
     project_assets?: project_assetsOrderByRelationAggregateInput
@@ -28644,6 +28689,7 @@ export namespace Prisma {
   export type projectsWhereUniqueInput = Prisma.AtLeast<{
     project_id?: string
     project_check_id?: string
+    project_key?: string
     site_id_project_name?: projectsSite_idProject_nameCompoundUniqueInput
     AND?: projectsWhereInput | projectsWhereInput[]
     OR?: projectsWhereInput[]
@@ -28661,6 +28707,8 @@ export namespace Prisma {
     deleted_at?: DateTimeNullableFilter<"projects"> | Date | string | null
     deleted_by?: UuidNullableFilter<"projects"> | string | null
     is_private?: BoolFilter<"projects"> | boolean
+    board_type?: StringNullableFilter<"projects"> | string | null
+    icon_url?: StringNullableFilter<"projects"> | string | null
     application_bugs?: Application_bugsListRelationFilter
     issues?: IssuesListRelationFilter
     project_assets?: Project_assetsListRelationFilter
@@ -28671,7 +28719,7 @@ export namespace Prisma {
     users_projects_deleted_byTousers?: XOR<UsersNullableRelationFilter, usersWhereInput> | null
     sites?: XOR<SitesRelationFilter, sitesWhereInput>
     project_issue_counters?: Project_issue_countersListRelationFilter
-  }, "project_id" | "project_check_id" | "site_id_project_name">
+  }, "project_id" | "project_check_id" | "project_key" | "site_id_project_name">
 
   export type projectsOrderByWithAggregationInput = {
     project_id?: SortOrder
@@ -28689,6 +28737,9 @@ export namespace Prisma {
     deleted_at?: SortOrderInput | SortOrder
     deleted_by?: SortOrderInput | SortOrder
     is_private?: SortOrder
+    project_key?: SortOrderInput | SortOrder
+    board_type?: SortOrderInput | SortOrder
+    icon_url?: SortOrderInput | SortOrder
     _count?: projectsCountOrderByAggregateInput
     _max?: projectsMaxOrderByAggregateInput
     _min?: projectsMinOrderByAggregateInput
@@ -28713,6 +28764,9 @@ export namespace Prisma {
     deleted_at?: DateTimeNullableWithAggregatesFilter<"projects"> | Date | string | null
     deleted_by?: UuidNullableWithAggregatesFilter<"projects"> | string | null
     is_private?: BoolWithAggregatesFilter<"projects"> | boolean
+    project_key?: StringNullableWithAggregatesFilter<"projects"> | string | null
+    board_type?: StringNullableWithAggregatesFilter<"projects"> | string | null
+    icon_url?: StringNullableWithAggregatesFilter<"projects"> | string | null
   }
 
   export type project_issue_countersWhereInput = {
@@ -30810,6 +30864,9 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted_at?: Date | string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsCreateNestedManyWithoutProjectsInput
     issues?: issuesCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsCreateNestedManyWithoutProjectsInput
@@ -30838,6 +30895,9 @@ export namespace Prisma {
     deleted_at?: Date | string | null
     deleted_by?: string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsUncheckedCreateNestedManyWithoutProjectsInput
     issues?: issuesUncheckedCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsUncheckedCreateNestedManyWithoutProjectsInput
@@ -30858,6 +30918,9 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUpdateManyWithoutProjectsNestedInput
     issues?: issuesUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUpdateManyWithoutProjectsNestedInput
@@ -30886,6 +30949,9 @@ export namespace Prisma {
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUncheckedUpdateManyWithoutProjectsNestedInput
     issues?: issuesUncheckedUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUncheckedUpdateManyWithoutProjectsNestedInput
@@ -30910,6 +30976,9 @@ export namespace Prisma {
     deleted_at?: Date | string | null
     deleted_by?: string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
   }
 
   export type projectsUpdateManyMutationInput = {
@@ -30924,6 +30993,9 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type projectsUncheckedUpdateManyInput = {
@@ -30942,6 +31014,9 @@ export namespace Prisma {
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type project_issue_countersCreateInput = {
@@ -32982,6 +33057,9 @@ export namespace Prisma {
     deleted_at?: SortOrder
     deleted_by?: SortOrder
     is_private?: SortOrder
+    project_key?: SortOrder
+    board_type?: SortOrder
+    icon_url?: SortOrder
   }
 
   export type projectsMaxOrderByAggregateInput = {
@@ -33000,6 +33078,9 @@ export namespace Prisma {
     deleted_at?: SortOrder
     deleted_by?: SortOrder
     is_private?: SortOrder
+    project_key?: SortOrder
+    board_type?: SortOrder
+    icon_url?: SortOrder
   }
 
   export type projectsMinOrderByAggregateInput = {
@@ -33018,6 +33099,9 @@ export namespace Prisma {
     deleted_at?: SortOrder
     deleted_by?: SortOrder
     is_private?: SortOrder
+    project_key?: SortOrder
+    board_type?: SortOrder
+    icon_url?: SortOrder
   }
 
   export type Enumproject_statusWithAggregatesFilter<$PrismaModel = never> = {
@@ -37428,6 +37512,9 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted_at?: Date | string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     issues?: issuesCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsCreateNestedManyWithoutProjectsInput
     project_memberships?: project_membershipsCreateNestedManyWithoutProjectsInput
@@ -37455,6 +37542,9 @@ export namespace Prisma {
     deleted_at?: Date | string | null
     deleted_by?: string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     issues?: issuesUncheckedCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsUncheckedCreateNestedManyWithoutProjectsInput
     project_memberships?: project_membershipsUncheckedCreateNestedManyWithoutProjectsInput
@@ -37666,6 +37756,9 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     issues?: issuesUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUpdateManyWithoutProjectsNestedInput
     project_memberships?: project_membershipsUpdateManyWithoutProjectsNestedInput
@@ -37693,6 +37786,9 @@ export namespace Prisma {
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     issues?: issuesUncheckedUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUncheckedUpdateManyWithoutProjectsNestedInput
     project_memberships?: project_membershipsUncheckedUpdateManyWithoutProjectsNestedInput
@@ -40723,6 +40819,9 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted_at?: Date | string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsCreateNestedManyWithoutProjectsInput
     project_memberships?: project_membershipsCreateNestedManyWithoutProjectsInput
@@ -40750,6 +40849,9 @@ export namespace Prisma {
     deleted_at?: Date | string | null
     deleted_by?: string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsUncheckedCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsUncheckedCreateNestedManyWithoutProjectsInput
     project_memberships?: project_membershipsUncheckedCreateNestedManyWithoutProjectsInput
@@ -41459,6 +41561,9 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUpdateManyWithoutProjectsNestedInput
     project_memberships?: project_membershipsUpdateManyWithoutProjectsNestedInput
@@ -41486,6 +41591,9 @@ export namespace Prisma {
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUncheckedUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUncheckedUpdateManyWithoutProjectsNestedInput
     project_memberships?: project_membershipsUncheckedUpdateManyWithoutProjectsNestedInput
@@ -44435,6 +44543,9 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted_at?: Date | string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsCreateNestedManyWithoutProjectsInput
     issues?: issuesCreateNestedManyWithoutProjectsInput
     project_memberships?: project_membershipsCreateNestedManyWithoutProjectsInput
@@ -44462,6 +44573,9 @@ export namespace Prisma {
     deleted_at?: Date | string | null
     deleted_by?: string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsUncheckedCreateNestedManyWithoutProjectsInput
     issues?: issuesUncheckedCreateNestedManyWithoutProjectsInput
     project_memberships?: project_membershipsUncheckedCreateNestedManyWithoutProjectsInput
@@ -44761,6 +44875,9 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUpdateManyWithoutProjectsNestedInput
     issues?: issuesUpdateManyWithoutProjectsNestedInput
     project_memberships?: project_membershipsUpdateManyWithoutProjectsNestedInput
@@ -44788,6 +44905,9 @@ export namespace Prisma {
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUncheckedUpdateManyWithoutProjectsNestedInput
     issues?: issuesUncheckedUpdateManyWithoutProjectsNestedInput
     project_memberships?: project_membershipsUncheckedUpdateManyWithoutProjectsNestedInput
@@ -45200,6 +45320,9 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted_at?: Date | string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsCreateNestedManyWithoutProjectsInput
     issues?: issuesCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsCreateNestedManyWithoutProjectsInput
@@ -45227,6 +45350,9 @@ export namespace Prisma {
     deleted_at?: Date | string | null
     deleted_by?: string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsUncheckedCreateNestedManyWithoutProjectsInput
     issues?: issuesUncheckedCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsUncheckedCreateNestedManyWithoutProjectsInput
@@ -45661,6 +45787,9 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUpdateManyWithoutProjectsNestedInput
     issues?: issuesUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUpdateManyWithoutProjectsNestedInput
@@ -45688,6 +45817,9 @@ export namespace Prisma {
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUncheckedUpdateManyWithoutProjectsNestedInput
     issues?: issuesUncheckedUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUncheckedUpdateManyWithoutProjectsNestedInput
@@ -46229,6 +46361,9 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted_at?: Date | string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsCreateNestedManyWithoutProjectsInput
     issues?: issuesCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsCreateNestedManyWithoutProjectsInput
@@ -46256,6 +46391,9 @@ export namespace Prisma {
     deleted_at?: Date | string | null
     deleted_by?: string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsUncheckedCreateNestedManyWithoutProjectsInput
     issues?: issuesUncheckedCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsUncheckedCreateNestedManyWithoutProjectsInput
@@ -46696,6 +46834,9 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUpdateManyWithoutProjectsNestedInput
     issues?: issuesUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUpdateManyWithoutProjectsNestedInput
@@ -46723,6 +46864,9 @@ export namespace Prisma {
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUncheckedUpdateManyWithoutProjectsNestedInput
     issues?: issuesUncheckedUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUncheckedUpdateManyWithoutProjectsNestedInput
@@ -48013,6 +48157,9 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted_at?: Date | string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsCreateNestedManyWithoutProjectsInput
     issues?: issuesCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsCreateNestedManyWithoutProjectsInput
@@ -48040,6 +48187,9 @@ export namespace Prisma {
     deleted_at?: Date | string | null
     deleted_by?: string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsUncheckedCreateNestedManyWithoutProjectsInput
     issues?: issuesUncheckedCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsUncheckedCreateNestedManyWithoutProjectsInput
@@ -48075,6 +48225,9 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUpdateManyWithoutProjectsNestedInput
     issues?: issuesUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUpdateManyWithoutProjectsNestedInput
@@ -48102,6 +48255,9 @@ export namespace Prisma {
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUncheckedUpdateManyWithoutProjectsNestedInput
     issues?: issuesUncheckedUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUncheckedUpdateManyWithoutProjectsNestedInput
@@ -49601,6 +49757,9 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted_at?: Date | string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsCreateNestedManyWithoutProjectsInput
     issues?: issuesCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsCreateNestedManyWithoutProjectsInput
@@ -49627,6 +49786,9 @@ export namespace Prisma {
     deleted_at?: Date | string | null
     deleted_by?: string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsUncheckedCreateNestedManyWithoutProjectsInput
     issues?: issuesUncheckedCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsUncheckedCreateNestedManyWithoutProjectsInput
@@ -50059,6 +50221,9 @@ export namespace Prisma {
     deleted_at?: DateTimeNullableFilter<"projects"> | Date | string | null
     deleted_by?: UuidNullableFilter<"projects"> | string | null
     is_private?: BoolFilter<"projects"> | boolean
+    project_key?: StringNullableFilter<"projects"> | string | null
+    board_type?: StringNullableFilter<"projects"> | string | null
+    icon_url?: StringNullableFilter<"projects"> | string | null
   }
 
   export type site_assetsUpsertWithWhereUniqueWithoutSitesInput = {
@@ -51576,6 +51741,9 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted_at?: Date | string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsCreateNestedManyWithoutProjectsInput
     issues?: issuesCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsCreateNestedManyWithoutProjectsInput
@@ -51602,6 +51770,9 @@ export namespace Prisma {
     deleted_at?: Date | string | null
     deleted_by?: string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsUncheckedCreateNestedManyWithoutProjectsInput
     issues?: issuesUncheckedCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsUncheckedCreateNestedManyWithoutProjectsInput
@@ -51632,6 +51803,9 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted_at?: Date | string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsCreateNestedManyWithoutProjectsInput
     issues?: issuesCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsCreateNestedManyWithoutProjectsInput
@@ -51658,6 +51832,9 @@ export namespace Prisma {
     deleted_at?: Date | string | null
     deleted_by?: string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsUncheckedCreateNestedManyWithoutProjectsInput
     issues?: issuesUncheckedCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsUncheckedCreateNestedManyWithoutProjectsInput
@@ -51688,6 +51865,9 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted_at?: Date | string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsCreateNestedManyWithoutProjectsInput
     issues?: issuesCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsCreateNestedManyWithoutProjectsInput
@@ -51714,6 +51894,9 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted_at?: Date | string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
     application_bugs?: application_bugsUncheckedCreateNestedManyWithoutProjectsInput
     issues?: issuesUncheckedCreateNestedManyWithoutProjectsInput
     project_assets?: project_assetsUncheckedCreateNestedManyWithoutProjectsInput
@@ -54070,6 +54253,9 @@ export namespace Prisma {
     deleted_at?: Date | string | null
     deleted_by?: string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
   }
 
   export type site_assetsCreateManySitesInput = {
@@ -54114,6 +54300,9 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUpdateManyWithoutProjectsNestedInput
     issues?: issuesUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUpdateManyWithoutProjectsNestedInput
@@ -54140,6 +54329,9 @@ export namespace Prisma {
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUncheckedUpdateManyWithoutProjectsNestedInput
     issues?: issuesUncheckedUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUncheckedUpdateManyWithoutProjectsNestedInput
@@ -54163,6 +54355,9 @@ export namespace Prisma {
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type site_assetsUpdateWithoutSitesInput = {
@@ -54668,6 +54863,9 @@ export namespace Prisma {
     deleted_at?: Date | string | null
     deleted_by?: string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
   }
 
   export type projectsCreateManyUsers_projects_created_byTousersInput = {
@@ -54685,6 +54883,9 @@ export namespace Prisma {
     deleted_at?: Date | string | null
     deleted_by?: string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
   }
 
   export type projectsCreateManyUsers_projects_deleted_byTousersInput = {
@@ -54702,6 +54903,9 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted_at?: Date | string | null
     is_private?: boolean
+    project_key?: string | null
+    board_type?: string | null
+    icon_url?: string | null
   }
 
   export type site_assetsCreateManyUsers_site_assets_deleted_byTousersInput = {
@@ -56083,6 +56287,9 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUpdateManyWithoutProjectsNestedInput
     issues?: issuesUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUpdateManyWithoutProjectsNestedInput
@@ -56109,6 +56316,9 @@ export namespace Prisma {
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUncheckedUpdateManyWithoutProjectsNestedInput
     issues?: issuesUncheckedUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUncheckedUpdateManyWithoutProjectsNestedInput
@@ -56132,6 +56342,9 @@ export namespace Prisma {
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type projectsUpdateWithoutUsers_projects_created_byTousersInput = {
@@ -56146,6 +56359,9 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUpdateManyWithoutProjectsNestedInput
     issues?: issuesUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUpdateManyWithoutProjectsNestedInput
@@ -56172,6 +56388,9 @@ export namespace Prisma {
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUncheckedUpdateManyWithoutProjectsNestedInput
     issues?: issuesUncheckedUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUncheckedUpdateManyWithoutProjectsNestedInput
@@ -56195,6 +56414,9 @@ export namespace Prisma {
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type projectsUpdateWithoutUsers_projects_deleted_byTousersInput = {
@@ -56209,6 +56431,9 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUpdateManyWithoutProjectsNestedInput
     issues?: issuesUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUpdateManyWithoutProjectsNestedInput
@@ -56235,6 +56460,9 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
     application_bugs?: application_bugsUncheckedUpdateManyWithoutProjectsNestedInput
     issues?: issuesUncheckedUpdateManyWithoutProjectsNestedInput
     project_assets?: project_assetsUncheckedUpdateManyWithoutProjectsNestedInput
@@ -56258,6 +56486,9 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_private?: BoolFieldUpdateOperationsInput | boolean
+    project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    board_type?: NullableStringFieldUpdateOperationsInput | string | null
+    icon_url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type site_assetsUpdateWithoutUsers_site_assets_deleted_byTousersInput = {

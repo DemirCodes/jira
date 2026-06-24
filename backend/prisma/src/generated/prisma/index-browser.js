@@ -334,7 +334,10 @@ exports.Prisma.ProjectsScalarFieldEnum = {
   updated_at: 'updated_at',
   deleted_at: 'deleted_at',
   deleted_by: 'deleted_by',
-  is_private: 'is_private'
+  is_private: 'is_private',
+  project_key: 'project_key',
+  board_type: 'board_type',
+  icon_url: 'icon_url'
 };
 
 exports.Prisma.Project_issue_countersScalarFieldEnum = {

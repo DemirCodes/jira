@@ -296,6 +296,9 @@ model projects {
   users_projects_deleted_byTousers   users?                   @relation("projects_deleted_byTousers", fields: [deleted_by], references: [user_id], onUpdate: NoAction)
   sites                              sites                    @relation(fields: [site_id], references: [site_id], onDelete: Cascade, onUpdate: NoAction)
   project_issue_counters             project_issue_counters[]
+  project_key                        String?                  @unique @db.VarChar(10)
+  board_type                         String?                  @default("scrum") @db.VarChar(20)
+  icon_url                           String?                  @db.Text
 
   @@unique([site_id, project_name])
 }
