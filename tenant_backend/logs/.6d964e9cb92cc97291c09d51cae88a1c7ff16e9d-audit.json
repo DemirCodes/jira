@@ -1,0 +1,90 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 30
+    },
+    "auditLog": "/home/dmrcode/Desktop/jira/backend/logs/.6d964e9cb92cc97291c09d51cae88a1c7ff16e9d-audit.json",
+    "files": [
+        {
+            "date": 1780050017136,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-05-29.log",
+            "hash": "0b9846a3bf00d98844e6cfdaccebabd0bdb4f9bbce1118f195abb3f36bf4abc9"
+        },
+        {
+            "date": 1780141875307,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-05-30.log",
+            "hash": "8374cb6493ca97b250af79dc386b68b2ad4d147df68c9c83b80a048830c89383"
+        },
+        {
+            "date": 1780218412442,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-05-31.log",
+            "hash": "237ee4a9624242a45af70ec89ac34ed6a3112ee2881e6f04ef1e3a4af87916ec"
+        },
+        {
+            "date": 1780311351981,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-06-01.log",
+            "hash": "8ae2d7e33855af1f71fac9fcbf136883c07700a3e5e11b71088095948ab1c8f7"
+        },
+        {
+            "date": 1780401837051,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-06-02.log",
+            "hash": "877a0222aafc894bda5e76b50ee1bb580f835feca739f044258c74106edf1ea6"
+        },
+        {
+            "date": 1780486676603,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-06-03.log",
+            "hash": "8ee7dc9d29ad01987c11cb6916080702c3337f4a60a550fd9e71acdefcc2d822"
+        },
+        {
+            "date": 1781091607335,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-06-10.log",
+            "hash": "00b44e9baceb03e1531ca3c0a8b21b0d8f17ef62b828860af38fbbcd80ec2e38"
+        },
+        {
+            "date": 1781448354082,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-06-14.log",
+            "hash": "42753ad7361fe8e40f690888d6654631180ed2ca6169e3eaeadbae33bd4a8887"
+        },
+        {
+            "date": 1781523721923,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-06-15.log",
+            "hash": "9606cde002d14280af84338be48a40e2c76223d663fe702c160c7aed8ea7694a"
+        },
+        {
+            "date": 1781625984460,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-06-16.log",
+            "hash": "62d22672011df221d7268f4abf0c70fa01e1ff523d59a45f4ce33eef40a3e896"
+        },
+        {
+            "date": 1781694707826,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-06-17.log",
+            "hash": "055978e4fba6723afaa5996cf83761f507b6873f66fb80b877d2c562f6303d0c"
+        },
+        {
+            "date": 1781868910044,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-06-19.log",
+            "hash": "4dc73f2ec2886852d23926ea952cdd218cc175a8c23ceb4122e5049b5420c5c5"
+        },
+        {
+            "date": 1782126582126,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-06-22.log",
+            "hash": "fd4b28df58bcceca068b5d926b19315ede1208416cc6002a24df10832fed9ac7"
+        },
+        {
+            "date": 1782210951431,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-06-23.log",
+            "hash": "5214cf32d9a1cc7b81691d59e50de533f6755b6ad52576fdcea3beae3332c670"
+        },
+        {
+            "date": 1782297422228,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-06-24.log",
+            "hash": "530ac25035042224288c40eab77f453c55ca3873edad9e4eb1bd64870249069a"
+        },
+        {
+            "date": 1782390187915,
+            "name": "/home/dmrcode/Desktop/jira/backend/logs/rejections-2026-06-25.log",
+            "hash": "cd86c0c41ea0bedd181f0abbcb32661911bd9ee73cbe86a5a4ebc2a65aed4225"
+        }
+    ],
+    "hashType": "sha256"
+}

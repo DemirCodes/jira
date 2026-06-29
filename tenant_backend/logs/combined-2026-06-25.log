@@ -1,0 +1,21 @@
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/error-2026-06-25.log","timestamp":"2026-06-25 15:23:08"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/backend/logs/combined-2026-06-25.log","timestamp":"2026-06-25 15:23:08"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-06-25 15:23:08"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/api/issues","timestamp":"2026-06-25 15:23:08","userId":"445605fd-02c7-4e32-b259-d9ccfc65cf46"}
+{"issueId":"a338f4f7-700b-414e-97bf-48d6199a5628","level":"info","message":"Issue created","projectId":"cffd82fd-a3e3-437f-8c84-e16585741b37","timestamp":"2026-06-25 15:23:08"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/api/issues","timestamp":"2026-06-25 15:23:08","userId":"445605fd-02c7-4e32-b259-d9ccfc65cf46"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/api/issues","timestamp":"2026-06-25 15:23:08","userId":"e09f693c-e6b2-43e8-9806-69aa9a068130"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/api/issues","timestamp":"2026-06-25 15:23:08","userId":"445605fd-02c7-4e32-b259-d9ccfc65cf46"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"GET","path":"/api/issues/a338f4f7-700b-414e-97bf-48d6199a5628","timestamp":"2026-06-25 15:23:08","userId":"445605fd-02c7-4e32-b259-d9ccfc65cf46"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"PUT","path":"/api/issues/a338f4f7-700b-414e-97bf-48d6199a5628","timestamp":"2026-06-25 15:23:08","userId":"445605fd-02c7-4e32-b259-d9ccfc65cf46"}
+{"issueId":"a338f4f7-700b-414e-97bf-48d6199a5628","level":"info","message":"Issue updated","timestamp":"2026-06-25 15:23:08"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/api/issues/a338f4f7-700b-414e-97bf-48d6199a5628/invite","timestamp":"2026-06-25 15:23:08","userId":"445605fd-02c7-4e32-b259-d9ccfc65cf46"}
+{"issueId":"a338f4f7-700b-414e-97bf-48d6199a5628","level":"info","message":"User invited to issue successfully","role":"watcher","targetUserId":"e09f693c-e6b2-43e8-9806-69aa9a068130","timestamp":"2026-06-25 15:23:08"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/api/issues/a338f4f7-700b-414e-97bf-48d6199a5628/invite","timestamp":"2026-06-25 15:23:08","userId":"445605fd-02c7-4e32-b259-d9ccfc65cf46"}
+{"duration":"2ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/api/issues/a338f4f7-700b-414e-97bf-48d6199a5628/invite","timestamp":"2026-06-25 15:23:08","userId":"e09f693c-e6b2-43e8-9806-69aa9a068130"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/api/issues/a338f4f7-700b-414e-97bf-48d6199a5628","timestamp":"2026-06-25 15:23:08","userId":"e09f693c-e6b2-43e8-9806-69aa9a068130"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"DELETE","path":"/api/issues/a338f4f7-700b-414e-97bf-48d6199a5628","timestamp":"2026-06-25 15:23:08","userId":"445605fd-02c7-4e32-b259-d9ccfc65cf46"}
+{"issueId":"a338f4f7-700b-414e-97bf-48d6199a5628","level":"info","message":"Issue deleted","timestamp":"2026-06-25 15:23:08"}
+{"duration":"1ms","ip":"::ffff:127.0.0.1","level":"info","message":"Auth success","method":"POST","path":"/api/issues/a338f4f7-700b-414e-97bf-48d6199a5628/restore","timestamp":"2026-06-25 15:23:08","userId":"445605fd-02c7-4e32-b259-d9ccfc65cf46"}
+{"issueId":"a338f4f7-700b-414e-97bf-48d6199a5628","level":"info","message":"Issue restored successfully","timestamp":"2026-06-25 15:23:08"}
+{"e":{"code":"22P02","file":"uuid.c","length":156,"line":"133","name":"error","routine":"string_to_uuid","severity":"ERROR","where":"PL/pgSQL function trg_issue_activity() line 6 at assignment"},"level":"error","message":"Test cleanup failed","timestamp":"2026-06-25 15:23:08"}

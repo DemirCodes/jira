@@ -93,23 +93,23 @@ volumes:
   redis_data:
 
 
-    # ==================== PLATFORM BACKEND (Boş - sonra ekleyeceğiz) ====================
-  # platform-backend:
-  #   build:
-  #     context: ./platform
-  #     dockerfile: Dockerfile
-  #   container_name: platform_backend
-  #   restart: unless-stopped
-  #   environment:
-  #     NODE_ENV: development
-  #     PORT: 3001
-  #     PLATFORM_DB_HOST: platform-db
-  #     PLATFORM_DB_PORT: 5432
-  #     PLATFORM_DB_NAME: platform
-  #     PLATFORM_DB_USER: jira
-  #     PLATFORM_DB_PASSWORD: jira
-  #   ports:
-  #     - "3001:3001"
-  #   depends_on:
-  #     platform-db:
-  #       condition: service_healthy
+# ==================== PLATFORM BACKEND ====================
+  platform-backend:
+    build:
+      context: ./platform_backend
+      dockerfile: Dockerfile
+    container_name: platform_backend
+    restart: unless-stopped
+    env_file:
+      - ./platform_backend/.env.docker
+    environment:
+      REDIS_URL: redis://redis:6379/1
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    ports:
+      - "3001:3001"
+    depends_on:
+      platform-db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
