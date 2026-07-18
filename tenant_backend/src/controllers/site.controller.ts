@@ -13,7 +13,7 @@ import * as siteAssetService from '../services/siteAsset.service';
 // ==================== CREATE ====================
 export const create = async (req: Request, res: Response): Promise<void> => {
     try {
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         // Zod'dan geleni karşılamak için hem org_id hem orgId destekli
         const org_id = req.body.org_id || req.body.orgId;
         const { name, slug } = req.body;
@@ -41,7 +41,7 @@ export const create = async (req: Request, res: Response): Promise<void> => {
 export const listByOrg = async (req: Request, res: Response): Promise<void> => {
     try {
         const { orgId } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
 
         if (!isValidUUID(orgId)) {
             throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid organization ID');
@@ -64,7 +64,7 @@ export const listByOrg = async (req: Request, res: Response): Promise<void> => {
 export const getById = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
 
         if (!isValidUUID(id)) {
             throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid site ID');
@@ -92,7 +92,7 @@ export const getById = async (req: Request, res: Response): Promise<void> => {
 export const update = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const org_id = req.body.org_id || req.body.orgId;
         const { name, slug, is_private } = req.body;
 
@@ -122,7 +122,7 @@ export const update = async (req: Request, res: Response): Promise<void> => {
 export const updateStatus = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const { org_id, status } = req.body;
 
         if (!org_id || !status) {
@@ -152,7 +152,7 @@ export const updateStatus = async (req: Request, res: Response): Promise<void> =
 export const remove = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         
         // FIX 422: DELETE isteklerinde body yerine query üzerinden veri al
         const org_id = req.body.org_id || req.query.org_id;
@@ -184,7 +184,7 @@ export const remove = async (req: Request, res: Response): Promise<void> => {
 export const invite = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const { org_id, friendshipCode, role = 'contributor' } = req.body;
 
         if (!friendshipCode || !org_id) {
@@ -215,7 +215,7 @@ export const invite = async (req: Request, res: Response): Promise<void> => {
 export const listMembers = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const limit = req.query.limit ? parseInt(req.query.limit as string) : 50;
         const offset = req.query.offset ? parseInt(req.query.offset as string) : 0;
 
@@ -240,7 +240,7 @@ export const listMembers = async (req: Request, res: Response): Promise<void> =>
 export const updateMemberRole = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id, memberId } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const { org_id, role } = req.body;
 
         if (!org_id || !role) {
@@ -269,7 +269,7 @@ export const updateMemberRole = async (req: Request, res: Response): Promise<voi
 export const removeMember = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id, memberId } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const org_id = req.body.org_id || req.query.org_id; // FIX FOR 422 ON DELETE
 
         if (!org_id) {
@@ -299,7 +299,7 @@ export const removeMember = async (req: Request, res: Response): Promise<void> =
 export const getStats = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
 
         if (!isValidUUID(id)) {
             throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid site ID');
@@ -324,7 +324,7 @@ export const getStats = async (req: Request, res: Response): Promise<void> => {
 export const uploadSiteAsset = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params; // site_id
-        const userId = req.userId!; // uploaded_by
+        const userId = req.tenantUser!.id!; // uploaded_by
         const { asset_type, metadata } = req.body; 
 
         if (!isValidUUID(id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid Site ID format');
@@ -365,7 +365,7 @@ export const uploadSiteAsset = async (req: Request, res: Response): Promise<void
 export const listSiteAssets = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params; // site_id
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const limit = req.query.limit ? parseInt(req.query.limit as string, 10) : 50;
         const offset = req.query.offset ? parseInt(req.query.offset as string, 10) : 0;
 
@@ -385,7 +385,7 @@ export const listSiteAssets = async (req: Request, res: Response): Promise<void>
 export const removeSiteAsset = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id, assetId } = req.params; // id = site_id, assetId = site_asset_id
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
 
         if (!isValidUUID(id) || !isValidUUID(assetId)) {
             throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid format for Site ID or Asset ID');

@@ -1,0 +1,21 @@
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/error-2026-07-03.log","timestamp":"2026-07-03 09:38:09"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/combined-2026-07-03.log","timestamp":"2026-07-03 09:38:09"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-07-03 09:38:09"}
+{"cacheHit":false,"duration":"23ms","level":"info","message":"Tenant Auth success","path":"/api/issues","timestamp":"2026-07-03 09:38:10","userId":"13dcea77-681f-4092-a82a-51c932c3d741"}
+{"issueId":"80a4f2f0-c37b-4224-890b-ef16fe10a472","level":"info","message":"Issue created","projectId":"3649ef84-bebb-4495-b0b4-8411de70eada","timestamp":"2026-07-03 09:38:10"}
+{"cacheHit":true,"duration":"1ms","level":"info","message":"Tenant Auth success","path":"/api/issues","timestamp":"2026-07-03 09:38:10","userId":"13dcea77-681f-4092-a82a-51c932c3d741"}
+{"cacheHit":false,"duration":"1ms","level":"info","message":"Tenant Auth success","path":"/api/issues","timestamp":"2026-07-03 09:38:10","userId":"2eb9f9d7-6691-48a6-b7dd-ea2336995d57"}
+{"cacheHit":true,"duration":"1ms","level":"info","message":"Tenant Auth success","path":"/api/issues","timestamp":"2026-07-03 09:38:10","userId":"13dcea77-681f-4092-a82a-51c932c3d741"}
+{"cacheHit":true,"duration":"1ms","level":"info","message":"Tenant Auth success","path":"/api/issues/80a4f2f0-c37b-4224-890b-ef16fe10a472","timestamp":"2026-07-03 09:38:10","userId":"13dcea77-681f-4092-a82a-51c932c3d741"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/api/issues/80a4f2f0-c37b-4224-890b-ef16fe10a472","timestamp":"2026-07-03 09:38:10","userId":"13dcea77-681f-4092-a82a-51c932c3d741"}
+{"issueId":"80a4f2f0-c37b-4224-890b-ef16fe10a472","level":"info","message":"Issue updated","timestamp":"2026-07-03 09:38:10"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/api/issues/80a4f2f0-c37b-4224-890b-ef16fe10a472/invite","timestamp":"2026-07-03 09:38:10","userId":"13dcea77-681f-4092-a82a-51c932c3d741"}
+{"issueId":"80a4f2f0-c37b-4224-890b-ef16fe10a472","level":"info","message":"User invited to issue successfully","role":"watcher","targetUserId":"2eb9f9d7-6691-48a6-b7dd-ea2336995d57","timestamp":"2026-07-03 09:38:10"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/api/issues/80a4f2f0-c37b-4224-890b-ef16fe10a472/invite","timestamp":"2026-07-03 09:38:10","userId":"13dcea77-681f-4092-a82a-51c932c3d741"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/api/issues/80a4f2f0-c37b-4224-890b-ef16fe10a472/invite","timestamp":"2026-07-03 09:38:10","userId":"2eb9f9d7-6691-48a6-b7dd-ea2336995d57"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/api/issues/80a4f2f0-c37b-4224-890b-ef16fe10a472","timestamp":"2026-07-03 09:38:10","userId":"2eb9f9d7-6691-48a6-b7dd-ea2336995d57"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/api/issues/80a4f2f0-c37b-4224-890b-ef16fe10a472","timestamp":"2026-07-03 09:38:10","userId":"13dcea77-681f-4092-a82a-51c932c3d741"}
+{"issueId":"80a4f2f0-c37b-4224-890b-ef16fe10a472","level":"info","message":"Issue deleted","timestamp":"2026-07-03 09:38:10"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/api/issues/80a4f2f0-c37b-4224-890b-ef16fe10a472/restore","timestamp":"2026-07-03 09:38:10","userId":"13dcea77-681f-4092-a82a-51c932c3d741"}
+{"issueId":"80a4f2f0-c37b-4224-890b-ef16fe10a472","level":"info","message":"Issue restored successfully","timestamp":"2026-07-03 09:38:10"}
+{"e":{"code":"22P02","file":"uuid.c","length":156,"line":"133","name":"error","routine":"string_to_uuid","severity":"ERROR","where":"PL/pgSQL function trg_issue_activity() line 6 at assignment"},"level":"error","message":"Test cleanup failed","timestamp":"2026-07-03 09:38:10"}

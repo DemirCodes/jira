@@ -528,7 +528,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/dmrcode/Desktop/jira/backend/prisma/src/generated/prisma",
+      "value": "/home/dmrcode/Desktop/jira/tenant_backend/prisma/src/generated/prisma",
       "fromEnvVar": null
     },
     "config": {

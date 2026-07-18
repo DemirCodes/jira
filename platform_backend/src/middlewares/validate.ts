@@ -41,8 +41,25 @@ export const validate = (...configs: ValidationConfig[]) => {
             }
 
             try {
-                // Zod parse işlemi
-                config.schema.parse(dataToValidate);
+                // Zod parse işlemi - parse edilmiş veriyi al
+                const parsedData = config.schema.parse(dataToValidate);
+                
+                // Parse edilmiş veriyi req objesine geri yaz
+                switch (config.source) {
+                    case 'body':
+                        req.body = parsedData;
+                        break;
+                    case 'query':
+                        req.query = parsedData as any;
+                        break;
+                    case 'params':
+                        req.params = parsedData as any;
+                        break;
+                    case 'headers':
+                        // Headers için özel işlem gerekebilir
+                        break;
+                }
+                
             } catch (error) {
                 if (error instanceof z.ZodError) {
                     const errors = error.issues.map((issue) => ({

@@ -110,3 +110,33 @@ export const platformLogout = async (token: string) => {
 
     return result.count > 0;
 };
+
+
+export const platformRegister = async (email: string, passwordPlain: string, role: 'super_admin' | 'support_admin' | 'billing_admin') => {
+    // 1. Kullanıcı var mı kontrolü
+    const existingUser = await prisma.platform_users.findUnique({ where: { email } });
+    if (existingUser) {
+        throw new AppError(ErrorCodes.VALIDATION_FAILED, 'Email already registered');
+    }
+
+    // 2. Şifreyi hashle
+    const hashedPassword = await bcrypt.hash(passwordPlain, 10);
+
+    // 3. Kullanıcıyı yarat
+    const newUser = await prisma.platform_users.create({
+        data: {
+            email,
+            password_hash: hashedPassword,
+            role,
+            is_active: true
+        }
+    });
+
+    return {
+        id: newUser.platform_user_id,
+        email: newUser.email,
+        role: newUser.role
+    };
+};
+
+

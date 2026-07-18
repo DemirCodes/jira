@@ -1,0 +1,1 @@
+{"e":{"code":"22P02","file":"uuid.c","length":156,"line":"133","name":"error","routine":"string_to_uuid","severity":"ERROR","where":"PL/pgSQL function trg_issue_activity() line 6 at assignment"},"level":"error","message":"Test cleanup failed","timestamp":"2026-07-03 09:38:10"}

@@ -15,7 +15,7 @@ import * as projectAssetService from '../services/projectAsset.service';
 // ==================== CREATE ====================
 export const create = async (req: Request, res: Response): Promise<void> => {
     try {
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const { site_id, name, project_key, board_type, description, is_private } = req.body;
 
         if (!site_id || !name || !project_key || !board_type) {
@@ -52,7 +52,7 @@ export const create = async (req: Request, res: Response): Promise<void> => {
 // ==================== READ (LIST & GET) ====================
 export const list = async (req: Request, res: Response): Promise<void> => {
     try {
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const site_id = req.query.site_id as string;
         const status = req.query.status as string;
         const search = req.query.search as string;
@@ -84,7 +84,7 @@ export const list = async (req: Request, res: Response): Promise<void> => {
 export const getById = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params; // projectId
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const site_id = req.query.site_id as string;
 
         if (!site_id) {
@@ -116,7 +116,7 @@ export const getById = async (req: Request, res: Response): Promise<void> => {
 export const update = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params; // projectId
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const { site_id, name, description, is_private, icon_url } = req.body;
 
         if (!site_id) {
@@ -143,7 +143,7 @@ export const update = async (req: Request, res: Response): Promise<void> => {
 export const updateStatus = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const { site_id, status } = req.body;
 
         if (!site_id || !status) {
@@ -170,7 +170,7 @@ export const updateStatus = async (req: Request, res: Response): Promise<void> =
 export const invite = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const { friendshipCode, orgId, site_id, role } = req.body;
 
         if (!friendshipCode || !orgId || !site_id || !role) {
@@ -197,7 +197,7 @@ export const invite = async (req: Request, res: Response): Promise<void> => {
 export const remove = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         
         const site_id = req.query.site_id as string || req.body.site_id;
 
@@ -225,7 +225,7 @@ export const remove = async (req: Request, res: Response): Promise<void> => {
 export const restore = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const { site_id } = req.body;
 
         if (!site_id) {
@@ -253,7 +253,7 @@ export const restore = async (req: Request, res: Response): Promise<void> => {
 export const listMembers = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const site_id = req.query.site_id as string;
         const limit = req.query.limit ? parseInt(req.query.limit as string) : 50;
         const offset = req.query.offset ? parseInt(req.query.offset as string) : 0;
@@ -283,7 +283,7 @@ export const listMembers = async (req: Request, res: Response): Promise<void> =>
 export const uploadProjectAsset = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params; // project_id
-        const userId = req.userId!; // uploaded_by
+        const userId = req.tenantUser!.id!; // uploaded_by
         const { asset_type, metadata } = req.body; 
 
         if (!isValidUUID(id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid Project ID format');
@@ -324,7 +324,7 @@ export const uploadProjectAsset = async (req: Request, res: Response): Promise<v
 export const listProjectAssets = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params; // project_id
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const limit = req.query.limit ? parseInt(req.query.limit as string, 10) : 50;
         const offset = req.query.offset ? parseInt(req.query.offset as string, 10) : 0;
 
@@ -344,7 +344,7 @@ export const listProjectAssets = async (req: Request, res: Response): Promise<vo
 export const removeProjectAsset = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id, assetId } = req.params; // id = project_id
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
 
         if (!isValidUUID(id) || !isValidUUID(assetId)) {
             throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid format for Project ID or Asset ID');

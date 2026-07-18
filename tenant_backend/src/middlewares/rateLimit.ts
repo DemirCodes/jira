@@ -66,3 +66,18 @@ export const memberManagementLimiter = rateLimit({
     standardHeaders: true,
     legacyHeaders: false,
 });
+
+
+
+// Bug ve Talep endpoint'leri için özel limiter (Spam / DoS engelleme)
+export const bugLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 dakika
+    max: 10,                  // 15 dakikada maksimum 10 işlem
+    message: {
+        // errorCodes.ts'deki sistemine uygun formatta:
+        error: '800-000-001', 
+        message: 'Too many bug report requests. Please try again later.'
+    },
+    standardHeaders: true,
+    legacyHeaders: false,
+});

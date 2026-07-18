@@ -56,6 +56,14 @@ export const ErrorCodes = {
     ISSUE_ALREADY_EXISTS: '500-003-002',           // 409 
     ISSUE_INVALID_STATUS: '500-004-001',        // 422
 
+    // BUG / TICKET MODULE (900)
+    BUG_NOT_FOUND: '900-001-001',               // 404
+    BUG_PERMISSION_DENIED: '900-002-001',       // 403
+    BUG_ADMIN_REQUIRED: '900-002-002',          // 403 (Sadece Owner/Admin)
+    BUG_ALREADY_CLOSED: '900-003-001',          // 409 (Zaten silinmiş/kapatılmış)
+    BUG_CREATE_FAILED: '900-000-001',           // 500
+    BUG_DELETE_FAILED: '900-000-002',           // 500
+
     // DATABASE MODULE (600)
     DB_CONNECTION_FAILED: '600-000-001',        // 503
     DB_QUERY_FAILED: '600-000-002',             // 500
@@ -125,6 +133,13 @@ export const ErrorMessages: Partial<Record<ErrorCode, string>> = {
     [ErrorCodes.ISSUE_ALREADY_EXISTS]: 'Issue with this name already exists.',
     [ErrorCodes.ISSUE_CANNOT_DELETE_HAS_CHILDREN]: 'Cannot delete issue with child issues.',
     [ErrorCodes.ISSUE_INVALID_STATUS]: 'Invalid status transition.',
+
+    [ErrorCodes.BUG_NOT_FOUND]: 'Bug report not found or you do not have access.',
+    [ErrorCodes.BUG_PERMISSION_DENIED]: 'You do not have permission to perform this action.',
+    [ErrorCodes.BUG_ADMIN_REQUIRED]: 'Only organization admin or owner can create or delete bug reports.',
+    [ErrorCodes.BUG_ALREADY_CLOSED]: 'This bug report is already closed or deleted.',
+    [ErrorCodes.BUG_CREATE_FAILED]: 'Failed to create bug report due to a system error.',
+    [ErrorCodes.BUG_DELETE_FAILED]: 'Failed to delete bug report due to a system error.',
 
     [ErrorCodes.DB_CONNECTION_FAILED]: 'Database connection failed.',
     [ErrorCodes.DB_QUERY_FAILED]: 'Database query failed.',

@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import { AppError } from './errorCodes';
+import { AppError } from '../utils/errorCodes';
 
 // ─── TİPLER ───────────────────────────────────────────────────────────────────
 

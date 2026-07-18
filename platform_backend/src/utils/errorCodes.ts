@@ -9,17 +9,40 @@
 
 // 1. Benzersiz Hata Kodları Tanımları
 export const ErrorCodes = {
-    // AUTH MODULE (100)
-    AUTH_NO_TOKEN: '100-002-001',             // 401
-    AUTH_INVALID_TOKEN: '100-002-002',         // 401
-    AUTH_TOKEN_EXPIRED: '100-002-003',         // 401
-    AUTH_INSUFFICIENT_PRIVILEGES: '100-002-004', // 403 (yeni)
-    AUTH_INVALID_CREDENTIALS: '100-002-005',    // 401 (genelde 401, ama 002 kategorisi)
-    AUTH_USER_NOT_FOUND: '100-001-001',         // 404
-    AUTH_EMAIL_ALREADY_EXISTS: '100-003-001',   // 409
-    AUTH_WEAK_PASSWORD: '100-004-001',          // 422
-    AUTH_RATE_LIMIT: '100-000-001',             // 429 (özel)
-    AUTH_FORBIDDEN: '100-002-006',               // 403 (yeni, platform user context missing)
+    // ==========================================
+    // PLATFORM AUTH MODULE (100) - Eklenecekler
+    // ==========================================
+    AUTH_NO_TOKEN: '100-002-001',             // 401 - Token yok
+    AUTH_INVALID_TOKEN: '100-002-002',         // 401 - Token geçersiz
+    AUTH_TOKEN_EXPIRED: '100-002-003',         // 401 - Token süresi dolmuş
+    AUTH_INSUFFICIENT_PRIVILEGES: '100-002-004', // 403 - Yetki yetersiz
+    AUTH_INVALID_CREDENTIALS: '100-002-005',    // 401 - Geçersiz email/şifre
+    AUTH_FORBIDDEN: '100-002-006',              // 403 - Platform user context missing
+    AUTH_SESSION_REVOKED: '100-002-007',        // 401 - Session iptal edilmiş
+    AUTH_USER_NOT_FOUND: '100-001-001',         // 404 - Kullanıcı bulunamadı
+    AUTH_SESSION_NOT_FOUND: '100-001-002',      // 404 - Session bulunamadı
+    AUTH_EMAIL_ALREADY_EXISTS: '100-003-001',   // 409 - Email zaten kayıtlı
+    AUTH_USER_ALREADY_EXISTS: '100-003-002',    // 409 - Kullanıcı zaten var
+    AUTH_SESSION_ALREADY_EXISTS: '100-003-003', // 409 - Aktif session zaten var
+    AUTH_WEAK_PASSWORD: '100-004-001',          // 422 - Zayıf şifre
+    AUTH_INVALID_EMAIL: '100-004-002',          // 422 - Geçersiz email formatı
+    AUTH_INVALID_ROLE: '100-004-003',           // 422 - Geçersiz rol
+    AUTH_PASSWORD_MISMATCH: '100-004-004',      // 422 - Şifreler eşleşmiyor
+    AUTH_USER_INACTIVE: '100-002-008',          // 403 - Hesap devre dışı
+    AUTH_USER_DELETED: '100-002-009',           // 403 - Hesap silinmiş
+    AUTH_RATE_LIMIT: '100-000-001',             // 429 - Çok fazla deneme
+    AUTH_REGISTRATION_DISABLED: '100-002-010',  // 403 - Kayıt kapalı
+    AUTH_SESSION_EXPIRED: '100-001-003',        // 401 - Session süresi dolmuş
+    AUTH_LOGOUT_FAILED: '100-000-002',          // 500 - Çıkış başarısız
+    AUTH_REGISTER_FAILED: '100-000-003',        // 500 - Kayıt başarısız
+    AUTH_LOGIN_FAILED: '100-000-004',           // 500 - Giriş başarısız
+    AUTH_HASH_FAILED: '100-000-005',            // 500 - Şifre hash'leme hatası
+    AUTH_TOKEN_GENERATION_FAILED: '100-000-006', // 500 - Token oluşturma hatası
+    AUTH_CACHE_FAILED: '100-000-007',           // 500 - Cache hatası
+    AUTH_DB_ERROR: '100-000-008',              // 500 - Veritabanı hatası
+
+
+
 
     // ORGANIZATION MODULE (200)
     ORG_NOT_FOUND: '200-001-001',               // 404
@@ -75,9 +98,8 @@ export const ErrorCodes = {
     // RATE LIMIT MODULE (800)
     RATE_LIMIT_EXCEEDED: '800-000-001',         // 429
 
-
-
     INTERNAL_SERVER_ERROR: '600-000-999',        // 500 (genel hata, özel durumlar için kullanılabilir)
+
 } as const;
 
 // 2. TypeScript Tip Tanımları
@@ -85,16 +107,38 @@ export type ErrorCode = (typeof ErrorCodes)[keyof typeof ErrorCodes];
 
 // 3. Hata Mesajları (opsiyonel, çünkü servisler genelde kendi mesajını verir)
 export const ErrorMessages: Partial<Record<ErrorCode, string>> = {
-    [ErrorCodes.AUTH_NO_TOKEN]: 'No token provided. Please authenticate.',
-    [ErrorCodes.AUTH_INVALID_TOKEN]: 'Invalid token. Please login again.',
-    [ErrorCodes.AUTH_TOKEN_EXPIRED]: 'Token expired. Please refresh your token.',
-    [ErrorCodes.AUTH_INSUFFICIENT_PRIVILEGES]: 'You do not have sufficient privileges.',
-    [ErrorCodes.AUTH_INVALID_CREDENTIALS]: 'Invalid email or password.',
-    [ErrorCodes.AUTH_USER_NOT_FOUND]: 'User not found with this email.',
-    [ErrorCodes.AUTH_EMAIL_ALREADY_EXISTS]: 'Email already exists. Please use another email.',
-    [ErrorCodes.AUTH_WEAK_PASSWORD]: 'Password is too weak.',
-    [ErrorCodes.AUTH_RATE_LIMIT]: 'Too many attempts. Please try again later.',
-    [ErrorCodes.AUTH_FORBIDDEN]: 'Platform user context missing.',
+
+    
+    [ErrorCodes.AUTH_NO_TOKEN]: 'Authentication token is required',
+    [ErrorCodes.AUTH_INVALID_TOKEN]: 'Invalid authentication token',
+    [ErrorCodes.AUTH_TOKEN_EXPIRED]: 'Authentication token has expired',
+    [ErrorCodes.AUTH_INSUFFICIENT_PRIVILEGES]: 'You do not have permission to perform this action',
+    [ErrorCodes.AUTH_INVALID_CREDENTIALS]: 'Invalid email or password',
+    [ErrorCodes.AUTH_FORBIDDEN]: 'Access denied. Platform user context required',
+    [ErrorCodes.AUTH_SESSION_REVOKED]: 'Session has been revoked. Please login again',
+    [ErrorCodes.AUTH_USER_NOT_FOUND]: 'User not found',
+    [ErrorCodes.AUTH_SESSION_NOT_FOUND]: 'Session not found',
+    [ErrorCodes.AUTH_EMAIL_ALREADY_EXISTS]: 'This email address is already registered',
+    [ErrorCodes.AUTH_USER_ALREADY_EXISTS]: 'User already exists',
+    [ErrorCodes.AUTH_SESSION_ALREADY_EXISTS]: 'Active session already exists',
+    [ErrorCodes.AUTH_WEAK_PASSWORD]: 'Password does not meet security requirements',
+    [ErrorCodes.AUTH_INVALID_EMAIL]: 'Invalid email format',
+    [ErrorCodes.AUTH_INVALID_ROLE]: 'Invalid user role specified',
+    [ErrorCodes.AUTH_PASSWORD_MISMATCH]: 'Passwords do not match',
+    [ErrorCodes.AUTH_USER_INACTIVE]: 'Account is deactivated. Please contact administrator',
+    [ErrorCodes.AUTH_USER_DELETED]: 'Account has been deleted',
+    [ErrorCodes.AUTH_RATE_LIMIT]: 'Too many login attempts. Please try again later',
+    [ErrorCodes.AUTH_REGISTRATION_DISABLED]: 'Registration is currently disabled',
+    [ErrorCodes.AUTH_SESSION_EXPIRED]: 'Session has expired. Please login again',
+    [ErrorCodes.AUTH_LOGOUT_FAILED]: 'Logout failed. Please try again',
+    [ErrorCodes.AUTH_REGISTER_FAILED]: 'Registration failed. Please try again',
+    [ErrorCodes.AUTH_LOGIN_FAILED]: 'Login failed. Please try again',
+    [ErrorCodes.AUTH_HASH_FAILED]: 'Password processing failed',
+    [ErrorCodes.AUTH_TOKEN_GENERATION_FAILED]: 'Token generation failed',
+    [ErrorCodes.AUTH_CACHE_FAILED]: 'Cache operation failed',
+    [ErrorCodes.AUTH_DB_ERROR]: 'Database operation failed',
+
+
     [ErrorCodes.ORG_NOT_FOUND]: 'Organization not found.',
     [ErrorCodes.ORG_PERMISSION_DENIED]: 'You do not have permission to perform this action.',
     [ErrorCodes.ORG_OWNER_REQUIRED]: 'Only organization owner can perform this action.',
@@ -143,6 +187,8 @@ export const ErrorMessages: Partial<Record<ErrorCode, string>> = {
     [ErrorCodes.RATE_LIMIT_EXCEEDED]: 'Too many requests. Please try again later.',
 
     [ErrorCodes.INTERNAL_SERVER_ERROR]: 'Internal server error. Please try again later.',
+
+
 };
 
 // 4. HTTP Durum Kodu Belirleyici

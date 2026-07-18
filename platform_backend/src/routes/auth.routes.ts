@@ -10,4 +10,6 @@ router.post('/login', authController.login);
 // Protected route (Sadece giriş yapmış adminler çıkış yapabilir)
 router.post('/logout', platformAuth, authController.logout);
 
+router.post('/register', authController.register);
+
 export default router;

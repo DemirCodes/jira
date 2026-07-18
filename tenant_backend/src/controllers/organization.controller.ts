@@ -14,7 +14,7 @@ import * as orgAssetService from '../services/organizationAsset.service';
 // ==================== CREATE ====================
 export const create = async (req: Request, res: Response): Promise<void> => {
     try {
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const { name, slug, description } = req.body;
 
         if (!name || !slug) {
@@ -38,7 +38,7 @@ export const create = async (req: Request, res: Response): Promise<void> => {
 // ==================== READ ====================
 export const list = async (req: Request, res: Response): Promise<void> => {
     try {
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         // userId eklendi
         const orgs = await orgService.getUserOrganizations(userId);
         res.json(orgs);
@@ -55,7 +55,7 @@ export const list = async (req: Request, res: Response): Promise<void> => {
 export const getById = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
 
         if (!isValidUUID(id)) {
             throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid organization ID format');
@@ -84,7 +84,7 @@ export const getById = async (req: Request, res: Response): Promise<void> => {
 export const update = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const { name, description, slug } = req.body;
 
         await authService.requireOrgAdminOrOwner(userId, id);
@@ -106,7 +106,7 @@ export const update = async (req: Request, res: Response): Promise<void> => {
 export const remove = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
 
         await authService.requireOrgOwner(userId, id);
 
@@ -126,7 +126,7 @@ export const remove = async (req: Request, res: Response): Promise<void> => {
 // ==================== INVITE ====================
 export const invite = async (req: Request, res: Response): Promise<void> => {
     try {
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const { id } = req.params;
         const { friendshipCode, role = 'member' } = req.body;
 
@@ -163,7 +163,7 @@ export const invite = async (req: Request, res: Response): Promise<void> => {
 export const listMembers = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
 
         await authService.requireOrgAdminOrOwner(userId, id);
 
@@ -183,7 +183,7 @@ export const listMembers = async (req: Request, res: Response): Promise<void> =>
 export const updateMemberRole = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id, memberId } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const { role } = req.body;
 
         const validRoles = ['admin', 'member', 'viewer'];
@@ -210,7 +210,7 @@ export const updateMemberRole = async (req: Request, res: Response): Promise<voi
 export const removeMember = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id, memberId } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
 
         await authService.requireOrgAdminOrOwner(userId, id);
 
@@ -231,7 +231,7 @@ export const removeMember = async (req: Request, res: Response): Promise<void> =
 export const listInvitations = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
 
         await authService.requireOrgAdminOrOwner(userId, id);
 
@@ -251,7 +251,7 @@ export const listInvitations = async (req: Request, res: Response): Promise<void
 export const cancelInvitation = async (req: Request, res: Response): Promise<void> => {
     try {
         const { invitationId } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
 
         if (!isValidUUID(invitationId)) {
             throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid invitation ID');
@@ -284,7 +284,7 @@ export const cancelInvitation = async (req: Request, res: Response): Promise<voi
 export const getStats = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
 
         await authService.requireOrgMember(userId, id);
 
@@ -305,7 +305,7 @@ export const getStats = async (req: Request, res: Response): Promise<void> => {
 export const leave = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
 
         await authService.requireOrgMember(userId, id);
 
@@ -327,7 +327,7 @@ export const leave = async (req: Request, res: Response): Promise<void> => {
 export const uploadAsset = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params; 
-        const userId = req.userId!; 
+        const userId = req.tenantUser!.id!; 
         const { asset_type, metadata } = req.body; 
 
         if (!isValidUUID(id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid organization ID format');
@@ -368,7 +368,7 @@ export const uploadAsset = async (req: Request, res: Response): Promise<void> =>
 export const listAssets = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const limit = req.query.limit ? parseInt(req.query.limit as string, 10) : 50;
         const offset = req.query.offset ? parseInt(req.query.offset as string, 10) : 0;
 
@@ -388,7 +388,7 @@ export const listAssets = async (req: Request, res: Response): Promise<void> => 
 export const removeAsset = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id, assetId } = req.params;
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
 
         if (!isValidUUID(id) || !isValidUUID(assetId)) {
             throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid ID format');

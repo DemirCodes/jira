@@ -1,0 +1,10 @@
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/error-2026-07-06.log","timestamp":"2026-07-06 11:27:31"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/combined-2026-07-06.log","timestamp":"2026-07-06 11:27:31"}
+{"bugId":"bug-1","deletedBy":"mock-user-uuid","level":"info","message":"Bug soft deleted","timestamp":"2026-07-06 11:27:31"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/error-2026-07-06.log","timestamp":"2026-07-06 11:27:52"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/combined-2026-07-06.log","timestamp":"2026-07-06 11:27:52"}
+{"bugId":"bug-1","deletedBy":"mock-user-uuid","level":"info","message":"Bug soft deleted","timestamp":"2026-07-06 11:27:52"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/error-2026-07-06.log","timestamp":"2026-07-06 11:28:56"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/combined-2026-07-06.log","timestamp":"2026-07-06 11:28:56"}
+{"bugId":"new-bug-123","level":"info","message":"New application bug reported","reportedBy":"mock-user-uuid","timestamp":"2026-07-06 11:28:56"}
+{"bugId":"bug-1","deletedBy":"mock-user-uuid","level":"info","message":"Bug soft deleted","timestamp":"2026-07-06 11:28:56"}

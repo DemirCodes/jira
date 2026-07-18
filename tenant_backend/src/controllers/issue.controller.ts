@@ -16,7 +16,7 @@ import * as issueAssetService from '../services/issueAssets.service';
 // ==================== CREATE ====================
 export const create = async (req: Request, res: Response): Promise<void> => {
     try {
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const { project_id, title, description, is_private } = req.body;
 
         if (!project_id || !title) {
@@ -51,7 +51,7 @@ export const create = async (req: Request, res: Response): Promise<void> => {
 // ==================== READ (LIST & GET) ====================
 export const list = async (req: Request, res: Response): Promise<void> => {
     try {
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const project_id = req.query.project_id as string;
         const status = req.query.status as string;
         const priority = req.query.priority as string;
@@ -94,7 +94,7 @@ export const list = async (req: Request, res: Response): Promise<void> => {
 export const getById = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params; // issueId
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const project_id = req.query.project_id as string;
 
         if (project_id && !isValidUUID(project_id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid project_id format');
@@ -121,7 +121,7 @@ export const getById = async (req: Request, res: Response): Promise<void> => {
 export const update = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params; // issueId
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const { project_id, title, description, status, priority, assignee_id, is_private } = req.body;
 
         if (!project_id) {
@@ -148,7 +148,7 @@ export const update = async (req: Request, res: Response): Promise<void> => {
 export const invite = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params; // issueId
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const { friendship_code, org_id, site_id, project_id, role } = req.body;
 
         if (!friendship_code || !org_id || !site_id || !project_id || !role) {
@@ -177,7 +177,7 @@ export const invite = async (req: Request, res: Response): Promise<void> => {
 export const remove = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params; // issueId
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         
         const project_id = req.query.project_id as string || req.body.project_id;
 
@@ -205,7 +205,7 @@ export const remove = async (req: Request, res: Response): Promise<void> => {
 export const restore = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params; // issueId
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const project_id = req.query.project_id as string || req.body.project_id;
 
         if (!project_id) {
@@ -235,7 +235,7 @@ export const restore = async (req: Request, res: Response): Promise<void> => {
 export const uploadIssueAsset = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params; // issue_id
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const { asset_type, metadata } = req.body;
 
         if (!isValidUUID(id)) throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid Issue ID format');
@@ -276,7 +276,7 @@ export const uploadIssueAsset = async (req: Request, res: Response): Promise<voi
 export const listIssueAssets = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params; // issue_id
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
         const limit = req.query.limit ? parseInt(req.query.limit as string, 10) : 50;
         const offset = req.query.offset ? parseInt(req.query.offset as string, 10) : 0;
 
@@ -296,7 +296,7 @@ export const listIssueAssets = async (req: Request, res: Response): Promise<void
 export const removeIssueAsset = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id, assetId } = req.params; // id = issue_id
-        const userId = req.userId!;
+        const userId = req.tenantUser!.id!;
 
         if (!isValidUUID(id) || !isValidUUID(assetId)) {
             throw new AppError(ErrorCodes.VALIDATION_INVALID_UUID, 'Invalid format for Issue ID or Asset ID');

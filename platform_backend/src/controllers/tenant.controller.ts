@@ -35,3 +35,4 @@ export const createTenant = async (req: Request, res: Response, next: NextFuncti
         next(error);
     }
 };
+

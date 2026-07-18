@@ -1,0 +1,3 @@
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/error-2026-07-12.log","timestamp":"2026-07-12 16:40:27"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/combined-2026-07-12.log","timestamp":"2026-07-12 16:40:27"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-07-12 16:40:27"}

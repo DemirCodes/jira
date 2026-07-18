@@ -14,7 +14,7 @@ export interface CreateTenantParams {
 
 export const provisionNewTenant = async (params: CreateTenantParams) => {
     const { companyName, domain, adminEmail, adminPasswordPlain, platformUserId } = params;
-
+    
     const client = await tenantPool.connect();
     
     try {
@@ -23,14 +23,14 @@ export const provisionNewTenant = async (params: CreateTenantParams) => {
 
         // 1. Audit ve RLS Context'i Ayarla (Platform Yöneticisi kimliğini bildir)
         await client.query('SELECT set_config($1, $2, true)', ['app.current_platform_user_id', platformUserId]);
-
+        const orgCheckId = crypto.randomUUID();
         // 2. Tenant (Organizasyon) Oluşturma
         // (Not: Tablo isimleri senin tenant_db şemana göre organizations veya tenants olabilir)
         const orgResult = await client.query(`
-            INSERT INTO organizations (name, domain, status, created_at)
-            VALUES ($1, $2, 'active', NOW())
+            INSERT INTO organizations (org_name, slug, org_status, org_check_id, created_at)
+            VALUES ($1, $2, 'active', $3, NOW())
             RETURNING org_id
-        `, [companyName, domain]);
+        `, [companyName, domain, orgCheckId]);
 
         const orgId = orgResult.rows[0].org_id;
 

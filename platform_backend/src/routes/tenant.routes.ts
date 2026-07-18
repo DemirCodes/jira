@@ -11,5 +11,5 @@ router.post(
     requirePlatformRole(['super_admin']), 
     tenantController.createTenant
 );
-
 export default router;
+

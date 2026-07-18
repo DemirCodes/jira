@@ -24,7 +24,7 @@ const getRequestMeta = (req: Request): Record<string, unknown> => ({
     method: req.method,
     path: req.originalUrl || req.path,
     ip: req.ip,
-    userId: req.userId,
+    userId: (req as { userId?: unknown }).userId,
 });
 
 export const errorHandler = (

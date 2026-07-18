@@ -1,0 +1,132 @@
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/error-2026-07-02.log","timestamp":"2026-07-02 13:19:50"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/combined-2026-07-02.log","timestamp":"2026-07-02 13:19:50"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-07-02 13:19:50"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/error-2026-07-02.log","timestamp":"2026-07-02 14:11:21"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/combined-2026-07-02.log","timestamp":"2026-07-02 14:11:21"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-07-02 14:11:21"}
+{"level":"warn","message":"Auth failed: User inactive or deleted","timestamp":"2026-07-02 14:11:22","userId":"9fcfdcd9-744c-4356-91a3-2797cdb695fa"}
+{"level":"warn","message":"Auth failed: User inactive or deleted","timestamp":"2026-07-02 14:11:22","userId":"9fcfdcd9-744c-4356-91a3-2797cdb695fa"}
+{"level":"warn","message":"Auth failed: User inactive or deleted","timestamp":"2026-07-02 14:11:22","userId":"9fcfdcd9-744c-4356-91a3-2797cdb695fa"}
+{"level":"warn","message":"Auth failed: User inactive or deleted","timestamp":"2026-07-02 14:11:22","userId":"9fcfdcd9-744c-4356-91a3-2797cdb695fa"}
+{"level":"warn","message":"Auth failed: User inactive or deleted","timestamp":"2026-07-02 14:11:22","userId":"9fcfdcd9-744c-4356-91a3-2797cdb695fa"}
+{"level":"warn","message":"Auth failed: User inactive or deleted","timestamp":"2026-07-02 14:11:22","userId":"9fcfdcd9-744c-4356-91a3-2797cdb695fa"}
+{"level":"warn","message":"Auth failed: User inactive or deleted","timestamp":"2026-07-02 14:11:22","userId":"9fcfdcd9-744c-4356-91a3-2797cdb695fa"}
+{"level":"warn","message":"Auth failed: User inactive or deleted","timestamp":"2026-07-02 14:11:22","userId":"9fcfdcd9-744c-4356-91a3-2797cdb695fa"}
+{"level":"warn","message":"Auth failed: User inactive or deleted","timestamp":"2026-07-02 14:11:22","userId":"9fcfdcd9-744c-4356-91a3-2797cdb695fa"}
+{"level":"warn","message":"Auth failed: User inactive or deleted","timestamp":"2026-07-02 14:11:22","userId":"9fcfdcd9-744c-4356-91a3-2797cdb695fa"}
+{"level":"warn","message":"Auth failed: User inactive or deleted","timestamp":"2026-07-02 14:11:22","userId":"9fcfdcd9-744c-4356-91a3-2797cdb695fa"}
+{"level":"warn","message":"Auth failed: User inactive or deleted","timestamp":"2026-07-02 14:11:22","userId":"9fcfdcd9-744c-4356-91a3-2797cdb695fa"}
+{"e":{"code":"22P02","file":"uuid.c","length":156,"line":"133","name":"error","routine":"string_to_uuid","severity":"ERROR","where":"PL/pgSQL function trg_issue_activity() line 6 at assignment"},"level":"error","message":"Test cleanup failed","timestamp":"2026-07-02 14:11:22"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/error-2026-07-02.log","timestamp":"2026-07-02 14:20:21"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/combined-2026-07-02.log","timestamp":"2026-07-02 14:20:21"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/error-2026-07-02.log","timestamp":"2026-07-02 14:39:04"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/combined-2026-07-02.log","timestamp":"2026-07-02 14:39:04"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-07-02 14:39:04"}
+{"cacheHit":false,"duration":"22ms","level":"info","message":"Tenant Auth success","path":"/api/issues","timestamp":"2026-07-02 14:39:04","userId":"c1bb1773-54f2-4ba4-870a-c9396d5bfe64"}
+{"issueId":"e147dc52-534f-409f-ac4f-9730cce1aeab","level":"info","message":"Issue created","projectId":"54c5ad39-a659-4eaf-a317-86cb92e01eb6","timestamp":"2026-07-02 14:39:04"}
+{"cacheHit":true,"duration":"1ms","level":"info","message":"Tenant Auth success","path":"/api/issues","timestamp":"2026-07-02 14:39:04","userId":"c1bb1773-54f2-4ba4-870a-c9396d5bfe64"}
+{"cacheHit":false,"duration":"1ms","level":"info","message":"Tenant Auth success","path":"/api/issues","timestamp":"2026-07-02 14:39:04","userId":"685ea95a-8027-40df-ba0d-6aa29ee4f094"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/api/issues","timestamp":"2026-07-02 14:39:04","userId":"c1bb1773-54f2-4ba4-870a-c9396d5bfe64"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/api/issues/e147dc52-534f-409f-ac4f-9730cce1aeab","timestamp":"2026-07-02 14:39:04","userId":"c1bb1773-54f2-4ba4-870a-c9396d5bfe64"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/api/issues/e147dc52-534f-409f-ac4f-9730cce1aeab","timestamp":"2026-07-02 14:39:04","userId":"c1bb1773-54f2-4ba4-870a-c9396d5bfe64"}
+{"issueId":"e147dc52-534f-409f-ac4f-9730cce1aeab","level":"info","message":"Issue updated","timestamp":"2026-07-02 14:39:04"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/api/issues/e147dc52-534f-409f-ac4f-9730cce1aeab/invite","timestamp":"2026-07-02 14:39:04","userId":"c1bb1773-54f2-4ba4-870a-c9396d5bfe64"}
+{"issueId":"e147dc52-534f-409f-ac4f-9730cce1aeab","level":"info","message":"User invited to issue successfully","role":"watcher","targetUserId":"685ea95a-8027-40df-ba0d-6aa29ee4f094","timestamp":"2026-07-02 14:39:04"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/api/issues/e147dc52-534f-409f-ac4f-9730cce1aeab/invite","timestamp":"2026-07-02 14:39:04","userId":"c1bb1773-54f2-4ba4-870a-c9396d5bfe64"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/api/issues/e147dc52-534f-409f-ac4f-9730cce1aeab/invite","timestamp":"2026-07-02 14:39:04","userId":"685ea95a-8027-40df-ba0d-6aa29ee4f094"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/api/issues/e147dc52-534f-409f-ac4f-9730cce1aeab","timestamp":"2026-07-02 14:39:04","userId":"685ea95a-8027-40df-ba0d-6aa29ee4f094"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/api/issues/e147dc52-534f-409f-ac4f-9730cce1aeab","timestamp":"2026-07-02 14:39:04","userId":"c1bb1773-54f2-4ba4-870a-c9396d5bfe64"}
+{"issueId":"e147dc52-534f-409f-ac4f-9730cce1aeab","level":"info","message":"Issue deleted","timestamp":"2026-07-02 14:39:04"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/api/issues/e147dc52-534f-409f-ac4f-9730cce1aeab/restore","timestamp":"2026-07-02 14:39:04","userId":"c1bb1773-54f2-4ba4-870a-c9396d5bfe64"}
+{"issueId":"e147dc52-534f-409f-ac4f-9730cce1aeab","level":"info","message":"Issue restored successfully","timestamp":"2026-07-02 14:39:04"}
+{"e":{"code":"22P02","file":"uuid.c","length":156,"line":"133","name":"error","routine":"string_to_uuid","severity":"ERROR","where":"PL/pgSQL function trg_issue_activity() line 6 at assignment"},"level":"error","message":"Test cleanup failed","timestamp":"2026-07-02 14:39:04"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/error-2026-07-02.log","timestamp":"2026-07-02 14:40:13"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/combined-2026-07-02.log","timestamp":"2026-07-02 14:40:13"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/error-2026-07-02.log","timestamp":"2026-07-02 14:43:34"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/combined-2026-07-02.log","timestamp":"2026-07-02 14:43:34"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-07-02 14:43:34"}
+{"cacheHit":false,"duration":"21ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:43:34","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site created","siteId":"c9f5db8d-c258-4d23-9e41-78f418ba0b6a","slug":"test-site-1782992614627","timestamp":"2026-07-02 14:43:34"}
+{"cacheHit":false,"duration":"2ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:43:34","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"currentRole":"member","entity":"organization_memberships/2d2ed51a-febf-4ec7-bf52-ceb738e067b1","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin"],"timestamp":"2026-07-02 14:43:34","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"cacheHit":false,"duration":"1ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:43:34","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"currentRole":"viewer","entity":"organization_memberships/2d2ed51a-febf-4ec7-bf52-ceb738e067b1","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin"],"timestamp":"2026-07-02 14:43:34","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"cacheHit":true,"duration":"1ms","level":"info","message":"Tenant Auth success","path":"/c9f5db8d-c258-4d23-9e41-78f418ba0b6a","timestamp":"2026-07-02 14:43:34","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"cacheHit":true,"duration":"1ms","level":"info","message":"Tenant Auth success","path":"/c9f5db8d-c258-4d23-9e41-78f418ba0b6a","timestamp":"2026-07-02 14:43:34","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"currentRole":"none","entity":"site_memberships/c9f5db8d-c258-4d23-9e41-78f418ba0b6a","level":"warn","message":"Authorization denied","requiredRoles":["admin","contrubitor","viewer"],"timestamp":"2026-07-02 14:43:34","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/c9f5db8d-c258-4d23-9e41-78f418ba0b6a","timestamp":"2026-07-02 14:43:34","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site updated","siteId":"c9f5db8d-c258-4d23-9e41-78f418ba0b6a","timestamp":"2026-07-02 14:43:34"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/c9f5db8d-c258-4d23-9e41-78f418ba0b6a","timestamp":"2026-07-02 14:43:34","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/c9f5db8d-c258-4d23-9e41-78f418ba0b6a/invite","timestamp":"2026-07-02 14:43:34","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"error":{"errorCode":"600-000-002","isOperational":true,"name":"AppError","statusCode":500},"level":"error","message":"Failed to invite to site","siteId":"c9f5db8d-c258-4d23-9e41-78f418ba0b6a","timestamp":"2026-07-02 14:43:34"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/c9f5db8d-c258-4d23-9e41-78f418ba0b6a/invite","timestamp":"2026-07-02 14:43:34","userId":"323e4567-e89b-42d3-a456-426614174002"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/c9f5db8d-c258-4d23-9e41-78f418ba0b6a/members","timestamp":"2026-07-02 14:43:34","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/c9f5db8d-c258-4d23-9e41-78f418ba0b6a/stats","timestamp":"2026-07-02 14:43:34","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/c9f5db8d-c258-4d23-9e41-78f418ba0b6a","timestamp":"2026-07-02 14:43:34","userId":"223e4567-e89b-42d3-a456-426614174001"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:43:34","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site created","siteId":"ce7e0c11-fcb4-42e4-ac5c-41af11a06987","slug":"delete-1782992614765","timestamp":"2026-07-02 14:43:34"}
+{"cacheHit":true,"duration":"1ms","level":"info","message":"Tenant Auth success","path":"/ce7e0c11-fcb4-42e4-ac5c-41af11a06987","timestamp":"2026-07-02 14:43:34","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Site deleted","siteId":"ce7e0c11-fcb4-42e4-ac5c-41af11a06987","timestamp":"2026-07-02 14:43:34"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/error-2026-07-02.log","timestamp":"2026-07-02 14:43:53"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/combined-2026-07-02.log","timestamp":"2026-07-02 14:43:53"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-07-02 14:43:53"}
+{"cacheHit":false,"duration":"21ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:43:54","userId":"4a2993b5-a468-49e6-a280-3985c2bd9026"}
+{"cacheHit":false,"duration":"1ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:43:54","userId":"b8679e2a-85ad-400e-8dd6-6cdf9d8d09e4"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:43:54","userId":"b8679e2a-85ad-400e-8dd6-6cdf9d8d09e4"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:43:54","userId":"4a2993b5-a468-49e6-a280-3985c2bd9026"}
+{"cacheHit":true,"duration":"1ms","level":"info","message":"Tenant Auth success","path":"/0fa2bc48-1f5f-44e2-8df6-b66f25ae7790","timestamp":"2026-07-02 14:43:54","userId":"b8679e2a-85ad-400e-8dd6-6cdf9d8d09e4"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/0fa2bc48-1f5f-44e2-8df6-b66f25ae7790","timestamp":"2026-07-02 14:43:54","userId":"4a2993b5-a468-49e6-a280-3985c2bd9026"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/error-2026-07-02.log","timestamp":"2026-07-02 14:44:22"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/combined-2026-07-02.log","timestamp":"2026-07-02 14:44:22"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/error-2026-07-02.log","timestamp":"2026-07-02 14:48:14"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/combined-2026-07-02.log","timestamp":"2026-07-02 14:48:14"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-07-02 14:48:14"}
+{"level":"info","message":"Test setup completed","timestamp":"2026-07-02 14:48:14"}
+{"cacheHit":false,"duration":"21ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:48:14","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Organization created","orgId":"0fc158c9-7c8d-4bbb-84d3-39ddbc5d9eb6","slug":"test-org-1782992894966","timestamp":"2026-07-02 14:48:15"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:48:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:48:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:48:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Organization created","orgId":"ea685c8a-2e67-4ae4-bd09-03c32462163d","slug":"duplicate-slug-mr3fxmp2","timestamp":"2026-07-02 14:48:15"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:48:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:48:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Retrieved 1 organizations","timestamp":"2026-07-02 14:48:15"}
+{"cacheHit":true,"duration":"1ms","level":"info","message":"Tenant Auth success","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-07-02 14:48:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"currentRole":"none","entity":"organization_memberships/00000000-0000-4000-8000-000000000000","level":"warn","message":"Authorization denied","requiredRoles":["owner","admin","member","viewer"],"timestamp":"2026-07-02 14:48:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"cacheHit":true,"duration":"1ms","level":"info","message":"Tenant Auth success","path":"/invalid-id","timestamp":"2026-07-02 14:48:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/00000000-0000-4000-8000-000000000000","timestamp":"2026-07-02 14:48:15","userId":"123e4567-e89b-42d3-a456-426614174000"}
+{"level":"info","message":"Test cleanup completed","timestamp":"2026-07-02 14:48:15"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/error-2026-07-02.log","timestamp":"2026-07-02 14:48:39"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/combined-2026-07-02.log","timestamp":"2026-07-02 14:48:39"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-07-02 14:48:39"}
+{"level":"info","message":"Project Test Setup Completed","timestamp":"2026-07-02 14:48:39"}
+{"cacheHit":false,"duration":"21ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:48:39","userId":"1c3fb1fa-1e46-4bd2-8fea-5c6649b7ff1a"}
+{"level":"info","message":"Project created","projectId":"525493ca-72d9-42ed-af8b-2f356ec8c940","projectKey":"ECOMM","siteId":"71cc743a-1287-4a76-a91c-12a99aa88c70","timestamp":"2026-07-02 14:48:39"}
+{"cacheHit":true,"duration":"1ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:48:39","userId":"1c3fb1fa-1e46-4bd2-8fea-5c6649b7ff1a"}
+{"cacheHit":false,"duration":"3ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:48:39","userId":"89dac97f-acc3-485b-8053-94e73b2d7f6c"}
+{"cacheHit":true,"duration":"1ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:48:39","userId":"1c3fb1fa-1e46-4bd2-8fea-5c6649b7ff1a"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:48:39","userId":"1c3fb1fa-1e46-4bd2-8fea-5c6649b7ff1a"}
+{"cacheHit":true,"duration":"1ms","level":"info","message":"Tenant Auth success","path":"/525493ca-72d9-42ed-af8b-2f356ec8c940","timestamp":"2026-07-02 14:48:39","userId":"1c3fb1fa-1e46-4bd2-8fea-5c6649b7ff1a"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/cfdcaf4f-7312-4635-8166-999149173807","timestamp":"2026-07-02 14:48:39","userId":"1c3fb1fa-1e46-4bd2-8fea-5c6649b7ff1a"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/525493ca-72d9-42ed-af8b-2f356ec8c940","timestamp":"2026-07-02 14:48:39","userId":"1c3fb1fa-1e46-4bd2-8fea-5c6649b7ff1a"}
+{"level":"info","message":"Project updated","projectId":"525493ca-72d9-42ed-af8b-2f356ec8c940","timestamp":"2026-07-02 14:48:39"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/525493ca-72d9-42ed-af8b-2f356ec8c940","timestamp":"2026-07-02 14:48:39","userId":"89dac97f-acc3-485b-8053-94e73b2d7f6c"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/525493ca-72d9-42ed-af8b-2f356ec8c940","timestamp":"2026-07-02 14:48:39","userId":"89dac97f-acc3-485b-8053-94e73b2d7f6c"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/525493ca-72d9-42ed-af8b-2f356ec8c940","timestamp":"2026-07-02 14:48:39","userId":"1c3fb1fa-1e46-4bd2-8fea-5c6649b7ff1a"}
+{"level":"info","message":"Project deleted","projectId":"525493ca-72d9-42ed-af8b-2f356ec8c940","timestamp":"2026-07-02 14:48:39"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/525493ca-72d9-42ed-af8b-2f356ec8c940","timestamp":"2026-07-02 14:48:39","userId":"1c3fb1fa-1e46-4bd2-8fea-5c6649b7ff1a"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/525493ca-72d9-42ed-af8b-2f356ec8c940/restore","timestamp":"2026-07-02 14:48:39","userId":"1c3fb1fa-1e46-4bd2-8fea-5c6649b7ff1a"}
+{"level":"info","message":"Project restored successfully","projectId":"525493ca-72d9-42ed-af8b-2f356ec8c940","timestamp":"2026-07-02 14:48:39"}
+{"level":"info","message":"Project Test Cleanup Completed","timestamp":"2026-07-02 14:48:39"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/error-2026-07-02.log","timestamp":"2026-07-02 14:49:18"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/combined-2026-07-02.log","timestamp":"2026-07-02 14:49:18"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-07-02 14:49:18"}
+{"cacheHit":false,"duration":"22ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:49:18","userId":"a476fba9-ed9d-43d9-87b9-af6c22178529"}
+{"cacheHit":false,"duration":"2ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:49:18","userId":"89224447-6aa2-4fc4-b277-ffb9558bbc49"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:49:18","userId":"89224447-6aa2-4fc4-b277-ffb9558bbc49"}
+{"cacheHit":true,"duration":"1ms","level":"info","message":"Tenant Auth success","path":"/","timestamp":"2026-07-02 14:49:18","userId":"a476fba9-ed9d-43d9-87b9-af6c22178529"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/0a012692-4e04-45ca-85e1-3611ee72755a","timestamp":"2026-07-02 14:49:18","userId":"89224447-6aa2-4fc4-b277-ffb9558bbc49"}
+{"cacheHit":true,"duration":"0ms","level":"info","message":"Tenant Auth success","path":"/0a012692-4e04-45ca-85e1-3611ee72755a","timestamp":"2026-07-02 14:49:18","userId":"a476fba9-ed9d-43d9-87b9-af6c22178529"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/error-2026-07-02.log","timestamp":"2026-07-02 15:12:58"}
+{"level":"info","message":"New log file created","newFile":"/home/dmrcode/Desktop/jira/tenant_backend/logs/combined-2026-07-02.log","timestamp":"2026-07-02 15:12:58"}
+{"level":"info","message":"✅ Redis connected successfully","timestamp":"2026-07-02 15:12:58"}
