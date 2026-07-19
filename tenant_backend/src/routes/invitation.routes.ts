@@ -13,3 +13,5 @@ router.get('/me', invitationController.listMyInvitations);
 router.get('/org/:orgId', invitationController.listOrgInvitations);
 
 export default router;
+
+
